@@ -1,13 +1,31 @@
 package it.beije.oort.model;
 
-import java.util.Objects;
+import javax.persistence.*;
 
-public class User {
+@Entity
+@Table(name = "utente")
+public class User implements IBibliotecaModel{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
+
+    @Column
     private String nome;
+
+    @Column
     private String cognome;
+
+    @Column(name = "codice_fiscale")
+    private String codiceFiscale;
+    
+    @Column
     private String email;
+    
+    @Column
     private String password;
+    
+    @Column(name = "admin")
     private boolean isAdmin;
 
     public Long getId() {
@@ -58,19 +76,11 @@ public class User {
         isAdmin = admin;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(getNome(), user.getNome()) &&
-                Objects.equals(getCognome(), user.getCognome()) &&
-                getEmail().equals(user.getEmail()) &&
-                getPassword().equals(user.getPassword());
+    public String getCodiceFiscale() {
+        return codiceFiscale;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getNome(), getCognome(), getEmail(), getPassword());
+    public void setCodiceFiscale(String codiceFiscale) {
+        this.codiceFiscale = codiceFiscale;
     }
 }
