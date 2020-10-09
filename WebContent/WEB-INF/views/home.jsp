@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>CIAO OORT :-)</h2>
-${localDateTime} - ${country} - ${lingua}
+<a href="CatalogoAutori"/>Autori
 </body>
 </html>
