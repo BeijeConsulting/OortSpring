@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/#vsfdgf", method = RequestMethod.GET)
 	public String home() {
 		System.out.println("home...");
 		
 		return "home";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login#hdsjfhs", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
 		System.out.println("login..." + request.getContextPath());
 		
