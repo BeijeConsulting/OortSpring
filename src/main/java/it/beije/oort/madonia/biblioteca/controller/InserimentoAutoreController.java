@@ -17,13 +17,8 @@ import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
 public class InserimentoAutoreController {
 	
 	@RequestMapping(value = "/biblioteca/inserimento_autore", method = RequestMethod.GET)
-	public String inserimentoAutore(HttpServletRequest request) {
+	public String inserimentoAutore() {
 		String page = "/biblioteca/inserimento_autore";
-		
-		Utente utenteAttivo = (Utente) request.getSession().getAttribute("utenteAttivo");
-    	if (utenteAttivo == null || utenteAttivo.getId() == 0) {
-    		request.getSession().setAttribute("errore", "Devi effettuare il login prima di accedere ai contenuti.");
-    	}
 		
 		return page;
 	}
@@ -31,11 +26,6 @@ public class InserimentoAutoreController {
 	@RequestMapping(value = "/biblioteca/inserimento_autore", method = RequestMethod.POST)
 	public String inserimentoAutore(HttpServletRequest request, Model model) {
 		String page = "/biblioteca/inserimento_autore";
-		
-		Utente utenteAttivo = (Utente) request.getSession().getAttribute("utenteAttivo");
-    	if (utenteAttivo == null || utenteAttivo.getId() == 0) {
-    		request.getSession().setAttribute("errore", "Devi effettuare il login prima di accedere ai contenuti.");
-    	}
     	
     	String dataNascita = request.getParameter("dataNascita");
 		String dataMorte = request.getParameter("dataMorte");
