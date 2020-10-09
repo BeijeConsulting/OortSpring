@@ -6,8 +6,21 @@
 <meta charset="ISO-8859-1">
 <title>Oort Spring Home</title>
 </head>
-<body>
-<h2>CIAO OORT :-)</h2>
-${localDateTime} - ${country} - ${lingua}
+<body backgruound ="sfondo.jpg">
+
+
+	<h1>Menu' Rubrica:</h1>
+		<form action="ins" method="GET" >
+			<button type="submit"> Inserisci contatto!</button>
+		</form>	
+		<br><br>	
+		<form action="del" method="GET"> 
+			<button type ="submit"> Elimina contatto!</button> 
+		</form>
+		<br><br>
+		<form action="show" method="GET">
+			<button type="submit">Visualizza contatti!</button>
+		</form>
+
 </body>
 </html>

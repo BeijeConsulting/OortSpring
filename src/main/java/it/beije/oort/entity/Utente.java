@@ -73,11 +73,11 @@ public class Utente {
 
 	
 	public String toString() {
-		StringBuilder builder = new StringBuilder("contatto [");
-		builder.append("nome : ").append(this.name)
-			.append(" - cognome : ").append(this.cognome)
-			.append(" - telefono : ").append(this.telefono)
-			.append(" - email : ").append(this.email).append("]");
+		StringBuilder builder = new StringBuilder("[");
+		builder.append("Nome : ").append(this.name)
+			.append(" - Cognome : ").append(this.cognome)
+			.append(" - Telefono : ").append(this.telefono)
+			.append(" - Email : ").append(this.email).append("]");
 		
 		return builder.toString();
 	}
