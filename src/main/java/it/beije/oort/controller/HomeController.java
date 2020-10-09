@@ -17,6 +17,33 @@ import it.beije.oort.entity.Utente;
 
 @Controller
 public class HomeController {
+
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public String login(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
+//		System.out.println("login..." + request.getContextPath());
+//		
+//		LocalDateTime localDateTime = LocalDateTime.now();
+//		
+//		model.addAttribute("localDateTime", localDateTime);
+//		model.addAttribute("country", locale.getCountry());
+//		model.addAttribute("lingua", locale.getLanguage());
+//		
+//		return "login";
+//	}
+
+//	@RequestMapping(value = "/utente", method = RequestMethod.GET)
+//	public String utente(Model model) {
+//		System.out.println("utente...");
+//		
+//		//carico utente...
+//		Utente utente = new Utente();
+//		utente.setCognome("Zegna");
+//		utente.setNome("Ermenegildo");
+//		
+//		model.addAttribute("utente", utente);
+//		
+//		return "utente";
+//	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -24,32 +51,26 @@ public class HomeController {
 		
 		return "home";
 	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
-		System.out.println("login..." + request.getContextPath());
+	
+	@RequestMapping(value = "/inserimento", method = RequestMethod.GET)
+	public String inserimento() {
+		System.out.println("inserimento...");
 		
-		LocalDateTime localDateTime = LocalDateTime.now();
-		
-		model.addAttribute("localDateTime", localDateTime);
-		model.addAttribute("country", locale.getCountry());
-		model.addAttribute("lingua", locale.getLanguage());
-		
-		return "login";
+		return "inserimento";
 	}
-
-	@RequestMapping(value = "/utente", method = RequestMethod.GET)
-	public String utente(Model model) {
-		System.out.println("utente...");
+	
+	@RequestMapping(value = "/visualizza", method = RequestMethod.GET)
+	public String visualizza() {
+		System.out.println("visualizza...");
 		
-		//carico utente...
-		Utente utente = new Utente();
-		utente.setCognome("Zegna");
-		utente.setNome("Ermenegildo");
+		return "visualizza";
+	}
+	
+	@RequestMapping(value = "/modifica", method = RequestMethod.GET)
+	public String modifica() {
+		System.out.println("modifica...");
 		
-		model.addAttribute("utente", utente);
-		
-		return "utente";
+		return "modifica";
 	}
 
 }
