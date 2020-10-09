@@ -33,8 +33,8 @@ public class MetodiUtente {
 		Scanner inputFromUser = new Scanner(System.in);
 		String lineFromInput = inputFromUser.next();
 		int id = Integer.parseInt(lineFromInput);
-		System.out.println("hai inserito questo id: " + id);
-		System.out.println("questo è il record: ");
+//		System.out.println("hai inserito questo id: " + id);
+//		System.out.println("questo è il record: ");
 		Utente utente = readRecordFromDb(id);
 //		System.out.println("id : " + utente.getId());			
 //		System.out.println("cognome : " + utente.getCognome());
