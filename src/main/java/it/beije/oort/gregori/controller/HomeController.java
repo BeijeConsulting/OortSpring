@@ -185,5 +185,37 @@ public class HomeController {
 		
 		return "rimuovi";
 	}
+	
+	@RequestMapping(value = "/ricerca", method = RequestMethod.GET)
+	public String ricerca() {
+		System.out.println("ricerca...");
+		
+		return "ricerca";
+	}
+	
+	@RequestMapping(value = "/ricerca", method = RequestMethod.POST)
+	public String ricerca(@RequestParam(name="search-value") String search_value, Model model) {
+		System.out.println("rimuovi after rimozione...");
+		
+		if(search_value != null) {			
+			EntityManager entityManager = JPAEntityManager.createEntityManager();
+			
+			EntityTransaction entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			
+			String jpasql = "SELECT c FROM Contatto as c WHERE nome = '" + search_value + "' OR cognome = '" + search_value + "' OR telefono = '" + search_value + "' OR email = '" + search_value + "'";
+			
+			List<Contatto> contatti = entityManager.createQuery(jpasql).getResultList();
+	
+			entityManager.close();	
+			
+			model.addAttribute("contatto", contatto);
+		}
+	
+		List<Contatto> contatti = ReaderDb.readContatti();
+		model.addAttribute("contatti", contatti);
+		
+		return "rimuovi";
+	}
 
 }
