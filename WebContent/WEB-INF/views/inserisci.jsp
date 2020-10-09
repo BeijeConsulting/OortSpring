@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE HTML>
 <!--
 	Industrious by TEMPLATED
@@ -13,13 +15,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="<c:url value="/assets/css/main.css" />"/>
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="home.html">Rubrica</a>
+				<a class="logo" href="/OortSpring/">Rubrica</a>
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
@@ -28,13 +30,13 @@
 		<!-- Nav -->
 		<nav id="menu">
 			<ul class="links">
-				<li><a href="home.html">Home</a></li>
-				<li><a href="inserimento.html">Inserimento</a></li>
-				<li><a href="visualizzazione.html">Visualizzazione</a></li>
-				<li><a href="modifica.html">Modifica</a></li>
-				<li><a href="rimozione.html">Rimozione</a></li>
-				<li><a href="ricerca.html">Ricerca</a></li>
-				<li><a href="esportazione.html">Esportazione</a></li>
+				<li><a href="/OortSpring/">Home</a></li>
+				<li><a href="/OortSpring/inserimento">Inserimento</a></li>
+				<li><a href="/OortSpring/visualizza">Visualizzazione</a></li>
+				<li><a href="/OortSpring/midifica">Modifica</a></li>
+				<li><a href="/OortSpring/rimuovi">Rimozione</a></li>
+<!-- 				<li><a href="ricerca.html">Ricerca</a></li>
+				<li><a href="esportazione.html">Esportazione</a></li> -->
 			</ul>
 		</nav>
 
@@ -49,16 +51,16 @@
 					<div class="content">
 						<!-- Form -->
 						<h3>Contatto</h3>
-						<form  method="post" action="./Inserimento">
+						<form  method="post" action="">
 							<div class="row gtr-uniform">
 								<!--div class="col-6 col-12-xsmall"-->
 								<div class="col-12">
-									<input type="text" name="name" id="name" value="" placeholder="Nome" />
+									<input type="text" name="nome" id="nome" value="" placeholder="Nome" />
 								</div>
 								<!-- Break -->
 								<!--div class="col-6 col-12-xsmall"-->
 								<div class="col-12">
-									<input type="text" name="surname" id="surname" value="" placeholder="Cognome" />
+									<input type="text" name="cognome" id="cognome" value="" placeholder="Cognome" />
 								</div>
 								<!-- Break -->
 								<div class="col-12">
@@ -66,18 +68,8 @@
 								</div>
 								<!-- Break -->
 								<!-- Break -->
-								<div class="col-2 col-12-xsmall">
-									<select name="country-codes" id="country-codes">
-										<option value="">- Codice -</option>
-										<option value="it">IT +39</option>
-										<option value="de">DE +49</option>
-										<option value="us">US +1</option>
-										<option value="gb">GB +44</option>
-										<option value="fr">FR +33</option>
-									</select>
-								</div>
-								<div class="col-10 col-12-xsmall">
-									<input type="text" name="phone" id="phone" value="" placeholder="Telefono" />
+								<div class="col-12">
+									<input type="text" name="telefono" id="telefono" value="" placeholder="Telefono" />
 								</div>
 								<div class="col-12">
 									<ul class="actions">
@@ -88,32 +80,35 @@
 							</div>
 						</form>
 						<%
-						String nome = (String)session.getAttribute("nome");
+						/* String nome = (String)session.getAttribute("nome");
 						String cognome = (String)session.getAttribute("cognome");
 						String telefono = (String)session.getAttribute("telefono");
 						String email = (String)session.getAttribute("email");
-						%>
-						<h3>Contatto inserito</h3>
-						<div class="table-wrapper">
-							<table>
-								<thead>
-									<tr>
-									<th>Nome</th>
-									<th>Cognome</th>
-									<th>Telefono</th>
-									<th>Email</th>
-									</tr>
-								</thead>
-								<tbody>									
-									<tr>
-									<td><%= nome %></td>
-									<td><%= cognome %></td>
-									<td><%= telefono %></td>
-									<td><%= email %></td>
-									</tr>
-								</tbody>			
-							</table>
-						</div>
+						 */%>
+						 
+					<c:if test = "${contatto != null}">
+							<h3>Contatto inserito</h3>
+							<div class="table-wrapper">
+								<table>
+									<thead>
+										<tr>
+										<th>Nome</th>
+										<th>Cognome</th>
+										<th>Telefono</th>
+										<th>Email</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr>
+										<td>${contatto.nome}</td>
+										<td>${contatto.cognome}</td>
+										<td>${contatto.telefono}</td>
+										<td>${contatto.email}</td>
+										</tr>
+									</tbody>			
+								</table>
+							</div>
+					</c:if>
 				</div>
 			</section>
 
@@ -127,11 +122,11 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="<c:url value="/assets/js/jquery.min.js" />"></script>
+			<script src="<c:url value="/assets/js/browser.min.js" />"></script>
+			<script src="<c:url value="/assets/js/breakpoints.min.js" />"></script>
+			<script src="<c:url value="/assets/js/util.js" />"></script>
+			<script src="<c:url value="/assets/js/main.js" />"></script>
 
 	</body>
 </html>

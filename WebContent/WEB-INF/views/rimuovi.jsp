@@ -9,12 +9,12 @@
 -->
 <html>
 	<head>
-		<title>Rubrica - Visualizzazione contatti</title>
+		<title>Rubrica - Rimozione contatti</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="<c:url value="assets/css/main.css" />"/>
+		<link rel="stylesheet" href="<c:url value="/assets/css/main.css" />"/>
 	</head>
 	<body class="is-preload">
 
@@ -32,7 +32,7 @@
 				<li><a href="/OortSpring/">Home</a></li>
 				<li><a href="/OortSpring/inserisci">Inserimento</a></li>
 				<li><a href="/OortSpring/visualizza">Visualizzazione</a></li>
-				<li><a href="/OortSpring/midifica">Modifica</a></li>
+				<li><a href="/OortSpring/modifica">Modifica</a></li>
 				<li><a href="/OortSpring/rimuovi">Rimozione</a></li>
 				<!-- <li><a href="ricerca.html">Ricerca</a></li>
 				<li><a href="esportazione.html">Esportazione</a></li> -->
@@ -41,36 +41,56 @@
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>Visualizzazione</h1>
+				<h1>Rimozione</h1>
 			</div>
 
 		<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="inner">
 					<div class="content">
-						<h3>Contatti</h3>
-						<div class="table-wrapper">
-							<table>
-								<thead>
-									<tr>
-									<th>Nome</th>
-									<th>Cognome</th>
-									<th>Telefono</th>
-									<th>Email</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var = "contatto" items = "${ contatti }">
+						<!-- Form -->						
+						<h3>Selezionare un contatto</h3>
+						<form method="post" action="./rimuovi">
+							<div class="row gtr-uniform">
+								<div class="col-12">
+									<select name="selezione-contatto" id="selezione-contatto">
+										<option value="">- Contatto -</option>
+										<c:forEach var = "contatto" items = "${ contatti }">
+											<option value="${ contatto.id }">${ contatto }</option>
+										</c:forEach>
+									</select>
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Invia" class="primary" /></li>
+										<li><input type="reset" value="Cancella" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						<c:if test = "${contatto != null}">
+							<h3>Contatto eliminato</h3>
+							<div class="table-wrapper">
+								<table>
+									<thead>
 										<tr>
-										<td>${ contatto.nome }</td>
-										<td>${ contatto.cognome }</td>
-										<td>${ contatto.telefono }</td>
-										<td>${ contatto.email }</td>
-									</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+										<th>Nome</th>
+										<th>Cognome</th>
+										<th>Telefono</th>
+										<th>Email</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr>
+										<td>${contatto.nome}</td>
+										<td>${contatto.cognome}</td>
+										<td>${contatto.telefono}</td>
+										<td>${contatto.email}</td>
+										</tr>
+									</tbody>			
+								</table>
+							</div>
+					</c:if>
 					</div>
 				</div>
 			</section>

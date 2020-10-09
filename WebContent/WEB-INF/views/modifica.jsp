@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <!--
 	Industrious by TEMPLATED
@@ -19,7 +20,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="home.html">Rubrica</a>
+				<a class="logo" href="./">Rubrica</a>
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
@@ -28,10 +29,10 @@
 		<!-- Nav -->
 		<nav id="menu">
 			<ul class="links">
-				<li><a href="home.html">Home</a></li>
-				<li><a href="inserimento.html">Inserimento</a></li>
-				<li><a href="visualizzazione.html">Visualizzazione</a></li>
-				<li><a href="modifica.html">Modifica</a></li>
+				<li><a href="./">Home</a></li>
+				<li><a href="./inserisci">Inserimento</a></li>
+				<li><a href="./visualizza">Visualizzazione</a></li>
+				<li><a href="./modifica">Modifica</a></li>
 				<li><a href="rimozione.html">Rimozione</a></li>
 				<li><a href="ricerca.html">Ricerca</a></li>
 				<li><a href="esportazione.html">Esportazione</a></li>
@@ -49,17 +50,14 @@
 					<div class="content">
 						<!-- Form -->						
 						<h3>Selezionare un contatto</h3>
-						<form method="post" action="./Modifica">
+						<form method="post" action="./modifica">
 							<div class="row gtr-uniform">
 								<div class="col-12">
 									<select name="selezione-contatto" id="selezione-contatto">
 										<option value="">- Contatto -</option>
-										<% 
-										/* List<Contatto> contatti = ReaderDb.readContatti(); 
-										for(Contatto contatto : contatti) { */
-										%>
-										<option value="<% //= contatto.getId() %>"><% //= contatto %></option>
-										<% //} %>
+										<c:forEach var = "contatto" items = "${ contatti }">
+											<option value="${ contatto.id }">${ contatto }</option>
+										</c:forEach>
 									</select>
 								</div>
 								<!--div class="col-6 col-12-xsmall"-->
@@ -90,6 +88,30 @@
 								</div>
 							</div>
 						</form>
+						<c:if test = "${contatto != null}">
+							<h3>Contatto modificato</h3>
+							<div class="table-wrapper">
+								<table>
+									<thead>
+										<tr>
+										<th>Nome</th>
+										<th>Cognome</th>
+										<th>Telefono</th>
+										<th>Email</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr>
+										<td>${contatto.nome}</td>
+										<td>${contatto.cognome}</td>
+										<td>${contatto.telefono}</td>
+										<td>${contatto.email}</td>
+										</tr>
+									</tbody>			
+								</table>
+							</div>
+					</c:if>
+					</div>
 				</div>
 			</section>
 

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <!--
 	Industrious by TEMPLATED
@@ -13,13 +15,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="<c:url value="/assets/css/main.css" />"/>
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html">Rubrica</a>
+				<a class="logo" href="/OortSpring/">Rubrica</a>
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
@@ -28,13 +30,13 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="home.html">Home</a></li>
-					<li><a href="inserimento.html">Inserimento</a></li>
-					<li><a href="visualizzazione.html">Visualizzazione</a></li>
-					<li><a href="modifica.html">Modifica</a></li>
-					<li><a href="rimozione.html">Rimozione</a></li>
-					<li><a href="ricerca.html">Ricerca</a></li>
-					<li><a href="esportazione.html">Esportazione</a></li>
+					<li><a href="/OortSpring/">Home</a></li>
+					<li><a href="/OortSpring/inserisci">Inserimento</a></li>
+					<li><a href="/OortSpring/visualizza">Visualizzazione</a></li>
+					<li><a href="/OortSpring/modifica">Modifica</a></li>
+					<li><a href="/OortSpring/rimuovi">Rimozione</a></li>
+					<!-- <li><a href="ricerca.html">Ricerca</a></li>
+					<li><a href="esportazione.html">Esportazione</a></li> -->
 				</ul>
 			</nav>
 
@@ -55,7 +57,7 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="inserimento/" class="icon fa-vcard-o"><span class="label">Icon</span></a>
+									<a href="/OortSpring/inserisci" class="icon fa-vcard-o"><span class="label">Icon</span></a>
 									<h3>Inserisci</h3>
 								</header>
 								<p>Inserimento di un contatto all'interno della rubrica.</p>
@@ -64,21 +66,16 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="visualizza/mario" class="icon fa-table"><span class="label">Icon</span></a>
+									<a href="/OortSpring/visualizza" class="icon fa-table"><span class="label">Icon</span></a>
 									<h3>Visualizza</h3>
-									<form action="visualizza" method="get">
-										<button type="submit"></button>
-									</form>
 								</header>
 								<p>Visualizzazione dei contatti presenti in rubrica.</p>
 							</div>
 						</section>
-<!--  					<section>
+	  					<section>
 							<div class="content">
 								<header>
-									<form id="modifica" method="get" action="modifica.jsp">
-									<a href="javascript:{}" onclick="document.getElementById('modifica').submit();" class="icon fa-edit"><span class="label">Icon</span></a>
-									</form>
+									<a href="/OortSpring/modifica" class="icon fa-edit"><span class="label">Icon</span></a>
 									<h3>Modifica</h3>
 								</header>
 								<p>Modifica di un contatto all'interno della rubrica.</p>
@@ -87,13 +84,13 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="rimozione.html" class="icon fa-trash"><span class="label">Icon</span></a>
+									<a href="/OortSpring/rimuovi" class="icon fa-trash"><span class="label">Icon</span></a>
 									<h3>Rimuovi</h3>
 								</header>
 								<p>Rimozione di un contatto all'interno della rubrica.</p>
 							</div>
 						</section>
-						<section>
+<!-- 						<section>
 							<div class="content">
 								<header>
 									<a href="ricerca.html" class="icon fa-search"><span class="label">Icon</span></a>
@@ -110,8 +107,8 @@
 								</header>
 								<p>Esportazione della rubrica.</p>
 							</div>
-						</section>
--->	
+						</section> -->
+	
 					</div>
 				</div>
 			</section>
@@ -126,11 +123,11 @@
 		</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="<c:url value="/assets/js/jquery.min.js" />"></script>
+			<script src="<c:url value="/assets/js/browser.min.js" />"></script>
+			<script src="<c:url value="/assets/js/breakpoints.min.js" />"></script>
+			<script src="<c:url value="/assets/js/util.js" />"></script>
+			<script src="<c:url value="/assets/js/main.js" />"></script>
 
 	</body>
 </html>
