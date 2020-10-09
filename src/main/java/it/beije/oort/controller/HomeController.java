@@ -21,13 +21,15 @@ import it.beije.oort.entity.Utente;
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		System.out.println("home...");
-		
-		return "home";
-	}
-
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home() {
+//		System.out.println("home...");
+//		
+//		return "menubiblioteca";
+//	}
+//	
+	
+/*
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
 		System.out.println("login..." + request.getContextPath());
@@ -40,7 +42,7 @@ public class HomeController {
 		
 		return "login";
 	}
-
+*/
 	@RequestMapping(value = "/utente", method = RequestMethod.GET)
 	public String utente() {
 		System.out.println("utente...");
