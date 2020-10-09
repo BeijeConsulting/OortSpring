@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>home</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h3>BENVENUTO NELLA BIBLIOTECA ONLINE</h3>
-	<a href = "login">Entra</a><br>
-	<a href = "registrazione">Registrati</a>
+PAGINA ADMIN
 </body>
 </html>

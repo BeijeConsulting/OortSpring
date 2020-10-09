@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>INSERISCI LE TUE CREDENZIALI</h3>
-	<form action="" method="post">
+	<form action="./homepage" method="post">
 			EMAIL&nbsp;<input type="email" name="email" value="" placeholder="utente@dominio"/><br/>
  			PASSWORD&nbsp;<input type="password" name="password" value=""/><br>
 			<input type="submit" value="INVIO"/>
