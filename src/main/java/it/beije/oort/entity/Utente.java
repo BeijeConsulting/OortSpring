@@ -4,7 +4,7 @@ public class Utente {
 	
 	private int id;
 	
-	private String name;
+	private String nome;
 	
 	private String cognome;
 	
@@ -22,7 +22,7 @@ public class Utente {
 	}
 	
 	public Utente(String nome, String cognome, String telefono, String email) {
-		this.name = nome;
+		this.nome = nome;
 		this.cognome = cognome;
 		this.telefono = telefono;
 		this.email = email;
@@ -37,10 +37,10 @@ public class Utente {
 	}
 
 	public String getNome() {
-		return name;
+		return nome;
 	}
 	public void setNome(String nome) {
-		this.name = nome;
+		this.nome = nome;
 	}
 	
 	public String getCognome() {
@@ -74,7 +74,7 @@ public class Utente {
 	
 	public String toString() {
 		StringBuilder builder = new StringBuilder("contatto [");
-		builder.append("nome : ").append(this.name)
+		builder.append("nome : ").append(this.nome)
 			.append(" - cognome : ").append(this.cognome)
 			.append(" - telefono : ").append(this.telefono)
 			.append(" - email : ").append(this.email).append("]");

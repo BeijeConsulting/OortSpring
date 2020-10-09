@@ -9,7 +9,9 @@
 <body>
 <p>
 COGNOME: ${utente.cognome}<br>
-NOME: ${utente.nome}
+NOME: ${utente.nome}<br>
+EMAIL: ${utente.email}<br>
+TELEFONO: ${utente.telefono}
 </p>
 </body>
 </html>
