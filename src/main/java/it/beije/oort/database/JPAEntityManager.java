@@ -11,22 +11,15 @@ public class JPAEntityManager {
 
     private static final Map<String, EntityManager> managerMap = new HashMap<>();
 
-    private final static String database = "rubrica";
-    public static EntityManager getEntityManager(){
+    public static EntityManager getEntityManager(String database){
         if (managerMap.get(database) == null){
+            System.out.println("Creo nuovo EntityManager");
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(database);
+            System.out.println("Factory creata");
             EntityManager em = entityManagerFactory.createEntityManager();
             managerMap.put(database, em);
         }
+        System.out.println("Servo l'EntityManager");
         return managerMap.get(database);
-    }
-
-    public static EntityManager getEntityManager(String customDatabase){
-        if (managerMap.get(customDatabase) == null){
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(customDatabase);
-            EntityManager em = entityManagerFactory.createEntityManager();
-            managerMap.put(customDatabase, em);
-        }
-        return managerMap.get(customDatabase);
     }
 }

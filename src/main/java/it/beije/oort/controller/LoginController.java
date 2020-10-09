@@ -1,43 +1,58 @@
 package it.beije.oort.controller;
 
 import it.beije.oort.database.DatabaseController;
-import it.beije.oort.model.User;
+import it.beije.oort.model.Utente;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
     // Il get stampa la pagina base, il post elabora la richiesta di login e rimanda alle pagine successive
     @GetMapping(value = "/login")
     public String showLogin(HttpServletRequest request){
-        if (request.getSession().getAttribute("user") != null) return "index";
+        // per debug
+        if (true){
+            System.out.println("creo utente admin");
+            request.getSession().setAttribute("utente", DatabaseController.getUtente(1L));
+            System.out.println("utente admin settato");
+        }
+        if (request.getSession().getAttribute("utente") != null){
+            System.out.println("utente già loggato");
+            return "biblio_list";
+        }
         return "auth";
     }
 
     @PostMapping(value = "/login")
-    public String logUser(HttpServletRequest request, HttpServletResponse response){
-        if (request.getSession().getAttribute("user") != null) return "index";
-        User user = null;
+    public String logUser(HttpSession session,
+                          Model model,
+                          @RequestParam(name = "cf-mail") String cfMail,
+                          @RequestParam String password){
+        if (session.getAttribute("utente") != null) return "index";
+        Utente utente = null;
 
         // prendi utente dalla mail o dal cf
-        if (DatabaseController.getUtente("cf-mail") != null){
-            user = DatabaseController.getUtente("cf-mail");
-        } else if (DatabaseController.getUtenteFromMail("cf-mail") != null){
-            user = DatabaseController.getUtenteFromMail("cf-mail");
+        if (DatabaseController.getUtente(cfMail) != null){
+            utente = DatabaseController.getUtente(cfMail);
+        } else if (DatabaseController.getUtenteFromMail(cfMail) != null){
+            utente = DatabaseController.getUtenteFromMail(cfMail);
         } else {
+            model.addAttribute("error", "Utente non corretto");
             return "auth";
         }
 
         // verifica la password
-        if (!user.getPassword().equals(request.getParameter("password"))) return "auth";
+        if (!utente.getPassword().equals(password)){
+            model.addAttribute("error", "Password non corretta");
+            return "auth";
+        }
+        session.setAttribute("logged", true);
+        session.setAttribute("utente", utente);
 
-        request.getSession().setAttribute("logged", true);
-        request.getSession().setAttribute("user", user);
-
-        return "biblio";
+        return "biblio_list";
     }
 }

@@ -9,7 +9,7 @@
 <%--<body>--%>
 <%--		<h3>Inserisci le tue credenziali<br>${localDateTime} - ${country} - ${lingua}</h3>--%>
 <%--		<form action="./authentication" method="post">--%>
-<%--			EMAIL&nbsp;<input type="email" name="email" value="" placeholder="user@domain.it"/><br/>--%>
+<%--			EMAIL&nbsp;<input type="email" name="email" value="" placeholder="utente@domain.it"/><br/>--%>
 <%-- 			PASSWORD&nbsp;<input type="password" name="password" value=""/><br>--%>
 <%--			<input type="submit" value="INVIO"/>--%>
 <%--		</form>--%>

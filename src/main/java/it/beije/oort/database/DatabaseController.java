@@ -6,7 +6,7 @@ import java.util.List;
 
 // todo update
 public class DatabaseController {
-    private static final GenericDatabaseManager dbm = new GenericDatabaseManager();
+    private static GenericDatabaseManager dbm = new GenericDatabaseManager();
 
     // Libri
     public static Libro getLibro(Long id){
@@ -48,27 +48,29 @@ public class DatabaseController {
     public static void deleteEditore(Long id){
         dbm.delete(Editore.class, id);
     }
-    public static void deleteAutore(Editore editore){
+    public static void deleteEditore(Editore editore){
         deleteEditore(editore.getId());
     }
+    public static List<Editore> getAllEditori(){return (List<Editore>) dbm.getAll(Editore.class);}
 
     // Utente
-    public static User getUtente(Long id){
-        return (User) dbm.get(User.class, id);
+    public static Utente getUtente(Long id){
+        return (Utente) dbm.get(Utente.class, id);
     }
-    public static User getUtente(String cf){
+    public static Utente getUtente(String cf){
         return dbm.getUtente(cf);
     }
-    public static User getUtenteFromMail(String mail){return dbm.getUtenteFromMail(mail);}
-    public static void insertUtente(User utente){
+    public static Utente getUtenteFromMail(String mail){return dbm.getUtenteFromMail(mail);}
+    public static void insertUtente(Utente utente){
         dbm.insert(utente);
     }
     public static void deleteUtente(Long id){
-        dbm.delete(User.class, id);
+        dbm.delete(Utente.class, id);
     }
-    public static void deleteUtente(User utente){
+    public static void deleteUtente(Utente utente){
         deleteUtente(utente.getId());
     }
+    public static List<Utente> getAllUtenti(){return (List<Utente>) dbm.getAll(Utente.class);}
 
     // Prestito
     public static Prestito getPrestito(Long id){

@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Padawan09
+  Date: 09/10/2020
+  Time: 11:50
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Registrati</title>
     <link href="${pageContext.request.contextPath}/resources/style/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioAdd.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioView.css" rel="stylesheet">
@@ -16,7 +19,7 @@
 </head>
 <body>
 <div class="home">
-    <a href="${pageContext.request.contextPath}/login"><i class="fas fa-home"></i></a>
+    <a href="${pageContext.request.contextPath}/register"><i class="fas fa-home"></i></a>
 </div>
 <div class="container">
     <div class = "small-center-container">
@@ -25,12 +28,22 @@
         </div>
         <div class = "rubrica-form">
             <form action="${pageContext.request.contextPath}/login" method="post">
-                ${error}
                 <div class="single-input">
-                    <label for="cf-mail">Email o Codice Fiscale: </label>
-                    <input type="text" name="cf-mail" id="cf-mail" required>
+                    <label for="nome">Nome: </label>
+                    <input type="text" name="nome" id="nome">
                 </div>
-
+                <div class="single-input">
+                    <label for="cognome">Cognome: </label>
+                    <input type="text" name="cognome" id="cognome">
+                </div>
+                <div class="single-input">
+                    <label for="cf">Codice Fiscale: </label>
+                    <input type="text" name="cf" id="cf" required>
+                </div>
+                <div class="single-input">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email" required>
+                </div>
                 <div class="single-input">
                     <label for="password">Password: </label>
                     <input type="password" name="password" id="password" required>

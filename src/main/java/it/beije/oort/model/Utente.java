@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "utente")
-public class User implements IBibliotecaModel{
+public class Utente implements IBibliotecaModel{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column

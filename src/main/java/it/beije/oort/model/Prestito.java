@@ -28,7 +28,7 @@ public class Prestito implements IBibliotecaModel {
     @Column(name = "id_libro")
     private Long idLibro;
 
-    public User getUtente(){
+    public Utente getUtente(){
         return DatabaseController.getUtente(cfUtente);
     }
 

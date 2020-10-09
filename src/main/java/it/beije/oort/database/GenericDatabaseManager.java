@@ -1,7 +1,7 @@
 package it.beije.oort.database;
 
 import it.beije.oort.model.IBibliotecaModel;
-import it.beije.oort.model.User;
+import it.beije.oort.model.Utente;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -13,13 +13,18 @@ public class GenericDatabaseManager {
     private final static EntityManager em = JPAEntityManager.getEntityManager(PERSISTENCE_UNIT_NAME);
 
     public void insert(IBibliotecaModel object){
+        System.out.println("Adding this obj: " + object.getClass());
         em.getTransaction().begin();
         em.persist(object);
         em.getTransaction().commit();
     }
 
     public IBibliotecaModel get(Class<? extends IBibliotecaModel> classe, Long id){
-        return em.find(classe, id);
+        try {
+            return em.find(classe, id);
+        } catch (NoResultException e){
+            return null;
+        }
     }
 
     public boolean exist(Class<? extends IBibliotecaModel> classe, int id){
@@ -35,30 +40,30 @@ public class GenericDatabaseManager {
         IBibliotecaModel deleteMe = null;
         try{
             deleteMe = this.get(classe, id);
+            em.getTransaction().begin();
+            em.remove(deleteMe);
+            em.getTransaction().commit();
         } catch (Exception e){
             e.printStackTrace();
         }
-        em.getTransaction().begin();
-        em.remove(deleteMe);
-        em.getTransaction().commit();
     }
 
-    public User getUtente(String cf){
+    public Utente getUtente(String cf){
         try {
-            String jpql = "SELECT u FROM User as u WHERE u.codiceFiscale = :cf";
+            String jpql = "SELECT u FROM Utente as u WHERE u.codiceFiscale = :cf";
             Query query = em.createQuery(jpql).setParameter("cf", cf);
-            return (User) query.getSingleResult();
+            return (Utente) query.getSingleResult();
         } catch (NoResultException e){
             e.printStackTrace();
             return null;
         }
     }
 
-    public  User getUtenteFromMail(String email){
+    public Utente getUtenteFromMail(String email){
         try {
-            String jpql = "SELECT u FROM User as u WHERE u.email = :email";
+            String jpql = "SELECT u FROM Utente as u WHERE u.email = :email";
             Query query = em.createQuery(jpql).setParameter("email", email);
-            return (User) query.getSingleResult();
+            return (Utente) query.getSingleResult();
         } catch (NoResultException e){
             e.printStackTrace();
             return null;
