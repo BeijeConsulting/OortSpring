@@ -26,7 +26,7 @@ public class User implements Comparable<User>, Serializable{
 	@Column
 	private String phone;
 	@Column
-	private Boolean admin;
+	private boolean admin;
 	@Column
 	private String password;
 	
@@ -46,7 +46,7 @@ public class User implements Comparable<User>, Serializable{
 		this.password = password;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

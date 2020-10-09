@@ -17,7 +17,7 @@ public class ConcreteDatabase implements Database {
 	
 	
 	private ConcreteDatabase() {
-		factory = Persistence.createEntityManagerFactory("library");
+		factory = Persistence.createEntityManagerFactory("OortSpring");
 	}
 	
 	@Override
@@ -66,14 +66,13 @@ public class ConcreteDatabase implements Database {
 				Method getMethod = getters.get(f.getName());
 				Method setMethod = setters.get(f.getName());
 				if(getMethod != null && setMethod != null) {
-					Object newVal = getMethod.invoke(data, new Object[0]);
+					Object newVal = getMethod.invoke(data);
 					boolean isString = newVal instanceof String;
 					if(newVal != null) {
 						if(isString) {
 							if(newVal.equals("")) continue;
-						} else {
-							setMethod.invoke(elem, newVal);
 						}
+						setMethod.invoke(elem, newVal);
 					}
 				}
 			}
@@ -156,15 +155,21 @@ public class ConcreteDatabase implements Database {
 			if(m != null) {
 				Object value = null;
 				try {
-					value = m.invoke(data, new Object[0]);
+					value = m.invoke(data);
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) { e.printStackTrace();}
-				boolean isString = value instanceof String;
-				if(requireAnd) query.append("AND ");
-				query.append(f.getName()).append(" = ");
-				if(isString) query.append("\'");
-				query.append(value);
-				if(isString)query.append("\' ");
-				requireAnd = true;
+				if(value != null) {
+					boolean isString = value instanceof String;
+					if(isString) {
+						if(value.equals(""))continue;
+					}
+					if(requireAnd) query.append("AND ");
+					query.append(f.getName()).append(" = ");
+					if(isString) query.append("\'");
+					query.append(value);
+					if(isString)query.append("\' ");
+					requireAnd = true;
+				}
+				
 			}
 		}
 //		switch(type) {
@@ -317,7 +322,7 @@ public class ConcreteDatabase implements Database {
 			methodName = "set" + toCapitalLetter(fields[i].getName());
 			Method method = null;
 			try {
-				targetClass.getMethod(methodName, new Class[] {fields[i].getType()});
+				method = targetClass.getMethod(methodName, new Class[] {fields[i].getType()});
 			} catch (NoSuchMethodException e) {
 			}
 			methods.put(fields[i].getName(), method);
@@ -330,10 +335,10 @@ public class ConcreteDatabase implements Database {
 		Field[] fields = getProperties(targetClass);
 		String methodName = null;
 		for(int i = 0; i<fields.length; i++) {
-			methodName = "set" + toCapitalLetter(fields[i].getName());
+			methodName = "get" + toCapitalLetter(fields[i].getName());
 			Method method = null;
 			try {
-				targetClass.getMethod(methodName, new Class[0]);
+				method = targetClass.getMethod(methodName);
 			} catch (NoSuchMethodException e) {
 			}
 			methods.put(fields[i].getName(), method);
