@@ -4,20 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Oort Spring Home</title>
+<title>Oort Spring</title>
 </head>
 <body>
-<h2>CIAO OORT :-)</h2>
-${localDateTime} - ${country} - ${lingua}
-
 
 	<h3>Web Applications</h3>
 
 	<ul>
 		<!--   <li><a href="./phonebook/index.jsp">Phonebook Application</a></li> -->
-		<li><a href="./library">Library Application</a></li>
+		<li><a href="./library/login.jsp">Library Application</a></li>
 	</ul>
-	
-	
+
 </body>
 </html>
