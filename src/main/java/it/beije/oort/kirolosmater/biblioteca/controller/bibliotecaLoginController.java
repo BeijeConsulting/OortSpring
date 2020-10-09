@@ -48,17 +48,21 @@ public class bibliotecaLoginController {
 		boolean passwordCorretta = checkPassword(utente, password);
 		if (passwordCorretta) {
 			session.setAttribute("userBean", utente);
+			model.addAttribute("utente", utente);
 			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
 			session.setAttribute("prestitiUserBean", prestitiUtente);
+			model.addAttribute("prestitiUtente", prestitiUtente);
 			boolean admin = utente.isAdmin();
 			session.setAttribute("userIsAdmin", admin);
+			model.addAttribute("admin", admin);
 			stringaOutput = "biblioteca/areaPersonale";
 		} else {
 			session.setAttribute("errore", "CREDENZIALI ERRATE");
 			model.addAttribute("errore", "CREDENZIALI ERRATE");
 			stringaOutput = "biblioteca/bibliotecaLogin";
 		}
-		model.addAttribute("utente", utente);
+		
+		
 		return stringaOutput;
 	}
 }

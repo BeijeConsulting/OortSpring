@@ -88,7 +88,14 @@ public class MetodiUtente {
 	public static Utente checkEmail (String email) {
 		Utente utente = new Utente();
 		List<Utente> utenti = readRecordByStringFromInput("email", email);
-		utente = utenti.get(0);
+		if(utenti.size() == 0) {
+			utente = getUtenteSconosciuto();
+		} else {
+//			System.out.println(utenti);
+			utente = utenti.get(0);
+		}
+		
+		
 		return utente;
 	}
 	
@@ -96,5 +103,18 @@ public class MetodiUtente {
 		boolean passwordCorretta = false;
 		passwordCorretta = password.equals(utente.getPassword());
 		return passwordCorretta;
+	}
+	
+	public static Utente getUtenteSconosciuto () {
+		Utente sconosciuto = new Utente();
+		sconosciuto.setAdmin(false);
+		sconosciuto.setCodice_fiscale("sconosciuto");
+		sconosciuto.setCognome("sconosciuto");
+		sconosciuto.setEmail("utente.sconosciuto@sconosciuto.sconosciuto");
+		sconosciuto.setIndirizzo("sconosciuto");
+		sconosciuto.setNome("utente");
+		sconosciuto.setTelefono("sconosciuto");
+		sconosciuto.setPassword("sconosciuto");
+		return sconosciuto;
 	}
 }
