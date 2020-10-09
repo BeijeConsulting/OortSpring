@@ -21,7 +21,7 @@
 			<button type ="submit">Annulla e torna al menu!</button>
 		</form>
 		<br>
-		<form action ="show" method ="GET">
+		<form action ="showall" method ="POST">
 		<button type ="submit">Visualizza contatti!</button>		
 		</form>
 	</body>

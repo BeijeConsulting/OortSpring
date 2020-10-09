@@ -1,6 +1,7 @@
 package it.beije.oort.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,7 +48,7 @@ public class RubricaController {
 	public String delTo() {
 		System.out.println("form cancellazione...");
 		
-		return "delcontatto";
+		return "deletecontatto";
 	}
 	
 	@RequestMapping(value = "/ins", method = RequestMethod.GET)
@@ -56,39 +58,55 @@ public class RubricaController {
 		return "inscontatto";
 	}
 	
-//	@RequestMapping(value = "/ins", method = RequestMethod.POST)
-//	public String inserimento(@RequestParam  HttpServletRequest request, HttpServletResponse response) throws IOException {
-//	StringBuilder builder = new StringBuilder("<h3>Contatto cancellato correttamente!</h3> <br>");
-//	String id_value = request.getParameter("id");
-//		
-//	EntityManager entityManager = SingletonJPASpring.openEntity();
-//	EntityTransaction entityTransaction = entityManager.getTransaction();
-//	entityTransaction.begin();
-//	String jpql = ("SELECT c FROM Contatto as c WHERE id = " + id_value) ;
-//	Query query = entityManager.createQuery(jpql);
-//	
-//
-//	entityManager.remove(query.getResultList().get(0));
-//	entityManager.getTransaction().commit();
-//	entityManager.close();	
-//	System.out.println("Cancellato!");
-//	
-//	response.getWriter().append(builder);
-//	
-//	StringBuilder b = new StringBuilder("<br><!doctype html>\r\n" + 
-//			"<html>\r\n" + 
-//			"	<head>\r\n" + 
-//			"	<title></title>\r\n" + 
-//			"	</head>\r\n" + 
-//			"	<body>\r\n" + 
-//			"		<form action=\"menu.html\" method=\"POST\">\r\n" + 
-//			"			<button type=\"submit\"> MENU' PRINCIPALE</button>\r\n" + 
-//			"		</form>		\r\n" + 
-//			"	</body>\r\n" + 
-//			"</html>");
-//	response.getWriter().append(b);
-//	
-//	}
+	@RequestMapping(value = "/showall", method = RequestMethod.POST)
+	public String visual(Model model) {
+		EntityManager entityManager = SingletonJPASpring.openEntity();
+		String jpql = "SELECT c FROM ContattoSpring as c";
+		Query query = entityManager.createQuery(jpql);
+		List<ContattoSpring> contatti = query.getResultList();
+		System.out.println(contatti);
+		for (ContattoSpring contatto : contatti) { 
+			contatto.getCognome();
+			contatto.getNome();
+			contatto.getTelefono();
+			contatto.getEmail();
+		}
+		entityManager.close();
+		model.addAttribute("showall", contatti);
+		return "showall";
+		
+	} 
+		
+	
+	
+	
+	@RequestMapping(value = "/del", method = RequestMethod.POST)
+	public String inserimento(@RequestParam Integer id,  HttpServletRequest request, HttpServletResponse response) throws IOException {
+	
+	EntityManager entityManager = SingletonJPASpring.openEntity();
+	EntityTransaction entityTransaction = entityManager.getTransaction();
+	entityTransaction.begin();
+	String jpql = ("SELECT c FROM ContattoSpring as c WHERE id = " + id) ;
+	Query query = entityManager.createQuery(jpql);
+	entityManager.remove(query.getResultList().get(0));
+	entityManager.getTransaction().commit();
+	entityManager.close();	
+	System.out.println("Cancellato!");
+		
+	StringBuilder b = new StringBuilder("<br><!doctype html>\r\n" + 
+			"<html>\r\n" + 
+			"	<head>\r\n" + 
+			"	<title></title>\r\n" + 
+			"	</head>\r\n" + 
+			"	<body>\r\n" + 
+			"		<form action=\"h\" method=\"POST\">\r\n" + 
+			"			<button type=\"submit\"> MENU' PRINCIPALE</button>\r\n" + 
+			"		</form>		\r\n" + 
+			"	</body>\r\n" + 
+			"</html>");
+	response.getWriter().append(b);
+	return "conferma";
+	}
 
 	
 	@RequestMapping(value = "/ins", method = RequestMethod.POST)

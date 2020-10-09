@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Oort Spring Home</title>
 </head>
-<body backgruound ="sfondo.jpg">
+<body >
 
 
 	<h1>Menu' Rubrica:</h1>
