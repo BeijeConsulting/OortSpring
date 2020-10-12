@@ -24,6 +24,8 @@ public class LibraryHomeController {
 	@RequestMapping( value = "/", method = RequestMethod.POST)
 	public String home(HttpServletRequest req, Model model) {
 		String param = req.getParameter("res");
+		HttpSession session = req.getSession();
+		User logged = (User) session.getAttribute("user");
 		List list = null;
 		List selector1 = null;
 		List selector2 = null;
@@ -42,7 +44,13 @@ public class LibraryHomeController {
 				list = db.getAll(Publisher.class);
 				break;
 			case "loans":
-				list = db.getAll(Loan.class);
+				if(logged != null && !logged.getAdmin()) {
+					Loan searchParams = new Loan();
+					searchParams.setUser(logged);
+					list = db.searchRecord(Loan.class, searchParams);
+				} else {
+					list = db.getAll(Loan.class);
+				}
 				break;
 			case "users":
 				list = db.getAll(User.class);
@@ -69,6 +77,23 @@ public class LibraryHomeController {
 			session.setAttribute("user", result.get(0));
 		}
 		
+		return "home";
+	}
+	
+	@RequestMapping( value = "/register", method = RequestMethod.POST)
+	public String register(User user, HttpServletRequest req, Model model) {
+		boolean result = false;
+		String pswd_conf = req.getParameter("reg_pswd_conf");
+		if(!user.getPassword().equals(pswd_conf)) {
+			model.addAttribute("registrationProblem", "Field 'Password' and field 'Confirm Password' must be equals.");
+		}else {
+			result = db.add(user);
+		}
+		if(!result) {
+			model.addAttribute("registrationProblem", "Email already in use.");
+		} else {
+			req.getSession().setAttribute("status", "login");
+		}
 		return "home";
 	}
 }

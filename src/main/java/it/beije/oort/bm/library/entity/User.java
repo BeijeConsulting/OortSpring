@@ -26,15 +26,15 @@ public class User implements Comparable<User>, Serializable{
 	@Column
 	private String phone;
 	@Column
-	private boolean admin;
+	private Boolean admin;
 	@Column
 	private String password;
 	
-	public boolean isAdmin() {
+	public Boolean getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(boolean admin) {
+	public void setAdmin(Boolean admin) {
 		this.admin = admin;
 	}
 

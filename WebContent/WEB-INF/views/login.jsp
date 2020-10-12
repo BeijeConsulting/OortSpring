@@ -15,7 +15,10 @@
 				<label for="password">Insert password:</label><input type="password" name="password" value=""/><br>
 				<input type="submit" value="Login"/>
 			</form>
-			<p>You don't have an account yet? <a href="./register">Register!</a></p>
+			<p>You don't have an account yet? <form action="./" method="post">
+						<input type="hidden" name="res" value="register">
+						<input type="submit" value="Register"/>
+					</form></p>
 		<%} else { 
 			User u_login_scope = (User)session.getAttribute("user");%>
 			<p>Autentication successfull!</p><br>

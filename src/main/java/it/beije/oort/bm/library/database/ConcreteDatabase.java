@@ -167,6 +167,7 @@ public class ConcreteDatabase implements Database {
 					if(isString) query.append("\'");
 					query.append(value);
 					if(isString)query.append("\' ");
+					else query.append(" ");
 					requireAnd = true;
 				}
 				
@@ -334,8 +335,11 @@ public class ConcreteDatabase implements Database {
 		Map<String, Method> methods = new HashMap<>();
 		Field[] fields = getProperties(targetClass);
 		String methodName = null;
+		String type = null;
 		for(int i = 0; i<fields.length; i++) {
-			methodName = "get" + toCapitalLetter(fields[i].getName());
+			type = fields[i].getType().getSimpleName();
+			if(type.equals("boolean")) methodName = "is" + toCapitalLetter(fields[i].getName());
+			else methodName = "get" + toCapitalLetter(fields[i].getName());
 			Method method = null;
 			try {
 				method = targetClass.getMethod(methodName);

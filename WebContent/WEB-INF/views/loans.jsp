@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="it.beije.oort.bm.library.entity.*" %>
 <%@ page import="java.util.List" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,18 +23,17 @@
 								<th>End Date</th>
 								<th>Notes</th>
 							</tr>
-							<%for(Loan l : (List<Loan>)session.getAttribute("data_list")){%>
+							<c:forEach items="${data_list}" var="l">
 								<tr>
-									<td><%= l.getId() %></td>
-									<td><%= l.getUser().getName() + " " + l.getUser().getSurname() %> </td>
-									<td><%= l.getBook().getTitle() %></td>	
-									<td><%= l.getStart_date() %></td>
-									<td><%= l.getEnd_date() %> </td>
-									<td><%= l.getNotes() %></td>		
+									<td>${l.id}</td>
+									<td>${l.user.id}</td>
+									<td>${l.book.title}</td>
+									<td>${l.start_date}</td>
+									<td>${l.end_date}</td>
+									<td>${l.notes}</td>
 								</tr>
-							<%} %>
+							</c:forEach>
 					</table>
-				<%} 
-				session.removeAttribute("data_list");%>
+				<%}%>
 		</body>
 </html>

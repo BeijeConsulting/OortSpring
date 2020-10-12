@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="it.beije.oort.bm.library.entity.*" %>
 <%@ page import="java.util.List" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,20 +23,21 @@
 								<th>Address</th>
 								<th>Phone</th>
 								<th>E-mail</th>
+								<th>Admin?</th>
 							</tr>
-							<%for(User u : (List<User>)session.getAttribute("data_list")){%>
+							<c:forEach items="${data_list}" var="u">
 								<tr>
-									<td><%= u.getId() %></td>
-									<td><%= u.getName() %> </td>
-									<td><%= u.getSurname() %></td>	
-									<td><%= u.getFc() %></td>
-									<td><%= u.getAddress() %> </td>
-									<td><%= u.getPhone() %></td>
-									<td><%= u.getEmail() %></td>	
+									<td>${u.id}</td>
+									<td>${u.name}</td>
+									<td>${u.surname}</td>
+									<td>${u.fc}</td>
+									<td>${u.address}</td>
+									<td>${u.phone}</td>
+									<td>${u.email}</td>
+									<td>${u.admin}</td>
 								</tr>
-							<%} %>
+							</c:forEach>
 					</table>
-				<%} 
-				session.removeAttribute("data_list");%>
+				<%}%>
 		</body>
 </html>

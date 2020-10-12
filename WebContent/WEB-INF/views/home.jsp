@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="it.beije.oort.bm.library.entity.*" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Web Library</title>
-		<link rel = "stylesheet" type = "text/css" href = "library_style.css">
+		<c:url value="/resources/library_style.css" var="libraryCss" />
+		<link rel = "stylesheet" type = "text/css" href = "${libraryCss}">
 	</head>
 	<body>
 		<div id = "head">
@@ -38,7 +40,7 @@
 					</form>
 				</li>
 				<% User user = (User) session.getAttribute("user");
-				if(user != null && user.isAdmin()){%>
+				if(user != null && user.getAdmin()){%>
 					<li>
 						<form action="./" method="post">
 							<input type="hidden" name="res" value="users">
