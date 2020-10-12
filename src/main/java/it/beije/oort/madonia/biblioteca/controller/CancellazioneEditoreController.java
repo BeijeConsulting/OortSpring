@@ -2,16 +2,22 @@ package it.beije.oort.madonia.biblioteca.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Editore;
+import it.beije.oort.madonia.biblioteca.service.EditoreService;
 import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
 
 @Controller
 public class CancellazioneEditoreController {
+	
+	@Autowired
+	private EditoreService editoreService;
+	
 	@RequestMapping(value = "/biblioteca/cancellazione_editore", method = RequestMethod.GET)
 	public String cancellaEditore() {
 		String page = "/biblioteca/cancellazione_editore";
@@ -33,11 +39,7 @@ public class CancellazioneEditoreController {
 
 			Editore editore;
 			try {
-				System.out.println("Input utente -> " + (String) request.getParameter("idEditore"));
-				Integer id = Integer.parseInt((String) request.getParameter("idEditore"));
-				System.out.println("ID trovato: " + id);
-				editore = DatabaseManagerBiblioteca.trovaEditore(id);
-				System.out.println("Editore trovato: " + editore);
+				editore = editoreService.trova((String) request.getParameter("idEditore"));
 				
 				if (editore != null) {
 					model.addAttribute("editore", editore);
@@ -58,10 +60,7 @@ public class CancellazioneEditoreController {
 		} else if (( (String) request.getParameter("submit") ).equals("cancellazione")) {
 			
 			try {
-				Integer id = Integer.valueOf(request.getParameter("id"));
-				System.out.println("Cancellazione editore in corso.");
-				DatabaseManagerBiblioteca.cancellaEditore(id);
-				System.out.println("Cancellazione eseguita");
+				editoreService.cancella(request.getParameter("id"));
 				model.addAttribute("successoMsg", "Editore cancellato correttamente.");
 			} catch (Exception e) {
 				model.addAttribute("erroreMsg", "Operazione non eseguita: " + e.getMessage());
