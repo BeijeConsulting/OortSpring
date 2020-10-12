@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "utente")
@@ -14,7 +15,7 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -34,12 +35,20 @@ public class Utente {
 	@Column(name = "indirizzo")
 	private String indirizzo;
 
+	@Transient
 	private String password;
 	
 	private boolean admin;
 	
 	
 	public Utente() {}
+	
+	public Utente(String nome, String cognome, String telefono, String email) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.telefono = telefono;
+		this.email = email;
+	}
 
 	public Utente(String nome, String cognome, String codice_fiscale, String telefono, 
 			String email, String indirizzo, String password, boolean admin) {
@@ -53,11 +62,11 @@ public class Utente {
 		this.admin = admin;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(int id) {
+	
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -130,8 +139,9 @@ public class Utente {
 			.append(" - cognome : ").append(this.cognome)
 			.append(" - telefono : ").append(this.telefono)
 			.append(" - email : ").append(this.email)
-			.append(" - codice_fiscale : ").append(this.codice_fiscale)
-			.append(" - indirizzo : ").append(this.indirizzo).append("]");
+//			.append(" - codice_fiscale : ").append(this.codice_fiscale)
+//			.append(" - indirizzo : ").append(this.indirizzo)
+			.append("]");
 		return builder.toString();
 	}
 }

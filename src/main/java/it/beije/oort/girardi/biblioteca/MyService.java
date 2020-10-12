@@ -20,7 +20,6 @@ public class MyService {
 	@Autowired 
 	private MyService myService;
 	
-	@Autowired
 	public List<Utente> selectUtente (Utente u) {
 		//query JPQL
 		String jpql = "SELECT a FROM Utente as a WHERE email = '" + u.getEmail() + "' and "
