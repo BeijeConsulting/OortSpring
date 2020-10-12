@@ -1,7 +1,5 @@
 package it.beije.oort.madonia.biblioteca.controller;
 
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -13,25 +11,24 @@ import it.beije.oort.madonia.biblioteca.ebeans.Autore;
 import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
 
 @Controller
-public class ModificaAutoreController {
+public class CancellazioneAutoreController {
 	
-	@RequestMapping(value = "/biblioteca/modifica_autore", method = RequestMethod.GET)
-	public String modificaAutore() {
-		String page = "/biblioteca/modifica_autore";
-		System.out.println("modifica_autore [GET]...");
+	@RequestMapping(value = "/biblioteca/cancellazione_autore", method = RequestMethod.GET)
+	public String cancellaAutore() {
+		String page = "/biblioteca/cancellazione_autore";
+		System.out.println("cancellazione_autore [GET]...");
 		return page;
 	}
 	
-	@RequestMapping(value = "/biblioteca/modifica_autore", method = RequestMethod.POST)
-	public String modificaAutore(HttpServletRequest request, Model model) {
-		String page = "/biblioteca/modifica_autore";
+	@RequestMapping(value = "/biblioteca/cancellazione_autore", method = RequestMethod.POST)
+	public String cancellaAutore(HttpServletRequest request, Model model) {
+		String page = "/biblioteca/cancellazione_autore";
 		eseguiForm(request, model);
-		
 		return page;
 	}
 
 	private void eseguiForm(HttpServletRequest request, Model model) {
-		System.out.println("modifica_autore [POST]...");
+		System.out.println("cancellazione_autore [POST]...");
 		
 		if (( (String) request.getParameter("submit") ).equals("id")) {
 
@@ -59,24 +56,14 @@ public class ModificaAutoreController {
 				e.printStackTrace();
 			}
 			
-		} else if (( (String) request.getParameter("submit") ).equals("modifica")) {
+		} else if (( (String) request.getParameter("submit") ).equals("cancellazione")) {
 			
 			try {
-				String dataNascita = request.getParameter("dataNascita");
-				String dataMorte = request.getParameter("dataMorte");
-				
-				Autore autore = new Autore();
-				autore.setId(Integer.valueOf(request.getParameter("id")));
-				autore.setNome(request.getParameter("nome"));
-				autore.setCognome(request.getParameter("cognome"));
-				autore.setBiografia(request.getParameter("biografia"));
-				autore.setDataNascita(dataNascita.length() > 0 ? Date.valueOf(dataNascita) : null);
-				autore.setDataMorte(dataMorte.length() > 0 ? Date.valueOf(dataMorte) : null);
-				
-				System.out.println("Modifica autore in corso: " + autore);
-				DatabaseManagerBiblioteca.modifica(autore);
-				System.out.println("Modifica eseguita");
-				model.addAttribute("successoMsg", "Autore modificato correttamente. " + autore);
+				Integer id = Integer.valueOf(request.getParameter("id"));
+				System.out.println("Cancellazione autore in corso.");
+				DatabaseManagerBiblioteca.cancellaAutore(id);
+				System.out.println("Cancellazione eseguita");
+				model.addAttribute("successoMsg", "Autore cancellato correttamente.");
 			} catch (Exception e) {
 				model.addAttribute("erroreMsg", "Operazione non eseguita: " + e.getMessage());
 				System.out.println("Eccezione!");

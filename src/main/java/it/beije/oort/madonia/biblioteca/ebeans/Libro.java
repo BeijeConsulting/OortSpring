@@ -14,7 +14,7 @@ public class Libro implements Ebeans {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "titolo")
 	private String titolo;
@@ -23,18 +23,18 @@ public class Libro implements Ebeans {
 	private String descrizione;
 	
 	@Column(name = "autore")
-	private int idAutore;
+	private Integer idAutore;
 	
 	@Column(name = "editore")
-	private int idEditore;
+	private Integer idEditore;
 	
 	@Column(name = "anno")
-	private int anno;
+	private Integer anno;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -52,24 +52,24 @@ public class Libro implements Ebeans {
 		this.descrizione = descrizione;
 	}
 	
-	public int getIdAutore() {
+	public Integer getIdAutore() {
 		return idAutore;
 	}
-	public void setIdAutore(int idAutore) {
+	public void setIdAutore(Integer idAutore) {
 		this.idAutore = idAutore;
 	}
 	
-	public int getIdEditore() {
+	public Integer getIdEditore() {
 		return idEditore;
 	}
-	public void setIdEditore(int idEditore) {
+	public void setIdEditore(Integer idEditore) {
 		this.idEditore = idEditore;
 	}
 	
-	public int getAnno() {
+	public Integer getAnno() {
 		return anno;
 	}
-	public void setAnno(int anno) {
+	public void setAnno(Integer anno) {
 		this.anno = anno;
 	}
 	
@@ -91,21 +91,21 @@ public class Libro implements Ebeans {
 		}
 
 		sb.append(" - ").append("autore: ");
-		if(idAutore == 0) {
+		if(idAutore == null) {
 			sb.append("null");
 		} else {
 			sb.append("\"").append(idAutore).append("\"");
 		}
 
 		sb.append(" - ").append("editore: ");
-		if(idEditore == 0) {
+		if(idEditore == null) {
 			sb.append("null");
 		} else {
 			sb.append("\"").append(idEditore).append("\"");
 		}
 
 		sb.append(" - ").append("anno: ");
-		if(anno == 0) {
+		if(anno == null) {
 			sb.append("null");
 		} else {
 			sb.append("\"").append(anno).append("\"");

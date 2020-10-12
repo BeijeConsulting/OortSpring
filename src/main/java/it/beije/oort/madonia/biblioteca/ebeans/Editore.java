@@ -14,7 +14,7 @@ public class Editore implements Ebeans {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "denominazione")
 	private String denominazione;
@@ -22,10 +22,10 @@ public class Editore implements Ebeans {
 	@Column(name = "descrizione")
 	private String descrizione;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

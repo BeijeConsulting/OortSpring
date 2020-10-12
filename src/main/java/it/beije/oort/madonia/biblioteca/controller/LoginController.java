@@ -36,7 +36,7 @@ public class LoginController {
 			if (utente.isAdmin()) {
 				// TODO inserire pagina tramite metodo
 				page = "/biblioteca/inserimento_autore";
-				response.sendRedirect("biblioteca/inserimento_autore");
+				response.sendRedirect("./inserimento_autore");
 			} else {
 				page = "/biblioteca/prestiti";
 				response.sendRedirect("./prestiti");

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Autore;
-import it.beije.oort.madonia.biblioteca.ebeans.Utente;
 import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
 
 @Controller
@@ -26,8 +25,12 @@ public class InserimentoAutoreController {
 	@RequestMapping(value = "/biblioteca/inserimento_autore", method = RequestMethod.POST)
 	public String inserimentoAutore(HttpServletRequest request, Model model) {
 		String page = "/biblioteca/inserimento_autore";
-    	
-    	String dataNascita = request.getParameter("dataNascita");
+    	eseguiForm(request, model);
+		return page;
+	}
+
+	private void eseguiForm(HttpServletRequest request, Model model) {
+		String dataNascita = request.getParameter("dataNascita");
 		String dataMorte = request.getParameter("dataMorte");
 		
 		Autore autore = new Autore();
@@ -45,7 +48,5 @@ public class InserimentoAutoreController {
     	} catch (Exception e) {
     		model.addAttribute("erroreMsg", "L'autore non è stato inserito. " + e.getMessage());
     	}
-    	
-		return page;
 	}
 }

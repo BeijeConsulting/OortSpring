@@ -1,8 +1,6 @@
 package it.beije.oort.madonia.db;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -47,6 +45,20 @@ public class DatabaseManagerBiblioteca {
 		inserisci((Ebeans) autore);
 	}
 	
+	public static void inserisci(Editore editore) {
+		if (editore == null) {
+			throw new IllegalArgumentException("L'oggetto è vuoto");
+		}
+		inserisci((Ebeans) editore);
+	}
+	
+	public static void inserisci(Libro libro) {
+		if (libro == null) {
+			throw new IllegalArgumentException("L'oggetto è vuoto");
+		}
+		inserisci((Ebeans) libro);
+	}
+	
 	public static void inserisci(Utente utente) {
 		if (utente == null) {
 			throw new IllegalArgumentException("L'oggetto è vuoto");
@@ -83,22 +95,79 @@ public class DatabaseManagerBiblioteca {
 		}
 	}
 	
-	public static Libro trovaLibro(int id) {
-		EntityManager eManager = null;
-		Libro libro = null;
+	public static void modifica(Editore editore) {
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
 		try {
-			eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
-			libro = eManager.find(Libro.class, id);
-		} catch(NoResultException e) {
-			libro = null;
+			Editore editoreModifica = eManager.find(Editore.class, editore.getId());
+			editoreModifica.setDenominazione(editore.getDenominazione());
+			editoreModifica.setDescrizione(editore.getDescrizione());
+			
+			eManager.getTransaction().begin();
+			eManager.persist(editoreModifica);
+			eManager.getTransaction().commit();
 		} finally {
 			eManager.close();
 		}
-		
-		return libro;
 	}
 	
-	public static Autore trovaAutore(int id) {
+	public static void modifica(Libro libro) {
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
+		try {
+			Libro libroModifica = eManager.find(Libro.class, libro.getId());
+			libroModifica.setTitolo(libro.getTitolo());
+			libroModifica.setDescrizione(libro.getDescrizione());
+			libroModifica.setIdAutore(libro.getIdAutore());
+			libroModifica.setIdEditore(libro.getIdEditore());
+			libroModifica.setAnno(libro.getAnno());
+			
+			eManager.getTransaction().begin();
+			eManager.persist(libroModifica);
+			eManager.getTransaction().commit();
+		} finally {
+			eManager.close();
+		}
+	}
+	
+	public static void cancellaAutore(Integer id) {
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
+		try {
+			Autore autore = eManager.find(Autore.class, id);
+			
+			eManager.getTransaction().begin();
+			eManager.remove(autore);
+			eManager.getTransaction().commit();
+		} finally {
+			eManager.close();
+		}
+	}
+	
+	public static void cancellaEditore(Integer id) {
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
+		try {
+			Editore editore = eManager.find(Editore.class, id);
+			
+			eManager.getTransaction().begin();
+			eManager.remove(editore);
+			eManager.getTransaction().commit();
+		} finally {
+			eManager.close();
+		}
+	}
+	
+	public static void cancellaLibro(Integer id) {
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
+		try {
+			Libro libro = eManager.find(Libro.class, id);
+			
+			eManager.getTransaction().begin();
+			eManager.remove(libro);
+			eManager.getTransaction().commit();
+		} finally {
+			eManager.close();
+		}
+	}
+	
+	public static Autore trovaAutore(Integer id) {
 		EntityManager eManager = null;
 		Autore autore = null;
 		try {
@@ -111,6 +180,36 @@ public class DatabaseManagerBiblioteca {
 		}
 		
 		return autore;
+	}
+	
+	public static Editore trovaEditore(Integer id) {
+		EntityManager eManager = null;
+		Editore editore = null;
+		try {
+			eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
+			editore = eManager.find(Editore.class, id);
+		} catch(NoResultException e) {
+			editore = null;
+		} finally {
+			eManager.close();
+		}
+		
+		return editore;
+	}
+	
+	public static Libro trovaLibro(Integer id) {
+		EntityManager eManager = null;
+		Libro libro = null;
+		try {
+			eManager = JpaEntityManagerFactory.createEntityManager(persistenceUnitName);
+			libro = eManager.find(Libro.class, id);
+		} catch(NoResultException e) {
+			libro = null;
+		} finally {
+			eManager.close();
+		}
+		
+		return libro;
 	}
 	
 	public static List<Prestito> trovaPrestiti(Utente utente) {
