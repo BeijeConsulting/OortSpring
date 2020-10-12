@@ -1,4 +1,4 @@
-<%@ page import="it.beije.oort.lauria.Utente"%>
+<%@ page import="it.beije.oort.lauria.biblioteca.entity.Utente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -10,12 +10,25 @@
 </head>
 <body>
 
+<%-- 
 <c:if test = "${utente == null}">
     <b>DEVI EFFETTUARE L'AUTENTICAZIONE</b></br>
 	<a href="./login_biblio" >Login</a>
 </c:if>
 <c:if test = "${utente != null}">
 	<c:if test = "${!utente.isAdmin()}">
+	 --%>
+	
+<%
+Utente userBean = (Utente)session.getAttribute("userBean");
+
+if (userBean == null) {
+%>
+	<b>DEVI EFFETTUARE L'AUTENTICAZIONE</b></br>
+	<a href="./login_biblio" >Login</a>
+<%
+} else if(userBean != null && !userBean.isAdmin()) {
+%>
 	<h1>Benvenuto ${utente.nome} ${utente.cognome}</h1>
 		
 		<p><a href="./logout">Esci</a></p>
@@ -36,8 +49,14 @@
 		</ul>
 		
 		<!-- RICERCA -->
-</c:if>
-<c:if test = "${utente.isAdmin()}">
+		
+		
+<%
+}else {
+%>
+
+<%-- </c:if>
+<c:if test = "${utente.isAdmin()}"> --%>
 
 		<h1>Benvenuto ${utente.nome} ${utente.cognome}</h1>
 		
@@ -67,7 +86,13 @@
 			<a href="./Ricerca?page=libro" ><li>Ricerca libro per id</li></a>
 		</ul>
 		<!-- ELIMINAZIONE E RICERCA -->
-	</c:if>
- </c:if>
+		
+<%-- 	</c:if>
+ </c:if> --%>
+ 
+<%		
+}
+%>
+ 
 </body>
 </html>

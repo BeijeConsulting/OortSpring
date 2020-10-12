@@ -9,10 +9,16 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import it.beije.oort.lauria.biblioteca.entity.Autore;
+import it.beije.oort.lauria.biblioteca.entity.Editore;
+import it.beije.oort.lauria.biblioteca.entity.Libro;
+import it.beije.oort.lauria.biblioteca.entity.Prestito;
+import it.beije.oort.lauria.biblioteca.entity.Utente;
+
 
 public class JPADBtools {
 
-	public static final EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+	//public static final EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 	
 //	public static void main(String[] args) {
 		
@@ -59,7 +65,7 @@ public class JPADBtools {
 	public JPADBtools() {}
 
 	public static boolean selectLibri(int i, int j) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT l FROM Libro as l WHERE id > "+ i +" and id < "+ j;
 		Query query = entityManager.createQuery(jpql);
 		List<Libro> libri = query.getResultList();
@@ -68,8 +74,8 @@ public class JPADBtools {
 		}
 		System.out.println("In biblioteca sono presenti "+ libri.size() +" libri.");
 		for (Libro libro : libri) {			
-			Autore a = JPADBtools.entityManager.find(Autore.class, libro.getId_autore());
-			Editore e = JPADBtools.entityManager.find(Editore.class, libro.getId_editore()); 
+			Autore a = entityManager.find(Autore.class, libro.getId_autore());
+			Editore e = entityManager.find(Editore.class, libro.getId_editore()); 
 			System.out.println("id : " + libro.getId());
 			System.out.println("titolo : " + libro.getTitolo());
 			System.out.println("descrizione : " + libro.getDescrizione());
@@ -77,12 +83,12 @@ public class JPADBtools {
 			System.out.println("id editore : " + libro.getId_editore() + " ("+ e.getDenominazione() +")" );
 			System.out.println("anno : " + libro.getAnno());
 		}
-		//entityManager.close();
+		entityManager.close();
 		return true;
 	}
 	
 	public static boolean selectAutori(int i, int j) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT a FROM Autore as a WHERE id > "+ i +" and id < "+ j;
 		Query query = entityManager.createQuery(jpql);
 		List<Autore> autori = query.getResultList();
@@ -98,12 +104,12 @@ public class JPADBtools {
 			System.out.println("data_morte : " + autore.getData_morte().toString());
 			System.out.println("biografia : " + autore.getBiografia());
 		}
-		//entityManager.close();
+		entityManager.close();
 		return true;
 	}
 
 	public static boolean selectEditori(int i, int j) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT e FROM Editore as e WHERE id > "+ i +" and id < "+ j;
 		Query query = entityManager.createQuery(jpql);
 		List<Editore> editori = query.getResultList();
@@ -117,12 +123,12 @@ public class JPADBtools {
 			System.out.println("descrizione : " + editore.getDescrizione());
 			
 		}
-		//entityManager.close();
+		entityManager.close();
 		return true;
 	}
 
 	public static boolean selectUtenti(int i, int j) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT u FROM Utente as u WHERE id > "+ i +" and id < "+ j;
 		Query query = entityManager.createQuery(jpql);
 		List<Utente> utenti = query.getResultList();
@@ -140,12 +146,12 @@ public class JPADBtools {
 			System.out.println("indirizzo : " + utente.getIndirizzo());
 			
 		}
-		//entityManager.close();
+		entityManager.close();
 		return true;
 	}
 	
 	public static boolean selectPrestiti(int i, int j) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT p FROM Prestito as p WHERE id > "+ i +" and id < "+ j;
 		Query query = entityManager.createQuery(jpql);
 		List<Prestito> prestiti = query.getResultList();
@@ -154,8 +160,8 @@ public class JPADBtools {
 		}
 		//System.out.println(prestiti.size());
 		for (Prestito prestito : prestiti) {		
-			Libro l = JPADBtools.entityManager.find(Libro.class, prestito.getId_libro());
-			Utente u = JPADBtools.entityManager.find(Utente.class, prestito.getId_utente());
+			Libro l = entityManager.find(Libro.class, prestito.getId_libro());
+			Utente u = entityManager.find(Utente.class, prestito.getId_utente());
 			System.out.println("id : " + prestito.getId());
 			System.out.println("id_libro : " + prestito.getId_libro() + " ("+ l.getTitolo() +")" );
 			System.out.println("id_utente : " + prestito.getId_utente() + " ("+ u.getNome() +" "+u.getCognome() +")" );
@@ -164,7 +170,7 @@ public class JPADBtools {
 			System.out.println("note : " + prestito.getNote());
 			
 		}
-		//entityManager.close();
+		entityManager.close();
 		return true;
 	}
 	
@@ -173,7 +179,7 @@ public class JPADBtools {
 	
 	
 	public static void insertLibro(String titolo, String descrizione, int id_autore, int id_editore, String anno) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Libro libro = new Libro();
 		libro.setTitolo(titolo);
 		libro.setDescrizione(descrizione);
@@ -188,13 +194,13 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 	
 	
 	
 	public static void insertAutore(String nome, String cognome, LocalDate data_nascita, LocalDate data_morte, String biografia) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Autore autore = new Autore();
 		autore.setNome(nome);
 		autore.setCognome(cognome);
@@ -209,11 +215,11 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 	
 	public static void insertEditore(String denominazione, String descrizione) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Editore editore = new Editore();
 		editore.setDenominazione(denominazione);
 		editore.setDescrizione(descrizione);
@@ -226,11 +232,11 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 
 	public static void insertUtente(String nome, String cognome, String codice_fiscale, String email, String telefono, String indirizzo) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Utente utente = new Utente();
 		utente.setNome(nome);
 		utente.setCognome(cognome);
@@ -246,11 +252,11 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 	
 	public static void insertUtente(String nome, String cognome, String codice_fiscale, String email, String telefono, String indirizzo, String password, boolean admin) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Utente utente = new Utente();
 		utente.setNome(nome);
 		utente.setCognome(cognome);
@@ -268,11 +274,11 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 	
 	public static void insertPrestito(int id_libro, int id_utente, LocalDate data_inizio, LocalDate data_fine, String note) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Prestito prestito = new Prestito();
 		prestito.setId_libro(id_libro);
 		prestito.setId_utente(id_utente);
@@ -287,13 +293,13 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 	
 	
 	
 	public static List<Libro> selectLibri() {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT l FROM Libro as l WHERE id > 0";
 		Query query = entityManager.createQuery(jpql);
 		List<Libro> libri = query.getResultList();
@@ -311,11 +317,11 @@ public class JPADBtools {
 //			System.out.println("id editore : " + libro.getId_editore() + " ("+ e.getDenominazione() +")" );
 //			System.out.println("anno : " + libro.getAnno());
 //		}
-//		//entityManager.close();
+		entityManager.close();
 		return libri;
 	}
 	public static List<Autore> selectAutori() {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT a FROM Autore as a WHERE id > 0";
 		Query query = entityManager.createQuery(jpql);
 		List<Autore> autori = query.getResultList();
@@ -331,12 +337,12 @@ public class JPADBtools {
 //			System.out.println("data_morte : " + autore.getData_morte().toString());
 //			System.out.println("biografia : " + autore.getBiografia());
 //		}
-		//entityManager.close();
+		entityManager.close();
 		return autori;
 	}
 
 	public static List<Editore> selectEditori() {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT e FROM Editore as e WHERE id > 0";
 		Query query = entityManager.createQuery(jpql);
 		List<Editore> editori = query.getResultList();
@@ -350,12 +356,12 @@ public class JPADBtools {
 //			System.out.println("descrizione : " + editore.getDescrizione());
 //			
 //		}
-		//entityManager.close();
+		entityManager.close();
 		return editori;
 	}
 
 	public static List<Utente> selectUtenti() {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT u FROM Utente as u WHERE id > 0";
 		Query query = entityManager.createQuery(jpql);
 		List<Utente> utenti = query.getResultList();
@@ -373,12 +379,12 @@ public class JPADBtools {
 //			System.out.println("indirizzo : " + utente.getIndirizzo());
 //			
 //		}
-		//entityManager.close();
+		entityManager.close();
 		return utenti;
 	}
 	
 	public static List<Prestito> selectPrestitiUtente(int id) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT p FROM Prestito as p WHERE id_utente = " + id;
 		Query query = entityManager.createQuery(jpql);
 		List<Prestito> prestiti = query.getResultList();
@@ -397,12 +403,12 @@ public class JPADBtools {
 //			System.out.println("note : " + prestito.getNote());
 //			
 //		}
-		//entityManager.close();
+		entityManager.close();
 		return prestiti;
 	}
 	
 	public static List<Prestito> selectPrestiti() {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT p FROM Prestito as p WHERE id > 0";
 		Query query = entityManager.createQuery(jpql);
 		List<Prestito> prestiti = query.getResultList();
@@ -421,12 +427,12 @@ public class JPADBtools {
 //			System.out.println("note : " + prestito.getNote());
 //			
 //		}
-		//entityManager.close();
+		entityManager.close();
 		return prestiti;
 	}
 	
 	public static void updateLibro(int id, String titolo, String descrizione, int id_autore, int id_editore, String anno) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Libro libro = entityManager.find(Libro.class, id);
 		
 		libro.setTitolo(titolo);
@@ -442,11 +448,11 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 
 	public static void deleteLibro(int id) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		Libro libro = entityManager.find(Libro.class, id);
 		
 		// apro la transaction
@@ -456,12 +462,12 @@ public class JPADBtools {
 		// chiudo la transaction
 		entityManager.getTransaction().commit();
 					
-		//entityManager.close();
+		entityManager.close();
 	}
 
 	
 	public static Utente verifyUtenti(String email, String password) {
-		//EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
+		EntityManager entityManager = JEntityManagerFactory.openEntityManager("OortBiblioteca");
 		String jpql = "SELECT u FROM Utente as u WHERE email = '"+ email +"' and password = '"+ password +"'";
 		Query query = entityManager.createQuery(jpql);
 		List<Utente> utenti = query.getResultList();
@@ -479,7 +485,7 @@ public class JPADBtools {
 //			System.out.println("indirizzo : " + utente.getIndirizzo());
 //			
 //		}
-		//entityManager.close();
+		entityManager.close();
 		return utenti.get(0);
 	}
 }

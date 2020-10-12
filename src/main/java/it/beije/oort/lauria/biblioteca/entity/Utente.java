@@ -1,4 +1,4 @@
-package it.beije.oort.lauria.biblioteca;
+package it.beije.oort.lauria.biblioteca.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -42,7 +42,7 @@ public class Utente {
 
 	public Utente() {}
 
-	public Utente(int id, String nome, String cognome, String codice_fiscale, String telefono, String email, String indirizzo) {
+	public Utente(Integer id, String nome, String cognome, String codice_fiscale, String telefono, String email, String indirizzo) {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -52,11 +52,11 @@ public class Utente {
 		this.indirizzo = indirizzo;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

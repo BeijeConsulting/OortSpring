@@ -8,22 +8,9 @@
 <title>Oort Biblioteca</title>
 </head>
 <body>
-<%-- 
-<%
-	//String test = request.getParameter("test");
-	//System.out.print(test);
-	
-	String errore = (String)session.getAttribute("errore");
-	if (errore != null && errore.length() > 0) {
-		out.print("<b>"+errore+"</b><br/>");
-		session.removeAttribute("errore");
-	}
-%>
-<b>${errore}</b> --%>
 
 <c:if test = "${errore != null}">
     <b>${errore}</b></br>
-    ${errore = null}
 </c:if>
 	<h2>Effettuare il login.</h2>
 	
