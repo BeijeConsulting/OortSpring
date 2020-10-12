@@ -14,7 +14,7 @@ import java.util.List;
 
 // todo cambiare, fare il /visualizza post che rimanda alla pagina list corretta
 @Controller
-public class BookListController {
+public class LIstController {
 
     @GetMapping(value = "/visualizza")
     public String getPage(){;
@@ -30,24 +30,17 @@ public class BookListController {
         if (listType != null){
             switch (listType){
                 case "Libri":
-                    model.addAttribute("lista", DatabaseController.getAllLibri());
                     return "listLibri";
-                   // lista = DatabaseController.getAllLibri();
-                   // break;
                 case "Autori":
-                    lista = DatabaseController.getAllAutori();
-                    break;
-                case "Editori":
-                    lista = DatabaseController.getAllEditori();
-                    break;
-                case "Utenti":
-                    lista = DatabaseController.getAllUtenti();
-                    break;
-                case "Prestiti":
-                    lista = DatabaseController.getAllPrestiti();
-                    break;
-                default:
-                    return "listIndex";
+                    return "listAutori";
+//                case "Editori":
+//                    lista = DatabaseController.getAllEditori();
+//                case "Utenti":
+//                    lista = DatabaseController.getAllUtenti();
+//                case "Prestiti":
+//                    lista = DatabaseController.getAllPrestiti();
+//                default:
+//                    return "listIndex";
             }
 //            model.addAttribute("listType", (String) request.getParameter("type"));
             model.addAttribute("lista", lista);
@@ -55,12 +48,20 @@ public class BookListController {
         return "listIndex";
     }
 
+    // Controller per pagine che listano gli oggetti
     @GetMapping(value = "/libri")
-    public String userViewGet(Model model){
+    public String libriList(Model model){
         model.addAttribute("libri", DatabaseController.getAllLibri());
         return "listLibri";
     }
 
+    @GetMapping(value = "/autori")
+    public String autoriList(Model model){
+        model.addAttribute("autori", DatabaseController.getAllAutori());
+        return "listAutori";
+    }
+
+    // Controller per pagine di dettaglio
     @GetMapping(value = "/libri/{id}")
     public String listBook(Model model,
                            @PathVariable Long id){

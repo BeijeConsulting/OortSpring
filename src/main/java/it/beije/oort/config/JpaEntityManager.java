@@ -1,12 +1,10 @@
-package it.beije.oort;
-
+package it.beije.oort.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
 
 @Component
 public class JpaEntityManager {
@@ -19,7 +17,7 @@ public class JpaEntityManager {
 	public static synchronized EntityManagerFactory getInstance() {
 		try {
 			if (emfactory == null) {
-				emfactory = Persistence.createEntityManagerFactory("OortRubrica");
+				emfactory = Persistence.createEntityManagerFactory("Biblioorteca");
 			}
 			return emfactory;
 		} catch(Exception e) {

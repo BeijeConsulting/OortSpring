@@ -1,6 +1,5 @@
 package it.beije.oort.controller;
 
-import it.beije.oort.database.DatabaseController;
 import it.beije.oort.model.*;
 import it.beije.oort.service.AddService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-
 
 @Controller
 public class AddController {

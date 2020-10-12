@@ -1,4 +1,4 @@
-package it.beije.oort;
+package it.beije.oort.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
