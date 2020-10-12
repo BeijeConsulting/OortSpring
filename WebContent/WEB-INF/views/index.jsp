@@ -12,7 +12,7 @@
 
 	<ul>
 		<!--   <li><a href="./phonebook/index.jsp">Phonebook Application</a></li> -->
-		<li><a href="./library/login.jsp">Library Application</a></li>
+		<li><a href="./library/">Library Application</a></li>
 	</ul>
 
 </body>

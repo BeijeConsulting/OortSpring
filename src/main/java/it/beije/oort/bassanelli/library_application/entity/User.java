@@ -25,7 +25,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = FIELD_ID)
-	private int id;
+	private Integer id;
 	
 	@Column(name = FIELD_NAME)
 	private String name;
@@ -59,7 +59,7 @@ public class User {
 		this.setId(Integer.parseInt(id));
 	}
 	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

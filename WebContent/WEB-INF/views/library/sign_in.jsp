@@ -14,24 +14,34 @@
 
 		<fieldset>
 		
-			<legend><b>Login</b></legend>
+			<legend><b>Sign in</b></legend>
 
-			<form method="GET" action="./library/login-user">
+			<form method="POST" action="./signin-user">
 
+				<label>Name: </label>
+				<input type="text" name="name"/><br>
+				<label>Surname</label> 
+				<input type="text" name="surname"/><br>
+				<label>Fiscal code</label> 
+				<input type="text" name="fiscalCode"/><br>
 				<label>Email: </label>
 				<input type="text" name="email"/><br>
+				<label>Mobile: </label>
+				<input type="text" name="mobile"/><br>
+				<label>Address: </label>
+				<input type="text" name="address"/><br>
 				<label>Password: </label> 
 				<input type="password" name="password"/><br>
 
-				<input type="submit" value="LOGIN"/>
+				<input type="submit" value="SIGN IN"/>
 			
 			</form>
 		
 		</fieldset>
-
-
-	<a href="./sign_in">Sign In</a><br>
-	<a href="../home.jsp">Back</a>
+		
+		<h5>${message}</h5>
+		
+	<a href=".">Back</a>
 
 </body>
 </html>

@@ -37,6 +37,14 @@ public class JavaPersistenceDBManager {
 		return user;
 	}
 
+	public static void signinUser(User user) {
+		EntityManager entityManager = JavaPersistenceSessionManager.getEntityManager(SCHEMA_OORT_LIBRARY);
+		entityManager.getTransaction().begin();
+		entityManager.persist(user);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+	}
+
 	public static void editUser(String id, User user) {
 		editUser(Integer.parseInt(id), user);
 	}
@@ -54,7 +62,7 @@ public class JavaPersistenceDBManager {
 		entityManager.getTransaction().commit();
 		entityManager.close();
 	}
-	
+
 	public static List<Book> getAllBooks() {
 
 		List<Book> books = new ArrayList<Book>();
@@ -66,7 +74,7 @@ public class JavaPersistenceDBManager {
 		return books;
 
 	}
-	
+
 	public static Book searchBookById(String id) {
 
 		return searchBookById(Integer.parseInt(id));
@@ -81,7 +89,7 @@ public class JavaPersistenceDBManager {
 		return book;
 
 	}
-	
+
 	public static List<Book> searchByFilterBook(String field, String word) {
 
 		List<Book> list = new ArrayList<Book>();
@@ -108,6 +116,30 @@ public class JavaPersistenceDBManager {
 		list = query.getResultList();
 		entityManager.close();
 		return list;
+	}
+
+	public static List<Author> getAllAuthors() {
+		
+		List<Author> authors = new ArrayList<Author>();
+		EntityManager entityManager = JavaPersistenceSessionManager.getEntityManager(SCHEMA_OORT_LIBRARY);
+		StringBuilder builder = new StringBuilder("FROM ").append(Author.TABLE_AUTHOR);
+		Query query = entityManager.createQuery(builder.toString());
+		authors = query.getResultList();
+		entityManager.close();
+		return authors;
+
+	}
+	
+	public static List<Publisher> getAllPublishers() {
+		
+		List<Publisher> publishers = new ArrayList<Publisher>();
+		EntityManager entityManager = JavaPersistenceSessionManager.getEntityManager(SCHEMA_OORT_LIBRARY);
+		StringBuilder builder = new StringBuilder("FROM ").append(Publisher.TABLE_PUBLISHER);
+		Query query = entityManager.createQuery(builder.toString());
+		publishers = query.getResultList();
+		entityManager.close();
+		return publishers;
+
 	}
 
 	/*
