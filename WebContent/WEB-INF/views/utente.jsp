@@ -4,10 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Oort Spring Home</title>
+<title>Dettaglio utente</title>
 </head>
 <body>
-<h2>CIAO OORT :-)</h2>
-${localDateTime} - ${country} - ${lingua}
+<p>
+COGNOME: ${utente.cognome}<br>
+NOME: ${utente.nome}<br>
+EMAIL: ${utente.email}<br>
+TELEFONO: ${utente.telefono}
+</p>
 </body>
 </html>
