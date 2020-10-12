@@ -19,5 +19,6 @@
 </head>
 <body>
     <a href="${pageContext.request.contextPath}/login">Login</a>
+    <a href="${pageContext.request.contextPath}/loginSkip">Skip Login</a>
 </body>
 </html>

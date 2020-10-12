@@ -1,6 +1,7 @@
 package it.beije.oort.model;
 
 import it.beije.oort.database.DatabaseController;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -20,6 +21,7 @@ public class Libro implements IBibliotecaModel {
     private String descrizione;
 
     @Column
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date anno_pubblicazione;
 
     @Column

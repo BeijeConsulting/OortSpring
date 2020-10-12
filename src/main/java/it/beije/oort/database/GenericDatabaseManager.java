@@ -13,7 +13,6 @@ public class GenericDatabaseManager {
     private final static EntityManager em = JPAEntityManager.getEntityManager(PERSISTENCE_UNIT_NAME);
 
     public void insert(IBibliotecaModel object){
-        System.out.println("Adding this obj: " + object.getClass());
         em.getTransaction().begin();
         em.persist(object);
         em.getTransaction().commit();

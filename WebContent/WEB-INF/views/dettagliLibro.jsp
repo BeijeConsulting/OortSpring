@@ -1,18 +1,10 @@
 <%@ taglib prefix="p" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<%--
-  Created by IntelliJ IDEA.
-  User: Padawan09
-  Date: 09/10/2020
-  Time: 14:35
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Dettagli ${book.titolo}</title>
+    <title>${libro.titolo} di ${libro.autore.nome} ${libro.autore.cognome}</title>
     <link href="${pageContext.request.contextPath}/resources/style/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioAdd.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioView.css" rel="stylesheet">
@@ -22,6 +14,22 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/media/biblioteca.ico" />
 </head>
 <body>
-    <c:out value="${book.toString()}" />
+<div class="home">
+    <a href="<c:url value="/"/>"><i class="fas fa-home"></i></a>
+</div>
+<div class="container">
+    <div class="small-center-container">
+        <div class="header">
+            <h1><i>${libro.titolo} di ${libro.autore.nome} ${libro.autore.cognome}</i></h1>
+        </div>
+
+        <h3>Titolo: </h3> <p>${libro.titolo}</p>
+        <h3>Autore: </h3> <p>${libro.autore.nome} ${libro.autore.cognome}</p>
+        <h3>Anno di Pubblicazione: </h3> <p>${libro.anno_pubblicazione}</p>
+        <h3>Editore: </h3> <p>${libro.editore.nome}</p>
+        <h3>Sinossi: </h3> <p>${libro.descrizione}</p>
+    </div>
+</div>
+
 </body>
 </html>

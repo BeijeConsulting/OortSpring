@@ -16,9 +16,8 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/media/biblioteca.ico"/>
 </head>
 <body>
-<!-- todo sistemare campo "name" degli input per farli identici ai Beans -->
 <div class="home">
-    <a href="${pageContext.request.contextPath}/login"><i class="fas fa-home"></i></a>
+    <a href="${pageContext.request.contextPath}/"><i class="fas fa-home"></i></a>
 </div>
 
 <div class="container">
@@ -53,7 +52,6 @@
         <c:if test="${sessionScope.add != null}">
             <c:set var="type" value="${sessionScope.add}"/>
             <c:choose>
-
                 <c:when test="${type eq 'Libro'}">
                     <input type="hidden" hidden aria-hidden="true" value="Libro" name="type" id="type" />
                     <div class="single-input">
@@ -158,24 +156,24 @@
                     <input type="hidden" hidden aria-hidden="true" value="Prestito" name="type" id="type" />
                     <div class="single-input">
                         <label for="initPrestito">Inizio Prestito: </label>
-                        <input type="date" name="initPrestito" id="initPrestito" required>
+                        <input type="date" name="dataInizio" id="initPrestito" required>
                     </div>
                     <div class="single-input">
                         <label for="finePrestito">Fine Prestito: </label>
-                        <input type="date" name="finePrestito" id="finePrestito">
+                        <input type="date" name="dataFine" id="finePrestito">
                     </div>
                     <div class="single-input">
                         <label for="prestitoUtente">Utente: </label>
-                        <select id="prestitoUtente" name="prestitoUtente">
+                        <select id="prestitoUtente" name="cfUtente">
                             <option selected disabled>Seleziona Utente</option>
                             <c:forEach var="utente" items="${utenti}">
-                                <option value="${utente.id}">${utente.codiceFiscale}</option>
+                                <option value="${utente.codiceFiscale}">${utente.codiceFiscale}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="single-input">
                         <label for="prestitoLibro">Libro: </label>
-                        <select id="prestitoLibro" name="prestitoLibro">
+                        <select id="prestitoLibro" name="idLibro">
                             <option selected disabled>Seleziona Libro</option>
                             <c:forEach var="libro" items="${libri}">
                                 <option value="${libro.id}">${libro.titolo}</option>

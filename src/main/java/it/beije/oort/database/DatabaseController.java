@@ -8,6 +8,9 @@ import java.util.List;
 public class DatabaseController {
     private static GenericDatabaseManager dbm = new GenericDatabaseManager();
 
+    // Generic
+    public static void insert(IBibliotecaModel oggetto){dbm.insert(oggetto);}
+
     // Libri
     public static Libro getLibro(Long id){
         return (Libro) dbm.get(Libro.class, id);
@@ -84,5 +87,6 @@ public class DatabaseController {
     }
     public static void deletePrestito(Prestito prestito){
         deletePrestito(prestito.getId());
-    }
+    }public static List<Prestito> getAllPrestiti(){return (List<Prestito>) dbm.getAll(Prestito.class);}
+
 }

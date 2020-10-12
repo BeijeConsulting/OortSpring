@@ -1,5 +1,7 @@
 package it.beije.oort.model;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,9 +22,11 @@ public class Utente implements IBibliotecaModel{
     private String codiceFiscale;
     
     @Column
+    @NonNull
     private String email;
     
     @Column
+    @NonNull
     private String password;
     
     @Column(name = "admin")
