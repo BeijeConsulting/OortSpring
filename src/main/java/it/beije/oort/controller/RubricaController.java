@@ -1,27 +1,32 @@
 package it.beije.oort.controller;
 
 import java.io.IOException;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import it.beije.oort.entity.ContattoSpring;
-import it.beije.oort.entity.SingletonJPASpring;
+import it.beije.oort.service.CancellaCont;
+import it.beije.oort.service.InserimentoCont;
+import it.beije.oort.service.VisualizzaCont;
 
 
 
 @Controller
 public class RubricaController {
+	
+	@Autowired 
+	private VisualizzaCont visualizzacont;
+	
+	@Autowired
+	private InserimentoCont insertcont;
+	
+	@Autowired
+	private CancellaCont cancelcont;
 
 	@RequestMapping(value = "/conf", method = RequestMethod.GET)
 	public String conferma() {
@@ -60,81 +65,23 @@ public class RubricaController {
 	
 	@RequestMapping(value = "/showall", method = RequestMethod.POST)
 	public String visual(Model model) {
-		EntityManager entityManager = SingletonJPASpring.openEntity();
-		String jpql = "SELECT c FROM ContattoSpring as c";
-		Query query = entityManager.createQuery(jpql);
-		List<ContattoSpring> contatti = query.getResultList();
-		System.out.println(contatti);
-		for (ContattoSpring contatto : contatti) { 
-			contatto.getCognome();
-			contatto.getNome();
-			contatto.getTelefono();
-			contatto.getEmail();
-		}
-		entityManager.close();
-		model.addAttribute("showall", contatti);
+		model.addAttribute("showall", visualizzacont.showall());
 		return "showall";
 		
 	} 
 		
-	
-	
-	
-	@RequestMapping(value = "/del", method = RequestMethod.POST)
-	public String inserimento(@RequestParam Integer id,  HttpServletRequest request, HttpServletResponse response) throws IOException {
-	
-	EntityManager entityManager = SingletonJPASpring.openEntity();
-	EntityTransaction entityTransaction = entityManager.getTransaction();
-	entityTransaction.begin();
-	String jpql = ("SELECT c FROM ContattoSpring as c WHERE id = " + id) ;
-	Query query = entityManager.createQuery(jpql);
-	entityManager.remove(query.getResultList().get(0));
-	entityManager.getTransaction().commit();
-	entityManager.close();	
-	System.out.println("Cancellato!");
 		
-	StringBuilder b = new StringBuilder("<br><!doctype html>\r\n" + 
-			"<html>\r\n" + 
-			"	<head>\r\n" + 
-			"	<title></title>\r\n" + 
-			"	</head>\r\n" + 
-			"	<body>\r\n" + 
-			"		<form action=\"h\" method=\"POST\">\r\n" + 
-			"			<button type=\"submit\"> MENU' PRINCIPALE</button>\r\n" + 
-			"		</form>		\r\n" + 
-			"	</body>\r\n" + 
-			"</html>");
-	response.getWriter().append(b);
-	return "conferma";
+	@RequestMapping(value = "/del", method = RequestMethod.POST)
+	public String cancel(@RequestParam Integer id,  HttpServletRequest request, HttpServletResponse response) throws IOException {
+		cancelcont.cancella(id, request, response);
+		return "conferma";
 	}
 
 	
 	@RequestMapping(value = "/ins", method = RequestMethod.POST)
-	public String inserimento(ContattoSpring contatto, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		EntityManager entityManager = SingletonJPASpring.openEntity();
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-		entityTransaction.begin();
-		entityManager.persist(contatto);
-		entityManager.getTransaction().commit();
-		entityManager.close();
-		System.out.println("Contatto inserito correttamente!");
-		
-		StringBuilder b = new StringBuilder("<!doctype html>\r\n" + 
-				"<html>\r\n" + 
-				"	<head>\r\n" + 
-				"	<title></title>\r\n" + 
-				"	</head>\r\n" + 
-				"	<body>\r\n" + 
-				"		<form action=\"h\" method=\"POST\">\r\n" + 
-				"		<button type=\"submit\"> MENU' PRINCIPALE</button>\r\n" + 
-				"		</form>		\r\n" + 
-				"	</body>\r\n" + 
-				"</html>");
-		response.getWriter().append(b);
-		 return "conferma";
+	public String inserisci(ContattoSpring contatto, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		insertcont.inserimento(contatto, request, response);
+		return "conferma";
 		}
-		
-	
 	
 }

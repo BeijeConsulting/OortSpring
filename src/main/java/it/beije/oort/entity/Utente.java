@@ -1,17 +1,35 @@
 package it.beije.oort.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "rubrica")
 public class Utente {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
 	
+	@Column(name="nome")
 	private String nome;
 	
+	@Column(name="cognome")
 	private String cognome;
 	
+	@Column(name="telefono")
 	private String telefono;
 	
+	@Column(name="email")
 	private String email;
-	
+
+	@Transient
 	private String password;
 	
 	
@@ -28,11 +46,11 @@ public class Utente {
 		this.email = email;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
