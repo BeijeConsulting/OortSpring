@@ -3,17 +3,29 @@ package it.beije.oort.bm.library.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import it.beije.oort.bm.library.database.*;
 import it.beije.oort.bm.library.entity.*;
+import it.beije.oort.bm.library.service.LoanService;
+import it.beije.oort.bm.library.service.UserService;
 
 @Controller
 public class LibraryHomeController {
 	
-	private static Database db = ConcreteDatabase.getDatabase();
+	@Autowired
+	private LoanService loanService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private UserService bookService;
+	@Autowired
+	private UserService authorService;
+	@Autowired
+	private UserService publisherService;
 	
 	@RequestMapping( value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -31,29 +43,25 @@ public class LibraryHomeController {
 		List selector2 = null;
 		switch(param) {
 			case "books":
-				list = db.getAll(Book.class);
-				selector1 = db.getAll(Author.class);
-				selector2 = db.getAll(Publisher.class);
+				list = bookService.getAll();
+				selector1 = authorService.getAll();
+				selector2 = publisherService.getAll();
 				model.addAttribute("authors", selector1);
 				model.addAttribute("publishers", selector2);
 				break;
 			case "authors":
-				list = db.getAll(Author.class);
+				list = authorService.getAll();
 				break;
 			case "publish":
-				list = db.getAll(Publisher.class);
+				list = publisherService.getAll();
 				break;
 			case "loans":
-				if(logged != null && !logged.getAdmin()) {
-					Loan searchParams = new Loan();
-					searchParams.setUser(logged);
-					list = db.searchRecord(Loan.class, searchParams);
-				} else {
-					list = db.getAll(Loan.class);
+				if(logged != null) {
+					list = loanService.getLoans(logged);
 				}
 				break;
 			case "users":
-				list = db.getAll(User.class);
+				list = userService.getAll();
 				break;
 		}
 		req.getSession().setAttribute("status", param);
@@ -61,39 +69,5 @@ public class LibraryHomeController {
 		return "home";
 	}
 	
-	@RequestMapping( value = "/login", method = RequestMethod.POST)
-	public String login(HttpServletRequest req, Model model) {
-		HttpSession session = req.getSession();
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
-		User u = new User();
-		u.setPassword(password);
-		u.setEmail(email);
-		List<User> result = db.searchRecord(User.class, u);
-		if(result.size() != 1) {
-			model.addAttribute("tmpEmail", email);
-			model.addAttribute("loginError", "Credenziali errate, riprova.");
-		}else {
-			session.setAttribute("user", result.get(0));
-		}
-		
-		return "home";
-	}
 	
-	@RequestMapping( value = "/register", method = RequestMethod.POST)
-	public String register(User user, HttpServletRequest req, Model model) {
-		boolean result = false;
-		String pswd_conf = req.getParameter("reg_pswd_conf");
-		if(!user.getPassword().equals(pswd_conf)) {
-			model.addAttribute("registrationProblem", "Field 'Password' and field 'Confirm Password' must be equals.");
-		}else {
-			result = db.add(user);
-		}
-		if(!result) {
-			model.addAttribute("registrationProblem", "Email already in use.");
-		} else {
-			req.getSession().setAttribute("status", "login");
-		}
-		return "home";
-	}
 }
