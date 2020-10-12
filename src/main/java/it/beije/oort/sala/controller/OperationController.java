@@ -27,7 +27,7 @@ public class OperationController {
 					
 			JPAToolset.updateJPA("Prestito", field, newValue, id);
 		}
-		return "sub-admin/prestiti";
+		return "biblioteca/sub-admin/prestiti";
 	}
 	
 	@RequestMapping(value = "/libri/{op}", method = RequestMethod.POST)
@@ -45,7 +45,7 @@ public class OperationController {
 		} else if(op.equals("select")) {
 			model.addAttribute("libri", JPAToolset.selectJPA("Libro"));
 		}
-		return "sub-admin/libri";
+		return "biblioteca/sub-admin/libri";
 	}
 	
 	@RequestMapping(value = "/utenti/{op}", method = RequestMethod.POST)
@@ -63,7 +63,7 @@ public class OperationController {
 		} else if(op.equals("select")) {
 			model.addAttribute("utenti", JPAToolset.selectJPA("Utente"));
 		}
-		return "sub-admin/utenti";
+		return "biblioteca/sub-admin/utenti";
 	}
 	
 	@RequestMapping(value = "/editori/{op}", method = RequestMethod.POST)
@@ -81,13 +81,14 @@ public class OperationController {
 		} else if(op.equals("select")) {
 			model.addAttribute("editori", JPAToolset.selectJPA("Editore"));
 		}
-		return "sub-admin/editori";
+		return "biblioteca/sub-admin/editori";
 	}
 	
 	@RequestMapping(value = "/autori/{op}", method = RequestMethod.POST)
 	public String autori(@PathVariable String op, Autore a, HttpServletRequest request, Model model) {
 		if(op.equals("insert")) {
-			JPAToolset.insertJPA(a);
+			System.out.println(a.toString());
+			//JPAToolset.insertJPA(a);
 		} else if(op.equals("delete")) {
 			JPAToolset.deleteJPA("Prestito", a.getId_autore());
 		} else if(op.equals("update")) {
@@ -99,6 +100,6 @@ public class OperationController {
 		} else if(op.equals("select")) {
 			model.addAttribute("autori", JPAToolset.selectJPA("Autore"));
 		}
-		return "sub-admin/autori";
+		return "biblioteca/sub-admin/autori";
 	}
 }

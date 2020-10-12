@@ -27,8 +27,8 @@
     </header>
     <div style="margin-left: 2em;">
         
-        <div onclick="toggle('insert')">
-            <h3>Inserimento nuovo autore:</h3>
+        <div>
+            <h3 onclick="toggle('insert')">Inserimento nuovo autore:</h3>
             <form id="insert" action="/OortSpring/autori/insert" method="POST" style="display: none;">
                 <label>Inserisci il nome dell'autore:</label>
                 <input type="text" name="nome"><br>
@@ -43,15 +43,15 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div onclick="toggle('delete')">
-            <h3>Cancellazione autore:</h3>
+        <div>
+            <h3 onclick="toggle('delete')">Cancellazione autore:</h3>
             <form id="delete" action="/OortSpring/autori/delete" method="POST" style="display: none;">
             	<label>Inserisci l'id dell'autore da cancellare:</label>
                 <input type="number" name="id_autore" required>
             </form>
         </div>
-        <div onclick="toggle('update')">
-            <h3>Modifica autore:</h3>
+        <div>
+            <h3 onclick="toggle('update')">Modifica autore:</h3>
             <form id="update" action="/OortSpring/autori/update" method="POST" style="display: none;">
                 <label>Inserisci l'id (id_autore) dell'elemento da modificare</label>
             	<input type="number" name="id_autore"><br>
@@ -68,8 +68,8 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div onclick="toggle('select')">
-            <h3>Visualizza lista autore</h3>
+        <div>
+            <h3 onclick="toggle('select')">Visualizza lista autore</h3>
             <form action="/OortSpring/autori/select" method="POST" id="select" style="display: none;">
                  <input type="submit" value="Submit">
             </form>
