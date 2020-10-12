@@ -9,17 +9,46 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Catalogo Utenti</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 </head>
 <body>
-<h3>Utenti Biblioteca Oort</h3>
+<h2>Utenti Biblioteca Oort</h2>
+<table>
+	 <tr>
+		<th>ID</th>
+		<th>Nome</th>
+		<th>Cognome</th>
+		<th>Telefono</th>
+		<th>Email</th>
+		<th>Codice fiscale</th>		
+	</tr>		
 <c:forEach var = "i" items="${utenti}">
-    <b>ID : </b><c:out value = " ${i.id}"/>
-    <b>Nome : </b><c:out value = " ${i.nome}"/>
-    <b>Cognome : </b><c:out value = " ${i.cognome}"/>
-    <b>Telefono : </b><c:out value = " ${i.telefono}"/>
-    <b>Email : </b><c:out value = " ${i.email}"/>
-   <b>Codice fiscale : </b> <c:out value = " ${i.codice_fiscale}"/><br>
+<tr>
+     <td><c:out value = " ${i.id}"/></td>
+     <td><c:out value = " ${i.nome}"/></td>
+     <td><c:out value = " ${i.cognome}"/></td>
+     <td><c:out value = " ${i.telefono}"/></td>
+	 <td><c:out value = " ${i.email}"/></td>
+	 <td><c:out value = " ${i.codice_fiscale}"/></td>
+ </tr>
 </c:forEach>
+ </table>
 	<form action="./NewPrestito" method="get">
 	<input type="submit" value="NewPrestito"/>
 	</form>

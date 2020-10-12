@@ -39,13 +39,14 @@ tr:nth-child(even) {
 	</tr>		
 <c:forEach var = "i" items="${autori}">
 <tr>
-    <th><c:out value = " ${i.id}"/></th>
-    <th></b><c:out value = " ${i.nome}"/></th>
-    <th></b><c:out value = " ${i.cognome}"/></th>
-    <th></b><c:out value = " ${i.data_nascita}"/></th>
-    <th></b><c:out value = " ${i.data_morte}"/></th> 
+    <td><c:out value = " ${i.id}"/></td>
+    <td><c:out value = " ${i.nome}"/></td>
+    <td><c:out value = " ${i.cognome}"/></td>
+    <td><c:out value = " ${i.data_nascita}"/></td>
+    <td><c:out value = " ${i.data_morte}"/></td> 
  </tr>
 </c:forEach>
+ </table>
 	<form action="./Catalogo" method="get">
 	<input type="submit" value="CATALOGO" name="Catalogo"/>
 	</form>

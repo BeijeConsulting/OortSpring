@@ -51,17 +51,17 @@ tr:nth-child(even) {
 				Autori autore = JPDBtools.ricercaAutore(l.getAutore());
 				Editori editore = JPDBtools.ricercaEditore(l.getEditore()); %>
 				 <tr>
-					<th><%=l.getId() %></th>
-					<th><%=l.getTitolo() %></th>
-					<th><%=autore.getNome() %> <%= autore.getCognome()%></th>
-					<th><%=editore.getDenominazione() %></th>  		
-					<th><%=l.getAnno() %></th>		
+					<td><%=l.getId() %></td>
+					<td><%=l.getTitolo() %></td>
+					<td><%=autore.getNome() %> <%= autore.getCognome()%></td>
+					<td><%=editore.getDenominazione() %></td>  		
+					<td><%=l.getAnno() %></td>		
 				<%String disponibilita = "Non disponibile";
 					for(Prestiti p : JPDBtools.ricercaPrestitiId("libro", l.getId())){
 						if(p.getData_fine()!=null &&p.getData_fine().isBefore(java.time.LocalDate.now()))
 							disponibilita = "Disponibile";
 						else disponibilita = "Non disponibile"; }%>
-				<th> <%=disponibilita %></th>
+				<td> <%=disponibilita %></td>
 			</tr>		
 			<%} } %>
 
