@@ -27,27 +27,27 @@
     </header>
     <div style="margin-left: 2em;">
         
-        <div onclick="toggle('insert')">
-            <h3>Inserimento nuovo utente:</h3>
+        <div>
+            <h3 onclick="toggle('insert')">Inserimento nuovo utente:</h3>
             <form id="insert" action="/OortSpring/utenti/insert" method="POST" style="display: none;">
                 <input type="text" placeholder="insert placeholder">
             </form>
         </div>
-        <div onclick="toggle('delete')">
-            <h3>Cancellazione utente:</h3>
+        <div>
+            <h3 onclick="toggle('delete')">Cancellazione utente:</h3>
             <form id="delete" action="/OortSpring/utenti/delete" method="POST" style="display: none;">
                 <input type="number"name="id_utente">
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div onclick="toggle('update')">
-            <h3>Modifica utente:</h3>
+        <div>
+            <h3 onclick="toggle('update')">Modifica utente:</h3>
             <form id="update" action="/OortSpring/utenti/update" method="POST" style="display: none;">
                 <input type="text" placeholder="update placeholder">
             </form>
         </div>
-        <div onclick="toggle('select')">
-            <h3>Visualizza lista utenti:</h3>
+        <div>
+            <h3 onclick="toggle('select')">Visualizza lista utenti:</h3>
             <form id="select" action="/OortSpring/utenti/select" method="POST" style="display: none;">
                 <input type="submit" value="Submit">
             </form>

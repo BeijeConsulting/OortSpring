@@ -27,8 +27,8 @@
     </header>
     <div style="margin-left: 2em;">
         
-        <div onclick="toggle('insert')">
-            <h3>Inserimento nuovo libro:</h3>
+        <div>
+            <h3 onclick="toggle('insert')">Inserimento nuovo libro:</h3>
             <form id="insert" action="/OortSpring/libri/insert" method="POST" style="display: none;">
                 <label>Inserisci l'id dell'autore del libro:</label>
                 <input type="number" name="id_autore"><br>
@@ -43,15 +43,15 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div onclick="toggle('delete')">
-            <h3>Cancellazione libro:</h3>
+        <div>
+            <h3 onclick="toggle('delete')">Cancellazione libro:</h3>
             <form id="delete" action="/OortSpring/libri/delete" method="POST" style="display: none;">
                 <input type="number" name="id_libro" required>
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div onclick="toggle('update')">
-            <h3>Modifica libro:</h3>
+        <div>
+            <h3 onclick="toggle('update')">Modifica libro:</h3>
             <form id="update" action="/OortSpring/libri/update" method="POST" style="display: none;">
                 <label>Inserisci l'id (id_libro) dell'elemento da modificare</label>
             	<input type="number" name="id_libro"><br>
@@ -68,8 +68,8 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-        <div onclick="toggle('select')">
-            <h3>Visualizza lista libri:</h3>
+        <div>
+            <h3 onclick="toggle('select')">Visualizza lista libri:</h3>
             <form id="select" action="/OortSpring/libri/select" method="POST" style="display: none;">
                 <input type="submit" value="Submit">
             </form>

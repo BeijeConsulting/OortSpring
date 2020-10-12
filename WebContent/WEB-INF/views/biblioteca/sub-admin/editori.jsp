@@ -26,28 +26,28 @@
         </div>
     </header>
     <div style="margin-left: 2em;">
-        <div onclick="toggle('select')">
-            <h3>Visualizza lista editore</h3>
-            <form id="select" style="display: none;">
-                <input type="text" placeholder="select placeholder">
-            </form>
-        </div>
-        <div onclick="toggle('insert')">
-            <h3>Inserimento nuovo editore:</h3>
+        <div>
+            <h3  onclick="toggle('insert')">Inserimento nuovo editore:</h3>
             <form id="insert" style="display: none;">
                 <input type="text" placeholder="insert placeholder">
             </form>
         </div>
-        <div onclick="toggle('delete')">
-            <h3>Cancellazione editore:</h3>
+        <div>
+            <h3 onclick="toggle('delete')">Cancellazione editore:</h3>
             <form id="delete" style="display: none;">
                 <input type="text" placeholder="delete placeholder">
             </form>
         </div>
-        <div onclick="toggle('update')">
-            <h3>Modifica editore:</h3>
+        <div>
+            <h3  onclick="toggle('update')">Modifica editore:</h3>
             <form id="update" style="display: none;">
                 <input type="text" placeholder="update placeholder">
+            </form>
+        </div>
+        <div>
+            <h3  onclick="toggle('select')">Visualizza lista editore</h3>
+            <form id="select" style="display: none;">
+                <input type="text" placeholder="select placeholder">
             </form>
         </div>
     </div>
