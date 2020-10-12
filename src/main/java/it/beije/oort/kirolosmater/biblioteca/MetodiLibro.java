@@ -9,11 +9,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Service;
 
 import it.beije.oort.kirolosmater.biblioteca.model.Autore;
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
 import it.beije.oort.kirolosmater.biblioteca.model.Libro;
 
+@Service
 public class MetodiLibro {
 	static EntityManager entityManager = JPAEntityManagerSingleton.getEntityManager(libraryPersistenceUnit);
 	public static void menuLibro () {

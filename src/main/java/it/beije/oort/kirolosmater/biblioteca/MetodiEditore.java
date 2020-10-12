@@ -7,11 +7,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Service;
 
 import it.beije.oort.kirolosmater.biblioteca.model.Autore;
 import it.beije.oort.kirolosmater.biblioteca.model.Editore;
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
 
+@Service
 public class MetodiEditore {
 	static EntityManager entityManager = JPAEntityManagerSingleton.getEntityManager(libraryPersistenceUnit);
 	public static void main(String[] args) {

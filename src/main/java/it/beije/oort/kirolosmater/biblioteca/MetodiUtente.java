@@ -9,10 +9,12 @@ import java.util.Scanner;
 import javax.persistence.EntityManager;
 
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Service;
 
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
 import it.beije.oort.kirolosmater.biblioteca.model.Utente;
 
+@Service
 public class MetodiUtente {
 	
 	static EntityManager entityManager = JPAEntityManagerSingleton.getEntityManager(libraryPersistenceUnit);
