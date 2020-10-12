@@ -109,6 +109,7 @@
 								</table>
 							</div>
 					</c:if>
+					</div>
 				</div>
 			</section>
 

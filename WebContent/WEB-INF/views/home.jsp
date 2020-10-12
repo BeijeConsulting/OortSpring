@@ -35,8 +35,8 @@
 					<li><a href="/OortSpring/visualizza">Visualizzazione</a></li>
 					<li><a href="/OortSpring/modifica">Modifica</a></li>
 					<li><a href="/OortSpring/rimuovi">Rimozione</a></li>
-					<!-- <li><a href="ricerca.html">Ricerca</a></li>
-					<li><a href="esportazione.html">Esportazione</a></li> -->
+					<li><a href="/OortSpring/ricerca">Ricerca</a></li>
+					<!-- <li><a href="esportazione.html">Esportazione</a></li> -->
 				</ul>
 			</nav>
 
@@ -90,16 +90,16 @@
 								<p>Rimozione di un contatto all'interno della rubrica.</p>
 							</div>
 						</section>
-<!-- 						<section>
+ 						<section>
 							<div class="content">
 								<header>
-									<a href="ricerca.html" class="icon fa-search"><span class="label">Icon</span></a>
+									<a href="/OortSpring/ricerca" class="icon fa-search"><span class="label">Icon</span></a>
 									<h3>Ricerca</h3>
 								</header>
 								<p>Ricerca di un contatto all'interno della rubrica.</p>
 							</div>
 						</section>
-						<section>
+<!-- 						<section>
 							<div class="content">
 								<header>
 									<a href="esportazione.html" class="icon fa-files-o"><span class="label">Icon</span></a>
