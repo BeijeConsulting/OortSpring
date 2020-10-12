@@ -51,6 +51,14 @@ public class MyHomeController {
 		return "biblioteca/my_login";
 	}
 	
+	@RequestMapping(value = "/biblioteca/homepage", method = RequestMethod.GET)
+	public String utente (HttpServletRequest request, Model model) {
+		
+		Utente utente = (Utente) request.getSession().getAttribute("utenteBean");
+		model.addAttribute("utente", utente);
+		return "biblioteca/homepage";
+	}
+	
 
 	@RequestMapping(value = "/biblioteca/homepage", method = RequestMethod.POST)
 	public String utente(HttpServletRequest request, HttpServletResponse response,
@@ -60,18 +68,23 @@ public class MyHomeController {
 //			model.addAttribute("errore", "EFFETUARE IL LOGIN!");	
 //			return "biblioteca/my_login";
 //		} 
-		//query JPQL
-		String jpql = "SELECT a FROM Utente as a WHERE email = '" + u.getEmail() + "' and "
-						+ "password = '" + u.getPassword() + "'";
-			System.out.println(jpql);
-		Query query = entityManager.createQuery(jpql);
-		List<Utente> listUtente = query.getResultList();
+		
+		MyService ms = new MyService();
+		List<Utente> listUtente = ms.selectUtente(u);
+//		//query JPQL
+//		String jpql = "SELECT a FROM Utente as a WHERE email = '" + u.getEmail() + "' and "
+//						+ "password = '" + u.getPassword() + "'";
+//			System.out.println(jpql);
+//		Query query = entityManager.createQuery(jpql);
+//		List<Utente> listUtente = query.getResultList();
 		
 		if (listUtente.size() == 0) {
 			model.addAttribute("errore", "CREDENZIALI ERRATE");	
 			return "biblioteca/my_login";
 		} else {
-			Utente utente = listUtente.get(0);			
+			Utente utente = listUtente.get(0);	
+
+			request.getSession().setAttribute("utenteBean", utente);
 			model.addAttribute("utente", utente);		
 			return "biblioteca/homepage";
 		}
