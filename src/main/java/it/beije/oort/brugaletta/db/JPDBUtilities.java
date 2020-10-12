@@ -133,26 +133,6 @@ public class JPDBUtilities {
 		return contact;
 	}
 	
-	public static boolean checkLogin(String email, String password) {
-		EntityManager entityManager = JPDBEntityManagerFactory.createEntityManager();
-		String jpql = "SELECT u FROM User AS u WHERE password = '" + password + "' and email = '" + email + "'";
-		Query query = entityManager.createQuery(jpql);
-		try {
-			User user = (User)query.getSingleResult();
-			return true;
-		} catch (javax.persistence.NoResultException e) {
-			return false;
-		}
-	}
-	
-	public static User exportLoggedUser(String email, String password) {
-		EntityManager entityManager = JPDBEntityManagerFactory.createEntityManager();
-		String jpql = "SELECT u FROM User AS u WHERE password = '" + password + "' and email = '" + email + "'";
-		Query query = entityManager.createQuery(jpql);
-		User user = (User)query.getSingleResult();
-		return user;
-	}
-	
 	public static List<Autore> exportAuthors() {
 		EntityManager entityManager = JPDBEntityManagerFactory.createEntityManager();
 		String jpql = "SELECT a FROM Autore a";
@@ -235,22 +215,6 @@ public class JPDBUtilities {
 		entityManager.close();
 	}
 	
-	public static void insertUser(String nome, String cognome, String telefono, String email, String codice_fiscale, String indirizzo, String password) {
-		EntityManager entityManager = JPDBEntityManagerFactory.createEntityManager();
-		EntityTransaction transaction = entityManager.getTransaction();
-		transaction.begin();
-		User user = new User();
-		user.setNome(nome);
-		user.setCognome(cognome);
-		user.setTelefono(telefono);
-		user.setEmail(email);
-		user.setCodice_fiscale(codice_fiscale);
-		user.setIndirizzo(indirizzo);
-		user.setPassword(password);
-		entityManager.persist(user);
-		transaction.commit();
-		entityManager.close();
-	}
 	
 	public static String insertLoan(int idLibro, int idUtente, LocalDate data_inizio, LocalDate data_fine, String note) {
 		String message = new String();

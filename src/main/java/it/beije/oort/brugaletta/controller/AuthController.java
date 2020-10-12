@@ -1,6 +1,7 @@
 package it.beije.oort.brugaletta.controller;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.oort.brugaletta.db.JPDBUtilities;
 import it.beije.oort.brugaletta.entity.User;
+import it.beije.oort.brugaletta.services.UserService;
 
 @Controller
 public class AuthController {
+	@Autowired
+	private UserService userService;
+	
+	
 	@GetMapping("/")
 	public String home() {
 		return "home_page";
@@ -33,8 +39,8 @@ public class AuthController {
 	public String login(@RequestParam String email, @RequestParam String password, Model model, HttpServletRequest request) {
 		User loggedUser;
 		String path = null;
-		if(JPDBUtilities.checkLogin(email, password)) {
-			loggedUser = JPDBUtilities.exportLoggedUser(email, password);
+		if(userService.checkLogin(email, password)) {
+			loggedUser = userService.exportLoggedUser(email, password);
 			model.addAttribute("loggedUser", loggedUser);
 			request.getSession().setAttribute("loggedUser", loggedUser);
 			if (loggedUser.isAdmin()) {
