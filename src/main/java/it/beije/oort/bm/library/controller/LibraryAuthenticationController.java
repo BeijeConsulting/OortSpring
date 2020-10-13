@@ -31,7 +31,11 @@ public class LibraryAuthenticationController {
 	public String register(User user, HttpServletRequest req, Model model) {
 		boolean result = false;
 		String pswd_conf = req.getParameter("reg_pswd_conf");
-		if(!user.getPassword().equals(pswd_conf)) {
+		if(user==null) {
+			throw new IllegalArgumentException("user is null");
+		}else if(user.getEmail() == null || user.getEmail().equals("")) {
+			model.addAttribute("registrationProblem", "Field 'Email' is required.");
+		}else if(!user.getPassword().equals(pswd_conf)) {
 			model.addAttribute("registrationProblem", "Field 'Password' and field 'Confirm Password' must be equals.");
 		}else {
 			result = userService.register(user);

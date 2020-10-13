@@ -1,19 +1,18 @@
 package it.beije.oort.bm.library.service;
 
 import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import it.beije.oort.bm.library.database.old.ConcreteDatabase;
-import it.beije.oort.bm.library.database.old.Database;
 import it.beije.oort.bm.library.entity.Author;
+import it.beije.oort.bm.library.repository.AuthorRepository;
 
 @Service
 public class AuthorService {
 
-	private static Database db = ConcreteDatabase.getDatabase();
+	@Autowired
+	private AuthorRepository authorRepo;
 
 	public List<Author> getAll(){
-		return db.getAll(Author.class);
+		return authorRepo.findAll();
 	}
 }
