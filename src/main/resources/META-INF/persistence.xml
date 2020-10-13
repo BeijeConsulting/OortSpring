@@ -4,7 +4,7 @@
 	
 	<persistence-unit name="OortLibrary">
 	
-		<class>it.beije.oort.bassanelli.library_application.entity.User</class>
+		<class>it.beije.oort.bassanelli.library_appllication.entity.User</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
@@ -14,7 +14,7 @@
 			<property name="javax.persistence.jdbc.password" value="Beije02" />
 		</properties>
 
-	
+	</persistence-unit>
 	
 	<persistence-unit name="OortRubrica" transaction-type="RESOURCE_LOCAL">
 		<class>it.beije.oort.entity.Utente</class>
