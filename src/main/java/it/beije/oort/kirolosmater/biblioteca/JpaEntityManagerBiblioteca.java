@@ -3,6 +3,7 @@ package it.beije.oort.kirolosmater.biblioteca;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,6 +12,7 @@ public class JpaEntityManagerBiblioteca {
 
 	private JpaEntityManagerBiblioteca() {}
 	
+	@Bean(name = "entityManagerFactoryBiblioteca")
 	public static synchronized EntityManagerFactory getInstanceBiblioteca() {
 		try {
 			if(emfactoryBiblioteca == null) {
