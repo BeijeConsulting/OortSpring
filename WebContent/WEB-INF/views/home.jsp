@@ -21,6 +21,9 @@
 		<form action="show" method="GET">
 			<button type="submit">Visualizza contatti!</button>
 		</form>
-
+		<br><br>
+		<form action="modifica" method="GET">
+			<button type="submit">Modifica contatto!</button>
+		</form>
 </body>
 </html>

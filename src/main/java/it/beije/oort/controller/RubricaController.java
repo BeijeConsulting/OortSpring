@@ -6,12 +6,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.beije.oort.entity.ContattoSpring;
 import it.beije.oort.service.CancellaCont;
 import it.beije.oort.service.InserimentoCont;
+import it.beije.oort.service.ModificaCont;
 import it.beije.oort.service.VisualizzaCont;
 
 
@@ -27,7 +29,8 @@ public class RubricaController {
 	
 	@Autowired
 	private CancellaCont cancelcont;
-
+	
+	
 	@RequestMapping(value = "/conf", method = RequestMethod.GET)
 	public String conferma() {
 		System.out.println("ESEGUITO..");
@@ -62,7 +65,7 @@ public class RubricaController {
 		
 		return "inscontatto";
 	}
-	
+		
 	@RequestMapping(value = "/showall", method = RequestMethod.POST)
 	public String visual(Model model) {
 		model.addAttribute("showall", visualizzacont.showall());
@@ -80,8 +83,9 @@ public class RubricaController {
 	
 	@RequestMapping(value = "/ins", method = RequestMethod.POST)
 	public String inserisci(ContattoSpring contatto, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		insertcont.inserimento(contatto, request, response);
+		insertcont.insert(contatto);
 		return "conferma";
 		}
+	
 	
 }

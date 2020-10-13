@@ -17,7 +17,7 @@
 			<button type ="submit"> Conferma e invia!</button> 
 		</form>
 		<br>
-		<form action="h">
+		<form action="h" method="GET">
 			<button type ="submit">Annulla e torna al menu!</button>
 		</form>
 		<br>
