@@ -1,4 +1,4 @@
-package it.beije.oort;
+package it.beije.oort.lauria.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(value = {"it.beije.oort.repository"})
+@EnableJpaRepositories(value = {"it.beije.oort.lauria.repository"})
 public class ConfigurationClass {
 	
     @Primary

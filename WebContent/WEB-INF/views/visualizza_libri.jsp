@@ -1,8 +1,8 @@
 <%@page import="it.beije.oort.lauria.biblioteca.JPADBtools"%>
-<%@page import="it.beije.oort.lauria.biblioteca.entity.Libro"%>
-<%@page import="it.beije.oort.lauria.biblioteca.entity.Autore"%>
-<%@page import="it.beije.oort.lauria.biblioteca.entity.Editore"%>
-<%@page import="it.beije.oort.lauria.biblioteca.entity.Utente"%>
+<%@page import="it.beije.oort.lauria.biblioteca.Libro"%>
+<%@page import="it.beije.oort.lauria.biblioteca.Autore"%>
+<%@page import="it.beije.oort.lauria.biblioteca.Editore"%>
+<%@page import="it.beije.oort.lauria.biblioteca.Utente"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

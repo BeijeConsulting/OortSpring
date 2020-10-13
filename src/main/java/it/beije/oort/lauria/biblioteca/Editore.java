@@ -1,4 +1,4 @@
-package it.beije.oort.lauria.biblioteca.entity;
+package it.beije.oort.lauria.biblioteca;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package it.beije.oort;
+package it.beije.oort.lauria.config;
 
 
 import javax.persistence.EntityManagerFactory;

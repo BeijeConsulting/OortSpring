@@ -64,6 +64,8 @@
 ////		utente.setEmail(request.getParameter("email"));
 ////		utente.setTelefono(request.getParameter("telefono"));
 //		
+//		utenteService.insert(utente);
+//		
 //		model.addAttribute("utente", utente);
 //		
 //		return "utente";
@@ -100,5 +102,22 @@
 //		
 //		return "utente";
 //	}
+//	
+//	@RequestMapping(value = "/utente/update/{id}", method = RequestMethod.GET)
+//	public String update(@PathVariable Integer id, Model model) {
+//		System.out.println("update utente : " + id);
+//		
+//		Utente utente = new Utente();
+//		utente.setCognome("Zegna");
+//		utente.setNome("Ermenegildo");
+//		
+//		utenteService.update(id, utente);
+//		
+//		model.addAttribute("utente", utente);
+//		
+//		return "utente";
+//	}
+//
 //
 //}
+//>>>>>>> refs/remotes/origin/main

@@ -1,4 +1,4 @@
-package it.beije.oort.lauria.biblioteca.controller;
+package it.beije.oort.lauria.biblioteca;
 
 import java.util.List;
 
@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.lauria.biblioteca.JPADBtools;
-import it.beije.oort.lauria.biblioteca.entity.Autore;
-import it.beije.oort.lauria.biblioteca.entity.Editore;
-import it.beije.oort.lauria.biblioteca.entity.Libro;
-import it.beije.oort.lauria.biblioteca.entity.Utente;
+import it.beije.oort.lauria.biblioteca.Autore;
+import it.beije.oort.lauria.biblioteca.Editore;
+import it.beije.oort.lauria.biblioteca.Libro;
+import it.beije.oort.lauria.biblioteca.Utente;
+
 
 @Controller
 public class VisualLibriController {
@@ -31,7 +32,8 @@ public class VisualLibriController {
 		List<Editore> editori = JPADBtools.selectEditori();
 		model.addAttribute("editori", editori);
 		//request.getSession().setAttribute("catalogoEditori", editori);
-		request.getSession().getAttribute("utente");
+		//request.getSession().getAttribute("utente");
+		request.getSession().setAttribute("userBean", utente);
 		System.out.println(utente.getNome());
 		return "visualizza_libri";
 	}

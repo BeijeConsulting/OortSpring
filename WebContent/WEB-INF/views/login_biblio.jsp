@@ -15,7 +15,7 @@
 	<h2>Effettuare il login.</h2>
 	
 		<h3>Inserisci le tue credenziali</h3>
-		<form action="./conferma_login" method="post">
+		<form action="./login_biblio" method="post">
 			EMAIL&nbsp;<input type="email" name="email" value="" placeholder="user@domain.it"/><br/>
  			PASSWORD&nbsp;<input type="password" name="password" value=""/><br>
 			<input type="submit" value="INVIO"/>

@@ -1,18 +1,23 @@
-package it.beije.oort.lauria.biblioteca.controller;
+package it.beije.oort.lauria.biblioteca;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.lauria.biblioteca.JPADBtools;
-import it.beije.oort.lauria.biblioteca.entity.Utente;
+import it.beije.oort.lauria.biblioteca.Utente;
+import it.beije.oort.lauria.service.UtenteService;
 
 @Controller
 public class LoginController {
+
+	@Autowired
+	private UtenteService utenteService;
 	
 	@RequestMapping(value = "/login_biblio", method = RequestMethod.GET)
 	public String loginBiblio() {
@@ -28,8 +33,10 @@ public class LoginController {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		Utente utente = JPADBtools.verifyUtenti(email, password);
-		model.addAttribute("utente", utente);
+//		Utente utente = JPADBtools.verifyUtenti(email, password);
+		Utente utente = utenteService.findByEmailAndPassword(email, password);
+		System.out.println("utente login : " + utente);
+//		model.addAttribute("utente", utente);
 		if(utente != null) {
 			request.getSession().setAttribute("userBean", utente);
 			return "conferma_login";
