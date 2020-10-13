@@ -18,53 +18,44 @@ public class UtenteService {
 	@Autowired
 	private UtenteRepository utenteRepository;
 
-	public String getNominativo(Utente utente) {
 	
+	public String getNominativo(Utente utente) {
 		if (utente == null)
 			throw new IllegalArgumentException();
-		
 		return utente.getCognome() + " " + utente.getNome();
 	}
 	
+	
 	public Utente load(Integer id) {
-		
 		Optional<Utente> utente = utenteRepository.findById(id);
-		
 		return utente.isPresent() ? utente.get() : null;
-		
 	}
 	
+	
 	public List<Utente> findByNome(String nome) {
-		
 		List<Utente> utenti = utenteRepository.findByNome(nome);
-		
 		return utenti;
-		
 	}
+	
 	
 	//@Transactional
 	public void insert(Utente utente) {
-		
 		if (utente == null) {
 			throw new IllegalArgumentException("bean utente null");
 		}
-		
 		if (!"".equals(utente.getCognome()) || !"".equals(utente.getNome()) ||
 			!"".equals(utente.getEmail()) || !"".equals(utente.getTelefono())) {
-			
+	
 			utenteRepository.save(utente);
-			
 		} else throw new IllegalArgumentException("dati utente non presenti");
-		
 	}
+	
 	
 	@Transactional
 	public void update(Integer id, Utente datiUtente) {
-		
 		if (datiUtente == null) {
 			throw new IllegalArgumentException("bean utente null");
 		}
-		
 		if (!"".equals(datiUtente.getCognome()) || !"".equals(datiUtente.getNome()) ||
 			!"".equals(datiUtente.getEmail()) || !"".equals(datiUtente.getTelefono())) {
 			
@@ -73,13 +64,10 @@ public class UtenteService {
 			if (utente == null) {
 				throw new IllegalArgumentException("non è presente un utente con id " + id);
 			}
-			
+			//update
 			BeanUtils.copyProperties(datiUtente, utente, "id");
-			
 			utenteRepository.save(datiUtente);
 			
 		} else throw new IllegalArgumentException("dati utente non presenti");
-		
 	}
-	
 }

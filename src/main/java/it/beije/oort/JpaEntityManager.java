@@ -20,6 +20,7 @@ public class JpaEntityManager {
 		try {
 			if (emfactory == null) {
 				emfactory = Persistence.createEntityManagerFactory("OortRubrica");
+//				emfactory = Persistence.createEntityManagerFactory("OortBiblioteca");
 			}
 			return emfactory;
 		} catch(Exception e) {

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "rubrica")
+@Table(name = "utente")
 public class Utente {
 	
 	@Id
