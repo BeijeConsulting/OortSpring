@@ -20,10 +20,10 @@ public class Loan implements Comparable<Loan>, Serializable {
 	@ManyToOne(optional=false)
 	@JoinColumn(name = "book", referencedColumnName = "id_book")
 	private Book book;
-	@Column
-	private String start_date;
-	@Column
-	private String end_date;
+	@Column(name = "start_date")
+	private String startDate;
+	@Column(name = "end_date")
+	private String endDate;
 	@Column
 	private String notes;
 	
@@ -58,23 +58,23 @@ public class Loan implements Comparable<Loan>, Serializable {
 	}
 
 
-	public String getStart_date() {
-		return start_date;
+	public String getStartDate() {
+		return startDate;
 	}
 
 
-	public void setStart_date(Date start_date) {
-		this.start_date = start_date.toString();
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate.toString();
 	}
 
 
-	public String getEnd_date() {
-		return end_date;
+	public String getEndDate() {
+		return endDate;
 	}
 
 
-	public void setEnd_date(Date end_date) {
-		this.end_date = end_date.toString();
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate.toString();
 	}
 
 
@@ -99,7 +99,7 @@ public class Loan implements Comparable<Loan>, Serializable {
 
 	@Override
 	public int compareTo(Loan l) {
-		return this.start_date.compareTo(l.getStart_date());
+		return this.startDate.compareTo(l.getStartDate());
 	}
 
 }

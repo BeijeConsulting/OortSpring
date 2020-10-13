@@ -33,7 +33,7 @@ public class LoanService {
 		if(book_data.isPresent() && user_data.isPresent()) {
 			loan.setBook(book_data.get());
 			loan.setUser(user_data.get());
-			loan.setStart_date(Date.valueOf(LocalDate.now()));
+			loan.setStartDate(Date.valueOf(LocalDate.now()));
 			loanRepo.save(loan);
 			ret = true;
 		}
@@ -48,8 +48,8 @@ public class LoanService {
 		if(loan == null) {
 			throw new IllegalArgumentException("Selected loan does not exist on database.");
 		}
-		if(loan.getEnd_date() == null) {
-			loan.setEnd_date(Date.valueOf(LocalDate.now()));
+		if(loan.getEndDate() == null) {
+			loan.setEndDate(Date.valueOf(LocalDate.now()));
 			loanRepo.save(loan);
 			ret = true;
 		}

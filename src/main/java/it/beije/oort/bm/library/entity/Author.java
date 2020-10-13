@@ -15,10 +15,10 @@ public class Author implements Comparable<Author>, Serializable {
 	private String surname;
 	@Column
 	private String name;
-	@Column
-	private String date_of_birth;
-	@Column
-	private String date_of_death;
+	@Column(name = "date_of_birth")
+	private String dateOfBirth;
+	@Column(name = "date_of_death")
+	private String dateOfDeath;
 	@Column
 	private String biography;
 	
@@ -53,23 +53,23 @@ public class Author implements Comparable<Author>, Serializable {
 	}
 
 
-	public String getDate_of_birth() {
-		return date_of_birth;
+	public String getDateOfBirth() {
+		return dateOfBirth;
 	}
 
 
-	public void setDate_of_birth(String date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 
-	public String getDate_of_death() {
-		return date_of_death;
+	public String getDateOfDeath() {
+		return dateOfDeath;
 	}
 
 
-	public void setDate_of_death(String date_of_death) {
-		this.date_of_death = date_of_death;
+	public void setDateOfDeath(String dateOfDeath) {
+		this.dateOfDeath = dateOfDeath;
 	}
 
 
@@ -88,8 +88,8 @@ public class Author implements Comparable<Author>, Serializable {
 		builder.append("| ").append("id: ").append(id).append(" | ")
 			.append("surname : ").append(this.surname).append(" | ")
 			.append("name : ").append(this.name).append(" | ")
-			.append("date of birth : ").append(this.date_of_birth).append(" | ")
-			.append("date of death : ").append(this.date_of_death).append(" |\n")
+			.append("date of birth : ").append(this.dateOfBirth).append(" | ")
+			.append("date of death : ").append(this.dateOfDeath).append(" |\n")
 			.append("\t| Biography : ").append(biography).append(" |");
 		
 		return builder.toString();

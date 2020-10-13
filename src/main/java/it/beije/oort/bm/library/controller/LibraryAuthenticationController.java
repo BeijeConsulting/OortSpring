@@ -3,6 +3,7 @@ package it.beije.oort.bm.library.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +16,14 @@ import it.beije.oort.bm.library.service.UserService;
 @Controller
 public class LibraryAuthenticationController {
 
+	private Logger log = Logger.getLogger(this.getClass());
+	
 	@Autowired
 	private UserService userService;
 	
 	@RequestMapping( value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest req, Model model) {
+		log.debug("/login - post");
 		HttpSession session = req.getSession();
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
@@ -29,6 +33,7 @@ public class LibraryAuthenticationController {
 	
 	@RequestMapping( value = "/register", method = RequestMethod.POST)
 	public String register(User user, HttpServletRequest req, Model model) {
+		log.debug("/register - post");
 		boolean result = false;
 		String pswd_conf = req.getParameter("reg_pswd_conf");
 		if(user==null) {

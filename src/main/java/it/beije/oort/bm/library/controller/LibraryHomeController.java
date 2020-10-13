@@ -3,6 +3,7 @@ package it.beije.oort.bm.library.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ import it.beije.oort.bm.library.service.UserService;
 @Controller
 public class LibraryHomeController {
 	
+	private Logger log = Logger.getLogger(this.getClass());
+	
 	@Autowired
 	private LoanService loanService;
 	@Autowired
@@ -31,12 +34,14 @@ public class LibraryHomeController {
 	
 	@RequestMapping( value = "/", method = RequestMethod.GET)
 	public String home() {
+		log.debug("/ - get");
 		return "home";
 	}
 	
 	@SuppressWarnings("rawtypes")
 	@RequestMapping( value = "/", method = RequestMethod.POST)
 	public String home(HttpServletRequest req, Model model) {
+		log.debug("/ - post");
 		String param = req.getParameter("res");
 		HttpSession session = req.getSession();
 		User logged = (User) session.getAttribute("user");
