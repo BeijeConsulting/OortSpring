@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import it.beije.oort.bm.library.database.ConcreteDatabase;
-import it.beije.oort.bm.library.database.Database;
+import it.beije.oort.bm.library.database.old.ConcreteDatabase;
+import it.beije.oort.bm.library.database.old.Database;
 import it.beije.oort.bm.library.entity.User;
 
 @Service

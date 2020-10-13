@@ -13,7 +13,7 @@ import it.beije.oort.bm.library.database.JpaEntityManager;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(value = {"it.beije.oort.repository"})
+@EnableJpaRepositories(value = {"it.beije.oort.bm.library.repository"})
 public class ConfigurationClass {
 	
     @Primary
