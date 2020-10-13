@@ -34,4 +34,75 @@ public class HomeController {
 		
 		return "login";
 	}
+
+//	@RequestMapping(value = "/utente", method = RequestMethod.GET)
+//	public String utente() {
+//		System.out.println("utente...");
+//		
+//		return "form_utente";
+//	}
+//
+//	@RequestMapping(value = "/utente", method = RequestMethod.POST)
+//	public String utente(Utente utente, HttpServletRequest request, Model model) {//@RequestParam String cognome
+//		System.out.println("ricevo dati utente...");
+//		
+////		Utente utente = new Utente();
+////		utente.setCognome(cognome);
+////		utente.setNome(request.getParameter("nome"));
+////		utente.setEmail(request.getParameter("email"));
+////		utente.setTelefono(request.getParameter("telefono"));
+//		
+//		utenteService.insert(utente);
+//		
+//		model.addAttribute("utente", utente);
+//		
+//		return "utente";
+//	}
+//
+//	@RequestMapping(value = "/utente/{id}", method = RequestMethod.GET)
+//	public String utente(@PathVariable Integer id, Model model) {
+//		System.out.println("utente : " + id);
+//		
+//		//carico utente...
+////		Utente utente = new Utente();
+////		utente.setCognome("Zegna");
+////		utente.setNome("Ermenegildo");
+//		
+//		Utente utente = utenteService.load(id);
+//		
+//		//String nominativo = utenteService.getNominativo(utente);
+//		
+//		model.addAttribute("utente", utente);
+//		//model.addAttribute("nominativo", nominativo);
+//		
+//		return "utente";
+//	}
+//
+//	@RequestMapping(value = "/utente/nome/{nome}", method = RequestMethod.GET)
+//	public String utente(@PathVariable String nome, Model model) {
+//		System.out.println("utente : " + nome);
+//		
+//		List<Utente> utenti = utenteService.findByNome(nome);
+//		
+//		System.out.println(utenti);
+//		
+//		model.addAttribute("utente", utenti.size() > 0 ? utenti.get(0) : new Utente() );
+//		
+//		return "utente";
+//	}
+//	
+//	@RequestMapping(value = "/utente/update/{id}", method = RequestMethod.GET)
+//	public String update(@PathVariable Integer id, Model model) {
+//		System.out.println("update utente : " + id);
+//		
+//		Utente utente = new Utente();
+//		utente.setCognome("Zegna");
+//		utente.setNome("Ermenegildo");
+//		
+//		utenteService.update(id, utente);
+//		
+//		model.addAttribute("utente", utente);
+//		
+//		return "utente";
+//	}
 }
