@@ -12,7 +12,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
-import it.beije.oort.kirolosmater.biblioteca.model.Utente;
+import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
 
 @Service
 public class MetodiUtente {
@@ -24,8 +24,8 @@ public class MetodiUtente {
 
 	}
 
-	public static Utente readRecordFromDb(int id) { 		
-		Utente utente = entityManager.find(Utente.class, id);
+	public static UtenteBiblioteca readRecordFromDb(int id) { 		
+		UtenteBiblioteca utente = entityManager.find(UtenteBiblioteca.class, id);
 		return utente;
 	}
 	
@@ -37,7 +37,7 @@ public class MetodiUtente {
 		int id = Integer.parseInt(lineFromInput);
 //		System.out.println("hai inserito questo id: " + id);
 //		System.out.println("questo è il record: ");
-		Utente utente = readRecordFromDb(id);
+		UtenteBiblioteca utente = readRecordFromDb(id);
 //		System.out.println("id : " + utente.getId());			
 //		System.out.println("cognome : " + utente.getCognome());
 //		System.out.println("nome : " + utente.getNome());
@@ -47,7 +47,7 @@ public class MetodiUtente {
 //		System.out.println("indirizzo : " + utente.getIndirizzo());
 	}
 	
-	public static List<Utente> readRecordByStringFromInput () {
+	public static List<UtenteBiblioteca> readRecordByStringFromInput () {
 		Scanner inputFromUser = new Scanner(System.in);
 		System.out.println("Inserisci il parametro da analizzare: ");
 		String parameter = inputFromUser.nextLine();
@@ -56,7 +56,7 @@ public class MetodiUtente {
 		String lineFromInput = inputFromUser.nextLine();
 		String jpql = "SELECT c FROM Utente as c WHERE " + parameter + " LIKE '" + lineFromInput + "%'";
 		Query query = (Query) entityManager.createQuery(jpql);
-		List<Utente> utenti = query.getResultList();
+		List<UtenteBiblioteca> utenti = query.getResultList();
 //		for (Utente utente : utenti) {
 //			System.out.println("id : " + utente.getId());			
 //			System.out.println("cognome : " + utente.getCognome());
@@ -69,12 +69,12 @@ public class MetodiUtente {
 		return utenti;
 	}
 	
-	public static List<Utente> readRecordByStringFromInput (String parametro, String stringaIniziale) {
+	public static List<UtenteBiblioteca> readRecordByStringFromInput (String parametro, String stringaIniziale) {
 		String parameter = parametro;
 		String lineFromInput = stringaIniziale;
 		String jpql = "SELECT c FROM Utente as c WHERE " + parameter + " LIKE '" + lineFromInput + "%'";
 		Query query = (Query) entityManager.createQuery(jpql);
-		List<Utente> utenti = query.getResultList();
+		List<UtenteBiblioteca> utenti = query.getResultList();
 //		for (Utente utente : utenti) {
 //			System.out.println("id : " + utente.getId());			
 //			System.out.println("cognome : " + utente.getCognome());
@@ -87,9 +87,9 @@ public class MetodiUtente {
 		return utenti;
 	}
 	
-	public static Utente checkEmail (String email) {
-		Utente utente = new Utente();
-		List<Utente> utenti = readRecordByStringFromInput("email", email);
+	public static UtenteBiblioteca checkEmail (String email) {
+		UtenteBiblioteca utente = new UtenteBiblioteca();
+		List<UtenteBiblioteca> utenti = readRecordByStringFromInput("email", email);
 		if(utenti.size() == 0) {
 			utente = getUtenteSconosciuto();
 		} else {
@@ -101,14 +101,14 @@ public class MetodiUtente {
 		return utente;
 	}
 	
-	public static boolean checkPassword (Utente utente, String password) {
+	public static boolean checkPassword (UtenteBiblioteca utente, String password) {
 		boolean passwordCorretta = false;
 		passwordCorretta = password.equals(utente.getPassword());
 		return passwordCorretta;
 	}
 	
-	public static Utente getUtenteSconosciuto () {
-		Utente sconosciuto = new Utente();
+	public static UtenteBiblioteca getUtenteSconosciuto () {
+		UtenteBiblioteca sconosciuto = new UtenteBiblioteca();
 		sconosciuto.setAdmin(false);
 		sconosciuto.setCodice_fiscale("sconosciuto");
 		sconosciuto.setCognome("sconosciuto");

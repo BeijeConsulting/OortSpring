@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import it.beije.oort.kirolosmater.biblioteca.model.Autore;
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
 import it.beije.oort.kirolosmater.biblioteca.model.Prestito;
-import it.beije.oort.kirolosmater.biblioteca.model.Utente;
+import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
 
 @Service
 public class MetodiPrestito {
@@ -29,7 +29,7 @@ public class MetodiPrestito {
 		return prestito;
 	}
 	
-	public static List<Prestito> visualizzaPrestitiByIdUtente (Utente utente) {
+	public static List<Prestito> visualizzaPrestitiByIdUtente (UtenteBiblioteca utente) {
 		int idutente = utente.getId();
 		String jpql = "SELECT a FROM Prestito a ORDER BY a.id";
 		Query query = (Query) entityManager.createQuery(jpql);

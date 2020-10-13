@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.oort.kirolosmater.biblioteca.model.Prestito;
-import it.beije.oort.kirolosmater.biblioteca.model.Utente;
+import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
 
 @Controller
 public class bibliotecaLoginController {
@@ -43,7 +43,7 @@ public class bibliotecaLoginController {
 		String stringaOutput = "biblioteca/areaPersonale";
 		HttpSession session = request.getSession();
 		System.out.println(email);
-		Utente utente = checkEmail(email);
+		UtenteBiblioteca utente = checkEmail(email);
 		
 		boolean passwordCorretta = checkPassword(utente, password);
 		if (passwordCorretta) {
