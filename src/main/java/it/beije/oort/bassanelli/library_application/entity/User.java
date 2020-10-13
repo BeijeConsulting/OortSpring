@@ -51,12 +51,12 @@ public class User {
 	@Column(name = FIELD_ADMIN)
 	private Boolean admin;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	public void setId(String id) {
-		this.setId(Integer.parseInt(id));
+		this.setId(Integer.valueOf(id));
 	}
 	
 	public void setId(Integer id) {

@@ -9,19 +9,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.bassanelli.library_application.database_manager.JavaPersistenceDBManager;
+import it.beije.oort.bassanelli.library_application.entity.Author;
 import it.beije.oort.bassanelli.library_application.entity.Book;
+import it.beije.oort.bassanelli.library_application.entity.Publisher;
 import it.beije.oort.bassanelli.library_application.entity.User;
+import it.beije.oort.bassanelli.library_application.service.AuthorService;
+import it.beije.oort.bassanelli.library_application.service.BookService;
+import it.beije.oort.bassanelli.library_application.service.PublisherService;
 
 @Controller
 public class ViewController {
 
 	private static final String root = "/library";
+	
+	@Autowired
+	private BookService bookService;
+	private AuthorService authorService;
+	private PublisherService publisherService;
+	
 
 	@RequestMapping(value = root + "/view-records", method = RequestMethod.GET)
 	public String view(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale)
@@ -34,15 +46,17 @@ public class ViewController {
 
 		switch (radioValue) {
 		case "books":
-			List<Book> books = JavaPersistenceDBManager.getAllBooks();
-			System.out.println(books.get(0).toString());
-			model.addAttribute("records", JavaPersistenceDBManager.getAllBooks());
+			// List<Book> books = JavaPersistenceDBManager.getAllBooks();
+			List<Book> books = bookService.getAllBooks();
+			model.addAttribute("records", books);
 			break;
 		case "authors":
-			model.addAttribute("records", JavaPersistenceDBManager.getAllBooks());
+			List<Author> authors = authorService.getAllAuthors();
+			model.addAttribute("records", authors);
 			break;
 		case "publishers":
-			model.addAttribute("records", JavaPersistenceDBManager.getAllBooks());
+			List<Publisher> publishers = publisherService.getAllPublishers();
+			model.addAttribute("records", publishers);
 			break;
 		}
 

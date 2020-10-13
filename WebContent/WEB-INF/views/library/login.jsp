@@ -16,7 +16,7 @@
 		
 			<legend><b>Login</b></legend>
 
-			<form method="GET" action="./login-user">
+			<form method="GET" action="/OortSpring/library/login-user">
 
 				<label>Email: </label>
 				<input type="text" name="email"/><br>
@@ -25,13 +25,15 @@
 
 				<input type="submit" value="LOGIN"/>
 			
+				<h5>${message}</h5>
+			
 			</form>
 		
 		</fieldset>
 
 
-	<a href="./sign_in">Sign In</a><br>
-	<a href="../home.jsp">Back</a>
+	<a href="/OortSpring/library/sign_in">Sign In</a><br>
+	<a href="/OortSpring/home">Back</a>
 
 </body>
 </html>

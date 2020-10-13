@@ -16,9 +16,9 @@
 	<h5>Hello <%= user.getName() %> <%= user.getSurname() %>, are you admin?  <%= user.getAdmin() ? "Yes" : "No" %> </h5>
 	
 	<ul>
-		<li><a href="./library/profile">Profile</a></li>
-		<li><a href="./view">Search book, author or publisher</a></li>
-		<li><a href="./borrow">Borrows</a></li>
+		<li><a href="/OortSpring/library/profile">Profile</a></li>
+		<li><a href="/OortSpring/library/view">Search book, author or publisher</a></li>
+		<li><a href="/OortSpring/library/borrow">Borrows</a></li>
 	</ul>
 	
 	<form method="POST" action="./logout-user">

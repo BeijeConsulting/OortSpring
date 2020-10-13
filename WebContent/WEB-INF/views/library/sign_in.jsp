@@ -16,7 +16,7 @@
 		
 			<legend><b>Sign in</b></legend>
 
-			<form method="POST" action="./signin-user">
+			<form method="POST" action="/OortSpring/library/signin-user">
 
 				<label>Name: </label>
 				<input type="text" name="name"/><br>
@@ -41,7 +41,7 @@
 		
 		<h5>${message}</h5>
 		
-	<a href=".">Back</a>
+	<a href="/OortSpring/library/index">Back</a>
 
 </body>
 </html>

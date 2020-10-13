@@ -31,7 +31,25 @@ public class UserService {
 
 	}
 
-	public void updateUser(Integer id, User oldUser) {
+	public void insert(User user) {
+		
+		if(user == null) {
+			throw new IllegalArgumentException("User bean is null");
+		}
+		
+		if (!"".equals(user.getName()) || !"".equals(user.getSurname()) || !"".equals(user.getFiscalCode())
+				|| !"".equals(user.getEmail()) || !"".equals(user.getMobile()) || !"".equals(user.getAddress())
+				|| !"".equals(user.getPassword())) { 
+		
+			userRepository.save(user);
+		
+		} else {
+			throw new IllegalArgumentException("User bean data is not valid");
+		}
+	}
+	
+	
+	public void update(Integer id, User oldUser) {
 
 		if (oldUser == null) {
 			throw new IllegalArgumentException("User bean is null");
