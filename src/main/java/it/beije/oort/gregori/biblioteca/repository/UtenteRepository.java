@@ -14,4 +14,6 @@ public interface UtenteRepository extends JpaRepository<Utente, Integer>{
 	Optional<Utente> findByEmailAndPassword(String email, String password);
 	List<Utente> findAll();
 	
+	Optional<Utente> findByEmail(String email);
+	
 }

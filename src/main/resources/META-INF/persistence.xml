@@ -10,11 +10,15 @@
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="Beije11"/>
 		</properties> -->
-	<persistence-unit name="OortRubrica" transaction-type="RESOURCE_LOCAL">
-		<class>it.beije.oort.rubrica.Contatto</class>
+	<persistence-unit name="OortBiblioteca" transaction-type="RESOURCE_LOCAL">
+		<class>it.beije.oort.gregori.biblioteca.Utente</class>
+		<class>it.beije.oort.gregori.biblioteca.Autore</class>
+		<class>it.beije.oort.gregori.biblioteca.Libro</class>
+		<class>it.beije.oort.gregori.biblioteca.Prestito</class>
+		<class>it.beije.oort.gregori.biblioteca.Editore</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rubrica?serverTimezone=CET"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/biblioteca?serverTimezone=CET"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="Beije11"/>
 		</properties>

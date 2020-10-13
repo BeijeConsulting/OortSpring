@@ -13,77 +13,81 @@ public class HomeController {
 	public String home() {
 		System.out.println("home...");
 		
+		return "tabelle";
+	}
+	
+//	@RequestMapping(value = "/visualizza", method = RequestMethod.GET)
+//	public String visualizza(Model model) {
+//		System.out.println("visualizza...");
+//		
+//		return "visualizza";
+//	}
+//	
+//	@RequestMapping(value = "/inserisci", method = RequestMethod.GET)
+//	public String inserisci() {
+//		System.out.println("inserisci...");
+//		
+//		return "inserisci";
+//	}
+//	
+//	@RequestMapping(value = "/modifica", method = RequestMethod.GET)
+//	public String modifica(Model model) {
+//		System.out.println("modifica...");
+//		
+//		return "modifica";
+//	}
+//	
+//	@RequestMapping(value = "/rimuovi", method = RequestMethod.GET)
+//	public String rimuovi(Model model) {
+//		System.out.println("rimuovi...");
+//		
+//		return "rimuovi";
+//	}
+//	
+//	
+//	@RequestMapping(value = "/ricerca", method = RequestMethod.GET)
+//	public String ricerca() {
+//		System.out.println("ricerca...");
+//		
+//		return "ricerca";
+//	}
+	
+	@RequestMapping(value = "/utente", method = RequestMethod.GET)
+	public String utente(Model model) {
+		System.out.println("utente...");
+		
+		model.addAttribute("path", "./utente");
+		
 		return "home";
 	}
 	
-	@RequestMapping(value = "/visualizza", method = RequestMethod.GET)
-	public String visualizza(Model model) {
-		System.out.println("visualizza...");
+	@RequestMapping(value = "/autore", method = RequestMethod.GET)
+	public String autore(Model model) {
+		System.out.println("autore...");
 		
-		return "visualizza";
+		model.addAttribute("path", "/autore");
+		
+		return "home";
 	}
 	
-	@RequestMapping(value = "/inserisci", method = RequestMethod.GET)
-	public String inserisci() {
-		System.out.println("inserisci...");
+	@RequestMapping(value = "/libro", method = RequestMethod.GET)
+	public String libro() {
+		System.out.println("libro...");
 		
-		return "inserisci";
+		return "home";
 	}
 	
-	@RequestMapping(value = "/modifica", method = RequestMethod.GET)
-	public String modifica(Model model) {
-		System.out.println("modifica...");
+	@RequestMapping(value = "/prestito", method = RequestMethod.GET)
+	public String prestito() {
+		System.out.println("prestito...");
 		
-		return "modifica";
+		return "home";
 	}
 	
-	@RequestMapping(value = "/rimuovi", method = RequestMethod.GET)
-	public String rimuovi(Model model) {
-		System.out.println("rimuovi...");
+	@RequestMapping(value = "/editore", method = RequestMethod.GET)
+	public String editore() {
+		System.out.println("editore...");
 		
-		return "rimuovi";
+		return "home";
 	}
-	
-	
-	@RequestMapping(value = "/ricerca", method = RequestMethod.GET)
-	public String ricerca() {
-		System.out.println("ricerca...");
-		
-		return "ricerca";
-	}
-	
-//	@RequestMapping(value = "/utente", method = RequestMethod.GET)
-//	public String utente() {
-//		System.out.println("utente...");
-//		
-//		return "home";
-//	}
-//	
-//	@RequestMapping(value = "/autore", method = RequestMethod.GET)
-//	public String autore() {
-//		System.out.println("autore...");
-//		
-//		return "home";
-//	}
-//	
-//	@RequestMapping(value = "/libro", method = RequestMethod.GET)
-//	public String libro() {
-//		System.out.println("libro...");
-//		
-//		return "home";
-//	}
-//	
-//	@RequestMapping(value = "/prestito", method = RequestMethod.GET)
-//	public String prestito() {
-//		System.out.println("prestito...");
-//		
-//		return "home";
-//	}
-//	
-//	@RequestMapping(value = "/editore", method = RequestMethod.GET)
-//	public String editore() {
-//		System.out.println("editore...");
-//		
-//		return "home";
-//	}
 }

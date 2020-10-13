@@ -22,13 +22,13 @@
 		<!-- Header -->
 			<header id="header">
 				<a class="logo" href="/OortSpring/">Biblioteca</a>
-				<nav>
+<!-- 				<nav>
 					<a href="#menu">Menu</a>
-				</nav>
+				</nav> -->
 			</header>
 
-		<!-- Nav -->
-			<nav id="menu">
+ 		<!-- Nav -->
+<!--			<nav id="menu">
 				<ul class="links">
 					<li><a href="/OortSpring/">Home</a></li>
 					<li><a href="/OortSpring/inserisci">Inserimento</a></li>
@@ -36,9 +36,9 @@
 					<li><a href="/OortSpring/modifica">Modifica</a></li>
 					<li><a href="/OortSpring/rimuovi">Rimozione</a></li>
 					<li><a href="/OortSpring/ricerca">Ricerca</a></li>
-					<!-- <li><a href="esportazione.html">Esportazione</a></li> -->
+					<li><a href="esportazione.html">Esportazione</a></li>
 				</ul>
-			</nav>
+			</nav> -->
 
 		<!-- Heading -->
 			<div id="heading" >
@@ -57,7 +57,8 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/inserisci" class="icon fa-vcard-o"><span class="label">Icon</span></a>
+									<c:set var = "finalPath" value = "${ path }/inserisci" />
+									<a href="${ finalPath }" class="icon fa-vcard-o"><span class="label">Icon</span></a>
 									<h3>Inserisci</h3>
 								</header>
 								<!-- <p>Inserimento di un contatto all'interno della rubrica.</p> -->
@@ -66,7 +67,9 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/visualizza" class="icon fa-table"><span class="label">Icon</span></a>
+									<c:set var = "finalPath" value = "${ path }/visualizza" />
+									<div>${ finalPath }</div>
+									<a href="${ finalPath }" class="icon fa-table"><span class="label">Icon</span></a>
 									<h3>Visualizza</h3>
 								</header>
 								<!-- <p>Visualizzazione dei contatti presenti in rubrica.</p> -->
@@ -75,25 +78,18 @@
 	  					<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/modifica" class="icon fa-edit"><span class="label">Icon</span></a>
+									<c:set var = "finalPath" value = "${ path }/modifica" />
+									<a href="${ finalPath }" class="icon fa-edit"><span class="label">Icon</span></a>
 									<h3>Modifica</h3>
 								</header>
 								<!-- <p>Modifica di un contatto all'interno della rubrica.</p> -->
 							</div>
 						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="/OortSpring/rimuovi" class="icon fa-trash"><span class="label">Icon</span></a>
-									<h3>Rimuovi</h3>
-								</header>
-								<!-- <p>Rimozione di un contatto all'interno della rubrica.</p> -->
-							</div>
-						</section>
  						<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/ricerca" class="icon fa-search"><span class="label">Icon</span></a>
+									<c:set var = "finalPath" value = "${ path }/ricerca" />
+									<a href="${ finalPath }" class="icon fa-search"><span class="label">Icon</span></a>
 									<h3>Ricerca</h3>
 								</header>
 								<!-- <p>Ricerca di un contatto all'interno della rubrica.</p> -->
