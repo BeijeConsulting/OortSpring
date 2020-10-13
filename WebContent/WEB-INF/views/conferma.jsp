@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ConfermaPage</title>
+<title>PaginaConferma</title>
 </head>
 <body>
-<h2>ESEGUITO</h2>
+<h2>OPERAZIONE ESEGUITA</h2>
 <form action ="h" method="GET">
 <button type="submit">HOME</button>
 </form>

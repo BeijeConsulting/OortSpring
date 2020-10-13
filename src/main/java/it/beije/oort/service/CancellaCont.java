@@ -8,6 +8,8 @@ import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,6 +17,9 @@ import it.beije.oort.entity.SingletonJPASpring;
 
 @Service
 public class CancellaCont {
+	
+	private Logger log = LoggerFactory.getLogger(this.getClass());
+	
 	public void cancella(@RequestParam Integer id,  HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 	EntityManager entityManager = SingletonJPASpring.openEntity();
@@ -25,7 +30,7 @@ public class CancellaCont {
 	entityManager.remove(query.getResultList().get(0));
 	entityManager.getTransaction().commit();
 	entityManager.close();	
-	System.out.println("Cancellato!");
+	log.info("Cancellato!");
 		
 	StringBuilder b = new StringBuilder("<br><!doctype html>\r\n" + 
 			"<html>\r\n" + 

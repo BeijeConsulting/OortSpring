@@ -3,6 +3,9 @@ package it.beije.oort.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.beije.oort.entity.ContattoSpring;
@@ -17,10 +20,10 @@ public class InserimentoCont {
 
 	public String getNominativo(ContattoSpring contatto) {
 	
-		if (contatto == null)
+		if (contatto == null) 
 			throw new IllegalArgumentException();
-		
-		return contatto.getCognome() + " " + contatto.getNome();
+			
+			return contatto.getCognome() + " " + contatto.getNome();
 	}
 	
 	public ContattoSpring load(Integer id) {
