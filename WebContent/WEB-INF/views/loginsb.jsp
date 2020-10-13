@@ -13,11 +13,9 @@
 			EMAIL&nbsp;<input type="email" name="email" value="" placeholder="user@domain.it"/><br/>
  			PASSWORD&nbsp;<input type="password" name="password" value=""/><br>
 			<input type="submit" value="INVIO"/>
-		</form>
-		<h4>Se vuoi visualizzare il catalogo</h4>		
-		<form action="./Catalogo" method="get">
-		<input type="submit" value="CATALOGO">
-		</form>
+		</form><br>
+		<a href="./Catalogo">Catalogo Libri</a>		
+
 		
 </body>
 </html>

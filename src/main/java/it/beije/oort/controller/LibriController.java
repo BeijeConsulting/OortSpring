@@ -11,35 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.beije.oort.sb.biblioteca.Libri;
 import it.beije.oort.sb.jpa.JPDBtools;
-import it.beije.oort.service.CatalogoService;
+import it.beije.oort.service.LibriService;
 
 @Controller
-public class CatalogoController {
+public class LibriController {
 	
 	@Autowired
-	private CatalogoService catalogoService;
-
-
-	@RequestMapping(value = "/CatalogoAutori", method = RequestMethod.GET)
-	public String catalogoAutori(Model model) {	
-		model.addAttribute("autori", JPDBtools.catalogoAutori());
-		return "autori";
-	}
-	
-	@RequestMapping(value = "/CatalogoUtenti", method = RequestMethod.GET)
-	public String catalogoUtenti(Model model) {	
-		model.addAttribute("utenti", JPDBtools.catalogoUtenti());
-		return "utenti";
-	}
-	
-	@RequestMapping(value = "/CatalogoEditori", method = RequestMethod.GET)
-	public String catalogoEditori(Model model) {	
-		model.addAttribute("editori", JPDBtools.catalogoEditori());
-		return "editori";
-	}
+	private LibriService libriService;
 
 	@RequestMapping(value = "/Catalogo", method = RequestMethod.GET)
 	public String catalogoG(Model model, HttpServletRequest request) {
@@ -48,20 +30,17 @@ public class CatalogoController {
 	}
 	
 	@RequestMapping(value = "/Catalogo", method = RequestMethod.POST)
-	public String catalogoP(HttpServletRequest request, Model model) {			
+	public String catalogoP(HttpServletRequest request, Model model, @RequestParam String autore, @RequestParam String editore) {			
 		HttpSession session = request.getSession();
-		String autore = request.getParameter("Autore");
-		String editore = request.getParameter("Editore");
 		List<Libri> catalogo;		
 		try {
-			catalogo = catalogoService.catalogoPostService(autore, editore);
+			catalogo = libriService.catalogo(autore, editore);
+			session.setAttribute("richiestaCatalogo", "off");
+			session.setAttribute("catalogo", catalogo);
 		} catch(Exception e) {
 			session.setAttribute("richiestaCatalogo", "on");
 			model.addAttribute("errore", "Valori Ricerca Errati");
-			return "catalogo";
 		}
-		session.setAttribute("richiestaCatalogo", "off");
-		session.setAttribute("catalogo", catalogo);
 		return "catalogo";
 	}
 }

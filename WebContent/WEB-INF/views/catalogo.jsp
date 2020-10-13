@@ -67,12 +67,11 @@ tr:nth-child(even) {
 
 			<%-- se la richiesta è stata fatta dal menu, sulla pagina si vede solo quello che segue --%>
 			<h3>Inserisci gli id per i quali vuoi cercare i libri</h3>
-			<h4>Inserisci 0 per omettere il campo corrispondente nella ricerca</h4>	
 			<a href="./CatalogoAutori">Autori</a>
 			<a href="./CatalogoEditori">Editori</a>
 			<form action="./Catalogo" method="post">
-			ID AUTORE&nbsp;<input type ="text" name = "Autore" value ="0" placeholder="1">
-			ID EDITORE&nbsp;<input type ="text" name = "Editore"  value ="0" placeholder="1">		
+			ID AUTORE&nbsp;<input type ="text" name = "autore" value ="" placeholder="1">
+			ID EDITORE&nbsp;<input type ="text" name = "editore"  value ="" placeholder="1">		
 			<br><input type="submit" value="INVIO">
 			</form>
 			

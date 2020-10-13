@@ -7,21 +7,21 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import it.beije.oort.entity.Utente;
-import it.beije.oort.sb.biblioteca.Utenti;
+
+import it.beije.oort.sb.biblioteca.Libri;
 
 
 @Repository
-public interface UtenteRepository extends JpaRepository<Utenti, Integer> {
+public interface LibriRepository extends JpaRepository<Libri, Integer> {
 	
 	//IM : count u from User u where email = ?
-	Optional<Utenti> findByEmail(String email);
 
-	List<Utenti> findByNome(String nome);
+	List<Libri> findByAutore(Integer autore);
+	List<Libri> findByEditore(Integer editore);
+	List<Libri> findByAutoreAndEditore(Integer autore, Integer editore);
 
 	
 	//Optional<Utente> findByEmailAndPassword(String email, String password);
 	
 }
-
 

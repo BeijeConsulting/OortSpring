@@ -51,7 +51,7 @@
 	<%} else {%>
 	<h3>Devi fare il login</h3>
 	<form action= "./Login" method="get">
-	<input type="submit" value= "LOGIN" name="Login"/>
+	<input type="submit" value= "LOGIN"/>
 	</form>
 	<%} %>
 	

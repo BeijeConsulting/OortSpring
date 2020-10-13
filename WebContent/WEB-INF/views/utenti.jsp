@@ -36,7 +36,8 @@ tr:nth-child(even) {
 		<th>Cognome</th>
 		<th>Telefono</th>
 		<th>Email</th>
-		<th>Codice fiscale</th>		
+		<th>Codice fiscale</th>	
+		<th>Link</th>	
 	</tr>		
 <c:forEach var = "i" items="${utenti}">
 <tr>
@@ -46,6 +47,7 @@ tr:nth-child(even) {
      <td><c:out value = " ${i.telefono}"/></td>
 	 <td><c:out value = " ${i.email}"/></td>
 	 <td><c:out value = " ${i.codice_fiscale}"/></td>
+	 <td><a href="./utenti/${i.id}">Modifica</a>
  </tr>
 </c:forEach>
  </table>
