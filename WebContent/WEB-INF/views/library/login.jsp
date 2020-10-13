@@ -16,7 +16,7 @@
 		
 			<legend><b>Login</b></legend>
 
-			<form method="GET" action="./library/login-user">
+			<form method="GET" action="./login-user">
 
 				<label>Email: </label>
 				<input type="text" name="email"/><br>

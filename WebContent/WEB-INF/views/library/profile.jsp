@@ -52,7 +52,7 @@
 		
 	</form>
 
-	<a href="./">Back</a>
+	<a href="./home">Back</a>
 
 </body>
 </html>

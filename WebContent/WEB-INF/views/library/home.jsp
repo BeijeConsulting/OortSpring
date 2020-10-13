@@ -16,7 +16,7 @@
 	<h5>Hello <%= user.getName() %> <%= user.getSurname() %>, are you admin?  <%= user.getAdmin() ? "Yes" : "No" %> </h5>
 	
 	<ul>
-		<li><a href="./profile">Profile</a></li>
+		<li><a href="./library/profile">Profile</a></li>
 		<li><a href="./view">Search book, author or publisher</a></li>
 		<li><a href="./borrow">Borrows</a></li>
 	</ul>

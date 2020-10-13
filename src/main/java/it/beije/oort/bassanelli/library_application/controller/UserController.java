@@ -26,9 +26,10 @@ public class UserController {
 
 	private static final String root = "/library";
 
-	@RequestMapping(value = root + "/login-user", method = RequestMethod.GET)
+	@RequestMapping(value ="/login-user", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale)
 			throws UnsupportedEncodingException {
+
 		System.out.println("path: " + request.getContextPath());
 
 		HttpSession session = request.getSession();
@@ -36,19 +37,23 @@ public class UserController {
 		String email = URLDecoder.decode(request.getParameter("email"), "UTF-8");
 		String password = request.getParameter("password");
 
-		User user = JavaPersistenceDBManager.loginUser(email, password);
+		
+		User user = userService.login(email, password);
+		
+		// User user = JavaPersistenceDBManager.loginUser(email, password);
 
 		if (user != null) {
+			System.out.println(user.toString());
 			session.setAttribute("user", user);
 			return root + "/home";
 
 		} else {
 			return root + "/login";
-
 		}
+		
 	}
 
-	@RequestMapping(value = root + "/logout-user", method = RequestMethod.POST)
+	@RequestMapping(value = "/logout-user", method = RequestMethod.POST)
 	public String logout(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale)
 			throws UnsupportedEncodingException {
 		System.out.println("path: " + request.getContextPath());
@@ -56,11 +61,11 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.setAttribute("user", null);
 
-		return root + "/login";
+		return "login";
 
 	}
 
-	@RequestMapping(value = root + "/signin-user", method = RequestMethod.GET)
+	@RequestMapping(value = "/signin-user", method = RequestMethod.GET)
 	public String signin(User user, HttpServletRequest request, HttpServletResponse response, Model model,
 			Locale locale) throws UnsupportedEncodingException {
 		System.out.println("path: " + request.getContextPath());
@@ -71,7 +76,7 @@ public class UserController {
 
 		model.addAttribute("message", "The user has been registered");
 
-		return root + "/sign_in";
+		return "sign_in";
 
 	}
 
@@ -85,10 +90,10 @@ public class UserController {
 
 		// System.out.println(userSession.getId());
 		
-		JavaPersistenceDBManager.editUser(userSession.getId(), user);
+		// JavaPersistenceDBManager.editUser(userSession.getId(), user);
 		
+		userService.updateUser(userSession.getId(), user);
 		user.setId(userSession.getId());
-		
 		session.setAttribute("user", user);
 
 		model.addAttribute("message", "The user has been edited");

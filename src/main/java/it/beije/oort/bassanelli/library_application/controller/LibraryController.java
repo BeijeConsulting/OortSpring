@@ -33,7 +33,7 @@ public class LibraryController {
 			
 		} else {
 			
-			return root +"/login";
+			return root + "/login";
 			
 		}
 	}

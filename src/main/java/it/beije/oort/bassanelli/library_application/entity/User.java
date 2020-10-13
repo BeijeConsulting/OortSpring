@@ -128,7 +128,7 @@ public class User {
 	}
 
 	public String toString() {
-		return this.toString("ID;NAME;SURNAME;FISCALCODE;EMAIL;MOBILE;ADDRESS");
+		return this.toString("ID;NAME;SURNAME;FISCALCODE;EMAIL;MOBILE;ADDRESS;PASSWORD;ADMIN");
 	}
 	
 	public String toString(String pattern) {
