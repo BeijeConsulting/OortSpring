@@ -20,8 +20,7 @@ import org.springframework.stereotype.Service;
 
 import it.beije.oort.kirolosmater.biblioteca.model.Autore;
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
-import it.beije.oort.rubrica.Contatto;
-import it.beije.oort.rubrica.HybSessionFactory;
+
 
 @Service
 public class MetodiAutore {
