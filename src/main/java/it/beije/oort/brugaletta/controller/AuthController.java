@@ -1,5 +1,5 @@
 package it.beije.oort.brugaletta.controller;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import it.beije.oort.brugaletta.entity.User;
 import it.beije.oort.brugaletta.services.UserService;
 
@@ -27,13 +28,13 @@ public class AuthController {
 		return "login_biblio";
 	}
 	
-	@GetMapping("/registrazione")
+	@GetMapping("/signin")
 	public String showSignInForm() {
 		return "registrazione_biblio";
 	}
 	
-	@PostMapping("/homepage")
-	public String login(@RequestParam String email, @RequestParam String password, Model model, HttpServletRequest request) {
+	@PostMapping("/login")
+	public String login(@RequestParam String email, @RequestParam String password, Model model, HttpServletResponse response) {
 		User loggedUser = userService.login(email, password);
 		String path = null;
 		try {
@@ -45,8 +46,24 @@ public class AuthController {
 			model.addAttribute("loggedUser", loggedUser);
 		} catch (NullPointerException e) {
 			model.addAttribute("errore", "credenziali errate!");
-			path = "login_biblio";
+			return showLogin();
 		}
 		return path;
+	}
+	
+	@PostMapping("/signin")
+	public String signIn(User utente, Model model) {
+		userService.insert(utente);
+		try {
+			if (utente.getCognome().equals("") || utente.getNome().equals("") || utente.getEmail().equals("") || utente.getPassword().equals("")) {
+				throw new Exception();
+			} else {
+				model.addAttribute("confermaRegistrazione", "La tua registrazione è andata a buon fine!");
+			}
+		} catch (Exception e) {
+			model.addAttribute("errore", "Inserire i campi obbligatori!");
+			return showSignInForm();
+		}
+		return showLogin();
 	}
 }
