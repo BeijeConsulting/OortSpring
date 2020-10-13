@@ -51,7 +51,7 @@ tr:nth-child(even) {
  </tr>
 </c:forEach>
  </table>
-	<form action="./NewPrestito" method="get">
+	<form action="./newprestito" method="get">
 	<input type="submit" value="NewPrestito"/>
 	</form>
 	<form action="./" method="get">

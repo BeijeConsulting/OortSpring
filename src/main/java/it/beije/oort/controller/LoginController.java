@@ -19,12 +19,12 @@ public class LoginController {
 	@Autowired
 	private UtentiService utentiService;
 	
-	@RequestMapping(value="/Login", method = RequestMethod.GET)
+	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String loginG() {				
 		return "loginsb";
 	}
 
-	@RequestMapping(value="/Login", method = RequestMethod.POST)
+	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String loginP(HttpServletRequest request, Model model, @RequestParam String email, @RequestParam String password) {				
 		HttpSession session = request.getSession();
 		Utenti utente = utentiService.check(email, password);
@@ -42,7 +42,7 @@ public class LoginController {
 			
 	}
 	
-	@RequestMapping(value="/Logout", method = RequestMethod.GET)
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		request.getSession().removeAttribute("login");
 		return "menubiblioteca";

@@ -19,6 +19,11 @@ public class UtentiService {
 		return utentiRepository.findAll();
 	}
 	
+	public Utenti loadById(Integer id) {
+		Optional<Utenti> utente = utentiRepository.findById(id);
+		return utente.isPresent() ? utente.get() : null;
+	}
+	
 	public Utenti check(String email, String password) {
 		Optional<Utenti> utente = utentiRepository.findByEmailAndPassword(email, password);
 		return utente.isPresent() ? utente.get() : null;

@@ -10,8 +10,6 @@ import it.beije.oort.sb.biblioteca.Autori;
 @Repository
 public interface AutoriRepository  extends JpaRepository<Autori, Integer>{
 		
-
-
 		List<Autori> findByNome(String nome);
 
 		

@@ -42,13 +42,13 @@ tr:nth-child(even) {
     <td><c:out value = " ${i.id}"/></td>
     <td><c:out value = " ${i.nome}"/></td>
     <td><c:out value = " ${i.cognome}"/></td>
-    <td><c:out value = " ${i.data_nascita}"/></td>
-    <td><c:out value = " ${i.data_morte}"/></td> 
+    <td><c:out value = " ${i.dataNascita}"/></td>
+    <td><c:out value = " ${i.dataMorte}"/></td> 
  </tr>
 </c:forEach>
  </table>
-	<form action="./Catalogo" method="get">
-	<input type="submit" value="CATALOGO" name="Catalogo"/>
+	<form action="./catalogo" method="get">
+	<input type="submit" value="CATALOGO"/>
 	</form>
 </body>
 </html>

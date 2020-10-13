@@ -13,6 +13,5 @@ public interface EditoriRepository  extends JpaRepository<Editori, Integer>{
 
 
 		List<Editori> findByDenominazione(String denominazione);
-
 		
 	}

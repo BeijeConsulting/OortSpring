@@ -14,7 +14,7 @@ public class UtentiController {
 	@Autowired
 	private UtentiService utentiService;
 	
-	@RequestMapping(value = "/CatalogoUtenti", method = RequestMethod.GET)
+	@RequestMapping(value = "/catalogoutenti", method = RequestMethod.GET)
 	public String catalogoUtenti(Model model) {	
 		model.addAttribute("utenti", utentiService.loadUtenti());
 		return "utenti";

@@ -9,12 +9,12 @@
 <body>
 		${errore}
 		<h3>Inserisci le tue credenziali</h3>
-		<form action="./Login" method="post">
+		<form action="./login" method="post">
 			EMAIL&nbsp;<input type="email" name="email" value="" placeholder="user@domain.it"/><br/>
  			PASSWORD&nbsp;<input type="password" name="password" value=""/><br>
 			<input type="submit" value="INVIO"/>
 		</form><br>
-		<a href="./Catalogo">Catalogo Libri</a>		
+		<a href="./catalogo">Catalogo Libri</a>		
 
 		
 </body>

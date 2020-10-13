@@ -1,4 +1,4 @@
-<%@page import="it.beije.oort.sb.jpa.JPDBtools"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="it.beije.oort.sb.biblioteca.Prestiti"%>
 <%@page import="it.beije.oort.sb.biblioteca.Utenti"%>
 <%@page import="java.util.List"%>
@@ -38,19 +38,18 @@ tr:nth-child(even) {
 		<th>Data Inizio</th>
 		<th>Data Fine</th>
 	</tr>	
-<% List<Prestiti> list = JPDBtools.ricercaPrestitiId("utente",utente.getId());
-	for(Prestiti p : list) { %>
+	
+<c:forEach var = "i" items="${prestiti}">
 	<tr>
-		<td><%=p.getId() %></td>
-		<td><%=JPDBtools.ricercaLibro(p.getLibro()).getTitolo() %></td>
-		<td><%=p.getData_inizio() %></td>
-		<td><%=p.getData_fine() %></td>
+		<td><c:out value= "${i.id}"/></td>
+		<td><c:out value= "${libri.get(prestiti.indexOf(i)).getTitolo()}"/></td>
+		<td><c:out value= "${i.dataInizio}"/></td>
+		<td><c:out value= "${i.dataFine}"/></td>
 	</tr>
-	<%}%>
+</c:forEach>
 	</table>
 	<form action="./" method="get">
-	<input type="submit" value="HOME" name="Menu">
+	<input type="submit" value="HOME">
 	</form>
-
 </body>
 </html>

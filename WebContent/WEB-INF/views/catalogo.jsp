@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="it.beije.oort.sb.jpa.JPDBtools"%>
@@ -47,29 +48,26 @@ tr:nth-child(even) {
 				    <th>Anno</th>
 				    <th>Disponibilità</th>    
 				  </tr>		
-		<%	 for(Libri l : (List<Libri>)session.getAttribute("catalogo")){ 
-				Autori autore = JPDBtools.ricercaAutore(l.getAutore());
-				Editori editore = JPDBtools.ricercaEditore(l.getEditore()); %>
-				 <tr>
-					<td><%=l.getId() %></td>
-					<td><%=l.getTitolo() %></td>
-					<td><%=autore.getNome() %> <%= autore.getCognome()%></td>
-					<td><%=editore.getDenominazione() %></td>  		
-					<td><%=l.getAnno() %></td>		
-				<%String disponibilita = "Non disponibile";
-					for(Prestiti p : JPDBtools.ricercaPrestitiId("libro", l.getId())){
-						if(p.getData_fine()!=null &&p.getData_fine().isBefore(java.time.LocalDate.now()))
-							disponibilita = "Disponibile";
-						else disponibilita = "Non disponibile"; }%>
-				<td> <%=disponibilita %></td>
-			</tr>		
-			<%} } %>
+			<c:forEach var = "i" items="${catalogo}">
+				<tr>
+					<td><c:out value= "${i.id}"/></td>
+					<td><c:out value= "${i.titolo}"/></td>					
+					<td><c:out value= "${autori.get(catalogo.indexOf(i)).getNome()}"/>
+						<c:out value= "${autori.get(catalogo.indexOf(i)).getCognome()}"/></td>
+					<td><c:out value= "${editori.get(catalogo.indexOf(i)).getDenominazione()}"/></td>
+					<td><c:out value= "${i.anno}"/></td>
+					<td><c:out value= "${availability.get(catalogo.indexOf(i))}"/></td>
+				</tr>
+			</c:forEach>
+			</table>
+			
+				<% } %>
 
 			<%-- se la richiesta è stata fatta dal menu, sulla pagina si vede solo quello che segue --%>
 			<h3>Inserisci gli id per i quali vuoi cercare i libri</h3>
-			<a href="./CatalogoAutori">Autori</a>
-			<a href="./CatalogoEditori">Editori</a>
-			<form action="./Catalogo" method="post">
+			<a href="./catalogoautori">Autori</a>
+			<a href="./catalogoeditori">Editori</a>
+			<form action="./catalogo" method="post">
 			ID AUTORE&nbsp;<input type ="text" name = "autore" value ="" placeholder="1">
 			ID EDITORE&nbsp;<input type ="text" name = "editore"  value ="" placeholder="1">		
 			<br><input type="submit" value="INVIO">
@@ -79,7 +77,7 @@ tr:nth-child(even) {
 			<input type="submit" value="HOME" name="Menu">
 			</form>
 			<% if("on".equals(session.getAttribute("admin"))){ %>
-			<form action="./NewPrestito" method="get">
+			<form action="./newprestito" method="get">
 			<input type="submit" value="NewPrestito">
 			</form>
 			<form action="./DeleteLibro" method="get">

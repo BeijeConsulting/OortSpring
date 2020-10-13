@@ -14,7 +14,7 @@ public class AutoriController {
 	@Autowired
 	private AutoriService autoriService;
 	
-	@RequestMapping(value = "/CatalogoAutori", method = RequestMethod.GET)
+	@RequestMapping(value = "/catalogoautori", method = RequestMethod.GET)
 	public String catalogoAutori(Model model) {	
 		model.addAttribute("autori", autoriService.loadAutori());
 		return "autori";

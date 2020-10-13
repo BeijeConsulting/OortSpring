@@ -36,7 +36,7 @@ public class JPDBtools {
 			try {
 				System.out.println("Inserisci la data di nascita in formato dd/MM/yyyy");
 				LocalDate nascita = LocalDate.parse(sc.nextLine(), formatter);
-				autore.setData_nascita(nascita);
+				autore.setDataNascita(nascita);
 				okay="okay";
 			} catch(DateTimeException e) {
 				System.out.println("Data non riconosciuta, se non vuoi mettere nessuna data di nascita premi INVIO");
@@ -149,7 +149,7 @@ public class JPDBtools {
 			try {
 				System.out.println("Inserisci la data di inizio prestito in formato dd/MM/yyyy");
 				LocalDate inizio = LocalDate.parse(sc.nextLine(), formatter);
-				prestito.setData_inizio(inizio);
+				prestito.setDataInizio(inizio);
 				okay="okay";
 			} catch(DateTimeException e) {
 				System.out.println("Data non riconosciuta, inserisci una data corretta");
@@ -162,7 +162,7 @@ public class JPDBtools {
 				String appoggio = sc.nextLine();
 				if(!appoggio.equals("")) { 
 					LocalDate fine = LocalDate.parse(appoggio, formatter);
-					prestito.setData_fine(fine);
+					prestito.setDataFine(fine);
 					okay1="okay";
 					}
 				okay1="okay";
@@ -261,7 +261,7 @@ public class JPDBtools {
 		int count = 1;
 		Map<Integer, Prestiti> mapEdit = new HashMap<Integer, Prestiti>();
 		for(Prestiti e : prestito) {
-			System.out.println(count+") "+e.getLibro()+" prestato il "+e.getData_inizio());
+			System.out.println(count+") "+e.getLibro()+" prestato il "+e.getDataInizio());
 			mapEdit.put(count, e);
 			count++;
 		}

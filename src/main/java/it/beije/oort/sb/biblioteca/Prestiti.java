@@ -24,11 +24,11 @@ public class Prestiti {
 	@Column
 	private int utente;
 
-	@Column
-	private LocalDate data_inizio;
+	@Column(name="data_inizio")
+	private LocalDate dataInizio;
 	
-	@Column
-	private LocalDate data_fine;
+	@Column(name="data_fine")
+	private LocalDate dataFine;
 	
 	@Column
 	private String note;
@@ -57,20 +57,20 @@ public class Prestiti {
 		this.utente = utente;
 	}
 
-	public LocalDate getData_inizio() {
-		return data_inizio;
+	public LocalDate getDataInizio() {
+		return dataInizio;
 	}
 
-	public void setData_inizio(LocalDate data_inizio) {
-		this.data_inizio = data_inizio;
+	public void setDataInizio(LocalDate dataInizio) {
+		this.dataInizio = dataInizio;
 	}
 
-	public LocalDate getData_fine() {
-		return data_fine;
+	public LocalDate getDataFine() {
+		return dataFine;
 	}
 
-	public void setData_fine(LocalDate data_fine) {
-		this.data_fine = data_fine;
+	public void setDataFine(LocalDate dataFine) {
+		this.dataFine = dataFine;
 	}
 
 	public String getNote() {

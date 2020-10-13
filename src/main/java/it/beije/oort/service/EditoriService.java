@@ -1,6 +1,7 @@
 package it.beije.oort.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,10 @@ public class EditoriService {
 	
 	public List<Editori> loadEditori(){
 		return editoriRepository.findAll();
+	}
+	
+	public Editori loadById(Integer id) {
+		Optional<Editori> editore = editoriRepository.findById(id);
+		return editore.isPresent() ? editore.get() : null;
 	}
 }

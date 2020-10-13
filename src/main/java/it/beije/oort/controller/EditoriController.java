@@ -15,7 +15,7 @@ public class EditoriController {
 	@Autowired
 	private EditoriService editoriService;
 	
-	@RequestMapping(value = "/CatalogoEditori", method = RequestMethod.GET)
+	@RequestMapping(value = "/catalogoeditori", method = RequestMethod.GET)
 	public String catalogoEditori(Model model) {	
 		model.addAttribute("editori", editoriService.loadEditori());
 		return "editori";

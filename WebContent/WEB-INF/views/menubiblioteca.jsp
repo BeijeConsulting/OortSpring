@@ -15,22 +15,25 @@
 	if(login!=null&&!login.equals("false")){ %>
 	<%-- controllo se ha fatto il login o meno  --%>
 		<h3>Benvenuto <%=((Utenti)session.getAttribute("utente")).getNome() %> <%=((Utenti)session.getAttribute("utente")).getCognome() %></h3>
-		<form action="./Prestiti" method="get">
+		<form action="./prestitipersonali" method="get">
 		<input type="submit" value="PRESTITI"/>
 		</form>	
-		<form action="./Catalogo" method="get">
+		<form action="./catalogo" method="get">
 		<input type="submit" value="CATALOGO" >
 		</form>
-		<form action="./Logout" method="get">
+		<form action="./logout" method="get">
 		<input type="submit" value="LOGOUT">
 		</form>
 		<%if(((String)session.getAttribute("admin")).equals("on")) { %>
 		<h3>Menu Admin</h3>
-			<form action="./CatalogoUtenti" method="get">
+			<form action="./catalogoutenti" method="get">
 			<input type="submit" value="ListaUtenti">
 			</form>
-			<form action="./NewPrestito" method="get">
+			<form action="./newprestito" method="get">
 			<input type="submit" value="NewPrestito"/>
+			</form>	
+			<form action="./deleteprestito" method="get">
+			<input type="submit" value="DeletePrestito"/>
 			</form>	
 			<form action="./Smistatore" method="get">
 			<input type="submit" value="NewAutore" name ="NewAutore">
@@ -50,7 +53,7 @@
 		<%} %>
 	<%} else {%>
 	<h3>Devi fare il login</h3>
-	<form action= "./Login" method="get">
+	<form action= "./login" method="get">
 	<input type="submit" value= "LOGIN"/>
 	</form>
 	<%} %>

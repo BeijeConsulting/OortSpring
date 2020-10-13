@@ -26,28 +26,12 @@ public class Autori {
 	@Column
 	private String cognome;
 	
-	@Column
-	private LocalDate data_nascita;
+	@Column(name = "data_nascita")
+	private LocalDate dataNascita;
 	
-	@Column
-	private LocalDate data_morte;
+	@Column(name = "data_morte")
+	private LocalDate dataMorte;
 	
-	public LocalDate getData_nascita() {
-		return data_nascita;
-	}
-
-	public void setData_nascita(LocalDate data_nascita) {
-		this.data_nascita = data_nascita;
-	}
-
-	public LocalDate getData_morte() {
-		return data_morte;
-	}
-
-	public void setData_morte(LocalDate data_morte) {
-		this.data_morte = data_morte;
-	}
-
 	@Column
 	private String biografia;
 
@@ -82,4 +66,24 @@ public class Autori {
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;
 	}
+
+	public LocalDate getDataNascita() {
+		return dataNascita;
+	}
+
+	public void setDataNascita(LocalDate dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+
+	public LocalDate getDataMorte() {
+		return dataMorte;
+	}
+
+	public void setDataMorte(LocalDate dataMorte) {
+		this.dataMorte = dataMorte;
+	}
+
+
+
+
 }
