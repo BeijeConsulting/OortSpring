@@ -76,7 +76,7 @@ public class UtenteService {
 			
 			BeanUtils.copyProperties(datiUtente, utente, "id");
 			
-			utenteRepository.save(datiUtente);
+			utenteRepository.save(utente);
 			
 		} else throw new IllegalArgumentException("dati utente non presenti");
 		
