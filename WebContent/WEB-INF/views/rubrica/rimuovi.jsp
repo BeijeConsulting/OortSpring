@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
 <!DOCTYPE HTML>
 <!--
 	Industrious by TEMPLATED
@@ -10,7 +9,7 @@
 -->
 <html>
 	<head>
-		<title>Rubrica - Ricerca contatti</title>
+		<title>Rubrica - Rimozione contatti</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -31,44 +30,46 @@
 		<nav id="menu">
 			<ul class="links">
 				<li><a href="/OortSpring/">Home</a></li>
-				<li><a href="/OortSpring/inserimento">Inserimento</a></li>
+				<li><a href="/OortSpring/inserisci">Inserimento</a></li>
 				<li><a href="/OortSpring/visualizza">Visualizzazione</a></li>
 				<li><a href="/OortSpring/modifica">Modifica</a></li>
 				<li><a href="/OortSpring/rimuovi">Rimozione</a></li>
- 				<li><a href="/OortSpring/ricerca">Ricerca</a></li>
-<!--				<li><a href="esportazione.html">Esportazione</a></li> -->
+				<!-- <li><a href="ricerca.html">Ricerca</a></li>
+				<li><a href="esportazione.html">Esportazione</a></li> -->
 			</ul>
 		</nav>
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>Ricerca</h1>
+				<h1>Rimozione</h1>
 			</div>
 
 		<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="inner">
 					<div class="content">
-						<!-- Form -->
-						<h3>Keyword da cercare</h3>
-						<form  method="post" action="/OortSpring/ricerca">
+						<!-- Form -->						
+						<h3>Selezionare un contatto</h3>
+						<form method="post" action="./rimuovi">
 							<div class="row gtr-uniform">
-								<!--div class="col-6 col-12-xsmall"-->
 								<div class="col-12">
-									<input type="text" name="search-value" id="search-value" value="" placeholder="Keyword" />
+									<select name="selezione-contatto" id="selezione-contatto">
+										<option value="">- Contatto -</option>
+										<c:forEach var = "contatto" items = "${ contatti }">
+											<option value="${ contatto.id }">${ contatto }</option>
+										</c:forEach>
+									</select>
 								</div>
-								<!-- Break -->
 								<div class="col-12">
 									<ul class="actions">
-										<li><input type="submit" value="Invia" class="primary"/></li>
+										<li><input type="submit" value="Invia" class="primary" /></li>
 										<li><input type="reset" value="Cancella" /></li>
 									</ul>
 								</div>
 							</div>
 						</form>
-						 
-					<c:if test = "${contatti != null}">
-							<h3>Risultato della ricerca</h3>
+						<c:if test = "${contatto != null}">
+							<h3>Contatto eliminato</h3>
 							<div class="table-wrapper">
 								<table>
 									<thead>

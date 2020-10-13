@@ -1,4 +1,4 @@
-package it.beije.oort;
+package it.beije.oort.gregori.biblioteca;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

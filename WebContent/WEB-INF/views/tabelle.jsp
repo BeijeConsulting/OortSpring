@@ -10,7 +10,7 @@
 -->
 <html>
 	<head>
-		<title>Biblioteca | Home</title>
+		<title>Biblioteca | Selezione tabella</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -50,65 +50,50 @@
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<h2>Azioni disponibili</h2>
-						<p>Selezionare un'azione da svolgere sulla biblioteca.</p>
+						<h2>Tabelle disponibili</h2>
+						<p>Selezionare una tabella sulla quale svolgere l'operazione.</p>
 					</header>
 					<div class="highlights">
 						<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/inserisci" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-									<h3>Inserisci</h3>
+									<a href="/OortSpring/utente" class="icon fa-table"><span class="label">Icon</span></a>
+									<h3>Utente</h3>
 								</header>
-								<!-- <p>Inserimento di un contatto all'interno della rubrica.</p> -->
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/visualizza" class="icon fa-table"><span class="label">Icon</span></a>
-									<h3>Visualizza</h3>
+									<a href="/OortSpring/autore" class="icon fa-table"><span class="label">Icon</span></a>
+									<h3>Autore</h3>
 								</header>
-								<!-- <p>Visualizzazione dei contatti presenti in rubrica.</p> -->
-							</div>
-						</section>
-	  					<section>
-							<div class="content">
-								<header>
-									<a href="/OortSpring/modifica" class="icon fa-edit"><span class="label">Icon</span></a>
-									<h3>Modifica</h3>
-								</header>
-								<!-- <p>Modifica di un contatto all'interno della rubrica.</p> -->
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/rimuovi" class="icon fa-trash"><span class="label">Icon</span></a>
-									<h3>Rimuovi</h3>
+									<a href="/OortSpring/editore" class="icon fa-table"><span class="label">Icon</span></a>
+									<h3>Editore</h3>
 								</header>
-								<!-- <p>Rimozione di un contatto all'interno della rubrica.</p> -->
 							</div>
 						</section>
- 						<section>
+						<section>
 							<div class="content">
 								<header>
-									<a href="/OortSpring/ricerca" class="icon fa-search"><span class="label">Icon</span></a>
-									<h3>Ricerca</h3>
+									<a href="/OortSpring/libro" class="icon fa-table"><span class="label">Icon</span></a>
+									<h3>Libro</h3>
 								</header>
-								<!-- <p>Ricerca di un contatto all'interno della rubrica.</p> -->
 							</div>
 						</section>
-<!-- 						<section>
+						<section>
 							<div class="content">
 								<header>
-									<a href="esportazione.html" class="icon fa-files-o"><span class="label">Icon</span></a>
-									<h3>Esporta</h3>
+									<a href="/OortSpring/prestito" class="icon fa-table"><span class="label">Icon</span></a>
+									<h3>Prestito</h3>
 								</header>
-								<p>Esportazione della rubrica.</p>
 							</div>
-						</section> -->
-	
+						</section>
 					</div>
 				</div>
 			</section>

@@ -10,7 +10,7 @@
 -->
 <html>
 	<head>
-		<title>Rubrica - Ricerca contatti</title>
+		<title>Rubrica - Inserimento contatti</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -33,16 +33,16 @@
 				<li><a href="/OortSpring/">Home</a></li>
 				<li><a href="/OortSpring/inserimento">Inserimento</a></li>
 				<li><a href="/OortSpring/visualizza">Visualizzazione</a></li>
-				<li><a href="/OortSpring/modifica">Modifica</a></li>
+				<li><a href="/OortSpring/midifica">Modifica</a></li>
 				<li><a href="/OortSpring/rimuovi">Rimozione</a></li>
- 				<li><a href="/OortSpring/ricerca">Ricerca</a></li>
-<!--				<li><a href="esportazione.html">Esportazione</a></li> -->
+<!-- 				<li><a href="ricerca.html">Ricerca</a></li>
+				<li><a href="esportazione.html">Esportazione</a></li> -->
 			</ul>
 		</nav>
 
 		<!-- Heading -->
 			<div id="heading" >
-				<h1>Ricerca</h1>
+				<h1>Inserimento</h1>
 			</div>
 
 		<!-- Main -->
@@ -50,14 +50,27 @@
 				<div class="inner">
 					<div class="content">
 						<!-- Form -->
-						<h3>Keyword da cercare</h3>
-						<form  method="post" action="/OortSpring/ricerca">
+						<h3>Contatto</h3>
+						<form  method="post" action="">
 							<div class="row gtr-uniform">
 								<!--div class="col-6 col-12-xsmall"-->
 								<div class="col-12">
-									<input type="text" name="search-value" id="search-value" value="" placeholder="Keyword" />
+									<input type="text" name="nome" id="nome" value="" placeholder="Nome" />
 								</div>
 								<!-- Break -->
+								<!--div class="col-6 col-12-xsmall"-->
+								<div class="col-12">
+									<input type="text" name="cognome" id="cognome" value="" placeholder="Cognome" />
+								</div>
+								<!-- Break -->
+								<div class="col-12">
+									<input type="email" name="email" id="email" value="" placeholder="Email" />
+								</div>
+								<!-- Break -->
+								<!-- Break -->
+								<div class="col-12">
+									<input type="text" name="telefono" id="telefono" value="" placeholder="Telefono" />
+								</div>
 								<div class="col-12">
 									<ul class="actions">
 										<li><input type="submit" value="Invia" class="primary"/></li>
@@ -66,9 +79,15 @@
 								</div>
 							</div>
 						</form>
+						<%
+						/* String nome = (String)session.getAttribute("nome");
+						String cognome = (String)session.getAttribute("cognome");
+						String telefono = (String)session.getAttribute("telefono");
+						String email = (String)session.getAttribute("email");
+						 */%>
 						 
-					<c:if test = "${contatti != null}">
-							<h3>Risultato della ricerca</h3>
+					<c:if test = "${contatto != null}">
+							<h3>Contatto inserito</h3>
 							<div class="table-wrapper">
 								<table>
 									<thead>

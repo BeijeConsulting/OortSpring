@@ -144,7 +144,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/ricerca", method = RequestMethod.POST)
 	public String ricerca(@RequestParam(name="search-value") String search_value, Model model) {
-		System.out.println("rimuovi after rimozione...");
+		System.out.println("ricerca after ricerca...");
 		
 		if(search_value != null) {			
 			EntityManager entityManager = JPAEntityManager.createEntityManager();
@@ -164,7 +164,7 @@ public class HomeController {
 		List<Contatto> contatti = ReaderDb.readContatti();
 		model.addAttribute("contatti", contatti);
 		
-		return "rimuovi";
+		return "ricerca";
 	}
 
 }
