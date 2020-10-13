@@ -1,5 +1,7 @@
 package it.beije.oort.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -21,10 +23,12 @@ public class Autore implements IBibliotecaModel {
     private String biografia;
 
     @Column
-    private Date data_nascita;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date dataNascita;
 
     @Column
-    private Date data_morte;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date dataMorte;
 
     public Long getId() {
         return id;
@@ -58,28 +62,28 @@ public class Autore implements IBibliotecaModel {
         this.biografia = biografia;
     }
 
-    public Date getData_nascita() {
-        return data_nascita;
+    public Date getDataNascita() {
+        return dataNascita;
     }
 
-    public void setData_nascita(Date data_nascita) {
-        this.data_nascita = data_nascita;
+    public void setDataNascita(Date data_nascita) {
+        this.dataNascita = data_nascita;
     }
 
-    public Date getData_morte() {
-        return data_morte;
+    public Date getDataMorte() {
+        return dataMorte;
     }
 
-    public void setData_morte(Date data_morte) {
-        this.data_morte = data_morte;
+    public void setDataMorte(Date data_morte) {
+        this.dataMorte = data_morte;
     }
 
     public String toString(){
         return "ID: " + id +
                 ") Nome: " + nome +
                 ". Cognome: " + cognome +
-                ". Data di Nascita: " + data_nascita +
-                ". Data di Morte: " + data_morte +
+                ". Data di Nascita: " + dataNascita +
+                ". Data di Morte: " + dataMorte +
                 ".\n\tBiografia: " + biografia;
     }
 }

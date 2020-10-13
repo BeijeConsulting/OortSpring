@@ -62,7 +62,6 @@
                         <label for="desc">Descrizione: </label>
                         <textarea name="descrizione" id="desc" rows="4" cols="50"></textarea>
                     </div>
-                    <%-- Al momento non prende le date --%>
                     <div class="single-input">
                         <label for="anno">Anno di Pubblicazione: </label>
                         <input type="date" name="anno_pubblicazione" id="anno">
@@ -71,7 +70,7 @@
                         <label for="autore">Autore: </label>
                         <select id="autore" name="id_autore">
                             <option disabled selected>Seleziona Autore</option>
-                            <c:forEach var="autore" items="${autori}">
+                            <c:forEach var="autore" items="${sessionScope.autori}">
                                 <option value="${autore.id}">${autore.nome} ${autore.cognome}</option>
                             </c:forEach>
                         </select>
@@ -80,7 +79,7 @@
                         <label for="editore">Editore: </label>
                         <select id="editore" name="id_editore">
                             <option disabled selected>Seleziona Editore</option>
-                            <c:forEach var="editore" items="${editori}">
+                            <c:forEach var="editore" items="${sessionScope.editori}">
                                 <option value="${editore.id}">${editore.nome}</option>
                             </c:forEach>
                         </select>
@@ -166,7 +165,7 @@
                         <label for="prestitoUtente">Utente: </label>
                         <select id="prestitoUtente" name="cfUtente">
                             <option selected disabled>Seleziona Utente</option>
-                            <c:forEach var="utente" items="${utenti}">
+                            <c:forEach var="utente" items="${sessionScope.utenti}">
                                 <option value="${utente.codiceFiscale}">${utente.codiceFiscale}</option>
                             </c:forEach>
                         </select>
@@ -175,7 +174,7 @@
                         <label for="prestitoLibro">Libro: </label>
                         <select id="prestitoLibro" name="idLibro">
                             <option selected disabled>Seleziona Libro</option>
-                            <c:forEach var="libro" items="${libri}">
+                            <c:forEach var="libro" items="${sessionScope.libri}">
                                 <option value="${libro.id}">${libro.titolo}</option>
                             </c:forEach>
                         </select>

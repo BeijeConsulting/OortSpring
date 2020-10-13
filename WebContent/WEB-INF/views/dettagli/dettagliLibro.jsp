@@ -25,10 +25,11 @@
 
         <h3>Titolo: </h3> <p>${libro.titolo}</p>
         <h3>Autore: </h3> <p>${libro.autore.nome} ${libro.autore.cognome}</p>
-        <h3>Anno di Pubblicazione: </h3> <p>${libro.anno_pubblicazione}</p>
+        <h3>Anno di Pubblicazione: </h3> <p>${libro.annoPubblicazione}</p>
         <h3>Editore: </h3> <p>${libro.editore.nome}</p>
         <h3>Sinossi: </h3> <p>${libro.descrizione}</p>
     </div>
+    <a href="${pageContext.request.contextPath}/libro/${libro.id}/modifica">MODIFICA</a>
 </div>
 
 </body>

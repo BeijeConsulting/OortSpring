@@ -2,8 +2,7 @@ package it.beije.oort.service;
 
 import it.beije.oort.database.DatabaseController;
 import it.beije.oort.model.IBibliotecaModel;
-import it.beije.oort.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import it.beije.oort.utils.ListManagerUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -31,14 +30,9 @@ public class AddService {
 
         if (type != null && !type.equalsIgnoreCase("")) {
             request.getSession().setAttribute("add", type);
-            updateLists(session);
+            ListManagerUtils.updateLists(session);
         }
     }
 
-    public void updateLists(HttpSession session){
-        session.setAttribute("autori", DatabaseController.getAllAutori());
-        session.setAttribute("editori", DatabaseController.getAllEditori());
-        session.setAttribute("utenti", DatabaseController.getAllUtenti());
-        session.setAttribute("libri", DatabaseController.getAllLibri());
-    }
+
 }

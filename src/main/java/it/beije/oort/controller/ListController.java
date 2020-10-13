@@ -3,6 +3,9 @@ package it.beije.oort.controller;
 import it.beije.oort.database.DatabaseController;
 import it.beije.oort.model.Autore;
 import it.beije.oort.model.Libro;
+import it.beije.oort.repository.BookRepository;
+import it.beije.oort.service.LibroService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +20,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class ListController {
+
+    @Autowired
+    private LibroService libroService;
 
     // Stampa la pagina base per scegliere cosa visualizzare
     @GetMapping(value = "/visualizza")
@@ -48,14 +54,14 @@ public class ListController {
     ///////////////////////////////////////////////////
     // CONTROLLER PER PAGINE CHE LISTANO GLI ELEMENTI
     ///////////////////////////////////////////////////
-    @GetMapping(value = "/libro")
+    @GetMapping(value = "/libri")
     public String libriList(Model model){
         System.out.println("servo pagina libri");
         model.addAttribute("libri", DatabaseController.getAllLibri());
         return "liste/listLibri";
     }
 
-    @GetMapping(value = "/autore")
+    @GetMapping(value = "/autori")
     public String autoriList(Model model){
         model.addAttribute("autori", DatabaseController.getAllAutori());
         return "liste/listAutori";
@@ -79,14 +85,14 @@ public class ListController {
         return "liste/listPrestiti";
     }
 
-
     //////////////////////////////////////////////////////////////
     // CONTROLLER PER PAGINE DI DETTAGLIO DEI SINGOLI OGGETTI
     //////////////////////////////////////////////////////////////
     @GetMapping(value = "/libro/{id}")
     public String detailLibro(Model model,
                               @PathVariable Long id){
-        Libro libro = DatabaseController.getLibro(id);
+
+        Libro libro = libroService.load(id);
         if (libro != null){
             model.addAttribute("libro", libro);
         }
@@ -96,6 +102,7 @@ public class ListController {
     @GetMapping(value = "/autore/{id}")
     public String detailAutore(Model model,
                            @PathVariable Long id){
+
         Autore autore = DatabaseController.getAutore(id);
         if (autore != null){
             model.addAttribute("autore", autore);

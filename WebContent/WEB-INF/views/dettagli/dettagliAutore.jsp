@@ -25,10 +25,11 @@
 
         <h3>Nome: </h3> <p>${autore.nome}</p>
         <h3>Cognome: </h3> <p>${autore.cognome}</p>
-        <h3>Data di Nascita: </h3> <p>${autore.data_nascita}</p>
-        <h3>Data di Morte: </h3> <p>${autore.data_morte}</p>
+        <h3>Data di Nascita: </h3> <p>${autore.dataNascita}</p>
+        <h3>Data di Morte: </h3> <p>${autore.dataMorte}</p>
         <h3>Biografia: </h3> <p>${autore.biografia}</p>
     </div>
+    <a href="${pageContext.request.contextPath}/libro/${autore.id}/modifica">MODIFICA</a>
 </div>
 
 </body>

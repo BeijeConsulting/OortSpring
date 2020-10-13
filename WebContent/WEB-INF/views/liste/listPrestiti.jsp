@@ -52,7 +52,7 @@
                         <td>${obj.dataInizio}</td>
                         <td>${obj.dataFine}</td>
                         <td>${obj.cfUtente}</td>
-                        <td><a href="/libro/${obj.libro.id}">${obj.libro.titolo} - ${obj.libro.autore.nome} ${obj.libro.autore.cognome}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/libro/${obj.libro.id}">${obj.libro.titolo} - ${obj.libro.autore.nome} ${obj.libro.autore.cognome}</a></td>
                         <td>${obj.note}</td>
                     </tr>
                 </c:forEach>

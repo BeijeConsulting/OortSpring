@@ -21,24 +21,24 @@ public class Libro implements IBibliotecaModel {
     private String descrizione;
 
     @Column
-    @DateTimeFormat(pattern="dd/MM/yyyy")
-    private Date anno_pubblicazione;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date annoPubblicazione;
 
     @Column
-    private Long id_autore;
+    private Long idAutore;
 
     @Column
-    private Long id_editore;
+    private Long idEditore;
 
     public Autore getAutore(){
-        if (id_autore != null){
-            return DatabaseController.getAutore(id_autore);
+        if (idAutore != null){
+            return DatabaseController.getAutore(idAutore);
         } else return null;
     }
 
     public Editore getEditore(){
-        if (id_editore != null){
-            return DatabaseController.getEditore(id_editore);
+        if (idEditore != null){
+            return DatabaseController.getEditore(idEditore);
         } else return null;
     }
 
@@ -66,37 +66,37 @@ public class Libro implements IBibliotecaModel {
         this.descrizione = descrizione;
     }
 
-    public Date getAnno_pubblicazione() {
-        return anno_pubblicazione;
+    public Date getAnnoPubblicazione() {
+        return annoPubblicazione;
     }
 
-    public void setAnno_pubblicazione(Date anno_pubblicazione) {
-        this.anno_pubblicazione = anno_pubblicazione;
+    public void setAnnoPubblicazione(Date anno_pubblicazione) {
+        this.annoPubblicazione = anno_pubblicazione;
     }
 
-    public Long getId_autore() {
-        return id_autore;
+    public Long getIdAutore() {
+        return idAutore;
     }
 
-    public void setId_autore(Long id_autore) {
-        this.id_autore = id_autore;
+    public void setIdAutore(Long id_autore) {
+        this.idAutore = id_autore;
     }
 
-    public Long getId_editore() {
-        return id_editore;
+    public Long getIdEditore() {
+        return idEditore;
     }
 
-    public void setId_editore(Long id_editore) {
-        this.id_editore = id_editore;
+    public void setIdEditore(Long id_editore) {
+        this.idEditore = id_editore;
     }
 
     @Override
     public String toString() {
         return "ID: " + id +
                 ") Titolo: " + titolo +
-                ". Anno: " + anno_pubblicazione +
-                ". ID Autore: " + id_autore +
-                ". ID Editore: " + id_editore +
+                ". Anno: " + annoPubblicazione +
+                ". ID Autore: " + idAutore +
+                ". ID Editore: " + idEditore +
                 ".\n\tDescrizione: " + descrizione;
     }
 }

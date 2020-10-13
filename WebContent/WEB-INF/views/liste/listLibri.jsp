@@ -49,9 +49,9 @@
                 </tr>
                 <c:forEach items="${libri}" var="obj">
                     <tr>
-                        <td><a href="/libro/${obj.id}">${obj.titolo}</a></td>
-                        <td><a href="/autore/${obj.id_autore}">${obj.autore.nome} ${obj.autore.cognome}</a></td>
-                        <td>${obj.anno_pubblicazione}</td>
+                        <td><a href="${pageContext.request.contextPath}/libro/${obj.id}">${obj.titolo}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/autore/${obj.idAutore}">${obj.autore.nome} ${obj.autore.cognome}</a></td>
+                        <td>${obj.annoPubblicazione}</td>
                         <td>${obj.editore.nome}</td>
                         <td>${obj.descrizione}</td>
                     </tr>

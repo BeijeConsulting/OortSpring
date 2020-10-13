@@ -1,6 +1,7 @@
 package it.beije.oort.model;
 
 import it.beije.oort.database.DatabaseController;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -14,9 +15,11 @@ public class Prestito implements IBibliotecaModel {
     private Long id;
 
     @Column(name = "data_inizio")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataInizio;
 
     @Column(name = "data_fine")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataFine;
 
     @Column

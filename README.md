@@ -22,7 +22,7 @@
 - [ ] Sistemare CSS aggiunta oggetti
 
 ### Modifica
-- [ ] Modifica Libro
+- [x] Modifica Libro
 - [ ] Modifica Autore
 - [ ] Modifica Editore
 - [ ] Modifica Prestito

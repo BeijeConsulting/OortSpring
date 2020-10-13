@@ -51,10 +51,10 @@
                     <tr>
                         <td>${obj.nome}</td>
                         <td>${obj.cognome}</td>
-                        <td>${obj.data_nascita}</td>
-                        <td>${obj.data_morte}</td>
+                        <td>${obj.dataNascita}</td>
+                        <td>${obj.dataMorte}</td>
                         <td>${obj.biografia}</td>
-                        <td><a href="/autore/${obj.id}">Dettagli</a></td>
+                        <td><a href="${pageContext.request.contextPath}/autore/${obj.id}">Dettagli</a></td>
                     </tr>
                 </c:forEach>
             </table>
