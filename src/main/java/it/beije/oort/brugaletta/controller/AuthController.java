@@ -1,20 +1,17 @@
 package it.beije.oort.brugaletta.controller;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import it.beije.oort.brugaletta.db.JPDBUtilities;
 import it.beije.oort.brugaletta.entity.User;
 import it.beije.oort.brugaletta.services.UserService;
 
 @Controller
+@Scope("session")
 public class AuthController {
 	@Autowired
 	private UserService userService;
@@ -37,17 +34,18 @@ public class AuthController {
 	
 	@PostMapping("/homepage")
 	public String login(@RequestParam String email, @RequestParam String password, Model model, HttpServletRequest request) {
-		User loggedUser;
+		User loggedUser = userService.login(email, password);
 		String path = null;
-		if(userService.checkLogin(email, password)) {
-			loggedUser = userService.exportLoggedUser(email, password);
-			model.addAttribute("loggedUser", loggedUser);
-			request.getSession().setAttribute("loggedUser", loggedUser);
-			if (loggedUser.isAdmin()) {
+		try {
+			if(loggedUser.isAdmin()) {
 				path = "admin_biblio_homepage";
 			} else {
 				path = "user_biblio_homepage";
 			}
+			model.addAttribute("loggedUser", loggedUser);
+		} catch (NullPointerException e) {
+			model.addAttribute("errore", "credenziali errate!");
+			path = "login_biblio";
 		}
 		return path;
 	}
