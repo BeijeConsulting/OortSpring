@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Autore;
-import it.beije.oort.madonia.biblioteca.repository.AutoreReporitory;
+import it.beije.oort.madonia.biblioteca.repository.AutoreRepository;
 import it.beije.oort.madonia.biblioteca.utilities.EbeanUtils;
 import it.beije.oort.madonia.biblioteca.utilities.GeneralUtils;
 
@@ -16,7 +16,7 @@ import it.beije.oort.madonia.biblioteca.utilities.GeneralUtils;
 public class AutoreService {
 
 	@Autowired
-	private AutoreReporitory autoreRepository;
+	private AutoreRepository autoreRepository;
 	
 	public Autore trova(Integer id) {
 		if (id == null) {

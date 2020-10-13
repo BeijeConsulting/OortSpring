@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import it.beije.oort.madonia.biblioteca.ebeans.Autore;
 
 @Repository
-public interface AutoreReporitory extends JpaRepository<Autore, Integer> {
+public interface AutoreRepository extends JpaRepository<Autore, Integer> {
 
 }

@@ -2,16 +2,21 @@ package it.beije.oort.madonia.biblioteca.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Libro;
-import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
+import it.beije.oort.madonia.biblioteca.service.LibroService;
 
 @Controller
 public class ModificaLibroController {
+	
+	@Autowired
+	private LibroService libroService;
+	
 	@RequestMapping(value = "/biblioteca/modifica_libro", method = RequestMethod.GET)
 	public String modificaLibro() {
 		String page = "/biblioteca/modifica_libro";
@@ -30,14 +35,10 @@ public class ModificaLibroController {
 	private void eseguiForm(Libro libro, HttpServletRequest request, Model model) {
 		System.out.println("modifica_libro [POST]...");
 		
-		if (( (String) request.getParameter("submit") ).equals("id")) {
+		if ((request.getParameter("submit") ).equals("id")) {
 
 			try {
-				System.out.println("Input utente -> " + (String) request.getParameter("idLibro"));
-				Integer id = Integer.parseInt((String) request.getParameter("idLibro"));
-				System.out.println("ID trovato: " + id);
-				libro = DatabaseManagerBiblioteca.trovaLibro(id);
-				System.out.println("Libro trovato: " + libro);
+				libro = libroService.trova(request.getParameter("idLibro"));
 				
 				if (libro != null) {
 					model.addAttribute("libro", libro);
@@ -55,12 +56,10 @@ public class ModificaLibroController {
 				e.printStackTrace();
 			}
 			
-		} else if (( (String) request.getParameter("submit") ).equals("modifica")) {
+		} else if ((request.getParameter("submit") ).equals("modifica")) {
 			
 			try {
-				System.out.println("Modifica libro in corso: " + libro);
-				DatabaseManagerBiblioteca.modifica(libro);
-				System.out.println("Modifica eseguita");
+				libroService.modifica(request.getParameter("id"), libro);
 				model.addAttribute("successoMsg", "Libro modificato correttamente. " + libro);
 			} catch (Exception e) {
 				model.addAttribute("erroreMsg", "Operazione non eseguita: " + e.getMessage());

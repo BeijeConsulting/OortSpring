@@ -16,13 +16,13 @@ public class Prestito implements Ebeans {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "libro")
-	private int idLibro;
+	private Integer idLibro;
 	
 	@Column(name = "utente")
-	private int idUtente;
+	private Integer idUtente;
 	
 	@Column(name = "data_inizio")
 	private Date dataInizio;
@@ -33,27 +33,49 @@ public class Prestito implements Ebeans {
 	@Column(name = "note")
 	private String note;
 	
-	public int getId() {
+	public Prestito() {}
+	
+	public Prestito(Integer idLibro, Integer idUtente) {
+		this(idLibro, idUtente, null);
+	}
+	
+	public Prestito(Integer idLibro, Integer idUtente, Date dataInizio) {
+		this(idLibro, idUtente, dataInizio, null);
+	}
+	
+	public Prestito(Integer idLibro, Integer idUtente, Date dataInizio, Date dataFine) {
+		this(idLibro, idUtente, dataInizio, dataFine, null);
+	}
+	
+	public Prestito(Integer idLibro, Integer idUtente, Date dataInizio, Date dataFine, String note) {
+		this.setIdLibro(idLibro);
+		this.setIdUtente(idUtente);
+		this.setDataInizio(dataInizio);
+		this.setDataFine(dataFine);
+		this.setNote(note);
+	}
+	
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getIdLibro() {
+	public Integer getIdLibro() {
 		return idLibro;
 	}
 
-	public void setIdLibro(int idLibro) {
+	public void setIdLibro(Integer idLibro) {
 		this.idLibro = idLibro;
 	}
 
-	public int getIdUtente() {
+	public Integer getIdUtente() {
 		return idUtente;
 	}
 
-	public void setIdUtente(int idUtente) {
+	public void setIdUtente(Integer idUtente) {
 		this.idUtente = idUtente;
 	}
 
@@ -82,7 +104,7 @@ public class Prestito implements Ebeans {
 	}
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder().append("Utente [");
+		StringBuilder sb = new StringBuilder().append("Prestito [");
 
 		sb.append("id libro: ");
 		if(idLibro == 0) {

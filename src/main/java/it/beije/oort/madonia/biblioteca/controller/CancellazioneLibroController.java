@@ -2,16 +2,21 @@ package it.beije.oort.madonia.biblioteca.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Libro;
-import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
+import it.beije.oort.madonia.biblioteca.service.LibroService;
 
 @Controller
 public class CancellazioneLibroController {
+	
+	@Autowired
+	private LibroService libroService;
+	
 	@RequestMapping(value = "/biblioteca/cancellazione_libro", method = RequestMethod.GET)
 	public String cancellaLibro() {
 		String page = "/biblioteca/cancellazione_libro";
@@ -29,15 +34,9 @@ public class CancellazioneLibroController {
 	private void eseguiForm(HttpServletRequest request, Model model) {
 		System.out.println("cancellazione_libro [POST]...");
 		
-		if (( (String) request.getParameter("submit") ).equals("id")) {
-
-			Libro libro;
+		if ((request.getParameter("submit") ).equals("id")) {
 			try {
-				System.out.println("Input utente -> " + (String) request.getParameter("idLibro"));
-				Integer id = Integer.parseInt((String) request.getParameter("idLibro"));
-				System.out.println("ID trovato: " + id);
-				libro = DatabaseManagerBiblioteca.trovaLibro(id);
-				System.out.println("Libro trovato: " + libro);
+				Libro libro = libroService.trova(request.getParameter("idLibro"));
 				
 				if (libro != null) {
 					model.addAttribute("libro", libro);
@@ -55,13 +54,10 @@ public class CancellazioneLibroController {
 				e.printStackTrace();
 			}
 			
-		} else if (( (String) request.getParameter("submit") ).equals("cancellazione")) {
+		} else if ((request.getParameter("submit") ).equals("cancellazione")) {
 			
 			try {
-				Integer id = Integer.valueOf(request.getParameter("id"));
-				System.out.println("Cancellazione libro in corso.");
-				DatabaseManagerBiblioteca.cancellaLibro(id);
-				System.out.println("Cancellazione eseguita");
+				libroService.cancella(request.getParameter("id"));
 				model.addAttribute("successoMsg", "Libro cancellato correttamente.");
 			} catch (Exception e) {
 				model.addAttribute("erroreMsg", "Operazione non eseguita: " + e.getMessage());
