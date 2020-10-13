@@ -38,6 +38,12 @@ public class UtenteService {
 	}
 	
 	
+	public Optional<Utente> findByEmail(String email) {
+		Optional<Utente> utente = utenteRepository.findByEmail(email);
+		return utente;
+	}
+	
+	
 	//@Transactional
 	public void insert(Utente utente) {
 		if (utente == null) {

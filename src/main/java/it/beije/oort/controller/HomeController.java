@@ -58,12 +58,6 @@ public class HomeController {
 	public String utente(Utente utente, HttpServletRequest request, Model model) {//@RequestParam String cognome
 		System.out.println("ricevo dati utente...");
 		
-//		Utente utente = new Utente();
-//		utente.setCognome(cognome);
-//		utente.setNome(request.getParameter("nome"));
-//		utente.setEmail(request.getParameter("email"));
-//		utente.setTelefono(request.getParameter("telefono"));
-		
 		utenteService.insert(utente);
 		
 		model.addAttribute("utente", utente);
@@ -76,12 +70,7 @@ public class HomeController {
 		System.out.println("utente : " + id);
 		
 		//carico utente...
-//		Utente utente = new Utente();
-//		utente.setCognome("Zegna");
-//		utente.setNome("Ermenegildo");
-		
 		Utente utente = utenteService.load(id);
-		
 		//String nominativo = utenteService.getNominativo(utente);
 		
 		model.addAttribute("utente", utente);
