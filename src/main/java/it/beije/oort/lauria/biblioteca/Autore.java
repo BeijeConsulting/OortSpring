@@ -24,10 +24,10 @@ public class Autore {
 	@Column(name = "cognome")
 	private String cognome;
 	
-	@Column(name = "data_nascita")
+	@Column(name = "dataNascita")
 	private LocalDate data_nascita;
 	
-	@Column(name = "data_morte")
+	@Column(name = "dataMorte")
 	private LocalDate data_morte;
 	
 	@Column(name = "biografia")

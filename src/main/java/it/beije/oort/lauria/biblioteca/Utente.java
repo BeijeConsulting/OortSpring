@@ -22,7 +22,7 @@ public class Utente {
 	@Column(name = "cognome")
 	private String cognome;
 	
-	@Column(name = "codice_fiscale")
+	@Column(name = "codiceFiscale")
 	private String codice_fiscale;
 	
 	@Column(name = "telefono")

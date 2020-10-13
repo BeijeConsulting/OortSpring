@@ -31,26 +31,47 @@
 <meta charset="ISO-8859-1">
 <title>Oort Biblioteca</title>
 </head>
+
+	
+<%
+Utente userBean = (Utente)session.getAttribute("userBean");
+
+if (userBean == null) {
+%>
+	<a href="./home_biblio">HOME</a><br>
+<%
+} else {
+	%>
+	<a href="./conferma_login">HOME</a><br>
+	<%
+}
+%>
+
 <body>
+
 	<%-- <h3>${utente.nome} ${utente.cognome}</h3> --%>
-<c:if test = "${utente == null}">
+<%-- <c:if test = "${utente == null}">
 	<a href="./home_biblio">HOME</a><br>
 </c:if>
 <c:if test = "${utente != null}">
 	<a href="./conferma_login">HOME</a><br>
 </c:if>	 
-
+ --%>
+ 
 <table>
-	<h2>Sono presenti ${libri.size()} libri in biblioteca</h2>
+	<h2>Sono presenti ${libri.size()} libri in biblioteca</h2> 
 	
-<c:if test = "${!utente.isAdmin()}">
+<%-- <c:if test = "${!utente.isAdmin()}"> --%>
+<%
+if (userBean == null || !userBean.isAdmin() ) {
+%>
 
 		<tr>
 			<th>Id</th>
 			<th>Titolo</th>
 			<th>Descrizione</th>
-			<th>Id_autore</th>
-			<th>Id_editore</th>
+			<th>IdAutore</th>
+			<th>IdEditore</th>
 			<th>Anno</th>
 		</tr>
 
@@ -65,10 +86,13 @@
 		</tr>
 	</c:forEach>
 
-</c:if>
+<%-- </c:if>
 
 <c:if test = "${utente.isAdmin()}">	
-
+<h2>${utente.nome} ${utente.cognome}</h2> --%>
+<%
+}else{
+%>
 		<tr>
 			<th>Mod.</th>
 			<th>Canc.</th>
@@ -83,7 +107,7 @@
 	<c:forEach items="${libri}" var="libro">
 		<tr>
 			<td>&#9999;</td>
-			<td>&#128465</td>
+			<td><a href="./EliminaLibro/${libro.getId()}">&#128465;</a></td>
 			<td>${libro.getId()}</td>
 			<td>${libro.getTitolo()}</td>
 			<td>${libro.getDescrizione() != null ? libro.getDescrizione() : ""}</td>
@@ -111,8 +135,12 @@
 		<%
 		}
 	%> --%>
-</c:if>
 	
+<%-- </c:if>
+	 --%>
+ <%
+ }
+ %>
 		</table>	
 		
 </body>

@@ -18,16 +18,16 @@ public class Prestito {
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "id_libro")
+	@Column(name = "idLibro")
 	private int id_libro;
 	
-	@Column(name = "id_utente")
+	@Column(name = "idUtente")
 	private int id_utente;
 	
-	@Column(name = "data_inizio")
+	@Column(name = "dataInizio")
 	private LocalDate data_inizio;
 	
-	@Column(name = "data_fine")
+	@Column(name = "dataFine")
 	private LocalDate data_fine;
 	
 	@Column(name = "note")

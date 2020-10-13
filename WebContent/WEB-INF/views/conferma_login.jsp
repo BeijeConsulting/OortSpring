@@ -29,7 +29,8 @@ if (userBean == null) {
 <%
 } else if(userBean != null && !userBean.isAdmin()) {
 %>
-	<h1>Benvenuto ${utente.nome} ${utente.cognome}</h1>
+	<%-- <h1>Benvenuto ${utente.nome} ${utente.cognome}</h1>  --%>
+	<h1>Benvenuto <%= (userBean.getNome() != null) ? userBean.getNome() : "" %> <%= (userBean.getCognome() != null) ? userBean.getCognome() : "" %></h1>
 		
 		<p><a href="./logout">Esci</a></p>
 		
@@ -37,9 +38,9 @@ if (userBean == null) {
 		
 		<ul>
 			<a href="./visualizza_libri" ><li>Libri in biblioteca</li></a>
-			<a href="./VisualizzaAutori" ><li>Catalogo autori</li></a>
-			<a href="./VisualizzaEditori" ><li>Catalogo editori</li></a>
-			<a href="./VisualizzaPrestitiUtente" ><li>I tuoi prestiti</li></a>
+			<a href="./visualizza_autori" ><li>Catalogo autori</li></a>
+			<a href="./visualizza_editori" ><li>Catalogo editori</li></a>
+			<a href="./visualizza_prestitiUtente" ><li>I tuoi prestiti</li></a>
 		</ul>
 		
 		<h2>Ricerca per id</h2>
@@ -58,16 +59,19 @@ if (userBean == null) {
 <%-- </c:if>
 <c:if test = "${utente.isAdmin()}"> --%>
 
-		<h1>Benvenuto ${utente.nome} ${utente.cognome}</h1>
+		<%-- <h1>Benvenuto ${utente.nome} ${utente.cognome}</h1> --%>
+		<h1>Benvenuto <%= (userBean.getNome() != null) ? userBean.getNome() : "" %> <%= (userBean.getCognome() != null) ? userBean.getCognome() : "" %></h1>
+		
+		<p><a href="./logout">Esci</a></p>
 		
 		<h2>Visualizzazione</h2>
 		
 		<ul>
 			<a href="./visualizza_libri" ><li>Libri in biblioteca</li></a>
-			<a href="./VisualizzaAutori" ><li>Catalogo autori</li></a>
-			<a href="./VisualizzaEditori" ><li>Catalogo editori</li></a>
-			<a href="./VisualizzaUtenti" ><li>Elenco utenti registrati</li></a>
-			<a href="./VisualizzaPrestiti" ><li>Elenco prestiti</li></a>
+			<a href="./visualizza_autori" ><li>Catalogo autori</li></a>
+			<a href="./visualizza_editori" ><li>Catalogo editori</li></a>
+			<a href="./visualizza_utenti" ><li>Elenco utenti registrati</li></a>
+			<a href="./visualizza_prestiti" ><li>Elenco prestiti</li></a>
 		</ul>
 		
 		<h2>Inserimento</h2>

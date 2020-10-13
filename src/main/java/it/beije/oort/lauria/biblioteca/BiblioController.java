@@ -39,7 +39,7 @@ public class BiblioController {
 		
 		Utente utente = JPADBtools.verifyUtenti(email, password);
 		request.getSession().setAttribute("userBean", utente);
-		model.addAttribute("utente", utente);
+		//model.addAttribute("utente", utente);
 		if(utente != null) {
 			System.out.println("ok");
 			

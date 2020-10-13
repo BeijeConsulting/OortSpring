@@ -9,8 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.beije.oort.lauria.biblioteca.JPADBtools;
-import it.beije.oort.lauria.biblioteca.Utente;
+
 import it.beije.oort.lauria.service.UtenteService;
 
 @Controller
@@ -33,16 +32,13 @@ public class LoginController {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-//		Utente utente = JPADBtools.verifyUtenti(email, password);
+//		Utente utente = JPADBtools.verifyUtenti(email, password);		
+		Utente utente = utenteService.findByEmailAndPassword(email, password);	
+		System.out.println(utente);
 		
 		
-		Utente utente = utenteService.findByEmailAndPassword(email, password);
-		
-		
-		
-		System.out.println("utente login : " + utente);
-//		model.addAttribute("utente", utente);
 		if(utente != null) {
+			//model.addAttribute("utente", utente);
 			request.getSession().setAttribute("userBean", utente);
 			return "conferma_login";
 		}else {

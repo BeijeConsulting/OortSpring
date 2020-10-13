@@ -23,10 +23,10 @@ public class Libro {
 	@Column(name = "descrizione")
 	private String descrizione;
 	
-	@Column(name = "id_autore")
+	@Column(name = "idAutore")
 	private int id_autore;
 	
-	@Column(name = "id_editore")
+	@Column(name = "idEditore")
 	private int id_editore;
 	
 	@Column(name = "anno")

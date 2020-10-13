@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.beije.oort.lauria.biblioteca.Prestito;
 import it.beije.oort.lauria.biblioteca.Utente;
 import it.beije.oort.lauria.repository.UtenteRepository;
 
@@ -45,8 +46,7 @@ public class UtenteService {
 	public Utente findByEmailAndPassword(String email, String password) {
 		
 		Optional<Utente> utente = utenteRepository.findByEmailAndPassword(email, password);
-				
-		return utente.get();
+		return utente.isPresent() ? utente.get() : null;
 		
 	}
 
@@ -90,5 +90,14 @@ public class UtenteService {
 		} else throw new IllegalArgumentException("dati utente non presenti");
 		
 	}
+	
+	public List<Utente> findAll(){
+		
+		List<Utente> utenti = utenteRepository.findByIdGreaterThan(0);
+		
+		return utenti;
+		
+	}
+
 }
 
