@@ -54,7 +54,7 @@ public class Editore {
 	}
 	
 	public String toString() {
-		StringBuilder builder = new StringBuilder("prestito [");
+		StringBuilder builder = new StringBuilder("editore [");
 		builder.append("id : ").append(this.id)	
 			.append(" - denominazione : ").append(this.denominazione)	
 			.append(" - descrizione : ").append(this.descrizione).append("]");

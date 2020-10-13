@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -28,12 +29,15 @@ public class MyHomeController {
 
 	@Autowired
 	private UtenteService utenteService;
-	//posso collegare due controller alla stessa @Service?
 	
-	public static boolean isThereUtenteSession (HttpServletRequest request) {
-		Utente utenteSession = (Utente)request.getSession().getAttribute("utente");
-		return (utenteSession != null);
+	
+	@RequestMapping(value = "/biblioteca/", method = RequestMethod.GET)
+	public String home(HttpServletRequest request, HttpServletResponse response,
+						Model model, Locale locale) throws IOException {
+		String str = login(request, response, model, locale);
+		return str;
 	}
+	
 
 	@RequestMapping(value = "/biblioteca/my_login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response,
@@ -55,7 +59,7 @@ public class MyHomeController {
 	
 	@RequestMapping(value = "/biblioteca/homepage", method = RequestMethod.GET)
 	public String utente(HttpServletRequest request) {
-		if (MyHomeController.isThereUtenteSession(request))
+		if (utenteService.isThereUtenteSession(request))
 			return "biblioteca/homepage";
 		else
 			return "biblioteca/my_login";
@@ -66,11 +70,15 @@ public class MyHomeController {
 	public String utente(HttpServletRequest request, HttpServletResponse response,
 						 Utente u, Model model) {
 		System.out.println("utente...");
-
+		Utente utente = null;
+		try {
 		Optional<Utente> user = utenteService.findByEmailAndPassword(u.getEmail(), u.getPassword());
-		Utente utente = user.get();
-		System.out.println(utente);
-
+		System.out.println(user);
+		utente = user.get();
+		} catch (NoSuchElementException nsee) {
+			model.addAttribute("errore", "CREDENZIALI ERRATE");	
+			return "biblioteca/my_login";
+		}
 		if (utente == null) {
 			model.addAttribute("errore", "CREDENZIALI ERRATE");	
 			return "biblioteca/my_login";
@@ -80,48 +88,4 @@ public class MyHomeController {
 			return "biblioteca/homepage";
 		}
 	}
-
-//	@RequestMapping(value = "/biblioteca/visualizza_catalogo", method = RequestMethod.GET)
-//	public String catalogo(HttpServletRequest request, HttpServletResponse response) {
-//
-//		String jpql = "SELECT c FROM Libro as c";
-//		
-//		request.getSession().setAttribute("arraylist", (ArrayList)listLibri);
-//		return "biblioteca/visualizza_catalogo";
-//	}
-//	
-//	
-//	@RequestMapping(value = "/biblioteca/libro_id", method = RequestMethod.GET)
-//	public String libroId(HttpServletRequest request, HttpServletResponse response,
-//						 String stringId, Model model) {
-//		Libro libro = new Libro();
-//		System.out.println(stringId);
-//
-//		model.addAttribute("libro", libro);
-//		if (stringId == null || stringId.equals("")) {
-//			System.out.println("null");
-//
-//			model.addAttribute("errore", "");	
-//			return "biblioteca/libro_id";
-//		} else {
-//			try {
-//				System.out.println("try");
-//
-//				int id = Integer.parseInt(stringId);			
-//				//SELECT
-//				libro = entityManager.find(Libro.class, id);
-//				
-//				if (libro == null) {
-//					model.addAttribute("errore", "L'id non corrisponde a nessun libro");	
-//					return "biblioteca/libro_id";
-//				}
-//				System.out.println(libro);
-//				model.addAttribute("libro", libro);
-//				return "biblioteca/libro_id";
-//			} catch (NumberFormatException nfe) {
-//				model.addAttribute("errore", "L'id inserito non è valido");	
-//				return "biblioteca/libro_id";
-//			}
-//		}
-//	}
 }

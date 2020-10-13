@@ -93,7 +93,7 @@ public class Autore {
 	}	
 	
 	public String toString() {
-		StringBuilder builder = new StringBuilder("prestito [");
+		StringBuilder builder = new StringBuilder("autore [");
 		builder.append("id : ").append(this.id)	
 			.append(" - cognome : ").append(this.cognome)	
 			.append(" - nome : ").append(this.nome)	

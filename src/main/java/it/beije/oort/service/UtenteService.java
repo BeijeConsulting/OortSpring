@@ -3,6 +3,8 @@ package it.beije.oort.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,12 @@ public class UtenteService {
 	
 	@Autowired
 	private UtenteRepository utenteRepository;
-
+	
+	
+	public boolean isThereUtenteSession (HttpServletRequest request) {
+		Utente utenteSession = (Utente)request.getSession().getAttribute("utente");
+		return (utenteSession != null);
+	}
 	
 	public String getNominativo(Utente utente) {
 		if (utente == null)
@@ -31,12 +38,10 @@ public class UtenteService {
 		return utente.isPresent() ? utente.get() : null;
 	}
 	
-	
 	public List<Utente> findByNome(String nome) {
 		List<Utente> utenti = utenteRepository.findByNome(nome);
 		return utenti;
 	}
-	
 	
 	public Optional<Utente> findByEmail(String email) {
 		Optional<Utente> utente = utenteRepository.findByEmail(email);

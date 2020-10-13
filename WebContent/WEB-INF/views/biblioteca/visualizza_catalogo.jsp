@@ -14,7 +14,7 @@
 			
 		<h4>Ecco il catalogo completo dei libri:</h4><br>
 		<%
-		List<Libro> libri = (ArrayList)session.getAttribute("arraylist");
+		List<Libro> libri = (ArrayList)session.getAttribute("catalogo");
 		if (libri.size() == 0) {
 			%><p>Non hai avuto accesso al catalogo libri corretamente</p><%
 		} else {

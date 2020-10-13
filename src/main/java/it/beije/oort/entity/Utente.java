@@ -91,7 +91,7 @@ public class Utente {
 
 	
 	public String toString() {
-		StringBuilder builder = new StringBuilder("contatto [");
+		StringBuilder builder = new StringBuilder("utente [");
 		builder.append("nome : ").append(this.nome)
 			.append(" - cognome : ").append(this.cognome)
 			.append(" - telefono : ").append(this.telefono)

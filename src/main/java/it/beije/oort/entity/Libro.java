@@ -94,7 +94,7 @@ public class Libro {
 	}
 	
 	public String toString() {
-		StringBuilder builder = new StringBuilder("prestito [");
+		StringBuilder builder = new StringBuilder("libro [");
 		builder.append("id : ").append(this.id)	
 			.append(" - titolo : ").append(this.titolo)	
 			.append(" - descrizione : ").append(this.descrizione)
