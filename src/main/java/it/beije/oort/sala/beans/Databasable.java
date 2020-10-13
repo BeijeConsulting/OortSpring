@@ -1,4 +1,4 @@
-package it.beije.oort.sala.controller.beans;
+package it.beije.oort.sala.beans;
 
 public interface Databasable {
 	//Interface implemented from all javaBeans in 'Biblioteca' so that methods that read and

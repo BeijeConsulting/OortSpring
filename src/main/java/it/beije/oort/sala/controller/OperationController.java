@@ -2,22 +2,36 @@ package it.beije.oort.sala.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.beije.oort.sala.controller.beans.*;
+import it.beije.oort.sala.beans.*;
 import it.beije.oort.sala.controller.db.JPAToolset;
+import it.beije.oort.sala.controller.services.*;
+
 
 @Controller
 public class OperationController {
 	
+	@Autowired
+	private PrestitoService prestitoService;
+	@Autowired
+	private LibroService libroService;
+	@Autowired
+	private AutoreService autoreService;
+	@Autowired
+	private UtenteService utenteService;
+	@Autowired
+	private EditoreService editoreService;
+	
 	@RequestMapping(value = "/prestiti/{op}", method = RequestMethod.POST)
 	public String prestiti(@PathVariable String op, Prestito p, HttpServletRequest request) {
 		if(op.equals("insert")) {
-			JPAToolset.insertJPA(p);
+			prestitoService.insert(p);
 		} else if(op.equals("delete")) {
 			JPAToolset.deleteJPA("Prestito", p.getIdPrestito());
 		} else if(op.equals("update")) {

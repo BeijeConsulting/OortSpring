@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.beije.oort.sala.controller.beans.Libro;
-import it.beije.oort.sala.controller.beans.Prestito;
-import it.beije.oort.sala.controller.beans.PrestitoTransport;
-import it.beije.oort.sala.controller.beans.Utente;
 import it.beije.oort.sala.controller.repositories.UtenteRepository;
+import it.beije.oort.sala.beans.Libro;
+import it.beije.oort.sala.beans.Prestito;
+import it.beije.oort.sala.beans.PrestitoTransport;
+import it.beije.oort.sala.beans.Utente;
 import it.beije.oort.sala.controller.repositories.PrestitoRepository;
 
 @Service

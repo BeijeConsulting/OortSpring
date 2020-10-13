@@ -1,4 +1,4 @@
-package it.beije.oort.sala.controller.beans;
+package it.beije.oort.sala.beans;
 
 import java.time.LocalDate;
 

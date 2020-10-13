@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.beije.oort.sala.controller.beans.Utente;
+import it.beije.oort.sala.beans.Utente;
 import it.beije.oort.sala.controller.services.LoginService;
 import it.beije.oort.sala.controller.services.UtenteService;
 
