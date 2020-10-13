@@ -14,17 +14,17 @@ import it.beije.oort.madonia.biblioteca.service.EditoreService;
 @Controller
 
 public class ModificaEditoreController {
-	
+
 	@Autowired
 	private EditoreService editoreService;
-	
+
 	@RequestMapping(value = "/biblioteca/modifica_editore", method = RequestMethod.GET)
 	public String modificaEditore() {
 		String page = "/biblioteca/modifica_editore";
 		System.out.println("modifica_editore [GET]...");
 		return page;
 	}
-	
+
 	@RequestMapping(value = "/biblioteca/modifica_editore", method = RequestMethod.POST)
 	public String modificaEditore(Editore editore, HttpServletRequest request, Model model) {
 		System.out.println("modifica_editore [POST]...");
@@ -34,11 +34,11 @@ public class ModificaEditoreController {
 	}
 
 	private void eseguiForm(Editore editore, HttpServletRequest request, Model model) {
-		if (( (String) request.getParameter("submit") ).equals("id")) {
+		if (( request.getParameter("submit") ).equals("id")) {
 
 			try {
-				editore = editoreService.trova((String) request.getParameter("idEditore"));
-				
+				editore = editoreService.trova(request.getParameter("idEditore"));
+
 				if (editore != null) {
 					model.addAttribute("editore", editore);
 					model.addAttribute("successoMsg", "Editore trovato");
@@ -54,18 +54,18 @@ public class ModificaEditoreController {
 				System.out.println("Eccezione!");
 				e.printStackTrace();
 			}
-			
-		} else if (( (String) request.getParameter("submit") ).equals("modifica")) {
-			
+
+		} else if (( request.getParameter("submit") ).equals("modifica")) {
+
 			try {
-				editoreService.modifica(editore);
+				editoreService.modifica(request.getParameter("id"), editore);
 				model.addAttribute("successoMsg", "Editore modificato correttamente. " + editore);
 			} catch (Exception e) {
 				model.addAttribute("erroreMsg", "Operazione non eseguita: " + e.getMessage());
 				System.out.println("Eccezione!");
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
 }

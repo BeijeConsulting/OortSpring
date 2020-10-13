@@ -2,15 +2,15 @@ package it.beije.oort.madonia.biblioteca.service;
 
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Editore;
 import it.beije.oort.madonia.biblioteca.repository.EditoreRepository;
-import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
-import it.beije.oort.madonia.db.JpaEntityManagerFactory;
+import it.beije.oort.madonia.biblioteca.utilities.EbeanUtils;
+import it.beije.oort.madonia.biblioteca.utilities.GeneralUtils;
 
 @Service
 public class EditoreService {
@@ -19,69 +19,77 @@ public class EditoreService {
 	private EditoreRepository editoreRepository;
 	
 	public Editore trova(Integer id) {
-		if (id == null)
-			throw new IllegalArgumentException();
+		if (id == null) {
+			throw new IllegalArgumentException("La id è un valore null");
+		}
 		
 		Optional<Editore> editore = editoreRepository.findById(id);
 		return editore.isPresent() ? editore.get() : null;
 	}
 	
 	public Editore trova(String id) {
-		if (id == null)
-			throw new IllegalArgumentException();
+		if (GeneralUtils.stringIsNullOrEmpty(id)) {
+			throw new IllegalArgumentException("La id è null o vuota");
+		}
 		
 		return this.trova(Integer.valueOf(id));
 	}
 	
+	@Transactional
 	public void inserisci(Editore editore) {
 		if (editore == null)
 			throw new IllegalArgumentException();
 		
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.OORT_BIBLIOTECA);
-		try {
-			eManager.getTransaction().begin();
-			eManager.persist(editore);
-			eManager.getTransaction().commit();
-		} finally {
-			eManager.close();
+		if (EbeanUtils.editoreIsEmpty(editore)) {
+			throw new IllegalArgumentException("L'editore deve avere almeno un campo con un valore non vuoto");
 		}
-	}
-	
-	public void modifica(Editore editore) {
-		if (editore == null)
-			throw new IllegalArgumentException();
 		
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.OORT_BIBLIOTECA);
-		try {
-			Editore editoreModifica = eManager.find(Editore.class, editore.getId());
-			editoreModifica.setDenominazione(editore.getDenominazione());
-			editoreModifica.setDescrizione(editore.getDescrizione());
-			
-			eManager.getTransaction().begin();
-			eManager.persist(editoreModifica);
-			eManager.getTransaction().commit();
-		} finally {
-			eManager.close();
-		}
+		editoreRepository.saveAndFlush(editore);
 	}
 	
-	public void cancella(Integer id) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.OORT_BIBLIOTECA);
-		try {
-			Editore editore = eManager.find(Editore.class, id);
-			eManager.getTransaction().begin();
-			eManager.remove(editore);
-			eManager.getTransaction().commit();
-		} finally {
-			eManager.close();
+	@Transactional
+	public void modifica(Integer id, Editore datiEditore) {
+		if (datiEditore == null) {
+			throw new IllegalArgumentException("L'editore è un valore null");
 		}
+		
+		if (EbeanUtils.editoreIsEmpty(datiEditore)) {
+			throw new IllegalArgumentException("L'editore deve avere almeno un campo con un valore non vuoto");
+		}
+		
+		Editore editore = this.trova(id);
+		
+		if (editore == null) {
+			throw new IllegalArgumentException("Non è presente alcun editore con la id " + id);
+		}
+		
+		BeanUtils.copyProperties(datiEditore, editore, "id");
+		editoreRepository.saveAndFlush(editore);
+	}
+	
+	public void modifica(String id, Editore datiEditore) {
+		if (GeneralUtils.stringIsNullOrEmpty(id)) {
+			throw new IllegalArgumentException("La id è null o vuota");
+		}
+		
+		this.modifica(Integer.valueOf(id), datiEditore);
+	}
+	
+	@Transactional
+	public void cancella(Integer id) {
+		if (id == null) {
+			throw new IllegalArgumentException("La id è un valore null");
+		}
+		
+		editoreRepository.deleteById(id);
 	}
 	
 	public void cancella(String id) {
-		if (id == null)
-			throw new IllegalArgumentException();
+		if (GeneralUtils.stringIsNullOrEmpty(id)) {
+			throw new IllegalArgumentException("La id è null o vuota");
+		}
 		
-		this.trova(Integer.parseInt(id));
+		this.cancella(Integer.parseInt(id));
 	}
 	
 }

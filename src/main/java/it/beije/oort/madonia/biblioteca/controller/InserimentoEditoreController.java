@@ -13,31 +13,31 @@ import it.beije.oort.madonia.biblioteca.service.EditoreService;
 
 @Controller
 public class InserimentoEditoreController {
-	
+
 	@Autowired
 	private EditoreService editoreService;
-	
+
 	@RequestMapping(value = "/biblioteca/inserimento_editore", method = RequestMethod.GET)
 	public String inserimentoEditore() {
 		String page = "/biblioteca/inserimento_editore";
 		return page;
 	}
-	
+
 	@RequestMapping(value = "/biblioteca/inserimento_editore", method = RequestMethod.POST)
 	public String inserimentoEditore(Editore editore, HttpServletRequest request, Model model) {
 		String page = "/biblioteca/inserimento_editore";
-    	eseguiForm(editore, request, model);
+		eseguiForm(editore, request, model);
 		return page;
 	}
 
 	private void eseguiForm(Editore editore, HttpServletRequest request, Model model) {
 		System.out.println("Editore da inserire: " + editore);
-    	
-    	try {
-    		editoreService.inserisci(editore);
-    		model.addAttribute("successoMsg", "Editore inserito correttamente: " + editore);
-    	} catch (Exception e) {
-    		model.addAttribute("erroreMsg", "L'editore non è stato inserito. " + e.getMessage());
-    	}
+
+		try {
+			editoreService.inserisci(editore);
+			model.addAttribute("successoMsg", "Editore inserito correttamente: " + editore);
+		} catch (Exception e) {
+			model.addAttribute("erroreMsg", "L'editore non è stato inserito. " + e.getMessage());
+		}
 	}
 }

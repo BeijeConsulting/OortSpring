@@ -13,17 +13,17 @@ import it.beije.oort.madonia.biblioteca.service.EditoreService;
 
 @Controller
 public class CancellazioneEditoreController {
-	
+
 	@Autowired
 	private EditoreService editoreService;
-	
+
 	@RequestMapping(value = "/biblioteca/cancellazione_editore", method = RequestMethod.GET)
 	public String cancellaEditore() {
 		String page = "/biblioteca/cancellazione_editore";
 		System.out.println("cancellazione_editore [GET]...");
 		return page;
 	}
-	
+
 	@RequestMapping(value = "/biblioteca/cancellazione_editore", method = RequestMethod.POST)
 	public String cancellaEditore(HttpServletRequest request, Model model) {
 		String page = "/biblioteca/cancellazione_editore";
@@ -33,13 +33,13 @@ public class CancellazioneEditoreController {
 
 	private void eseguiForm(HttpServletRequest request, Model model) {
 		System.out.println("cancellazione_editore [POST]...");
-		
-		if (( (String) request.getParameter("submit") ).equals("id")) {
+
+		if (( request.getParameter("submit") ).equals("id")) {
 
 			Editore editore;
 			try {
-				editore = editoreService.trova((String) request.getParameter("idEditore"));
-				
+				editore = editoreService.trova( request.getParameter("idEditore"));
+
 				if (editore != null) {
 					model.addAttribute("editore", editore);
 					model.addAttribute("successoMsg", "Editore trovato");
@@ -55,9 +55,9 @@ public class CancellazioneEditoreController {
 				System.out.println("Eccezione!");
 				e.printStackTrace();
 			}
-			
-		} else if (( (String) request.getParameter("submit") ).equals("cancellazione")) {
-			
+
+		} else if (( request.getParameter("submit") ).equals("cancellazione")) {
+
 			try {
 				editoreService.cancella(request.getParameter("id"));
 				model.addAttribute("successoMsg", "Editore cancellato correttamente.");
@@ -66,7 +66,7 @@ public class CancellazioneEditoreController {
 				System.out.println("Eccezione!");
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
 }
