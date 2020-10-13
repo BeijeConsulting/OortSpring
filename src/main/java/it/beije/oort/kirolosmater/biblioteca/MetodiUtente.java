@@ -9,13 +9,18 @@ import java.util.Scanner;
 import javax.persistence.EntityManager;
 
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
 import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
+import it.beije.oort.kirolosmater.biblioteca.repository.UtenteBibliotecaRepository;
 
 @Service
 public class MetodiUtente {
+	
+	@Autowired
+	private UtenteBibliotecaRepository utenteBibliotecaRepository;
 	
 	static EntityManager entityManager = JPAEntityManagerSingleton.getEntityManager(libraryPersistenceUnit);
 
@@ -57,7 +62,7 @@ public class MetodiUtente {
 		String jpql = "SELECT c FROM Utente as c WHERE " + parameter + " LIKE '" + lineFromInput + "%'";
 		Query query = (Query) entityManager.createQuery(jpql);
 		List<UtenteBiblioteca> utenti = query.getResultList();
-//		for (Utente utente : utenti) {
+//		for (UtenteBiblioteca utente : utenti) {
 //			System.out.println("id : " + utente.getId());			
 //			System.out.println("cognome : " + utente.getCognome());
 //			System.out.println("nome : " + utente.getNome());
