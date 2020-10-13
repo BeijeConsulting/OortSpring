@@ -16,14 +16,14 @@ public class Prestito {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	@Column
-	private int id_libro;
-	@Column
-	private int id_utente;
-	@Column
-	private LocalDate data_inizio;
-	@Column
-	private LocalDate data_fine;
+	@Column(name="id_libro")
+	private int libro;
+	@Column(name="id_utente")
+	private int utente;
+	@Column(name="data_inizio")
+	private LocalDate dataInizio;
+	@Column(name="data_fine")
+	private LocalDate dataFine;
 	@Column
 	private String note;
 	public int getId() {
@@ -32,29 +32,29 @@ public class Prestito {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getId_libro() {
-		return id_libro;
+	public int getLibro() {
+		return libro;
 	}
-	public void setId_libro(int id_libro) {
-		this.id_libro = id_libro;
+	public void setLibro(int libro) {
+		this.libro = libro;
 	}
-	public int getId_utente() {
-		return id_utente;
+	public int getUtente() {
+		return utente;
 	}
-	public void setId_utente(int id_utente) {
-		this.id_utente = id_utente;
+	public void setUtente(int utente) {
+		this.utente = utente;
 	}
-	public LocalDate getData_inizio() {
-		return data_inizio;
+	public LocalDate getDataInizio() {
+		return dataInizio;
 	}
-	public void setData_inizio(LocalDate data_inizio) {
-		this.data_inizio = data_inizio;
+	public void setDataInizio(LocalDate dataInizio) {
+		this.dataInizio = dataInizio;
 	}
-	public LocalDate getData_fine() {
-		return data_fine;
+	public LocalDate getDataFine() {
+		return dataFine;
 	}
-	public void setData_fine(LocalDate data_fine) {
-		this.data_fine = data_fine;
+	public void setDataFine(LocalDate dataFine) {
+		this.dataFine = dataFine;
 	}
 	public String getNote() {
 		return note;
