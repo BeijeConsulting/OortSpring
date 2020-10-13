@@ -79,7 +79,7 @@ tr:nth-child(even) {
 			<form action="./" method="get">
 			<input type="submit" value="HOME" name="Menu">
 			</form>
-			<% if(session.getAttribute("admin").equals("on")){ %>
+			<% if("on".equals(session.getAttribute("admin"))){ %>
 			<form action="./NewPrestito" method="get">
 			<input type="submit" value="NewPrestito">
 			</form>

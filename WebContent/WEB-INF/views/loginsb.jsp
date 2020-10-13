@@ -16,7 +16,7 @@
 		</form>
 		<h4>Se vuoi visualizzare il catalogo</h4>		
 		<form action="./Catalogo" method="get">
-		<input type="submit" value="CATALOGO" name ="Catalogo">
+		<input type="submit" value="CATALOGO">
 		</form>
 		
 </body>

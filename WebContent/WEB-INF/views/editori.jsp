@@ -35,12 +35,14 @@ tr:nth-child(even) {
 		<th>ID</th>
 		<th>Denominazione</th>
 		<th>Descrizione</th>
+		<th>Link</th>
 	</tr>		
 <c:forEach var = "i" items="${editori}">
 <tr>
     <td><c:out value = " ${i.id}"/></td>
     <td><c:out value = " ${i.denominazione}"/></td>
     <td><c:out value = " ${i.descrizione}"/></td>
+    <td><a href="./CatalogoAutori/${i.id}">Autori</a></td>
  </tr>
 </c:forEach>
  </table>

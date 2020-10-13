@@ -1,4 +1,4 @@
-package it.beije.oort.controller;
+/*package it.beije.oort.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,12 +24,12 @@ import it.beije.oort.service.UtenteService;
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		System.out.println("home...");
-		
-		return "home";
-	}
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home() {
+//		System.out.println("home...");
+//		
+//		return "home";
+//	}
 
 	@Autowired
 	private UtenteService utenteService;
@@ -101,4 +101,4 @@ public class HomeController {
 		return "utente";
 	}
 
-}
+} */

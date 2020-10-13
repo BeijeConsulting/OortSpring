@@ -8,15 +8,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import it.beije.oort.entity.Utente;
+import it.beije.oort.sb.biblioteca.Utenti;
 
 
 @Repository
-public interface UtenteRepository extends JpaRepository<Utente, Integer> {
+public interface UtenteRepository extends JpaRepository<Utenti, Integer> {
 	
 	//IM : count u from User u where email = ?
-	Optional<Utente> findByEmail(String email);
+	Optional<Utenti> findByEmail(String email);
 
-	List<Utente> findByNome(String nome);
+	List<Utenti> findByNome(String nome);
 	
 	//Optional<Utente> findByEmailAndPassword(String email, String password);
 	
