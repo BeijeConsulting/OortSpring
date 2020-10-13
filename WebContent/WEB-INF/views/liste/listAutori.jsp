@@ -47,13 +47,14 @@
                     <th>Data di Morte</th>
                     <th>Biografia</th>
                 </tr>
-                <c:forEach items="${lista}" var="obj">
+                <c:forEach items="${autori}" var="obj">
                     <tr>
                         <td>${obj.nome}</td>
                         <td>${obj.cognome}</td>
                         <td>${obj.data_nascita}</td>
                         <td>${obj.data_morte}</td>
                         <td>${obj.biografia}</td>
+                        <td><a href="/autore/${obj.id}">Dettagli</a></td>
                     </tr>
                 </c:forEach>
             </table>

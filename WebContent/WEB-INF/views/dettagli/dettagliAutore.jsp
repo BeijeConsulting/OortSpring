@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${libro.titolo} di ${libro.autore.nome} ${libro.autore.cognome}</title>
+    <title>${autore.nome} ${autore.cognome}</title>
     <link href="${pageContext.request.contextPath}/resources/style/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioAdd.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioView.css" rel="stylesheet">
@@ -20,14 +20,14 @@
 <div class="container">
     <div class="small-center-container">
         <div class="header">
-            <h1><i>${libro.titolo} di ${libro.autore.nome} ${libro.autore.cognome}</i></h1>
+            <h1><i>${autore.nome} ${autore.cognome}</i></h1>
         </div>
 
-        <h3>Titolo: </h3> <p>${libro.titolo}</p>
-        <h3>Autore: </h3> <p>${libro.autore.nome} ${libro.autore.cognome}</p>
-        <h3>Anno di Pubblicazione: </h3> <p>${libro.anno_pubblicazione}</p>
-        <h3>Editore: </h3> <p>${libro.editore.nome}</p>
-        <h3>Sinossi: </h3> <p>${libro.descrizione}</p>
+        <h3>Nome: </h3> <p>${autore.nome}</p>
+        <h3>Cognome: </h3> <p>${autore.cognome}</p>
+        <h3>Data di Nascita: </h3> <p>${autore.data_nascita}</p>
+        <h3>Data di Morte: </h3> <p>${autore.data_morte}</p>
+        <h3>Biografia: </h3> <p>${autore.biografia}</p>
     </div>
 </div>
 

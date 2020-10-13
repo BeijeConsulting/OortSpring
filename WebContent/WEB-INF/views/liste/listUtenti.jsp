@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Elenco Libri</title>
+    <title>Elenco Utenti</title>
     <link href="${pageContext.request.contextPath}/resources/style/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioAdd.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/style/biblioView.css" rel="stylesheet">
@@ -22,17 +22,17 @@
     <div class="small-center-container">
         <div class="header">
             <h1><i>Biblioteca</i></h1>
-            <h3>Elenco Libri</h3>
+            <h3>Elenco Utenti</h3>
         </div>
 
         <form action="${pageContext.request.contextPath}/visualizza" method="post">
             <div class="single-input selector">
                 <label for="type">Cosa vuoi visualizzare:</label>
                 <select id="type" name="type" onchange="this.form.submit()">
-                    <option selected disabled value="Libri">Libri</option>
+                    <option value="Libri">Libri</option>
                     <option value="Autori">Autori</option>
                     <option value="Editori">Editori</option>
-                    <option value="Utenti">Utenti</option>
+                    <option selected disabled value="Utenti">Utenti</option>
                     <option value="Prestiti">Prestiti</option>
                 </select>
             </div>
@@ -41,19 +41,19 @@
         <div class="contatti-list">
             <table>
                 <tr>
-                    <th>Titolo</th>
-                    <th>Autore</th>
-                    <th>Anno di Pubblicazione</th>
-                    <th>Editore</th>
-                    <th>Sinossi</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Codice Fiscale</th>
+                    <th>Email</th>
+                    <th>Admin?</th>
                 </tr>
-                <c:forEach items="${lista}" var="obj">
+                <c:forEach items="${utenti}" var="obj">
                     <tr>
-                        <td>${obj.titolo}</td>
-                        <td>${obj.autore.nome} ${obj.autore.cognome}</td>
-                        <td>${obj.anno_pubblicazione}</td>
-                        <td>${obj.editore.nome}</td>
-                        <td>${obj.descrizione}</td>
+                        <td>${obj.nome}</td>
+                        <td>${obj.cognome}</td>
+                        <td>${obj.codiceFiscale}</td>
+                        <td>${obj.email}</td>
+                        <td>${obj.admin ? "Sì" : "No"}</td>
                     </tr>
                 </c:forEach>
             </table>

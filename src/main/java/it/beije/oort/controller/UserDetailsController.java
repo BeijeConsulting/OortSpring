@@ -13,6 +13,6 @@ public class UserDetailsController {
     public String getUserDetails(Model model,
                                  HttpSession session){
         model.addAttribute("user", (Utente) session.getAttribute("utente"));
-        return "user";
+        return "login/accountDetails";
     }
 }

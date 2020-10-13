@@ -24,10 +24,10 @@
 <div class="container">
     <div class = "small-center-container">
         <div class="header">
-            <h1><i>Login</i></h1>
+            <h1><i>Registrati</i></h1>
         </div>
         <div class = "rubrica-form">
-            <form action="${pageContext.request.contextPath}/login" method="post">
+            <form action="${pageContext.request.contextPath}/register" method="post">
                 <div class="single-input">
                     <label for="nome">Nome: </label>
                     <input type="text" name="nome" id="nome">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="single-input">
                     <label for="cf">Codice Fiscale: </label>
-                    <input type="text" name="cf" id="cf" required>
+                    <input type="text" name="codiceFiscale" id="cf" required>
                 </div>
                 <div class="single-input">
                     <label for="email">Email: </label>
@@ -48,8 +48,12 @@
                     <label for="password">Password: </label>
                     <input type="password" name="password" id="password" required>
                 </div>
+                <div class="single-input">
+                    <label for="admin">Admin? </label>
+                    <input type="checkbox" name="admin" id="admin" value="true">
+                </div>
                 <div class="submit">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Registrati">
                 </div>
             </form>
         </div>
