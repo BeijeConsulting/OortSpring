@@ -9,7 +9,7 @@
 	<body>
 		<h3>${registrationProblem}</h3>
 		<%if(session.getAttribute("user") == null) {%>
-			<form action="./registerService" method="post">
+			<form action="./register" method="post">
 			<label for="name">First Name:</label><input type="text" name="name"><br>
 			<label for="surname">Last Name:</label><input type="text" name="surname"><br>
 			<label for="fc">Fiscal Code:</label><input type="text" name="fc"><br>

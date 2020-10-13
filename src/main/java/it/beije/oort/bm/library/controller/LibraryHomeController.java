@@ -3,14 +3,16 @@ package it.beije.oort.bm.library.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import it.beije.oort.bm.library.entity.*;
+import it.beije.oort.bm.library.service.AuthorService;
+import it.beije.oort.bm.library.service.BookService;
 import it.beije.oort.bm.library.service.LoanService;
+import it.beije.oort.bm.library.service.PublisherService;
 import it.beije.oort.bm.library.service.UserService;
 
 @Controller
@@ -21,11 +23,11 @@ public class LibraryHomeController {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private UserService bookService;
+	private BookService bookService;
 	@Autowired
-	private UserService authorService;
+	private AuthorService authorService;
 	@Autowired
-	private UserService publisherService;
+	private PublisherService publisherService;
 	
 	@RequestMapping( value = "/", method = RequestMethod.GET)
 	public String home() {

@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<title>Web Library</title>
-		<c:url value="/resources/library_style.css" var="libraryCss" />
+		<c:url value="/library_style.css" var="libraryCss" />
 		<link rel = "stylesheet" type = "text/css" href = "${libraryCss}">
 	</head>
 	<body>

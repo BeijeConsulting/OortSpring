@@ -37,6 +37,11 @@ public class User implements Comparable<User>, Serializable{
 	public void setAdmin(Boolean admin) {
 		this.admin = admin;
 	}
+	
+	public void setAdmin(String value) {
+		if(value.equalsIgnoreCase("true")) admin = true;
+		else admin = false;
+	}
 
 	public String getPassword() {
 		return password;

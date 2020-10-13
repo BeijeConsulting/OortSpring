@@ -28,6 +28,7 @@ public class UserService {
 	public boolean register(User user) {
 		boolean ret = false;
 		if(user != null) {
+			user.setAdmin(false);
 			userRepo.saveAndFlush(user);
 			ret = true;
 		}
