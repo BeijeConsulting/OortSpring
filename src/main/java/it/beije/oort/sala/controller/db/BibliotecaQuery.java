@@ -11,8 +11,8 @@ public class BibliotecaQuery {
 		List<PrestitoTransport> list = new ArrayList<>();
 		for(Object o : temp) {
 			Prestito p = (Prestito)o;
-			Libro l = (Libro)JPAToolset.selectJPA("Libro","id_libro", p.getId_libro()).get(0);
-			Utente u = (Utente)JPAToolset.selectJPA("Utente","id_utente", p.getId_utente()).get(0);
+			Libro l = (Libro)JPAToolset.selectJPA("Libro","id_libro", p.getIdLibro()).get(0);
+			Utente u = (Utente)JPAToolset.selectJPA("Utente","id_utente", p.getIdUtente()).get(0);
 			list.add(new PrestitoTransport(p, u, l));
 		}
 		return list;

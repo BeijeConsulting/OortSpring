@@ -10,12 +10,12 @@ public class PrestitoTransport {
 	private String fine;
 	
 	public PrestitoTransport(Prestito p, Utente u, Libro l) {
-		this.id = p.getId_prestito();
+		this.id = p.getIdPrestito();
 		this.nome = u.getNome();
 		this.cognome = u.getCognome();
 		this.titolo = l.getTitolo();
-		this.inizio = p.getData_inizio().toString();
-		this.fine = (p.getData_fine()!=null)?p.getData_fine().toString():"";
+		this.inizio = p.getDataInizio().toString();
+		this.fine = (p.getDataFine()!=null)?p.getDataFine().toString():"";
 	}
 
 	public Integer getId() {

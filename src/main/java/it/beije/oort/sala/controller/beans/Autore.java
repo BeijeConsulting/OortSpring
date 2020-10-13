@@ -17,38 +17,38 @@ public class Autore implements Databasable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_autore")
-	private Integer id_autore;
+	private Integer idAutore;
 	@Column
 	private String nome;
 	@Column
 	private String cognome;
 	@Column
 	private String biografia;
-	@Column
-	private LocalDate data_nascita;
-	@Column
-	private LocalDate data_morte;
+	@Column(name="data_nascita")
+	private LocalDate dataNascita;
+	@Column(name="data_morte")
+	private LocalDate dataMorte;
 	
 	public Autore() {
 		this(null, "", "", "", null, null);
 	}
 	
-	public Autore(Integer id_autore, String nome, String cognome, String biografia, LocalDate data_nascita,
-			LocalDate data_morte) {
+	public Autore(Integer idAutore, String nome, String cognome, String biografia, LocalDate dataNascita,
+			LocalDate dataMorte) {
 		super();
-		this.id_autore = id_autore;
+		this.idAutore = idAutore;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.biografia = biografia;
-		this.data_nascita = data_nascita;
-		this.data_morte = data_morte;
+		this.dataNascita = dataNascita;
+		this.dataMorte = dataMorte;
 	}
 	
-	public Integer getId_autore() {
-		return id_autore;
+	public Integer getIdAutore() {
+		return idAutore;
 	}
-	public void setId_autore(Integer id_autore) {
-		this.id_autore = id_autore;
+	public void setIdAutore(Integer idAutore) {
+		this.idAutore = idAutore;
 	}
 	public String getNome() {
 		return nome;
@@ -68,21 +68,27 @@ public class Autore implements Databasable{
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;
 	}
-	public LocalDate getData_nascita() {
-		return data_nascita;
+	public LocalDate getDataNascita() {
+		return dataNascita;
 	}
-	public void setData_nascita(LocalDate data_nascita) {
-		this.data_nascita = data_nascita;
+	public void setDataNascita(LocalDate dataNascita) {
+		this.dataNascita = dataNascita;
 	}
-	public LocalDate getData_morte() {
-		return data_morte;
+	public void setDataNascita(String dataNascita) {
+		this.dataNascita = LocalDate.parse(dataNascita);
 	}
-	public void setData_morte(LocalDate data_morte) {
-		this.data_morte = data_morte;
+	public LocalDate getDataMorte() {
+		return dataMorte;
+	}
+	public void setDataMorte(LocalDate dataMorte) {
+		this.dataMorte = dataMorte;
+	}
+	public void setDataMorte(String dataMorte) {
+		this.dataMorte = LocalDate.parse(dataMorte);
 	}
 
 	public String toString() {
-		return "Autore [id_autore=" + id_autore + ", nome=" + nome + ", cognome=" + cognome + "]";
+		return "Autore [id_autore=" + idAutore + ", nome=" + nome + ", cognome=" + cognome + "]";
 	}
 	
 

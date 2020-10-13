@@ -14,11 +14,11 @@ public class Libro implements Databasable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_libro")
-	private Integer id_libro;
-	@Column
-	private Integer id_autore;
-	@Column
-	private Integer id_editore;
+	private Integer idLibro;
+	@Column(name="id_autore")
+	private Integer idAutore;
+	@Column(name="id_editore")
+	private Integer idEditore;
 	@Column
 	private String titolo;
 	@Column
@@ -34,33 +34,33 @@ public class Libro implements Databasable{
 		this(id_libro, null, null, titolo, "", null);
 	}
 	
-	public Libro(Integer id_libro, Integer id_autore,Integer id_editore,
+	public Libro(Integer idLibro, Integer idAutore,Integer idEditore,
 			String titolo, String descrizione, Short anno) {
-		this.id_libro=id_libro;
-		this.id_autore=id_autore;
-		this.id_editore=id_editore;
+		this.idLibro=idLibro;
+		this.idAutore=idAutore;
+		this.idEditore=idEditore;
 		this.titolo=titolo;
 		this.descrizione=descrizione;
 		this.anno=anno;
 	}
 	
-	public Integer getId_libro() {
-		return id_libro;
+	public Integer getIdLibro() {
+		return idLibro;
 	}
-	public void setId_libro(Integer id_libro) {
-		this.id_libro = id_libro;
+	public void setIdLibro(Integer idLibro) {
+		this.idLibro = idLibro;
 	}
-	public Integer getId_autore() {
-		return id_autore;
+	public Integer getIdAutore() {
+		return idAutore;
 	}
-	public void setId_autore(Integer id_autore) {
-		this.id_autore = id_autore;
+	public void setIdAutore(Integer idAutore) {
+		this.idAutore = idAutore;
 	}
-	public Integer getId_editore() {
-		return id_editore;
+	public Integer getIdEditore() {
+		return idEditore;
 	}
-	public void setId_editore(Integer id_editore) {
-		this.id_editore = id_editore;
+	public void setIdEditore(Integer idEditore) {
+		this.idEditore = idEditore;
 	}
 	public String getTitolo() {
 		return titolo;
@@ -82,7 +82,7 @@ public class Libro implements Databasable{
 	}
 
 	public String toString() {
-		return "Libro [id_libro=" + id_libro + ", id_autore=" + id_autore + ", titolo=" + titolo + ", anno=" + anno
+		return "Libro [id_libro=" + idLibro + ", id_autore=" + idAutore + ", titolo=" + titolo + ", anno=" + anno
 				+ "]";
 	}
 	

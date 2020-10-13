@@ -14,15 +14,15 @@ public class Utente implements Databasable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_utente")
-	private Integer id_utente;
+	private Integer idUtente;
 	@Column
 	private String nome;
 	@Column
 	private String cognome;
 	@Column
 	private String email;
-	@Column
-	private String codice_fiscale;
+	@Column(name="codice_fiscale")
+	private String codiceFiscale;
 	@Column
 	private String telefono;
 	@Column
@@ -36,26 +36,26 @@ public class Utente implements Databasable{
 		this(null, "","","","","","","",false);
 	}
 	
-	public Utente(Integer id_utente, String nome, String cognome, String codice_fiscale, 
+	public Utente(Integer idUtente, String nome, String cognome, String codiceFiscale, 
 				String email, String telefono, String indirizzo, String password, boolean admin) {
 		super();
-		this.id_utente = id_utente;
+		this.idUtente = idUtente;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
-		this.codice_fiscale = codice_fiscale;
+		this.codiceFiscale = codiceFiscale;
 		this.telefono = telefono;
 		this.indirizzo = indirizzo;
 		this.password = password;
 		this.admin = admin;
 	}
 
-	public Integer getId_utente() {
-		return id_utente;
+	public Integer getIdUtente() {
+		return idUtente;
 	}
 
-	public void setId_utente(Integer id_utente) {
-		this.id_utente = id_utente;
+	public void setIdUtente(Integer idUtente) {
+		this.idUtente = idUtente;
 	}
 
 	public String getNome() {
@@ -82,12 +82,12 @@ public class Utente implements Databasable{
 		this.email = email;
 	}
 
-	public String getCodice_fiscale() {
-		return codice_fiscale;
+	public String getCodiceFiscale() {
+		return codiceFiscale;
 	}
 
-	public void setCodice_fiscale(String codice_fiscale) {
-		this.codice_fiscale = codice_fiscale;
+	public void setCodiceFiscale(String codiceFiscale) {
+		this.codiceFiscale = codiceFiscale;
 	}
 
 	public String getTelefono() {
@@ -123,7 +123,8 @@ public class Utente implements Databasable{
 	}
 
 	public String toString() {
-		return "Utente [id_utente=" + id_utente + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + "]";
+		return "Utente [id_utente=" + idUtente + ", nome=" + nome + ", cognome=" 
+				+ cognome + ", email=" + email + "]";
 	}
 
 	

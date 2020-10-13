@@ -16,15 +16,15 @@ public class Prestito implements Databasable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_prestito")
-	private Integer id_prestito;
-	@Column
-	private Integer id_libro;
-	@Column
-	private Integer id_utente;
-	@Column
-	private LocalDate data_inizio;
-	@Column
-	private LocalDate data_fine;
+	private Integer idPrestito;
+	@Column(name="id_libro")
+	private Integer idLibro;
+	@Column(name="id_utente")
+	private Integer idUtente;
+	@Column(name="data_inizio")
+	private LocalDate dataInizio;
+	@Column(name="data_fine")
+	private LocalDate dataFine;
 	@Column
 	private String note;
 	
@@ -32,67 +32,61 @@ public class Prestito implements Databasable{
 		this(null, null, null, null, null, "");
 	}
 	
-	public Prestito(Integer id_prestito, Integer id_libro, Integer id_utente,
-			LocalDate data_inizio, LocalDate data_fine, String note) {
+	public Prestito(Integer idPrestito, Integer idLibro, Integer idUtente,
+			LocalDate dataInizio, LocalDate dataFine, String note) {
 		super();
-		this.id_prestito = id_prestito;
-		this.id_libro = id_libro;
-		this.id_utente = id_utente;
-		this.data_inizio = data_inizio;
-		this.data_fine = data_fine;
+		this.idPrestito = idPrestito;
+		this.idLibro = idLibro;
+		this.idUtente = idUtente;
+		this.dataInizio = dataInizio;
+		this.dataFine = dataFine;
 		this.note = note;
 	}
 
-	public Integer getId_prestito() {
-		return id_prestito;
+	public Integer getIdPrestito() {
+		return idPrestito;
 	}
-
-	public void setId_prestito(Integer id_prestito) {
-		this.id_prestito = id_prestito;
+	public void setIdPrestito(Integer idPrestito) {
+		this.idPrestito = idPrestito;
 	}
-
-	public Integer getId_libro() {
-		return id_libro;
+	public Integer getIdLibro() {
+		return idLibro;
 	}
-
-	public void setId_libro(Integer id_libro) {
-		this.id_libro = id_libro;
+	public void setIdLibro(Integer idLibro) {
+		this.idLibro = idLibro;
 	}
-
-	public Integer getId_utente() {
-		return id_utente;
+	public Integer getIdUtente() {
+		return idUtente;
 	}
-
-	public void setId_utente(Integer id_utente) {
-		this.id_utente = id_utente;
+	public void setIdUtente(Integer idUtente) {
+		this.idUtente = idUtente;
 	}
-
-	public LocalDate getData_inizio() {
-		return data_inizio;
+	public LocalDate getDataInizio() {
+		return dataInizio;
 	}
-
-	public void setData_inizio(LocalDate data_inizio) {
-		this.data_inizio = data_inizio;
+	public void setDataInizio(LocalDate dataInizio) {
+		this.dataInizio = dataInizio;
 	}
-
-	public LocalDate getData_fine() {
-		return data_fine;
+	public void setDataInizio(String dataInizio) {
+		this.dataInizio = LocalDate.parse(dataInizio);
 	}
-
-	public void setData_fine(LocalDate data_fine) {
-		this.data_fine = data_fine;
+	public LocalDate getDataFine() {
+		return dataFine;
 	}
-
+	public void setDataFine(LocalDate dataFine) {
+		this.dataFine = dataFine;
+	}
+	public void setDataFine(String dataFine) {
+		this.dataFine = LocalDate.parse(dataFine);
+	}
 	public String getNote() {
 		return note;
 	}
-
 	public void setNote(String note) {
 		this.note = note;
 	}
-
 	public String toString() {
-		return "Prestito [id_libro=" + id_libro + ", id_utente=" + id_utente + ", data_inizio=" + data_inizio
-				+ ", data_fine=" + data_fine + "]";
+		return "Prestito [id_libro=" + idLibro + ", id_utente=" + idUtente + ", data_inizio="
+				+ dataInizio + ", data_fine=" + dataFine + "]";
 	}
 }

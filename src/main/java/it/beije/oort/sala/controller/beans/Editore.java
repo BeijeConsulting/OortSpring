@@ -14,7 +14,7 @@ public class Editore implements Databasable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_editore")
-	private Integer id_editore;
+	private Integer idEditore;
 	@Column
 	private String denominazione;
 	@Column
@@ -24,17 +24,17 @@ public class Editore implements Databasable{
 		this(null, "", "");
 	}
 	
-	public Editore(Integer id_editore, String denominazione, String descrizione) {
+	public Editore(Integer idEditore, String denominazione, String descrizione) {
 		super();
-		this.id_editore = id_editore;
+		this.idEditore = idEditore;
 		this.denominazione = denominazione;
 		this.descrizione = descrizione;
 	}
-	public Integer getId_editore() {
-		return id_editore;
+	public Integer getIdEditore() {
+		return idEditore;
 	}
-	public void setId_editore(Integer id_editore) {
-		this.id_editore = id_editore;
+	public void setIEditore(Integer idEditore) {
+		this.idEditore = idEditore;
 	}
 	public String getDenominazione() {
 		return denominazione;
@@ -50,6 +50,6 @@ public class Editore implements Databasable{
 	}
 
 	public String toString() {
-		return "Editore [id_editore=" + id_editore + ", denominazione=" + denominazione + "]";
+		return "Editore [id_editore=" + idEditore + ", denominazione=" + denominazione + "]";
 	}
 }

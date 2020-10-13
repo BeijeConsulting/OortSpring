@@ -19,7 +19,7 @@ public class OperationController {
 		if(op.equals("insert")) {
 			JPAToolset.insertJPA(p);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Prestito", p.getId_prestito());
+			JPAToolset.deleteJPA("Prestito", p.getIdPrestito());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
@@ -35,7 +35,7 @@ public class OperationController {
 		if(op.equals("insert")) {
 			JPAToolset.insertJPA(l);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Libro", l.getId_libro());
+			JPAToolset.deleteJPA("Libro", l.getIdLibro());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
@@ -53,7 +53,7 @@ public class OperationController {
 		if(op.equals("insert")) {
 			JPAToolset.insertJPA(u);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Utente", u.getId_utente());
+			JPAToolset.deleteJPA("Utente", u.getIdUtente());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
@@ -71,7 +71,7 @@ public class OperationController {
 		if(op.equals("insert")) {
 			JPAToolset.insertJPA(e);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Editore", e.getId_editore());
+			JPAToolset.deleteJPA("Editore", e.getIdEditore());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
@@ -90,7 +90,7 @@ public class OperationController {
 			System.out.println(a.toString());
 			//JPAToolset.insertJPA(a);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Prestito", a.getId_autore());
+			JPAToolset.deleteJPA("Prestito", a.getIdAutore());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");

@@ -10,14 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.sala.controller.beans.Utente;
-import it.beije.oort.sala.controller.db.BibliotecaQuery;
 import it.beije.oort.sala.controller.services.LoginService;
+import it.beije.oort.sala.controller.services.UtenteService;
 
 @Controller
 public class BibliotecaController {
 	
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private UtenteService utenteService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String auth() {
@@ -44,9 +46,9 @@ public class BibliotecaController {
 		if(u!=null) {
 			session.setAttribute("nome", u.getNome());
 			session.setAttribute("admin", u.isAdmin());
-			session.setAttribute("userid", u.getId_utente());
+			session.setAttribute("userid", u.getIdUtente());
 			session.setAttribute("auth", true);
-			model.addAttribute("prestiti", BibliotecaQuery.getPrestiti(u.getId_utente()));
+			model.addAttribute("prestiti", utenteService.getPrestiti(u.getIdUtente()));
 			ret = "biblioteca/user";
 		} else {
 			model.addAttribute("error", "ERRORE: Email o password errati");
