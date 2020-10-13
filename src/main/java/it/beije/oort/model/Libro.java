@@ -20,14 +20,14 @@ public class Libro implements IBibliotecaModel {
     @Column
     private String descrizione;
 
-    @Column
+    @Column(name = "anno_pubblicazione")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date annoPubblicazione;
 
-    @Column
+    @Column(name = "id_autore")
     private Long idAutore;
 
-    @Column
+    @Column(name = "id_editore")
     private Long idEditore;
 
     public Autore getAutore(){

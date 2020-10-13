@@ -23,28 +23,22 @@
         <div class="header">
             <h1><i>Ricerca</i></h1>
         </div>
-        <div class = "rubrica-form">
-            <form action="${pageContext.request.contextPath}/search" method="post">
-                <div class="single-input selector">
-                    <label for="table" style="text-align: center">Tabella da Cercare:</label>
-                    <select id="table" name="table" required>
-                        <option value="" disabled selected>Seleziona la tabella da cercare</option>
-                        <option value="Libro">Libro</option>
-                        <option value="Autore">Autore</option>
-                        <option value="Editore">Editore</option>
-                        <option value="Utente">Utente</option>
-                        <option value="Prestito">Prestito</option>
-                    </select>
-                </div>
-
-                <div class="single-input">
-                    <label for="query">Cerca: </label>
-                    <input type="text" name="query" id="query" required placeholder="Cerca...">
-                </div>
-                <div class="submit">
-                    <input type="submit" value="Cerca">
-                </div>
-            </form>
+        <div class = "grid-buttons">
+            <a href="${pageContext.request.contextPath}/search/libro"><button class="button-rubrica">
+                Cerca Libro
+            </button></a>
+            <a href="${pageContext.request.contextPath}/search/autore"><button class="button-rubrica">
+                Cerca Autore
+            </button></a>
+            <a href="${pageContext.request.contextPath}/search/editore"><button class="button-rubrica">
+                Cerca Editore
+            </button></a>
+            <a href="${pageContext.request.contextPath}/search/utente"><button class="button-rubrica">
+                Cerca Utente
+            </button></a>
+            <a href="${pageContext.request.contextPath}/search/prestito"><button class="button-rubrica">
+                Cerca Prestito
+            </button></a>
         </div>
     </div>
 </div>

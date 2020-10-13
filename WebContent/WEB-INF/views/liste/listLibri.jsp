@@ -54,6 +54,13 @@
                         <td>${obj.annoPubblicazione}</td>
                         <td>${obj.editore.nome}</td>
                         <td>${obj.descrizione}</td>
+                        <td><a href="/libro/${obj.id}/modifica">
+                                <i class="fas fa-pen"></i>
+                        </a></td>
+<%--                        Todo delete qui--%>
+                        <td><a href="#">
+                                <i class="fas fa-minus-circle"></i>
+                        </a></td>
                     </tr>
                 </c:forEach>
             </table>

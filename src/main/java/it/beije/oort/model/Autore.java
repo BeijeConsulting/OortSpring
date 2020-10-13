@@ -22,11 +22,11 @@ public class Autore implements IBibliotecaModel {
     @Column
     private String biografia;
 
-    @Column
+    @Column(name = "data_nascita")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataNascita;
 
-    @Column
+    @Column(name = "data_morte")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataMorte;
 

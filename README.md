@@ -29,5 +29,10 @@
 - [ ] Modifica Utente
 - [ ] Modifica Utente anche per Utente stesso
 
-### Ricerca
-- [ ] tutto da fare
+### Ricerca (Per ora solo libri)
+- [ ] Fare una pagina di landing per la lista di result
+- [x] ricerca per id
+- [x] ricerca per titolo
+- [x] ricerca per autore
+- [x] ricerca per editore
+- [ ] ricerca per anno

@@ -1,5 +1,7 @@
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color: greenyellow;
 }
 
 .container{
@@ -234,31 +236,4 @@ a{
     height: 150px;
     animation-delay: 0s;
     animation-duration: 11s;
-}
-
-@keyframes animate {
-    0%{
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 50%;
-    }
-
-    100%{
-        transform: translateY(-1000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
-}
-
-.rotate {
-    animation: rotation 8s infinite linear;
-}
-
-@keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
 }

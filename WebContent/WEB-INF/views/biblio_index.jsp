@@ -31,9 +31,9 @@
         <!-- Index per amministratori -->
         <c:if test="${sessionScope.utente.admin}">
             <div class = "grid-buttons">
-<%--                <a href="./biblioSearch.jsp"><button class="button-rubrica">--%>
-<%--                    Ricerca--%>
-<%--                </button></a>--%>
+                <a href="${pageContext.request.contextPath}/search"><button class="button-rubrica">
+                    Ricerca
+                </button></a>
                 <a href="${pageContext.request.contextPath}/add"><button class="button-rubrica">
                     Aggiungi
                 </button></a>
@@ -44,9 +44,9 @@
         </c:if>
         <c:if test="!${sessionScope.utente.admin}">
             <div class = "grid-buttons">
-<%--                <a href="./biblioSearch.jsp"><button class="button-rubrica">--%>
-<%--                    Ricerca--%>
-<%--                </button></a>--%>
+                <a href="${pageContext.request.contextPath}/search"><button class="button-rubrica">
+                    Ricerca
+                </button></a>
                 <a href="${pageContext.request.contextPath}/libri"><button class="button-rubrica">
                     Elenco Libri
                 </button></a>

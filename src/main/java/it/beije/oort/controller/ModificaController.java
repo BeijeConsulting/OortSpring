@@ -4,6 +4,8 @@ import it.beije.oort.model.Libro;
 import it.beije.oort.service.LibroModifierService;
 import it.beije.oort.service.LibroService;
 import it.beije.oort.utils.ListManagerUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ModificaController {
 
-
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private LibroModifierService libroModifierService;
@@ -33,12 +35,11 @@ public class ModificaController {
             HttpSession session,
             @PathVariable Long id){
 
-        System.out.println("GetMapping modifica");
+        log.info("Richiesta GET per pagina di modifica libro.");
         Libro libro = libroService.load(id);
-        System.out.println("Libro caricato");
-
         if (libro != null){
             model.addAttribute("libro", libro);
+            log.info("Libro da modificare caricato con successo.");
         }
         ListManagerUtils.updateLists(session);
         return "modifica/modificaLibro";
@@ -48,12 +49,9 @@ public class ModificaController {
     public String modificaLibro(Libro libro,
                                 @PathVariable Long id){
 
-        System.out.println("post modifica libro");
-        System.out.println(libro.getAnnoPubblicazione());
+        log.info("Richiesta POST per pagina di modifica libro.");
         libroModifierService.update(libro, id);
-
-        System.out.println("libro aggiornato");
-
+        log.info("Libro aggiornato.");
         return "redirect:/libro/" + id;
     }
 }
