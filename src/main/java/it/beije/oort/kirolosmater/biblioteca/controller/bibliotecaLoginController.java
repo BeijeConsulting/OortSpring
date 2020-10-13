@@ -27,7 +27,7 @@ import it.beije.oort.kirolosmater.biblioteca.service.UtenteBibliotecaService;
 public class bibliotecaLoginController {
 	
 	@Autowired
-	private UtenteBibliotecaService utenteBibliotecaService;
+	private static UtenteBibliotecaService utenteBibliotecaService;
 	
 	@RequestMapping(value = "/biblioteca/login", method = RequestMethod.GET)
 	public String bibliotecaLogin(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
@@ -44,6 +44,10 @@ public class bibliotecaLoginController {
 
 	@RequestMapping(value = "/biblioteca/login", method = RequestMethod.POST)
 	public String bibliotecaLogin(@RequestParam String email, @RequestParam String password, HttpServletRequest request, Model model) {
+		return checkUserWithQueryMethods(email, password, request, model);
+	}
+	
+	public static String checkUserWithSession (String email, String password, HttpServletRequest request, Model model) {
 		System.out.println("ricevo dati utente...");
 		String stringaOutput = "biblioteca/areaPersonale";
 		HttpSession session = request.getSession();
@@ -63,6 +67,29 @@ public class bibliotecaLoginController {
 			stringaOutput = "biblioteca/areaPersonale";
 		} else {
 			session.setAttribute("errore", "CREDENZIALI ERRATE");
+			model.addAttribute("errore", "CREDENZIALI ERRATE");
+			stringaOutput = "biblioteca/bibliotecaLogin";
+		}
+		
+		
+		return stringaOutput;
+	}
+	
+	public static String checkUserWithQueryMethods(String email, String password, HttpServletRequest request, Model model) {
+		System.out.println("ricevo dati utente...");
+		String stringaOutput = "biblioteca/areaPersonale";
+//		System.out.println(email);
+		UtenteBiblioteca utente = utenteBibliotecaService.findByEmail(email);
+		
+		boolean passwordCorretta = checkPassword(utente, password);
+		if (passwordCorretta) {
+			model.addAttribute("utente", utente);
+			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
+			model.addAttribute("prestitiUtente", prestitiUtente);
+			boolean admin = utente.isAdmin();
+			model.addAttribute("admin", admin);
+			stringaOutput = "biblioteca/areaPersonale";
+		} else {
 			model.addAttribute("errore", "CREDENZIALI ERRATE");
 			stringaOutput = "biblioteca/bibliotecaLogin";
 		}

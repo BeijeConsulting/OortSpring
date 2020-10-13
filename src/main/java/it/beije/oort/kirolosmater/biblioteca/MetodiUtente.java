@@ -19,8 +19,8 @@ import it.beije.oort.kirolosmater.biblioteca.repository.UtenteBibliotecaReposito
 @Service
 public class MetodiUtente {
 	
-	@Autowired
-	private UtenteBibliotecaRepository utenteBibliotecaRepository;
+//	@Autowired
+//	private UtenteBibliotecaRepository utenteBibliotecaRepository;
 	
 	static EntityManager entityManager = JPAEntityManagerSingleton.getEntityManager(libraryPersistenceUnit);
 
@@ -80,7 +80,7 @@ public class MetodiUtente {
 		String jpql = "SELECT c FROM Utente as c WHERE " + parameter + " LIKE '" + lineFromInput + "%'";
 		Query query = (Query) entityManager.createQuery(jpql);
 		List<UtenteBiblioteca> utenti = query.getResultList();
-//		for (Utente utente : utenti) {
+//		for (UtenteBiblioteca utente : utenti) {
 //			System.out.println("id : " + utente.getId());			
 //			System.out.println("cognome : " + utente.getCognome());
 //			System.out.println("nome : " + utente.getNome());

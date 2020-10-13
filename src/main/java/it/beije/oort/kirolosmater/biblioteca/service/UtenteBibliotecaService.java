@@ -3,6 +3,8 @@ package it.beije.oort.kirolosmater.biblioteca.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import it.beije.oort.kirolosmater.biblioteca.repository.UtenteBibliotecaReposito
 
 @Service
 public class UtenteBibliotecaService {
+	
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private UtenteBibliotecaRepository utenteBibliotecaRepository;
@@ -39,6 +43,13 @@ public class UtenteBibliotecaService {
 		
 		return utenti;
 		
+	}
+	
+	public UtenteBiblioteca findByEmail(String email) {
+		List<UtenteBiblioteca> utenti = utenteBibliotecaRepository.findByEmail(email);
+		log.warn("here");
+		System.out.println(utenti);
+		return utenti.size() > 0? utenti.get(0) : null;
 	}
 	
 	//@Transactional

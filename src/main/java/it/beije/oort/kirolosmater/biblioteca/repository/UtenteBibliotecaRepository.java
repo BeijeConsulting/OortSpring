@@ -12,7 +12,7 @@ import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
 public interface UtenteBibliotecaRepository extends JpaRepository<UtenteBiblioteca, Integer>{
 	
 	//IM : count u from User u where email = ?
-	Optional<UtenteBiblioteca> findByEmail(String email);
+	List<UtenteBiblioteca> findByEmail(String email);
 	
 	List<UtenteBiblioteca> findByNome(String nome);
 	
