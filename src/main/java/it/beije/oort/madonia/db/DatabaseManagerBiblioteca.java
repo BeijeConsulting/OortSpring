@@ -16,7 +16,7 @@ import it.beije.oort.madonia.biblioteca.ebeans.Utente;
 public class DatabaseManagerBiblioteca {
 	private DatabaseManagerBiblioteca () {}
 	
-	public static final String UNIT_NAME = "OortBiblioteca";
+	public static final String OORT_BIBLIOTECA = "OortBiblioteca";
 	
 	public static Utente login(String email, String password) {
 		EntityManager eManager = null;
@@ -24,7 +24,7 @@ public class DatabaseManagerBiblioteca {
 		Utente utente = null;
 		String jpql = "SELECT u FROM Utente as u WHERE email = :email AND password = :password";
 		try {
-			eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+			eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 			query = eManager.createQuery(jpql);
 			query.setParameter("email", email);
 			query.setParameter("password", password);
@@ -67,7 +67,7 @@ public class DatabaseManagerBiblioteca {
 	}
 	
 	private static void inserisci(Ebeans objEntity) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 		try {
 			eManager.getTransaction().begin();
 			eManager.persist(objEntity);
@@ -78,7 +78,7 @@ public class DatabaseManagerBiblioteca {
 	}
 	
 	public static void modifica(Autore autore) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 		try {
 			Autore autoreModifica = eManager.find(Autore.class, autore.getId());
 			autoreModifica.setNome(autore.getNome());
@@ -96,7 +96,7 @@ public class DatabaseManagerBiblioteca {
 	}
 	
 	public static void modifica(Editore editore) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 		try {
 			Editore editoreModifica = eManager.find(Editore.class, editore.getId());
 			editoreModifica.setDenominazione(editore.getDenominazione());
@@ -111,7 +111,7 @@ public class DatabaseManagerBiblioteca {
 	}
 	
 	public static void modifica(Libro libro) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 		try {
 			Libro libroModifica = eManager.find(Libro.class, libro.getId());
 			libroModifica.setTitolo(libro.getTitolo());
@@ -129,7 +129,7 @@ public class DatabaseManagerBiblioteca {
 	}
 	
 	public static void cancellaAutore(Integer id) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 		try {
 			Autore autore = eManager.find(Autore.class, id);
 			
@@ -142,7 +142,7 @@ public class DatabaseManagerBiblioteca {
 	}
 	
 	public static void cancellaEditore(Integer id) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 		try {
 			Editore editore = eManager.find(Editore.class, id);
 			
@@ -155,7 +155,7 @@ public class DatabaseManagerBiblioteca {
 	}
 	
 	public static void cancellaLibro(Integer id) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 		try {
 			Libro libro = eManager.find(Libro.class, id);
 			
@@ -171,7 +171,7 @@ public class DatabaseManagerBiblioteca {
 		EntityManager eManager = null;
 		Autore autore = null;
 		try {
-			eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+			eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 			autore = eManager.find(Autore.class, id);
 		} catch(NoResultException e) {
 			autore = null;
@@ -186,7 +186,7 @@ public class DatabaseManagerBiblioteca {
 		EntityManager eManager = null;
 		Editore editore = null;
 		try {
-			eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+			eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 			editore = eManager.find(Editore.class, id);
 		} catch(NoResultException e) {
 			editore = null;
@@ -201,7 +201,7 @@ public class DatabaseManagerBiblioteca {
 		EntityManager eManager = null;
 		Libro libro = null;
 		try {
-			eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+			eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 			libro = eManager.find(Libro.class, id);
 		} catch(NoResultException e) {
 			libro = null;
@@ -218,7 +218,7 @@ public class DatabaseManagerBiblioteca {
 		List<Prestito> lista = null;
 		String jpql = "SELECT p FROM Prestito as p WHERE utente = :idUtente";
 		try {
-			eManager = JpaEntityManagerFactory.createEntityManager(UNIT_NAME);
+			eManager = JpaEntityManagerFactory.createEntityManager(OORT_BIBLIOTECA);
 			query = eManager.createQuery(jpql);
 			query.setParameter("idUtente", utente.getId());
 			lista = query.getResultList();

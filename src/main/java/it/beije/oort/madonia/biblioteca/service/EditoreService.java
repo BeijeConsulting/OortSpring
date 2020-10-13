@@ -1,29 +1,29 @@
 package it.beije.oort.madonia.biblioteca.service;
 
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Editore;
+import it.beije.oort.madonia.biblioteca.repository.EditoreRepository;
 import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
 import it.beije.oort.madonia.db.JpaEntityManagerFactory;
 
 @Service
 public class EditoreService {
 	
+	@Autowired
+	private EditoreRepository editoreRepository;
+	
 	public Editore trova(Integer id) {
 		if (id == null)
 			throw new IllegalArgumentException();
 		
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.UNIT_NAME);
-		Editore editore = null;
-		try {
-			editore = eManager.find(Editore.class, id);
-		} finally {
-			eManager.close();
-		}
-		
-		return editore;
+		Optional<Editore> editore = editoreRepository.findById(id);
+		return editore.isPresent() ? editore.get() : null;
 	}
 	
 	public Editore trova(String id) {
@@ -37,7 +37,7 @@ public class EditoreService {
 		if (editore == null)
 			throw new IllegalArgumentException();
 		
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.OORT_BIBLIOTECA);
 		try {
 			eManager.getTransaction().begin();
 			eManager.persist(editore);
@@ -51,7 +51,7 @@ public class EditoreService {
 		if (editore == null)
 			throw new IllegalArgumentException();
 		
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.OORT_BIBLIOTECA);
 		try {
 			Editore editoreModifica = eManager.find(Editore.class, editore.getId());
 			editoreModifica.setDenominazione(editore.getDenominazione());
@@ -66,7 +66,7 @@ public class EditoreService {
 	}
 	
 	public void cancella(Integer id) {
-		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.UNIT_NAME);
+		EntityManager eManager = JpaEntityManagerFactory.createEntityManager(DatabaseManagerBiblioteca.OORT_BIBLIOTECA);
 		try {
 			Editore editore = eManager.find(Editore.class, id);
 			eManager.getTransaction().begin();

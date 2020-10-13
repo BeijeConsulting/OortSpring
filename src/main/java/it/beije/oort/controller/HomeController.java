@@ -1,5 +1,8 @@
 package it.beije.oort.controller;
 
+import java.time.LocalDateTime;
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,8 +23,14 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String login(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
 		System.out.println("login..." + request.getContextPath());
+		
+		LocalDateTime localDateTime = LocalDateTime.now();
+		
+		model.addAttribute("localDateTime", localDateTime);
+		model.addAttribute("country", locale.getCountry());
+		model.addAttribute("lingua", locale.getLanguage());
 		
 		return "login";
 	}

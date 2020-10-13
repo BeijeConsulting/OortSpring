@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.madonia.biblioteca.ebeans.Editore;
 import it.beije.oort.madonia.biblioteca.service.EditoreService;
-import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
 
 @Controller
 public class InserimentoEditoreController {
