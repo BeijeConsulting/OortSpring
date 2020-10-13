@@ -24,8 +24,14 @@ import it.beije.oort.entity.Utente;
 import it.beije.oort.service.UtenteService;
 import it.beije.oort.entity.Libro;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 @Controller
 public class MyHomeController {
+	
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private UtenteService utenteService;
@@ -42,11 +48,12 @@ public class MyHomeController {
 	@RequestMapping(value = "/biblioteca/my_login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response,
 						Model model, Locale locale) throws IOException {
-		System.out.println("login..." + request.getContextPath());
+		log.info("login..." + request.getContextPath());
+		
 		
 		LocalDateTime today = LocalDateTime.now();
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd - MMMM - yyyy, hh:mm");
-		System.out.println(f.format(today));
+		log.info(f.format(today));
 		model.addAttribute("today", f.format(today));
 		model.addAttribute("country", locale.getCountry());
 		model.addAttribute("lingua", locale.getLanguage());
@@ -69,11 +76,12 @@ public class MyHomeController {
 	@RequestMapping(value = "/biblioteca/homepage", method = RequestMethod.POST)
 	public String utente(HttpServletRequest request, HttpServletResponse response,
 						 Utente u, Model model) {
-		System.out.println("utente...");
+		log.info("utente...");
 		Utente utente = null;
 		try {
 		Optional<Utente> user = utenteService.findByEmailAndPassword(u.getEmail(), u.getPassword());
-		System.out.println(user);
+		log.info(user.toString());
+		
 		utente = user.get();
 		} catch (NoSuchElementException nsee) {
 			model.addAttribute("errore", "CREDENZIALI ERRATE");	

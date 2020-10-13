@@ -20,23 +20,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.beije.oort.entity.Utente;
 import it.beije.oort.service.UtenteService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Controller
 public class HomeController {
+	
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private UtenteService utenteService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		System.out.println("home...");
+		log.info("home...");
 		
 		return "home";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
-		System.out.println("login..." + request.getContextPath());
+	public String login(HttpServletRequest request, HttpServletResponse response, 
+			Model model, Locale locale) {
+		log.info("login..." + request.getContextPath());
+
 		
 		LocalDateTime localDateTime = LocalDateTime.now();
 		
@@ -49,14 +56,17 @@ public class HomeController {
 
 	@RequestMapping(value = "/utente", method = RequestMethod.GET)
 	public String utente() {
-		System.out.println("utente...");
+		log.info("utente...");
+
 		
 		return "form_utente";
 	}
 
 	@RequestMapping(value = "/utente", method = RequestMethod.POST)
-	public String utente(Utente utente, HttpServletRequest request, Model model) {//@RequestParam String cognome
-		System.out.println("ricevo dati utente...");
+	public String utente(Utente utente, HttpServletRequest request, Model model) {
+		//@RequestParam String cognome
+		log.info("ricevo dati utente...");
+
 		
 		utenteService.insert(utente);
 		
@@ -67,7 +77,8 @@ public class HomeController {
 
 	@RequestMapping(value = "/utente/{id}", method = RequestMethod.GET)
 	public String utente(@PathVariable Integer id, Model model) {
-		System.out.println("utente : " + id);
+		log.info("utente : " + id);
+
 		
 		//carico utente...
 		Utente utente = utenteService.load(id);
@@ -81,11 +92,13 @@ public class HomeController {
 
 	@RequestMapping(value = "/utente/nome/{nome}", method = RequestMethod.GET)
 	public String utente(@PathVariable String nome, Model model) {
-		System.out.println("utente : " + nome);
+		log.info("utente : " + nome);
+
 		
 		List<Utente> utenti = utenteService.findByNome(nome);
 		
-		System.out.println(utenti);
+		log.info(utenti.toString());
+
 		
 		model.addAttribute("utente", utenti.size() > 0 ? utenti.get(0) : new Utente() );
 		
@@ -94,7 +107,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/utente/update/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable Integer id, Model model) {
-		System.out.println("update utente : " + id);
+		log.info("update utente : " + id);
+
 		
 		Utente utente = new Utente();
 		utente.setCognome("Zegna");

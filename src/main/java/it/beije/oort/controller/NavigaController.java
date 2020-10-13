@@ -15,8 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.beije.oort.entity.Libro;
 import it.beije.oort.service.LibroService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 @Controller
 public class NavigaController {
+
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private LibroService libroService;
@@ -36,18 +42,21 @@ public class NavigaController {
 	public String libroId(HttpServletRequest request, HttpServletResponse response,
 						 String stringId, Model model) {
 		Libro libro = null;
-		System.out.println(stringId);
+		log.info(stringId);
+
 		
 		request.getSession().setAttribute("libro", libro);
 		model.addAttribute("libro", libro);
 		if (stringId == null || stringId.equals("")) {
-			System.out.println("null");
+			log.info("null");
+
 
 			model.addAttribute("errore", "");	
 			return "biblioteca/libro_id";
 		} else {
 			try {
-				System.out.println("try");
+				log.info("try");
+
 
 				int id = Integer.parseInt(stringId);			
 				//SELECT
@@ -57,7 +66,8 @@ public class NavigaController {
 					model.addAttribute("errore", "L'id non corrisponde a nessun libro");	
 					return "biblioteca/libro_id";
 				}
-				System.out.println(libro);
+				log.info(libro.toString());
+
 				
 				request.getSession().setAttribute("libro", libro);
 				model.addAttribute("libro", libro);
