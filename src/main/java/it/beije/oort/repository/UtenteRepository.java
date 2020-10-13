@@ -12,20 +12,11 @@ import it.beije.oort.entity.Utente;
 
 @Repository
 public interface UtenteRepository extends JpaRepository<Utente, Integer> {
-	
-	String getNominativo(Utente utente);
-	
-	Utente load(Integer id);
 
 	List<Utente> findByNome(String nome);
 	
 	Optional<Utente> findByEmail(String email);
-	//Optional<Utente> findByEmailAndPassword(String email, String password);
 	
-	void insert(Utente utente);
-	
-	void update(Integer id, Utente datiUtente);
+	Optional<Utente> findByEmailAndPassword(String email, String password);
 	
 }
-
-

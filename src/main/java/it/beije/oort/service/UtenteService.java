@@ -43,6 +43,11 @@ public class UtenteService {
 		return utente;
 	}
 	
+	public Optional<Utente> findByEmailAndPassword(String email, String password) {
+		Optional<Utente> utente = utenteRepository.findByEmailAndPassword(email, password);
+		return utente;
+	}
+	
 	
 	//@Transactional
 	public void insert(Utente utente) {

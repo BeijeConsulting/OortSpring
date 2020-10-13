@@ -29,7 +29,7 @@ public class Utente {
 	@Column(name="email")
 	private String email;
 
-	@Transient
+	@Column(name="password")
 	private String password;
 	
 	
