@@ -44,16 +44,10 @@ public class UtenteService {
 	
 	public Utente findByEmailAndPassword(String email, String password) {
 		
-		Optional<Utente> utenteTemp = utenteRepository.findByEmail(email);
-		
-		Utente utente = utenteTemp.get();
-		
-		if(utente != null && password.equals(utente.getPassword())) {
-			return utente;
-		}else {
-			throw new IllegalArgumentException("Non esiste un utente con quella mail e password");
-		}
+		Optional<Utente> utente = utenteRepository.findByEmailAndPassword(email, password);
 				
+		return utente.get();
+		
 	}
 
 	

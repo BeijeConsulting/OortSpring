@@ -16,7 +16,7 @@ public interface UtenteRepository extends JpaRepository<Utente, Integer> {
 	//IM : count u from User u where email = ?
 	Optional<Utente> findByEmail(String email);
 	
-	Optional<Utente> findByPassword(String password);
+//	Optional<Utente> findByPassword(String password);
 	
 	List<Utente> findByNome(String nome);
 	

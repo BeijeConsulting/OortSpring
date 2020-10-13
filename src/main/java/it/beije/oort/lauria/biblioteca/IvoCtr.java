@@ -1,3 +1,6 @@
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
 //package it.beije.oort.controller;
 //
 //import java.time.LocalDateTime;
@@ -23,6 +26,7 @@
 //
 //@Controller
 //public class HomeController {
+//	private Logger log = LoggerFactory.getLogger(this.getClass());
 //	
 //	@Autowired
 //	private UtenteService utenteService;
@@ -30,7 +34,12 @@
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 //	public String home() {
 //		System.out.println("home...");
-//		
+//				log.trace("home...");
+//		log.debug("home...");
+//		log.info("home...");
+//		log.warn("home...");
+//		log.error("home...");
+
 //		return "home";
 //	}
 //

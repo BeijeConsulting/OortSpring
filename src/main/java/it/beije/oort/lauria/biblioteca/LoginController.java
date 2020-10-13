@@ -34,7 +34,12 @@ public class LoginController {
 		String password = request.getParameter("password");
 		
 //		Utente utente = JPADBtools.verifyUtenti(email, password);
+		
+		
 		Utente utente = utenteService.findByEmailAndPassword(email, password);
+		
+		
+		
 		System.out.println("utente login : " + utente);
 //		model.addAttribute("utente", utente);
 		if(utente != null) {
