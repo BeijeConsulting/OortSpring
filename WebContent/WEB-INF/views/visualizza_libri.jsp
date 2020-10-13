@@ -32,7 +32,7 @@
 <title>Oort Biblioteca</title>
 </head>
 <body>
-<h3>${utente.nome} ${utente.cognome}</h3>
+	<%-- <h3>${utente.nome} ${utente.cognome}</h3> --%>
 <c:if test = "${utente == null}">
 	<a href="./home_biblio">HOME</a><br>
 </c:if>

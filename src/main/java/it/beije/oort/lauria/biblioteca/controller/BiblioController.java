@@ -25,15 +25,15 @@ import it.beije.oort.lauria.biblioteca.entity.Utente;
 @Controller
 public class BiblioController {
 	
-	@RequestMapping(value = "/biblio/home_biblio", method = RequestMethod.GET)
+	@RequestMapping(value = "/home_biblio", method = RequestMethod.GET)
 	public String home() {
 		System.out.println("home get...");
 		
-		return "/biblio/home_biblio";
+		return "home_biblio";
 	}
 	
 	
-	@RequestMapping(value = "/biblio/conferma_login", method = RequestMethod.POST)
+	@RequestMapping(value = "/conferma_login", method = RequestMethod.POST)
 	public String confermaLogin(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 		System.out.println("conferma login post...");
 		//carico utente...
@@ -45,7 +45,7 @@ public class BiblioController {
 		if(utente != null) {
 			System.out.println("ok");
 			
-			return "/biblio/conferma_login";
+			return "conferma_login";
 //			request.getSession().setAttribute("userBean", utente);
 //			response.sendRedirect("confermaLogin.jsp");
 		}else {
@@ -55,7 +55,7 @@ public class BiblioController {
 			System.out.println("utente: "+utente);
 			request.getSession().setAttribute("errore", "CREDENZIALI ERRATE");
 			model.addAttribute("errore", "CREDENZIALI ERRATE");
-			return "/biblio/login_biblio";
+			return "login_biblio";
 		}
 		
 //		Utente utente = new Utente();
@@ -69,11 +69,11 @@ public class BiblioController {
 
 	}
 
-	@RequestMapping(value = "/biblio/conferma_login", method = RequestMethod.GET)
+	@RequestMapping(value = "/conferma_login", method = RequestMethod.GET)
 	public String confermaLogin(HttpServletRequest request, Model model) {
 		System.out.println("conferma login get...");
 
-		return "/biblio/conferma_login";
+		return "conferma_login";
 	}
 
 
@@ -82,6 +82,6 @@ public class BiblioController {
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("logout get...");
 		request.getSession().invalidate();
-		return "/biblio/home_biblio";
+		return "home_biblio";
 	}
 }

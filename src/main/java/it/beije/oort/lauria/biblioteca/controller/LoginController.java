@@ -14,14 +14,14 @@ import it.beije.oort.lauria.biblioteca.entity.Utente;
 @Controller
 public class LoginController {
 	
-	@RequestMapping(value = "/biblio/login_biblio", method = RequestMethod.GET)
+	@RequestMapping(value = "/login_biblio", method = RequestMethod.GET)
 	public String loginBiblio() {
 		System.out.println("login_biblio get...");
 		
-		return "/biblio/login_biblio";
+		return "login_biblio";
 	}
 	
-	@RequestMapping(value = "/biblio/login_biblio", method = RequestMethod.POST)
+	@RequestMapping(value = "/login_biblio", method = RequestMethod.POST)
 	public String loginBiblio(HttpServletRequest request, HttpServletResponse response, Model model) {
 		System.out.println("login_biblio post...");
 
@@ -32,22 +32,22 @@ public class LoginController {
 		model.addAttribute("utente", utente);
 		if(utente != null) {
 			request.getSession().setAttribute("userBean", utente);
-			return "/biblio/conferma_login";
+			return "conferma_login";
 		}else {
 			System.out.println("non c'è. utente: "+utente);
 			model.addAttribute("errore", "CREDENZIALI ERRATE");
-			return "/biblio/login_biblio";
+			return "login_biblio";
 		}
 	}
 	
-	@RequestMapping(value = "/biblio/registrazione_nuovo_utente", method = RequestMethod.GET)
+	@RequestMapping(value = "/registrazione_nuovo_utente", method = RequestMethod.GET)
 	public String registrazioneNuovoUtente() {
 		System.out.println("registrazione_nuovo_utente get...");
 		
-		return "/biblio/registrazione_nuovo_utente";
+		return "registrazione_nuovo_utente";
 	}
 
-	@RequestMapping(value = "/biblio/registrazione_nuovo_utente", method = RequestMethod.POST)
+	@RequestMapping(value = "/registrazione_nuovo_utente", method = RequestMethod.POST)
 	public String registrazioneNuovoUtente(Utente newUtente, HttpServletRequest request, HttpServletResponse response, Model model) {
 
 		System.out.println("registrazione_nuovo_utente post...");
@@ -60,7 +60,7 @@ public class LoginController {
 		
 		request.getSession().setAttribute("userBean", newUtente);
 		//model.addAttribute("newUtente", "Utente registrato con successo.");
-		return "/biblio/conferma_login";
+		return "conferma_login";
 
 	}
 
