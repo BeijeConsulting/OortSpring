@@ -27,16 +27,23 @@ public class LoginController {
 	public String login(@RequestParam String email, @RequestParam String password, Model model) {
 		System.out.println("login post...");
 		
-		// query on db
-		
 		Utente utente = utenteService.findByEmailAndPassword(email, password);
 		
 		model.addAttribute("utente", utente);
 		
-		// if utente is admin -> return home admin
-		// else -> return home user
+		boolean flag = true;
+		model.addAttribute("flag", flag);
+		
+		String returnPage = "login";
+		
+		if(utente != null) {
+			if(utente.isAdmin()) { returnPage = "home"; }
+			else { returnPage = "utente-home"; }
+		}
+		
+		
 				
-		return "login";
+		return returnPage;
 	}
 
 }

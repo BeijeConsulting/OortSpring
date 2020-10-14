@@ -66,4 +66,6 @@ public class HomeController {
 	@RequestMapping(value = "/utente", method = RequestMethod.POST)
 	public String utente(Utente utente, HttpServletRequest request, Model model) {//@RequestParam String cognome
 		System.out.println("ricevo dati utente...");
-		
+		return null;
+	}
+}

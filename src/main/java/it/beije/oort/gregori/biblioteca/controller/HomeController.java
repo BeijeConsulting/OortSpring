@@ -16,42 +16,6 @@ public class HomeController {
 		return "tabelle";
 	}
 	
-//	@RequestMapping(value = "/visualizza", method = RequestMethod.GET)
-//	public String visualizza(Model model) {
-//		System.out.println("visualizza...");
-//		
-//		return "visualizza";
-//	}
-//	
-//	@RequestMapping(value = "/inserisci", method = RequestMethod.GET)
-//	public String inserisci() {
-//		System.out.println("inserisci...");
-//		
-//		return "inserisci";
-//	}
-//	
-//	@RequestMapping(value = "/modifica", method = RequestMethod.GET)
-//	public String modifica(Model model) {
-//		System.out.println("modifica...");
-//		
-//		return "modifica";
-//	}
-//	
-//	@RequestMapping(value = "/rimuovi", method = RequestMethod.GET)
-//	public String rimuovi(Model model) {
-//		System.out.println("rimuovi...");
-//		
-//		return "rimuovi";
-//	}
-//	
-//	
-//	@RequestMapping(value = "/ricerca", method = RequestMethod.GET)
-//	public String ricerca() {
-//		System.out.println("ricerca...");
-//		
-//		return "ricerca";
-//	}
-	
 	@RequestMapping(value = "/utente", method = RequestMethod.GET)
 	public String utente(Model model) {
 		System.out.println("utente...");
