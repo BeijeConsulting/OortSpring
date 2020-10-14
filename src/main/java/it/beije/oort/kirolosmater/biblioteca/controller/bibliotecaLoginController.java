@@ -45,8 +45,6 @@ public class bibliotecaLoginController {
 
 	@RequestMapping(value = "/biblioteca/login", method = RequestMethod.POST)
 	public String bibliotecaLogin(@RequestParam String email, @RequestParam String password, HttpServletRequest request, Model model) {
-		System.out.println(email);
-		System.out.println(password);
 		return checkUserWithQueryMethods(email, password, request, model);
 	}
 	
