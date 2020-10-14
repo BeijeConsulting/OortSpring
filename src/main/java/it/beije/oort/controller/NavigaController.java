@@ -26,7 +26,38 @@ public class NavigaController {
 
 	@Autowired
 	private LibroService libroService;
+	
+	//insert
+//	utenteRepository.save(utente);
+	//update
+//	utenteService.update(id, utente);
+	
+	@RequestMapping(value = "/biblioteca/libro_titolo", method = RequestMethod.GET)
+	public String titoli(HttpServletRequest request, Model model) {
+		List<Libro> titoli = new ArrayList<>();
+		log.info("get");
 
+		model.addAttribute("errore", "");	
+		request.getSession().setAttribute("titoli", (ArrayList)titoli);
+		return "biblioteca/libro_titolo";
+	}
+	
+	@RequestMapping(value = "/biblioteca/libro_titolo", method = RequestMethod.POST)
+	public String titoli(HttpServletRequest request, String titolo, Model model) {
+		log.info("post");
+		List<Libro> titoli = new ArrayList<>();
+		model.addAttribute("errore", "Nessun libro corrisponde al Titolo inserito.");	
+
+		if (!titolo.contentEquals("")) {
+			titoli = libroService.cercaTitolo(titolo);
+			log.info(titoli.toString());
+			if (titoli.size() != 0)
+				model.addAttribute("errore", "");	
+		}
+		request.getSession().setAttribute("titoli", (ArrayList)titoli);
+		return "biblioteca/libro_titolo";
+	}
+	
 	
 	@RequestMapping(value = "/biblioteca/visualizza_catalogo", method = RequestMethod.GET)
 	public String catalogo(HttpServletRequest request, HttpServletResponse response) {

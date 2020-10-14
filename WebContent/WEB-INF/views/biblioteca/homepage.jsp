@@ -23,6 +23,7 @@
 		<br>
 		<h4>Selezionare l'operazione che si vuole eseguire:</h4>
 		<a href="./libro_id">Cerca Libro tramite Id</a><br>
+		<a href="./libro_titolo">Cerca Libro tramite Titolo</a><br>
 		<a href="./visualizza_catalogo">Visualizza catalogo libri</a>
 		
 	</body>
