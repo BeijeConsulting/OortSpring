@@ -7,7 +7,6 @@ import it.beije.oort.sala.beans.Libro;
 import it.beije.oort.sala.beans.Prestito;
 import it.beije.oort.sala.beans.PrestitoTransport;
 import it.beije.oort.sala.beans.Utente;
-import it.beije.oort.sala.controller.beans.*;
 
 public class BibliotecaQuery {
 

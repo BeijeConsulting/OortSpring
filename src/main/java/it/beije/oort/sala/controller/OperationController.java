@@ -33,13 +33,15 @@ public class OperationController {
 		if(op.equals("insert")) {
 			prestitoService.insert(p);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Prestito", p.getIdPrestito());
+			prestitoService.delete(p.getIdPrestito());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
-			Integer id = new Integer(request.getParameter("id"));
-					
-			JPAToolset.updateJPA("Prestito", field, newValue, id);
+			Integer id = new Integer(request.getParameter("idPrestito"));
+
+			Prestito newP = new Prestito();
+			prestitoService.setField(newP, field, newValue);
+			prestitoService.update(newP, id);
 		}
 		return "biblioteca/sub-admin/prestiti";
 	}

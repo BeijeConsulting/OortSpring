@@ -56,14 +56,14 @@
         <div>
             <h3 onclick="toggle('update')">Modifica prestito:</h3>
             <form id="update" action="/OortSpring/prestiti/update" method="POST" style="display: none;">
-            	<label>Inserisci l'id (id_prestito) dell'elemento da modificare</label>
-            	<input type="number" name="id_prestito"><br>
+            	<label>Inserisci l'id (idPrestito) dell'elemento da modificare</label>
+            	<input type="number" name="idPrestito"><br>
             	<label>Scegli il campo da modificare:</label>
             	<select name="field">
-					<option value="id_utente">id_utente</option>
-					<option value="id_libro">id_libro</option>
-					<option value="data_inizio">data_inizio</option>
-					<option value="data_fine">data_fine</option>
+					<option value="idUtente">idUtente</option>
+					<option value="idLibro">idLibro</option>
+					<option value="dataInizio">dataInizio</option>
+					<option value="dataFine">dataFine</option>
 					<option value="note">note</option>
 				</select><br>
             	<label>Inserisci il nuovo valore:</label>
