@@ -50,5 +50,8 @@ tr:nth-child(even) {
 	<form action="./catalogo" method="get">
 	<input type="submit" value="CATALOGO"/>
 	</form>
+	<%if(((String)session.getAttribute("admin")).equals("on")){ %>
+	<a href="./deleteautore">DELETE AUTORE</a>
+	<%} %>
 </body>
 </html>

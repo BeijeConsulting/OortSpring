@@ -35,8 +35,11 @@
 			<form action="./deleteprestito" method="get">
 			<input type="submit" value="DeletePrestito"/>
 			</form>	
-			<form action="./Smistatore" method="get">
-			<input type="submit" value="NewAutore" name ="NewAutore">
+			<form action="./deleteautore" method="get">
+			<input type="submit" value="DeleteAutore"/>
+			</form>	
+			<form action="./newautore" method="get">
+			<input type="submit" value="NewAutore">
 			</form>
 			<form action="./Smistatore" method="get">
 			<input type="submit" value="NewUtente" name ="NewUtente">

@@ -1,5 +1,7 @@
 package it.beije.oort.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,10 @@ public class AutoriService {
 	@Autowired
 	private AutoriRepository autoriRepository;
 	
+	
+	public void deleteById(Integer id) {
+		autoriRepository.deleteById(id);
+	}
 	public List<Autori> loadAutori(){
 		return autoriRepository.findAll();
 	}
@@ -23,5 +29,23 @@ public class AutoriService {
 	public Autori loadById(Integer id) {
 		Optional<Autori> autore = autoriRepository.findById(id);
 		return autore.isPresent() ? autore.get() : null;
+	}
+	
+	public String insert(String dataDiNascita, String dataDiMorte, Autori autore) {
+		String messaggio;
+		try {
+			autore.setDataMorte(LocalDate.parse(dataDiMorte));
+		} catch(DateTimeParseException e) {
+		}
+		try {
+			//la data di nascita non deve dare errore
+			autore.setDataNascita(LocalDate.parse(dataDiNascita));
+			autoriRepository.saveAndFlush(autore);
+			messaggio= "Autore Registrato Correttamente";
+			return messaggio;
+		}catch(Exception e) {
+			messaggio= "Impossibile Registrare Autore";
+			return messaggio;
+		}
 	}
 }

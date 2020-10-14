@@ -54,7 +54,7 @@ public class PrestitiController {
 	}
 	
 	@RequestMapping(value = "/newprestito", method = RequestMethod.GET)
-	public String newPrestitoG() {
+	public String newPrestitoGet() {
 		return "newprestito";
 	}
 	@RequestMapping(value="/prestiti", method = RequestMethod.GET)

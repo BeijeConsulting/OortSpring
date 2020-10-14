@@ -21,5 +21,6 @@
 	DATA FINE <input type="text" value="" name="dataFine" placeholder="yyyy-MM-dd"/><br>
 	<input type="submit" value="INVIO"/> <input type="reset" value="ANNULLA"/>
 </form>
+<a href="./">HOME</a>
 </body>
 </html>
