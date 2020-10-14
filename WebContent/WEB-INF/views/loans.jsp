@@ -14,7 +14,7 @@
 				if(u_lscope == null){%>
 					Please login first.
 				<%} else { %>
-					<table>
+					<table class="table">
 							<tr>
 								<th>Id</th>
 								<th>User</th>
@@ -28,8 +28,8 @@
 									<td>${l.id}</td>
 									<td>${l.user.id}</td>
 									<td>${l.book.title}</td>
-									<td>${l.start_date}</td>
-									<td>${l.end_date}</td>
+									<td>${l.startDate}</td>
+									<td>${l.endDate}</td>
 									<td>${l.notes}</td>
 								</tr>
 							</c:forEach>

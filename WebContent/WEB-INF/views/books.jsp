@@ -14,7 +14,7 @@
 		if(u_bscope == null){%>
 			Please login first.
 		<%} else { %>
-			<table>
+			<table class="table">
 					<tr>
 						<th>Id</th>
 						<th>Title</th>
@@ -27,31 +27,34 @@
 						<tr>
 							<td>${b.id}</td>
 							<td>${b.title}</td>
-							<td>${b.description}</td>
 							<td>${b.author.name} ${b.author.surname}</td>
 							<td>${b.publisher.name}</td>
 							<td>${b.year}</td>
+							<td>${b.description}</td>
 						</tr>
 					</c:forEach>
 			</table>
 		<%if(u_bscope.getAdmin()){%>
-			<form action="./insertService" method="post">
-				<label for="ins_title">Title: </label><input type="text" name="ins_title"><br>
-				<label for="ins_author">Author: </label><select name="ins_author">
-					<c:forEach items="${authors}" var="a">
-						<option value="${a.id}">${a.name} ${a.surname}</option>
-					</c:forEach>
-				</select><br>
-				<label for="ins_publisher">Publisher: </label><select name="ins_publisher">
-					<c:forEach items="${publishers}" var="p">
-						<option value="${p.id}">${p.name}</option>
-					</c:forEach>
-				</select><br>
-				<label for="ins_year">Year: </label><input type="text" name="ins_year"><br>
-				<label for="ins_descr">Description: </label><input type="text" name="ins_descr"><br>
-				<input type="submit" value="Add Book">
+			<form action="./book/insert" method="post">
+				<fieldset>
+					<label for="title">Title: </label><input type="text" name="title"><br>
+					<label for="author_id">Author: </label><select name="author_id">
+						<c:forEach items="${authors}" var="a">
+							<option value="${a.id}">${a.name} ${a.surname}</option>
+						</c:forEach>
+					</select><br>
+					<label for="publisher_id">Publisher: </label><select name="publisher_id">
+						<c:forEach items="${publishers}" var="p">
+							<option value="${p.id}">${p.name}</option>
+						</c:forEach>
+					</select><br>
+					<label for="year">Year: </label><input type="text" name="year"><br>
+					<label for="description">Description: </label><input type="text" name="description"><br>
+					<input type="submit" value="Add Book">
+				</fieldset>
+				
 			</form>
-			<form action="./deleteService" method="post">
+			<form action="./book/delete" method="post">
 				<label for="del_id">Id: </label><select name="del_id">
 					<c:forEach items="${data_list}" var="b">
 						<option value="${b.id}">${b.title} - ${b.author.name} ${b.author.surname}</option>

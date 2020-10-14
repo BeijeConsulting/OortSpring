@@ -16,43 +16,25 @@
 		<div id = "navbar">
 			<ul>
 				<li>
-					<form action="./" method="post">
-						<input type="hidden" name="res" value="books">
-						<input type="submit" value="Books"/>
-					</form>
+					<a href="./books">Books</a>
 				</li>
 				<li>
-					<form action="./" method="post">
-						<input type="hidden" name="res" value="authors">
-						<input type="submit" value="Authors"/>
-					</form>
+					<a href="./authors">Authors</a>
 				</li>
 				<li>
-					<form action="./" method="post">
-						<input type="hidden" name="res" value="publish">
-						<input type="submit" value="Publishers"/>
-					</form>
+					<a href="./publish">Publishers</a>
 				</li>
 				<li>
-					<form action="./" method="post">
-						<input type="hidden" name="res" value="loans">
-						<input type="submit" value="Loans"/>
-					</form>
+					<a href="./loans">Loans</a>
 				</li>
 				<% User user = (User) session.getAttribute("user");
 				if(user != null && user.getAdmin()){%>
 					<li>
-						<form action="./" method="post">
-							<input type="hidden" name="res" value="users">
-							<input type="submit" value="Users"/>
-						</form>
+						<a href="./users">Users</a>
 					</li>
 				<%} %>
 				<li class = "rightli">
-					<form action="./" method="post">
-						<input type="hidden" name="res" value="login">
-						<input type="submit" value="Login"/>
-					</form>
+					<a href="./log-in">Login</a>
 				</li>
 			</ul>
 		</div>
@@ -72,7 +54,7 @@
 					case "loans":%>
 						<%@ include file="loans.jsp" %>
 						<% break;
-					case "login":%>
+					case "log-in":%>
 						<%@ include file="login.jsp" %>
 						<% break;
 					case "users":%>

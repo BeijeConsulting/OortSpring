@@ -14,7 +14,7 @@
 				if(u_uscope == null){%>
 					Please login first.
 				<%} else { %>
-					<table>
+					<table class="table">
 							<tr>
 								<th>Id</th>
 								<th>First Name</th>

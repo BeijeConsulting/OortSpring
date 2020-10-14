@@ -1,6 +1,9 @@
 package it.beije.oort.bm.library.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -32,7 +35,7 @@ public class LibraryAuthenticationController {
 	}
 	
 	@RequestMapping( value = "/register", method = RequestMethod.POST)
-	public String register(User user, HttpServletRequest req, Model model) {
+	public String register(User user, HttpServletRequest req, HttpServletResponse resp, Model model) {
 		log.debug("/register - post");
 		boolean result = false;
 		String pswd_conf = req.getParameter("reg_pswd_conf");
@@ -48,7 +51,11 @@ public class LibraryAuthenticationController {
 		if(!result) {
 			model.addAttribute("registrationProblem", "Email already in use.");
 		} else {
-			req.getSession().setAttribute("status", "login");
+			try {
+				resp.sendRedirect("/login");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return "home";
 	}

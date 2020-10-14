@@ -14,7 +14,7 @@
 			if(u_ascope == null){%>
 				Please login first.
 			<%} else { %>
-				<table>
+				<table class="table">
 						<tr>
 							<th>Id</th>
 							<th>Surname</th>
@@ -28,8 +28,8 @@
 								<td>${a.id}</td>
 								<td>${a.surname}</td>
 								<td>${a.name}</td>
-								<td>${a.date_of_birth}</td>
-								<td>${a.date_of_death}</td>
+								<td>${a.dateOfBirth}</td>
+								<td>${a.dateOfDeath}</td>
 								<td>${a.biography}</td>
 							</tr>
 						</c:forEach>
