@@ -10,7 +10,7 @@
 		</properties>
 	</persistence-unit>
 		
-	<persistence-unit name="OortBiblioteca">
+	<persistence-unit name="OortBiblioteca" transaction-type="RESOURCE_LOCAL">
 		<class>it.beije.oort.kirolosmater.biblioteca.Autore</class>
 		<class>it.beije.oort.kirolosmater.biblioteca.Editore</class>
 		<class>it.beije.oort.kirolosmater.biblioteca.Libro</class>

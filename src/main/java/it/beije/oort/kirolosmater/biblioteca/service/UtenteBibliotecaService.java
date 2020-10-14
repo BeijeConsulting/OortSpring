@@ -16,7 +16,7 @@ import it.beije.oort.kirolosmater.biblioteca.repository.UtenteBibliotecaReposito
 @Service
 public class UtenteBibliotecaService {
 	
-	private Logger log = LoggerFactory.getLogger(this.getClass());
+//	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private UtenteBibliotecaRepository utenteBibliotecaRepository;
@@ -46,10 +46,8 @@ public class UtenteBibliotecaService {
 	}
 	
 	public UtenteBiblioteca findByEmail(String email) {
-		List<UtenteBiblioteca> utenti = utenteBibliotecaRepository.findByEmail(email);
-		log.warn("here");
-		System.out.println(utenti);
-		return utenti.size() > 0? utenti.get(0) : null;
+		Optional <UtenteBiblioteca> utente = utenteBibliotecaRepository.findByEmail(email);
+		return utente.isPresent() ? utente.get() : null;
 	}
 	
 	//@Transactional
