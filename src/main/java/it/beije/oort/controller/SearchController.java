@@ -1,6 +1,5 @@
 package it.beije.oort.controller;
 
-import it.beije.oort.model.Libro;
 import it.beije.oort.service.search.BookSearchService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
+//////////////////////////////////////////////////////////////
+// CONTROLLER PER LA RICERCA
+//////////////////////////////////////////////////////////////
 @Controller
 public class SearchController {
 
@@ -23,12 +22,17 @@ public class SearchController {
     @Autowired
     private BookSearchService bookSearchService;
 
-    // GET
+    //////////////////////////////////////////////////////////////
+    // GET BASILARE PER MOSTRARE LA PAGINA DI RICERCA DI BASE
+    //////////////////////////////////////////////////////////////
     @GetMapping(value = "/search")
     public String getSearch(){
         return "search/search";
     }
 
+    //////////////////////////////////////////////////////////////
+    // GET PER LE PAGINE DI RICERCA SPECIFICHE
+    //////////////////////////////////////////////////////////////
     @GetMapping(value = "/search/libro")
     public String getSearchLibro(){
         log.info("Get Search per Libro");

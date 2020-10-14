@@ -68,7 +68,7 @@
                     </div>
                     <div class="single-input">
                         <label for="autore">Autore: </label>
-                        <select id="autore" name="id_autore">
+                        <select id="autore" name="idAutore">
                             <option disabled selected>Seleziona Autore</option>
                             <c:forEach var="autore" items="${sessionScope.autori}">
                                 <option value="${autore.id}">${autore.nome} ${autore.cognome}</option>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="single-input">
                         <label for="editore">Editore: </label>
-                        <select id="editore" name="id_editore">
+                        <select id="editore" name="idEditore">
                             <option disabled selected>Seleziona Editore</option>
                             <c:forEach var="editore" items="${sessionScope.editori}">
                                 <option value="${editore.id}">${editore.nome}</option>
@@ -99,11 +99,11 @@
 
                     <div class="single-input">
                         <label for="autDataNasc">Anno di Nascita: </label>
-                        <input type="date" name="data_nascita" id="autDataNasc">
+                        <input type="date" name="dataNascita" id="autDataNasc">
                     </div>
                     <div class="single-input">
                         <label for="autDataMorte">Anno di Morte: </label>
-                        <input type="date" name="data_morte" id="autDataMorte">
+                        <input type="date" name="dataMorte" id="autDataMorte">
                     </div>
                     <div class="single-input">
                         <label for="bio">Biografia </label>

@@ -16,6 +16,19 @@ public class AddController {
     @Autowired
     private AddService addService;
 
+    //////////////////////////////////////////////////////////////
+    // CONTROLLER PER PREPARARE E OTTENERE LA PAGINA DI AGGIUNTA
+    //////////////////////////////////////////////////////////////
+    @GetMapping(value = "/add")
+    public String servePage(HttpSession session, HttpServletRequest request, Model model){
+        addService.preparePage(session, request, model);
+        return "add";
+    }
+
+    //////////////////////////////////////////////////////////////
+    // CONTROLLER SPECIFICI PER TIPO DI OGGETTO DA AGGIUNGERE
+    // DEVONO ESSERE SPECIFICI PER POTER CREARE L'OGGETTO CORRETTO
+    //////////////////////////////////////////////////////////////
     @PostMapping(value = "/add", params = "type=Libro")
     public String addLibro(Libro libro,
                            HttpSession session,
@@ -53,12 +66,6 @@ public class AddController {
                            HttpSession session,
                            Model model){
         addService.add(editore, session, model);
-        return "add";
-    }
-
-    @GetMapping(value = "/add")
-    public String servePage(HttpSession session, HttpServletRequest request, Model model){
-        addService.preparePage(session, request, model);
         return "add";
     }
 }

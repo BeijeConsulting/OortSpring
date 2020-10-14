@@ -3,7 +3,6 @@ package it.beije.oort.controller;
 import it.beije.oort.database.DatabaseController;
 import it.beije.oort.model.Autore;
 import it.beije.oort.model.Libro;
-import it.beije.oort.repository.BookRepository;
 import it.beije.oort.service.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

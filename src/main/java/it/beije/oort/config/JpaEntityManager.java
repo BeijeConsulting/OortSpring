@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JpaEntityManager {
-	
 	private static EntityManagerFactory emfactory = null;
-
 	private JpaEntityManager() {}
 	
 	@Bean(name = "entityManagerFactory")	

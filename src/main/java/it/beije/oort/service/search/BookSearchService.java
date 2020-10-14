@@ -44,7 +44,8 @@ public class BookSearchService {
         switch (column){
             case "autore":
                 log.info("Cerco Libro per Autore");
-                libri = searchBookByAuthor(query);
+                //libri = searchBookByAuthor(query);
+                libri = searchBookByMultipleAuthors(query);
                 break;
             case "annoPubblicazione":
                 log.info("Cerco Libro per Anno di Pubblicazione");
@@ -66,26 +67,43 @@ public class BookSearchService {
     }
 
     ////////////////////////////////////////////////////////////
-    // METODI DI RICERCA
+    // METODI DI RICERCA EFFETTIVA
     ////////////////////////////////////////////////////////////
-    public List<Libro> searchBookByAuthor(String query){
-        Autore autore = autoreRepository.getFirstByNomeContainingOrCognomeContaining(query, query).orElse(null);
-        if (autore != null) return bookRepository.getLibrosByIdAutore(autore.getId());
-        else return null;
+
+    /**
+     * Data una query, cerca nel nome e nel cognome degli Autori la query e poi ritorna i libri di tali autori.
+     */
+    public List<Libro> searchBookByMultipleAuthors(String query){
+        List<Autore> autori = autoreRepository.getAllByNomeContainingOrCognomeContaining(query, query);
+        List<Long> ids = new ArrayList<>();
+        for (Autore a : autori){
+            log.info("Autore trovato: " + a.toString());
+            ids.add(a.getId());
+        }
+        return bookRepository.findAllByIdAutoreIn(ids);
     }
 
-    // todo fare come per l'autore (gestione del null)
+    /**
+     * Data una query, ritorna tutti i libri del primo editore contenente anche solo parte della query.
+     * TODO Fare come per gli autori, cioè stampare TUTTI i libri di TUTTI gli editori contententi tale query
+     */
     public List<Libro> searchBookByEditore(String query){
         Editore editore = editoreRepository.getFirstByNomeContaining(query).orElse(null);
         if (editore != null) return bookRepository.getLibrosByIdEditore(editore.getId());
         else return null;
     }
 
+    /**
+     * Cerca libro per ID esatto
+     */
     public List<Libro> searchBookByID(Long id){
         log.info("Cerco libro per ID: " + id);
         return bookRepository.getLibrosByIdLike(id);
     }
 
+    /**
+     * Cerca libro per ID esatto in String.
+     */
     public List<Libro> searchBookByID(String idString){
         log.info("Cerco libro per ID-Stringa: " + idString);
         Long id = 0L;
@@ -99,10 +117,17 @@ public class BookSearchService {
         return searchBookByID(id);
     }
 
+    /**
+     * Cerca libro per titolo.
+     */
     public List<Libro> searchBookByTitle(String title){
         return bookRepository.getLibrosByTitoloContaining(title);
     }
 
+    /**
+     * Cerca libro per Anno. Al momento rotto.
+     * TODO: Fare un parser Stringa -> Data generico, che accetta date parziali e le converte in date complete così da non rompere Java
+     */
     public List<Libro> searchBookByAnno(String anno){
         try{
             Date data = Date.valueOf(anno);
