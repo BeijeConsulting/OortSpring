@@ -1,0 +1,68 @@
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fa-minus-circle:hover{
+  cursor: pointer;
+  color: red;
+}
+
+.fa-minus-circle:hover{
+  cursor: pointer;
+  color: red;
+}
+.home{
+  background-color: lightcoral;
+  border-radius: 50px;
+  width: fit-content;
+  padding: 7px;
+}
+
+.home:hover{
+  background-color: red;
+}
+
+.grid-buttons{
+  display: inline-grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  padding-bottom: 30px;
+}
+
+.button-rubrica{
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 200px;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+}
+
+.button-rubrica:hover{
+  background-color: #679df5;
+  cursor: pointer;
+}
+
+.delete{
+  cursor: pointer;
+  color: red;
+}
+
+.modify{
+  cursor: pointer;
+  color: blue;
+}
