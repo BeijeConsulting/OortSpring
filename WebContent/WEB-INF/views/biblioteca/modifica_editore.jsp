@@ -8,6 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Modifica editore</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/myCss.css" />">
+<script src="<c:url value="/resources/js/functions.js" />" type="Application/Javascript"></script>
 </head>
 <body>
 
@@ -22,7 +23,8 @@
 <div class="descrizione">Prima di modificare devi selezionare un id, poi potrai modificare i valori dell'editore</div>
 <div></div>
 <div class="form borderForm">
-	<form action="./modifica_editore" method="POST">
+	<form name="editoreForm" action="./modifica_editore" method="POST">
+		<div id="formError"></div>
 		<fieldset>
 			<div class="campi">
 				<label for="idEditoreId">ID:</label><input id="idEditoreId" type="text" name="idEditore" value="${ editore != null ? editore.id : '' }">
@@ -41,7 +43,7 @@
 				<input id="descrizioneId" type="text" name="descrizione" value="${ editore.descrizione }">
 			</div>
 			<div class="formButtons">
-				<button name="submit" class="buttonSubmit" type="submit" value="modifica">Modifica</button>
+				<button name="submit" class="buttonSubmit" type="submit" value="modifica" onclick="return validateForm(document.forms['editoreForm'])">Modifica</button>
 			</div>
 		</fieldset>
 		</c:if>

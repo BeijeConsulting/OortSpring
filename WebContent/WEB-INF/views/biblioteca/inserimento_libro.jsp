@@ -9,6 +9,7 @@
 <meta charset="ISO-8859-1">
 <title>Inserimento libro</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/myCss.css" />">
+<script src="<c:url value="/resources/js/functions.js" />" type="Application/Javascript"></script>
 </head>
 <body>
 
@@ -23,7 +24,8 @@
 <div class="descrizione">Inserisci un libro</div>
 <div></div>
 <div class="form borderForm">
-	<form action="./inserimento_libro" method="POST">
+	<form name="libroForm" action="./inserimento_libro" method="POST">
+		<div id="formError"></div>
 		<fieldset>
 			<div class="campi">
 				<label for="titoloId">Titolo:</label><input id="titoloId" type="text" name="titolo"><br>
@@ -34,7 +36,7 @@
 			</div>
 			<div class="formButtons">
 				<button class="buttonReset" type="reset">Resetta campi</button>
-				<button name="submit" class="buttonSubmit" type="submit" value="true">Inserisci</button>
+				<button name="submit" class="buttonSubmit" type="submit" value="true" onclick="return validateForm(document.forms['libroForm'])">Inserisci</button>
 			</div>
 		</fieldset>
 	</form>

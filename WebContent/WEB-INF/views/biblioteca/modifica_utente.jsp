@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Modifica utente</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/myCss.css" />">
-<script src="<c:url value="/resources/js/myJavascript.js" />" type="Application/Javascript"></script>
+<script src="<c:url value="/resources/js/functions.js" />" type="Application/Javascript"></script>
 </head>
 <body>
 
@@ -23,7 +23,8 @@
 <div class="descrizione">Prima di modificare devi selezionare un id, poi potrai modificare i valori dell'utente</div>
 <div></div>
 <div class="form borderForm">
-	<form action="./modifica_utente" method="POST">
+	<form name="utenteForm" action="./modifica_utente" method="POST">
+		<div id="formError"></div>
 		<fieldset>
 			<div class="campi">
 				<label for="idUtenteId">ID:</label><input id="idUtenteId" type="text" name="idUtente" value="${ utente != null ? utente.id : '' }">
@@ -43,14 +44,14 @@
 				<label for="codiceFiscaleId">Codice fiscale:</label>
 				<input id="codiceFiscaleId" type="text" name="codiceFiscale" value="${ utente.codiceFiscale }"><br>
 				<label for="emailId">Email:</label>
-				<input id="emailId" type="text" name="email" value="${ utente.email }"><br>
+				<input id="emailId" type="email" name="email" value="${ utente.email }"><br>
 				<label for="telefonoId">Telefono:</label>
 				<input id="telefonoId" type="text" name="telefono" value="${ utente.telefono }"><br>
 				<label for="indirizzoId">Indirizzo:</label>
 				<input id="indirizzoId" type="text" name="indirizzo" value="${ utente.indirizzo }">
 			</div>
 			<div class="formButtons">
-				<button name="submit" class="buttonSubmit" type="submit" value="modifica">Modifica</button>
+				<button name="submit" class="buttonSubmit" type="submit" value="modifica" onclick="return validateForm(document.forms['utenteForm'])">Modifica</button>
 			</div>
 		</fieldset>
 		</c:if>

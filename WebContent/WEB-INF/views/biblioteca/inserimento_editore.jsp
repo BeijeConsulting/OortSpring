@@ -9,6 +9,7 @@
 <meta charset="ISO-8859-1">
 <title>Inserimento editore</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/myCss.css" />">
+<script src="<c:url value="/resources/js/functions.js" />" type="Application/Javascript"></script>
 </head>
 <body>
 
@@ -23,7 +24,8 @@
 <div class="descrizione">Inserisci un editore</div>
 <div></div>
 <div class="form borderForm">
-	<form action="./inserimento_editore" method="POST">
+	<form name="editoreForm" action="./inserimento_editore" method="POST">
+		<div id="formError"></div>
 		<fieldset>
 			<div class="campi">
 				<label for="denominazioneId">Denominazione:</label><input id="denominazioneId" type="text" name="denominazione"><br>
@@ -31,7 +33,7 @@
 			</div>
 			<div class="formButtons">
 				<button class="buttonReset" type="reset">Resetta campi</button>
-				<button name="submit" class="buttonSubmit" type="submit" value="true">Inserisci</button>
+				<button name="submit" class="buttonSubmit" type="submit" value="true" onclick="return validateForm(document.forms['editoreForm'])">Inserisci</button>
 			</div>
 		</fieldset>
 	</form>

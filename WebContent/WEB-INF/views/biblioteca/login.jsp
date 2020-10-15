@@ -8,6 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/myCss.css" />">
+<script src="<c:url value="/resources/js/functions.js" />" type="Application/Javascript"></script>
 </head>
 <body>
 	<c:if test="${ erroreMsg != null }">
@@ -20,16 +21,17 @@
 	<div class="descrizione">Effettua il login per utilizzare le
 		funzionalità del sito.</div>
 	<div class="form">
-		<form action="" method="POST">
+		<form name="loginForm" action="" method="POST">
+			<div id="formError"></div>
 			<fieldset>
 				<div class="campi">
-					<label for="emailInput">Email:</label><input id="emailInput"
-						type="email" name="email"> <label for="passwordInput">Password:</label><input
-						id="passwordInput" type="password" name="password">
+					<label for="emailId">Email:</label><input id="emailId"
+						type="email" name="email"> <label for="passwordId">Password:</label><input
+						id="passwordId" type="password" name="password">
 				</div>
 				<div class="formButtons">
 					<button class="buttonReset" type="reset">Resetta campi</button>
-					<button name="submitContatto" class="buttonSubmit" type="submit">Login</button>
+					<button name="submitContatto" class="buttonSubmit" type="submit" onclick="return validateForm(document.forms['loginForm'])">Login</button>
 				</div>
 			</fieldset>
 		</form>

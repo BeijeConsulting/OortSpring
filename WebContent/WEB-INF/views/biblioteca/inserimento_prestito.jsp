@@ -9,6 +9,7 @@
 <meta charset="ISO-8859-1">
 <title>Inserimento prestito</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/myCss.css" />">
+<script src="<c:url value="/resources/js/functions.js" />" type="Application/Javascript"></script>
 </head>
 <body>
 
@@ -23,7 +24,8 @@
 <div class="descrizione">Inserisci un prestito</div>
 <div></div>
 <div class="form borderForm">
-	<form action="./inserimento_prestito" method="POST">
+	<form name="prestitoForm" action="./inserimento_prestito" method="POST">
+		<div id="formError"></div>
 		<fieldset>
 			<div class="campi">
 				<label for="idLibroId">Libro ID:</label><input id="idLibroId" type="text" name="idLibro"><br>
@@ -34,7 +36,7 @@
 			</div>
 			<div class="formButtons">
 				<button class="buttonReset" type="reset">Resetta campi</button>
-				<button name="submit" class="buttonSubmit" type="submit" value="true">Inserisci</button>
+				<button name="submit" class="buttonSubmit" type="submit" value="true" onclick="return validateForm(document.forms['prestitoForm'])">Inserisci</button>
 			</div>
 		</fieldset>
 	</form>

@@ -8,6 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Modifica prestito</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/myCss.css" />">
+<script src="<c:url value="/resources/js/functions.js" />" type="Application/Javascript"></script>
 </head>
 <body>
 
@@ -22,7 +23,8 @@
 <div class="descrizione">Prima di modificare devi selezionare un id, poi potrai modificare i valori dell'prestito</div>
 <div></div>
 <div class="form borderForm">
-	<form action="./modifica_prestito" method="POST">
+	<form name="prestitoForm" action="./modifica_prestito" method="POST">
+		<div id="formError"></div>
 		<fieldset>
 			<div class="campi">
 				<label for="idPrestitoId">ID:</label><input id="idPrestitoId" type="text" name="idPrestito" value="${ prestito != null ? prestito.id : '' }">
@@ -47,7 +49,7 @@
 				<input id="noteId" type="text" name="note" value="${ prestito.note }">
 			</div>
 			<div class="formButtons">
-				<button name="submit" class="buttonSubmit" type="submit" value="modifica">Modifica</button>
+				<button name="submit" class="buttonSubmit" type="submit" value="modifica" onclick="return validateForm(document.forms['prestitoForm'])">Modifica</button>
 			</div>
 		</fieldset>
 		</c:if>
