@@ -6,26 +6,27 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Oort Spring Home</title>
+<link rel="stylesheet" href="<c:url value="/assets/css/main.css" />">
 </head>
 <body >
-
-
+ 	
 	<h1>Menu' Rubrica:</h1>
-	
+	<div class="main">
 		<form action="ins" method="GET" >
-			<button type="submit"> Inserisci contatto</button>
+			<button type="submit"> <span>Inserisci contatto</span></button>
 		</form>	
 		<br><br>	
 		<form action="del" method="GET"> 
-			<button type ="submit"> Elimina contatto</button> 
+			<button type ="submit"><span> Elimina contatto</span></button> 
 		</form>
 		<br><br>
 		<form action="show" method="GET">
-			<button type="submit">Visualizza contatti</button>
+			<button type="submit"><span>Visualizza contatti</span></button>
 		</form>
 		<br><br>
 		<form action="modifica" method="GET">
-			<button type="submit">Modifica contatto</button>
+			<button type="submit"><span>Modifica contatto</span></button>
 		</form>
+	</div>		
 </body>
 </html>

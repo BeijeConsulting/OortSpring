@@ -54,7 +54,7 @@ public class InserimentoCont {
 				
 				contRepository.save(contatto);
 								
-			} else throw new IllegalArgumentException("dati utente non presenti");
+			} else throw new IllegalArgumentException("INSERIRE ALMENO UN CAMPO!");
 			
 			
 		}
