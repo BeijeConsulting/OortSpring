@@ -6,16 +6,14 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.beije.oort.lauria.biblioteca.JPADBtools;
-import it.beije.oort.lauria.biblioteca.Autore;
-import it.beije.oort.lauria.biblioteca.Editore;
-import it.beije.oort.lauria.biblioteca.Libro;
-import it.beije.oort.lauria.biblioteca.Utente;
+import it.beije.oort.lauria.service.LibroService;
 
 
 
@@ -28,7 +26,14 @@ public class BiblioController {
 		
 		return "home_biblio";
 	}
-	
+
+	@RequestMapping(value = "/AAA", method = RequestMethod.GET)
+	public String homeAAA() {
+		System.out.println("AAA get...");
+		
+		return "AAA";
+	}
+
 	
 	@RequestMapping(value = "/conferma_login", method = RequestMethod.POST)
 	public String confermaLogin(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
@@ -82,4 +87,30 @@ public class BiblioController {
 		request.getSession().invalidate();
 		return "home_biblio";
 	}
+	
+	@Autowired
+	private LibroService libroService;
+	
+	@RequestMapping(value = "/modifica_libro/{idLibro}", method = RequestMethod.GET)
+	public String updateBook(@PathVariable Integer idLibro) {
+		
+		return "modifica_libro/{idLibro}";
+	}
+
+	
+	@RequestMapping(value = "/modifica_libro/{idLibro}", method = RequestMethod.POST)
+	public String updateBook(@PathVariable Integer idLibro, Libro libro, Model model) {
+		System.out.println("libro : " + idLibro);
+		
+//		Libro libro = new Libro();
+//		utente.setCognome("Zegna");
+//		utente.setNome("Ermenegildo");
+		
+		libroService.update(idLibro, libro);
+		
+		model.addAttribute("libro", libro);
+		
+		return "visualizza_libri";
+	}
+
 }

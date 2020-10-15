@@ -61,10 +61,12 @@ public class LoginController {
 		System.out.println("registrazione_nuovo_utente post...");
 		System.out.println("nuovo utente nome "+newUtente.getNome());
 
-		JPADBtools.insertUtente(newUtente.getNome(), newUtente.getCognome(), 
-									newUtente.getCodice_fiscale(), newUtente.getEmail(), 
-									newUtente.getTelefono(), newUtente.getIndirizzo(),
-									newUtente.getPassword(), false);
+//		JPADBtools.insertUtente(newUtente.getNome(), newUtente.getCognome(), 
+//									newUtente.getCodice_fiscale(), newUtente.getEmail(), 
+//									newUtente.getTelefono(), newUtente.getIndirizzo(),
+//									newUtente.getPassword(), false);
+
+		utenteService.insert(newUtente);
 		
 		request.getSession().setAttribute("userBean", newUtente);
 		//model.addAttribute("newUtente", "Utente registrato con successo.");

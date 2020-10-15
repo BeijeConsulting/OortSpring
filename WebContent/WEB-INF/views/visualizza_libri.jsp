@@ -10,24 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<c:url value="/resources/css/biblio.css" />">
 
-	<style>
-	table {
-	  font-family: arial, sans-serif;
-	  border-collapse: collapse;
-	  width: 100%;
-	}
-	
-	td, th {
-	  border: 1px solid #dddddd;
-	  text-align: left;
-	  padding: 8px;
-	}
-	
-	tr:nth-child(even) {
-	  background-color: #dddddd;
-	}
-	</style>
 <meta charset="ISO-8859-1">
 <title>Oort Biblioteca</title>
 </head>
@@ -107,7 +91,7 @@ if (userBean == null || !userBean.isAdmin() ) {
 	<c:forEach items="${libri}" var="libro">
 		<tr>
 			<td>&#9999;</td>
-			<td><a href="./EliminaLibro/${libro.getId()}">&#128465;</a></td>
+			<td><a href="./modifica_libro/${libro.getId()}">&#128465;</a></td>
 			<td>${libro.getId()}</td>
 			<td>${libro.getTitolo()}</td>
 			<td>${libro.getDescrizione() != null ? libro.getDescrizione() : ""}</td>

@@ -7,24 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<c:url value="/resources/css/biblio.css" />">
+<script type="application/Javascript" src="<c:url value="/resources/js/biblioJs.js" />"></script>
 
-	<style>
-	table {
-	  font-family: arial, sans-serif;
-	  border-collapse: collapse;
-	  width: 100%;
-	}
-	
-	td, th {
-	  border: 1px solid #dddddd;
-	  text-align: left;
-	  padding: 8px;
-	}
-	
-	tr:nth-child(even) {
-	  background-color: #dddddd;
-	}
-	</style>
 <meta charset="ISO-8859-1">
 <title>Oort Biblioteca</title>
 </head>

@@ -1,0 +1,38 @@
+/* body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+div body{background-image: url(/OortSpring/WebContent/resources/css/libro.jpg);}
+.bgimg {
+  background-image: url(/OortSpring/WebContent/resources/css/libro.jpg);
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+} */
+	body{
+		/* background-image: url("C:/Users/Padawan06/git/OortSpring/WebContent/resources/css/libro.jpg");  */
+		background-image: url("./libro.jpg"); 
+		background-repeat: no-repeat;
+	   	background-size: cover;
+	}
+   
+   	table {
+	  font-family: "arial black", sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+	
+	td, th {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+	}
+	
+	tr:nth-child(even) {
+	  background-color: #dddddd;
+	}
+	
+	.msgErr {
+	color: red;
+	font-size: 20pt;
+	margin-top: 10px;
+	}
+   

@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<c:url value="/resources/css/biblio.css" />">
+<script type="application/Javascript" src="<c:url value="/resources/js/biblioJs.js" />"></script>
+
+
 <meta charset="ISO-8859-1">
 <title>Oort Biblioteca</title>
 </head>
