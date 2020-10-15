@@ -21,6 +21,15 @@ public class UtenteService {
 	@Autowired
 	private UtenteRepository utenteRepository;
 	
+	public Utente login(String email, String password) {
+		if (GeneralUtils.stringIsNullOrEmpty(email) || GeneralUtils.stringIsNullOrEmpty(password)) {
+			throw new IllegalArgumentException("Email o password sono vuoti");
+		}
+		
+		Optional<Utente> utente = utenteRepository.findByEmailAndPassword(email, password);
+		return utente.isPresent() ? utente.get() : null;
+	}
+	
 	public Utente trova(Integer id) {
 		if (id == null) {
 			throw new IllegalArgumentException("La id è un valore null");
@@ -43,12 +52,12 @@ public class UtenteService {
 		log.debug("Inserimento utente in corso");
 		if (utente == null) {
 			log.error("Utente non inserito nel database: null");
-			throw new IllegalArgumentException("Il utente è un valore null");
+			throw new IllegalArgumentException("L'utente è un valore null");
 		}
 		
 		if (EbeanUtils.utenteIsEmpty(utente)) {
 			log.debug("Utente non inserito nel database: vuoto");
-			throw new IllegalArgumentException("Il utente deve avere almeno un campo con un valore non vuoto");
+			throw new IllegalArgumentException("L'utente deve avere almeno un campo con un valore non vuoto");
 		}
 		
 		utenteRepository.saveAndFlush(utente);
@@ -60,11 +69,11 @@ public class UtenteService {
 		log.debug("Modifica utente in corso");
 		if (datiUtente == null) {
 			log.error("Utente non inserito nel database: null");
-			throw new IllegalArgumentException("Il utente è un valore null");
+			throw new IllegalArgumentException("L'utente è un valore null");
 		}
 		
 		if (EbeanUtils.utenteIsEmpty(datiUtente)) {
-			throw new IllegalArgumentException("Il utente deve avere almeno un campo con un valore non vuoto");
+			throw new IllegalArgumentException("L'utente deve avere almeno un campo con un valore non vuoto");
 		}
 		
 		Utente utente = this.trova(id);
@@ -75,7 +84,7 @@ public class UtenteService {
 		}
 		
 		log.debug("Utente trovato sul database: " + utente);
-		BeanUtils.copyProperties(datiUtente, utente, "id");
+		BeanUtils.copyProperties(datiUtente, utente, "id","password","admin");
 		log.debug("Utente modificato in: " + utente);
 		utenteRepository.saveAndFlush(utente);
 		log.info(new StringBuilder().append("Utente con id ").append(id).append(" è stato modificato con successo").toString());

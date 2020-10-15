@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "utenti")
@@ -33,6 +34,10 @@ public class Utente implements Ebeans {
 	
 	@Column(name = "indirizzo")
 	private String indirizzo;
+	
+	@Column(name = "password")
+//	@Transient
+	private String password;
 	
 	@Column(name = "admin")
 	private boolean admin;
@@ -84,6 +89,13 @@ public class Utente implements Ebeans {
 	}
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public boolean isAdmin() {
