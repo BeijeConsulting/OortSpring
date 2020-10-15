@@ -46,6 +46,12 @@ public class Utente {
 		this.email = email;
 	}
 	
+	public Utente(String nome, String cognome, String telefono, String email, 
+			String password) {
+		this(nome, cognome, telefono, email);
+		this.password = password;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

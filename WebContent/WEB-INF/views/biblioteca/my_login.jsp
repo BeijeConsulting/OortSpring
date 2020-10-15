@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>LOGIN</title>
 </head>
 	<body>
 		<jsp:useBean id="arraylist" class="java.util.ArrayList" scope="session"/>
@@ -21,5 +21,7 @@
  			PASSWORD&nbsp;<input type="password" name="password" value=""/><br>
 			<input type="submit" value="INVIO"/>
 		</form>
+		<br>
+		<h3>Non sei ancora dei nostri? <a href="./register">Registrati!</a><br></h3>
 	</body>
 </html>

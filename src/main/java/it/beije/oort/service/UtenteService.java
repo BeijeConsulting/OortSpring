@@ -13,9 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
 import it.beije.oort.entity.Utente;
 import it.beije.oort.repository.UtenteRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Service
 public class UtenteService {
+	
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private UtenteRepository utenteRepository;
@@ -60,9 +65,10 @@ public class UtenteService {
 			throw new IllegalArgumentException("bean utente null");
 		}
 		if (!"".equals(utente.getCognome()) || !"".equals(utente.getNome()) ||
-			!"".equals(utente.getEmail()) || !"".equals(utente.getTelefono())) {
+			!"".equals(utente.getEmail()) || !"".equals(utente.getPassword())) {
 	
 			utenteRepository.save(utente);
+			log.info("utente inserito!");
 		} else throw new IllegalArgumentException("dati utente non presenti");
 	}
 	

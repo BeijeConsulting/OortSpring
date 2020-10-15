@@ -96,4 +96,33 @@ public class MyHomeController {
 			return "biblioteca/homepage";
 		}
 	}
+	
+	@RequestMapping(value = "/biblioteca/register", method = RequestMethod.GET)
+	public String register( Model model) {
+		model.addAttribute("errore", "");
+		model.addAttribute("registrato", "");
+		return "/biblioteca/register";
+	}
+	
+	@RequestMapping(value = "/biblioteca/register", method = RequestMethod.POST)
+	public String register(Utente u, Model model) {
+		model.addAttribute("errore", "");
+		model.addAttribute("registrato", "");
+		Utente utente = null;
+		try {
+			Optional<Utente> user = utenteService.findByEmail(u.getEmail());
+			log.info(user.toString());
+			
+			utente = user.get();
+			log.info(utente.toString());
+
+			model.addAttribute("errore", "ACCOUNT NON CREATO: un altro account ha "
+								+ "questa email.");	
+		} catch (NoSuchElementException nsee) {
+			model.addAttribute("registrato", "Ti sei registrato correttamente!");
+			utenteService.insert(u);
+		} finally {
+			return "/biblioteca/register";
+		}
+	}
 }
