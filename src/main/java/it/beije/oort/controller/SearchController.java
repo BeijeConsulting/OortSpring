@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 //////////////////////////////////////////////////////////////
 @Controller
 public class SearchController {
-
     private final Logger log = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     private BookSearchService bookSearchService;
 
@@ -28,6 +26,11 @@ public class SearchController {
     @GetMapping(value = "/search")
     public String getSearch(){
         return "search/search";
+    }
+
+    @GetMapping(value = "/search2")
+    public String search2(){
+        return "search/search2";
     }
 
     //////////////////////////////////////////////////////////////

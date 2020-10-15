@@ -7,12 +7,12 @@
 <head>
     <title>Elenco Libri</title>
     <link href="${pageContext.request.contextPath}/resources/style/main.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/style/biblioAdd.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/style/biblioView.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e8e37b0541.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/media/biblioteca.ico" />
+
+    <script src = "${pageContext.request.contextPath}/resources/js/bookList.js"></script>
 </head>
 <body>
 <div class="home">
@@ -47,14 +47,31 @@
                     <th>Editore</th>
                     <th>Sinossi</th>
                 </tr>
+                <tr>
+                    <th>
+                        <input type="text" id="filterTitle" onkeyup="filter('titolo', this)" placeholder="Filtra Titolo">
+                    </th>
+                    <th>
+                        <input type="text" id="filterAuthor" onkeyup="filter('autore', this)" placeholder="Filtra Autore">
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+                        <input type="text" id="filterEditore" onkeyup="filter('editore', this)" placeholder="Filtra Editore">
+                    </th>
+                    <th>
+                        <input type="text" id="filterSynopsis" onkeyup="filter('desc', this)" placeholder="Filtra Sinossi">
+                    </th>
+                </tr>
                 <c:forEach items="${libri}" var="obj">
                     <tr>
-                        <td><a href="${pageContext.request.contextPath}/libro/${obj.id}">${obj.titolo}</a></td>
-                        <td><a href="${pageContext.request.contextPath}/autore/${obj.idAutore}">${obj.autore.nome} ${obj.autore.cognome}</a></td>
+                        <td class = "titolo"><a href="${pageContext.request.contextPath}/libro/${obj.id}">${obj.titolo}</a></td>
+                        <td class = "autore"><a href="${pageContext.request.contextPath}/autore/${obj.idAutore}">${obj.autore.nome} ${obj.autore.cognome}</a></td>
                         <td>${obj.annoPubblicazione}</td>
-                        <td>${obj.editore.nome}</td>
-                        <td>${obj.descrizione}</td>
-                        <td><a href="/libro/${obj.id}/modifica">
+                        <td class = "editore">${obj.editore.nome}</td>
+                        <td class = "desc">${obj.descrizione}</td>
+                        <td><a href="${pageContext.request.contextPath}/libro/${obj.id}/modifica">
                                 <i class="fas fa-pen"></i>
                         </a></td>
 <%--                        Todo delete qui--%>
