@@ -20,7 +20,6 @@
         </div>
     </header>
     <div style="margin-left: 2em;">
-    <p> Solo la pagina prestiti funziona </p>
         <form action="/OortSpring/admin" method="GET">
             <button type="submit" name="req" value="prestiti">Prestiti</button>
             <button type="submit" name="req" value="utenti">Utenti</button>
