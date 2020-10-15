@@ -37,7 +37,7 @@ public class LoginController {
 		String returnPage = "login";
 		
 		if(utente != null) {
-			if(utente.isAdmin()) { returnPage = "home"; }
+			if(utente.isAdmin()) { returnPage = "tabelle"; }
 			else { returnPage = "utente-home"; }
 		}
 		

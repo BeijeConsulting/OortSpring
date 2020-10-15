@@ -140,6 +140,7 @@
 			<script src="<c:url value="/assets/js/breakpoints.min.js" />"></script>
 			<script src="<c:url value="/assets/js/util.js" />"></script>
 			<script src="<c:url value="/assets/js/main.js" />"></script>
+			<script src="<c:url value="/assets/js/inserimento-utente.js" />"></script>
 
 	</body>
 </html>

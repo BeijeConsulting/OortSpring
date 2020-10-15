@@ -49,7 +49,7 @@
 			<!-- Highlights -->
 			<section class="wrapper">
 				<div class="inner">
-					<form  method="post" action="">
+					<form onsubmit="return checkSubmit()" method="post" action=""> 
 						<div class="row gtr-uniform">
 							<div class="col-12">
 								<input type="email" name="email" id="email" value="" placeholder="Email" />
@@ -61,13 +61,15 @@
 							<!-- Break -->
 							<div class="col-12">
 								<ul class="actions">
-									<li><input type="submit" value="Invia" class="primary"/></li>
+									<li><input type="submit" onclick="loginCheck()" value="Invia" class="primary"/></li>
 									<li><input type="reset" value="Cancella" /></li>
 								</ul>
 							</div>
 						</div>	
 					</form>
-					<c:if test = "${ utente == null }">
+					<div id="erroreEmail"></div>
+					<div id="errorePassword"></div>
+					<c:if test = "${ utente == null  && flag}">
 					
 						<div>Errore: utente o password non valide!</div>
 					
@@ -89,7 +91,7 @@
 			<script src="<c:url value="/assets/js/browser.min.js" />"></script>
 			<script src="<c:url value="/assets/js/breakpoints.min.js" />"></script>
 			<script src="<c:url value="/assets/js/util.js" />"></script>
-			<script src="<c:url value="/assets/js/main.js" />"></script>
+			<script src="<c:url value="/assets/js/login.js" />"></script>
 
 	</body>
 </html>
