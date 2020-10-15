@@ -31,6 +31,10 @@ public class UtenteService {
 		Optional<Utente> o = utenteRepository.findById(id);
 		return o.isPresent() ? o.get() : null;
 	}
+
+	public List<Utente> getAll() {
+		return utenteRepository.findAll();
+	}
 	
 	@Transactional
 	public void insert(Utente utente) {
@@ -38,21 +42,20 @@ public class UtenteService {
 			utenteRepository.save(utente);
 		}
 	}
+
+	@Transactional
+	public void delete(Integer id) {
+		utenteRepository.deleteById(id);
+	}
 	
 	@Transactional
-	public void update(Utente utente, Integer id) {
-		if(utente!=null) {
-			
-			Utente old = get(id);
-			if(old!=null) {
-				BeanUtils.copyProperties(utente, old, "id");
-				utenteRepository.save(old);
-			} else {
-				throw new IllegalArgumentException("non è presente un utente con id " + id);
-			}
-			
+	public void update(String field, String value, Integer id) {
+		Utente old = get(id);
+		if(old!=null) {
+			setField(old, field, value);
+			utenteRepository.save(old);
 		} else {
-			throw new IllegalArgumentException("nuovo utente non pervenuto");
+			throw new IllegalArgumentException("Non Ã¨ presente un utente con id: " + id);
 		}
 	}
 	
@@ -73,4 +76,33 @@ public class UtenteService {
 		}
 		return valid;
 	}
+
+	public void setField(Utente p, String field, String value) {
+		switch(field) {
+		case "nome":
+			p.setNome(value);
+			break;
+		case "cognome":
+			p.setCognome(value);
+			break;
+		case "codiceFiscale":
+			p.setCodiceFiscale(value);
+			break;
+		case "email":
+			p.setEmail(value);
+			break;
+		case "telefono":
+			p.setTelefono(value);
+			break;
+		case "indirizzo":
+			p.setIndirizzo(value);
+			break;
+		case "password":
+			p.setPassword(value);
+			break;
+		case "admin":
+			p.setAdmin(Boolean.parseBoolean(value));
+			break;
+		}
+	} 
 }

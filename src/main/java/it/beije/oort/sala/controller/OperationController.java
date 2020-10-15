@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.beije.oort.sala.beans.*;
-import it.beije.oort.sala.controller.db.JPAToolset;
 import it.beije.oort.sala.controller.services.*;
 
 
@@ -39,9 +38,8 @@ public class OperationController {
 			String field = request.getParameter("field");
 			Integer id = new Integer(request.getParameter("idPrestito"));
 
-			Prestito newP = new Prestito();
-			prestitoService.setField(newP, field, newValue);
-			prestitoService.update(newP, id);
+			if(field!=null && newValue!=null && id!=null) prestitoService.update(field, newValue, id);
+			else throw new IllegalArgumentException();
 		}
 		return "biblioteca/sub-admin/prestiti";
 	}
@@ -49,17 +47,19 @@ public class OperationController {
 	@RequestMapping(value = "/libri/{op}", method = RequestMethod.POST)
 	public String libri(@PathVariable String op, Libro l, HttpServletRequest request, Model model) {
 		if(op.equals("insert")) {
-			JPAToolset.insertJPA(l);
+			libroService.insert(l);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Libro", l.getIdLibro());
+			libroService.delete(l.getIdLibro());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
 			Integer id = new Integer(request.getParameter("id"));
-					
-			JPAToolset.updateJPA("Libro", field, newValue, id);
+			
+			if(field!=null && newValue!=null && id!=null) libroService.update(field, newValue, id);
+			else throw new IllegalArgumentException();
+			
 		} else if(op.equals("select")) {
-			model.addAttribute("libri", JPAToolset.selectJPA("Libro"));
+			model.addAttribute("libri", libroService.getAll());
 		}
 		return "biblioteca/sub-admin/libri";
 	}
@@ -67,17 +67,19 @@ public class OperationController {
 	@RequestMapping(value = "/utenti/{op}", method = RequestMethod.POST)
 	public String utenti(@PathVariable String op, Utente u, HttpServletRequest request, Model model) {
 		if(op.equals("insert")) {
-			JPAToolset.insertJPA(u);
+			utenteService.insert(u);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Utente", u.getIdUtente());
+			utenteService.delete(u.getIdUtente());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
 			Integer id = new Integer(request.getParameter("id"));
 					
-			JPAToolset.updateJPA("Utente", field, newValue, id);
+			if(field!=null && newValue!=null && id!=null) utenteService.update(field, newValue, id);
+			else throw new IllegalArgumentException();
+
 		} else if(op.equals("select")) {
-			model.addAttribute("utenti", JPAToolset.selectJPA("Utente"));
+			model.addAttribute("utenti", utenteService.getAll());
 		}
 		return "biblioteca/sub-admin/utenti";
 	}
@@ -85,17 +87,19 @@ public class OperationController {
 	@RequestMapping(value = "/editori/{op}", method = RequestMethod.POST)
 	public String editori(@PathVariable String op, Editore e, HttpServletRequest request, Model model) {
 		if(op.equals("insert")) {
-			JPAToolset.insertJPA(e);
+			editoreService.insert(e);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Editore", e.getIdEditore());
+			editoreService.delete(e.getIdEditore());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
 			Integer id = new Integer(request.getParameter("id"));
-					
-			JPAToolset.updateJPA("Editore", field, newValue, id);
+			
+			if(field!=null && newValue!=null && id!=null) editoreService.update(field, newValue, id);
+			else throw new IllegalArgumentException();
+
 		} else if(op.equals("select")) {
-			model.addAttribute("editori", JPAToolset.selectJPA("Editore"));
+			model.addAttribute("editori", editoreService.getAll());
 		}
 		return "biblioteca/sub-admin/editori";
 	}
@@ -103,18 +107,19 @@ public class OperationController {
 	@RequestMapping(value = "/autori/{op}", method = RequestMethod.POST)
 	public String autori(@PathVariable String op, Autore a, HttpServletRequest request, Model model) {
 		if(op.equals("insert")) {
-			System.out.println(a.toString());
-			//JPAToolset.insertJPA(a);
+			autoreService.insert(a);
 		} else if(op.equals("delete")) {
-			JPAToolset.deleteJPA("Prestito", a.getIdAutore());
+			autoreService.delete(a.getIdAutore());
 		} else if(op.equals("update")) {
 			String newValue = request.getParameter("value");
 			String field = request.getParameter("field");
 			Integer id = new Integer(request.getParameter("id"));
 					
-			JPAToolset.updateJPA("Autore", field, newValue, id);
+			if(field!=null && newValue!=null && id!=null) autoreService.update(field, newValue, id);
+			else throw new IllegalArgumentException();
+
 		} else if(op.equals("select")) {
-			model.addAttribute("autori", JPAToolset.selectJPA("Autore"));
+			model.addAttribute("autori", autoreService.getAll());
 		}
 		return "biblioteca/sub-admin/autori";
 	}
