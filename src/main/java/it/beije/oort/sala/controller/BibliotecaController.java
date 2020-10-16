@@ -54,7 +54,6 @@ public class BibliotecaController {
 			model.addAttribute("error", "ERRORE: Email o password errati");
 			ret = "biblioteca/auth";
 		}
-		
 		return ret;
 	}
 }
