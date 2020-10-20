@@ -10,6 +10,9 @@
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
+	
+	<resources mapping="/resources/**" location="/resources/theme/" cache-period="31556926"/>
+	
 	<annotation-driven />
 	<context:component-scan base-package="it.beije.oort.bassanelli.library_application" />
 
@@ -19,5 +22,8 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+
+	
+	
 
 </beans:beans>

@@ -69,4 +69,47 @@ public class LibraryController {
 		return root +"/view";
 	}
 	
+	@RequestMapping(value = root + "/borrow", method = RequestMethod.GET)
+	public String enterBorrowPage(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
+		log.info("PATH: " + request.getContextPath());
+		
+		return root +"/borrow";
+	}
+	
+	@RequestMapping(value = root + "/manage/users", method = RequestMethod.GET)
+	public String enterManageUsersPage(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
+		log.info("PATH: " + request.getContextPath());
+		
+		return root +"/manage/users";
+	}
+	
+	@RequestMapping(value = root + "/manage/books", method = RequestMethod.GET)
+	public String enterManageBooksPage(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
+		log.info("PATH: " + request.getContextPath());
+		
+		return root +"/manage/books";
+	}
+	
+	@RequestMapping(value = root + "/manage/authors", method = RequestMethod.GET)
+	public String enterManageAuthorsPage(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
+		log.info("PATH: " + request.getContextPath());
+		
+		return root +"/manage/authors";
+	}
+	
+	@RequestMapping(value = root + "/manage/publishers", method = RequestMethod.GET)
+	public String enterManagePublishersPage(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
+		log.info("PATH: " + request.getContextPath());
+		
+		return root +"/manage/publishers";
+	}
+	
+	@RequestMapping(value = root + "/manage/borrows", method = RequestMethod.GET)
+	public String enterManageBorrowsPage(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
+		log.info("PATH: " + request.getContextPath());
+		
+		return root +"/manage/borrows";
+	}
+	
+	
 }

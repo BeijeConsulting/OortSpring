@@ -18,13 +18,12 @@
 	<ul>
 		<li><a href="/OortSpring/library/profile">Profile</a></li>
 		<li><a href="/OortSpring/library/view">Search book, author or publisher</a></li>
-		<li><a href="/OortSpring/library/borrow">Borrows</a></li>
+		<li><a href="/OortSpring/library/borrow">View your borrows</a></li>
 	</ul>
 	
 	<form method="POST" action="/OortSpring/library/logout-user">
 		<input type="submit" value="LOGOUT"/>
 	</form>
-	<!--  <a href="./logout-user">Logout</a><br> -->
 
 </body>
 </html>

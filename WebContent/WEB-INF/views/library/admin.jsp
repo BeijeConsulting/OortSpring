@@ -17,14 +17,16 @@
 	
 	<ul>
 		<li><a href="/OortSpring/library/profile">Profile</a></li>
-		<li><a href="/OortSpring/library/view">Search book, author or publisher</a></li>
-		<li><a href="/OortSpring/library/borrow">Borrows</a></li>
+		<li><a href="/OortSpring/library/manage/users">Manage users</a></li>
+		<li><a href="/OortSpring/library/manage/books">Manage books</a></li>
+		<li><a href="/OortSpring/library/manage/authors">Manage authors</a></li>
+		<li><a href="/OortSpring/library/manage/publishers">Manage publisher</a></li>
+		<li><a href="/OortSpring/library//manage/borrows">Manage borrows</a></li>
 	</ul>
 	
-	<form method="POST" action="./logout-user">
+	<form method="POST" action="/OortSpring/library/logout-user">
 		<input type="submit" value="LOGOUT"/>
 	</form>
-	<!--  <a href="./logout-user">Logout</a><br> -->
 
 </body>
 </html>

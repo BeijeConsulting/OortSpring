@@ -50,7 +50,12 @@ public class UserController {
 		if (user != null) {
 			// log.debug(user.toString());
 			session.setAttribute("user", user);
-			return root + "/index";
+			
+			if(user.getAdmin()) {
+				return root + "/admin";
+			} else {
+				return root + "/index";
+			}
 		} else {
 			
 			model.addAttribute("message", "The user is not valid");
@@ -59,7 +64,7 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/logout-user", method = RequestMethod.POST)
+	@RequestMapping(value = root + "/logout-user", method = RequestMethod.POST)
 	public String logout(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale)
 			throws UnsupportedEncodingException {
 		log.info("PATH: " + request.getContextPath());
@@ -67,7 +72,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.setAttribute("user", null);
 
-		return root + "/login";
+		return root + "/index";
 
 	}
 

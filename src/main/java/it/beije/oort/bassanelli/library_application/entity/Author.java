@@ -23,7 +23,7 @@ public class Author {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = FIELD_ID)
-	private int id;
+	private Integer id;
 	
 	@Column(name = FIELD_NAME)
 	private String name;
@@ -40,11 +40,11 @@ public class Author {
 	@Column(name = FIELD_BIOGRAPHY)
 	private String biography;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

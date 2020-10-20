@@ -19,7 +19,7 @@ public class Publisher {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = FIELD_ID)
-	private int id;
+	private Integer id;
 
 	@Column(name = FIELD_NAME)
 	private String name;
@@ -27,11 +27,11 @@ public class Publisher {
 	@Column(name = FIELD_DESCRIPTION)
 	private String description;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

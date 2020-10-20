@@ -31,19 +31,19 @@ public class Book {
 	private String description;
 	
 	@Column(name = FIELD_AUTHOR)
-	private int authorId;
+	private Integer authorId;
 	
 	@Column(name = FIELD_PUBLISHER)
-	private int publisherId;
+	private Integer publisherId;
 	
 	@Column(name = FIELD_YEAR)
 	private String year; 
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -63,19 +63,19 @@ public class Book {
 		this.description = description;
 	}
 
-	public int getAuthorId() {
+	public Integer getAuthorId() {
 		return authorId;
 	}
 
-	public void setAuthorId(int authorId) {
+	public void setAuthorId(Integer authorId) {
 		this.authorId = authorId;
 	}
 
-	public int getPublisherId() {
+	public Integer getPublisherId() {
 		return publisherId;
 	}
 
-	public void setPublisherId(int publisherId) {
+	public void setPublisherId(Integer publisherId) {
 		this.publisherId = publisherId;
 	}
 

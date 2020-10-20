@@ -24,13 +24,13 @@ public class Borrow {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = FIELD_ID)
-	private int id;
+	private Integer id;
 	
 	@Column(name = FIELD_BOOK)
-	private int bookId;
+	private Integer bookId;
 	
 	@Column(name = FIELD_USER)
-	private int userId;
+	private Integer userId;
 	
 	@Column(name = FIELD_DATE_OF_START)
 	private LocalDate dateOfStart;
@@ -41,27 +41,27 @@ public class Borrow {
 	@Column(name = FIELD_NOTE)
 	private String note;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getBookId() {
+	public Integer getBookId() {
 		return bookId;
 	}
 
-	public void setBookId(int bookId) {
+	public void setBookId(Integer bookId) {
 		this.bookId = bookId;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 

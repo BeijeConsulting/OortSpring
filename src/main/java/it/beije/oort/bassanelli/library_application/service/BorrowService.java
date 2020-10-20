@@ -17,4 +17,8 @@ public class BorrowService {
 	public List<Borrow> getAllBorrows() {
 		return borrowRepository.findAll();
 	}
+	
+	public List<Borrow> getUserBorrows(Integer id){
+		return borrowRepository.findByUserId(id);
+	}
 }
