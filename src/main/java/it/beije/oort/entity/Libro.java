@@ -9,47 +9,59 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+//import com.fasterxml.jackson.annotation.JsonGetter;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "libro")
+@JsonInclude(Include.NON_NULL)
+
 public class Libro {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "titolo")
 	private String titolo;
 	
+	@JsonProperty("descrizione_libro")
 	@Column(name = "descrizione")
 	private String descrizione;
 	
+	@JsonProperty("id_autore")
 	@Column(name = "id_autore")
-	private Integer id_autore;
+	private Integer idAutore;
 	
+	@JsonProperty("id_editore")
 	@Column(name = "id_editore")
-	private Integer id_editore;
+	private Integer idEditore;
 	
 	@Column(name = "anno")
-	private LocalDate anno;
+	private String anno;
 	
 	
 	public Libro() {}
 	
-	public Libro(String titolo, String descrizione, Integer id_autore, 
-					Integer id_editore, LocalDate anno) {
+	public Libro(String titolo, String descrizione, Integer idAutore, 
+					Integer idEditore, String anno) {
 		this.titolo = titolo;
 		this.descrizione = descrizione;
-		this.id_autore = id_autore;
-		this.id_editore = id_editore;
+		this.idAutore = idAutore;
+		this.idEditore = idEditore;
 		this.anno = anno;
 	}
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -71,25 +83,25 @@ public class Libro {
 	
 	
 	public Integer getIdAutore() {
-		return id_autore;
+		return idAutore;
 	}
-	public void setIdAutore(Integer id_autore) {
-		this.id_autore = id_autore;
+	public void setIdAutore(Integer idAutore) {
+		this.idAutore = idAutore;
 	}
 	
 	
 	public Integer getIdEditore() {
-		return id_editore;
+		return idEditore;
 	}
-	public void setIdEditore(Integer id_editore) {
-		this.id_editore = id_editore;
+	public void setIdEditore(Integer idEditore) {
+		this.idEditore = idEditore;
 	}
 	
 	
-	public LocalDate getAnno() {
+	public String getAnno() {
 		return anno;
 	}
-	public void setAnno(LocalDate anno) {
+	public void setAnno(String anno) {
 		this.anno = anno;
 	}
 	
@@ -98,8 +110,8 @@ public class Libro {
 		builder.append("id : ").append(this.id)	
 			.append(" - titolo : ").append(this.titolo)	
 			.append(" - descrizione : ").append(this.descrizione)
-			.append(" - id_autore : ").append(this.id_autore)
-			.append(" - id_editore : ").append(this.id_editore)
+			.append(" - id_autore : ").append(this.idAutore)
+			.append(" - id_editore : ").append(this.idEditore)
 			.append(" - anno : ").append(this.anno).append("]");
 		return builder.toString();
 	}

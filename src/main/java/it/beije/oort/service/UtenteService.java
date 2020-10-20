@@ -74,7 +74,7 @@ public class UtenteService {
 	
 	
 	@Transactional
-	public void update(Integer id, Utente datiUtente) {
+	public Utente update(Integer id, Utente datiUtente) {
 		if (datiUtente == null) {
 			throw new IllegalArgumentException("bean utente null");
 		}
@@ -86,9 +86,11 @@ public class UtenteService {
 			if (utente == null) {
 				throw new IllegalArgumentException("non è presente un utente con id " + id);
 			}
-			//update
-			BeanUtils.copyProperties(datiUtente, utente, "id");
-			utenteRepository.save(datiUtente);
+			//update (replace)
+			BeanUtils.copyProperties(datiUtente, utente, "id"); //attenzione!! fa il replace!
+			utenteRepository.save(utente);
+			
+			return utente;
 			
 		} else throw new IllegalArgumentException("dati utente non presenti");
 	}

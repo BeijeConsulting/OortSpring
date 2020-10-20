@@ -8,8 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+//import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 @Entity
 @Table(name = "utente")
+@JsonInclude(Include.NON_NULL)
 public class Utente {
 	
 	@Id
@@ -29,8 +37,23 @@ public class Utente {
 	@Column(name="email")
 	private String email;
 
+	@JsonIgnore    //con questo non mostra la password
 	@Column(name="password")
 	private String password;
+	
+	//ESEMPIO:
+//	@JsonProperty("data_nascita") //rinomina data di nascita: nel file jason ci vorrà questo nome
+//	@Transient
+//	private LocalDate dataNascita;
+//	
+//	public LocalDate getDataNascita() { //get classico
+//		return dataNascita;
+//	}
+//
+//	@JsonGetter("data_nascita") // get aggiuntivo che formatta la data
+//	public String getDataNascitaFormattata() {
+//		return LocalDate.now().toString();
+//	}
 	
 	
 	public Utente() {}
@@ -65,6 +88,11 @@ public class Utente {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	@JsonGetter("cognome") //dice di volere il cognome in UpperCase
+	public String getCognomeMaiuscolo() {
+		return cognome.toUpperCase();
 	}
 	
 	public String getCognome() {
