@@ -63,8 +63,8 @@ public class MetodiAutore {
 		System.out.println("id : " + autore.getId());			
 		System.out.println("cognome : " + autore.getCognome());
 		System.out.println("nome : " + autore.getNome());
-		System.out.println("data_nascita : " + autore.getData_nascita());
-		System.out.println("data_morte : " + autore.getData_morte());
+		System.out.println("data_nascita : " + autore.getDataNascita());
+		System.out.println("data_morte : " + autore.getDataMorte());
 		System.out.println("biografia : " + autore.getBiografia());
 		return autore;
 	}
@@ -130,8 +130,8 @@ public class MetodiAutore {
 		Autore autore = new Autore();
 		autore.setNome(nome);
 		autore.setCognome(cognome);
-		autore.setData_nascita(dateFromString(data_nascita));
-		autore.setData_morte(dateFromString(data_morte));
+		autore.setDataNascita(dateFromString(data_nascita));
+		autore.setDataMorte(dateFromString(data_morte));
 		autore.setBiografia(biografia);
 		entityManager.getTransaction().begin();
 		entityManager.persist(autore);
@@ -145,8 +145,8 @@ public class MetodiAutore {
 		Autore autore = new Autore();
 		autore.setNome(nome);
 		autore.setCognome(cognome);
-		autore.setData_nascita(dateFromString(data_nascita));
-		autore.setData_morte(dateFromString(data_morte));
+		autore.setDataNascita(dateFromString(data_nascita));
+		autore.setDataMorte(dateFromString(data_morte));
 		autore.setBiografia(biografia);
 		entityManager.getTransaction().begin();
 		entityManager.persist(autore);
@@ -162,9 +162,9 @@ public class MetodiAutore {
 			break;
 		case "cognome": autore.setCognome(valore);	
 			break;	
-		case "data_nascita": autore.setData_nascita(dateFromString(valore));			
+		case "data_nascita": autore.setDataNascita(dateFromString(valore));			
 			break;
-		case "data_morte": autore.setData_morte(dateFromString(valore));		
+		case "data_morte": autore.setDataMorte(dateFromString(valore));		
 			break;
 		case "biografia": autore.setBiografia(valore);		
 			break;
@@ -222,8 +222,8 @@ public class MetodiAutore {
 		StringBuilder builder = new StringBuilder();
 		builder.append(autore.getNome()).append(";")
 			.append(autore.getCognome()).append(";")
-			.append(autore.getData_nascita()).append(";")
-			.append(autore.getData_morte()).append(";")
+			.append(autore.getDataNascita()).append(";")
+			.append(autore.getDataMorte()).append(";")
 			.append(autore.getBiografia()).append("\n");
 		
 		return builder.toString();

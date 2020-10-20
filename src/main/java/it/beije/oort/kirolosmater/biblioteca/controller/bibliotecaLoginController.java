@@ -29,7 +29,7 @@ import it.beije.oort.kirolosmater.biblioteca.service.UtenteBibliotecaService;
 public class bibliotecaLoginController {
 	
 	@Autowired
-	private static UtenteBibliotecaService utenteBibliotecaService;
+	private UtenteBibliotecaService utenteBibliotecaService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String bibliotecaLogin(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
@@ -45,59 +45,29 @@ public class bibliotecaLoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String bibliotecaLogin(@RequestParam String email, @RequestParam String password, HttpServletRequest request, Model model) {
-		return checkUserWithQueryMethods(email, password, request, model);
-	}
-	
-	public static String checkUserWithSession (String email, String password, HttpServletRequest request, Model model) {
-		System.out.println("ricevo dati utente...");
-		String stringaOutput = "biblioteca/areaPersonale";
+	public String login(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
 		HttpSession session = request.getSession();
-		System.out.println(email);
-		UtenteBiblioteca utente = checkEmail(email);
+		String returnPath = "";
 		
-		boolean passwordCorretta = checkPassword(utente, password);
-		if (passwordCorretta) {
-			session.setAttribute("userBean", utente);
-			model.addAttribute("utente", utente);
-			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
-			session.setAttribute("prestitiUserBean", prestitiUtente);
-			model.addAttribute("prestitiUtente", prestitiUtente);
-			boolean admin = utente.isAdmin();
-			session.setAttribute("userIsAdmin", admin);
-			model.addAttribute("admin", admin);
-			stringaOutput = "biblioteca/areaPersonale";
+		System.out.println("entra nel controller");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		UtenteBiblioteca user = utenteBibliotecaService.checkLogin(email, password);
+		if(user!=null) {
+			session.setAttribute("name", user.getNome());
+			session.setAttribute("surname", user.getCognome());
+			session.setAttribute("userid", user.getId());
+			session.setAttribute("auth", true);
+			returnPath = "biblioteca/areaPersonale";
 		} else {
-			session.setAttribute("errore", "CREDENZIALI ERRATE");
-			model.addAttribute("errore", "CREDENZIALI ERRATE");
-			stringaOutput = "biblioteca/bibliotecaLogin";
+			model.addAttribute("error", "ERROR: Email or password incorrect");
+			returnPath = "biblioteca/bibliotecaLogin";
 		}
 		
-		
-		return stringaOutput;
+		return returnPath;
 	}
 	
-	public static String checkUserWithQueryMethods(String email, String password, HttpServletRequest request, Model model) {
-		System.out.println("ricevo dati utente...");
-		String stringaOutput = "biblioteca/areaPersonale";
-//		System.out.println(email);
-		UtenteBiblioteca utente1 = utenteBibliotecaService.findByNome("kirolos").get(0);
-		UtenteBiblioteca utente = utenteBibliotecaService.findByEmail(email);
-		
-		boolean passwordCorretta = checkPassword(utente, password);
-		if (passwordCorretta) {
-			model.addAttribute("utente", utente);
-			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
-			model.addAttribute("prestitiUtente", prestitiUtente);
-			boolean admin = utente.isAdmin();
-			model.addAttribute("admin", admin);
-			stringaOutput = "biblioteca/areaPersonale";
-		} else {
-			model.addAttribute("errore", "CREDENZIALI ERRATE");
-			stringaOutput = "biblioteca/bibliotecaLogin";
-		}
-		
-		
-		return stringaOutput;
-	}
+	
+	
+	
 }

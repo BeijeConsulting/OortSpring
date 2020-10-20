@@ -115,7 +115,7 @@ public class MetodiUtente {
 	public static UtenteBiblioteca getUtenteSconosciuto () {
 		UtenteBiblioteca sconosciuto = new UtenteBiblioteca();
 		sconosciuto.setAdmin(false);
-		sconosciuto.setCodice_fiscale("sconosciuto");
+		sconosciuto.setCodiceFiscale("sconosciuto");
 		sconosciuto.setCognome("sconosciuto");
 		sconosciuto.setEmail("utente.sconosciuto@sconosciuto.sconosciuto");
 		sconosciuto.setIndirizzo("sconosciuto");

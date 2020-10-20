@@ -14,18 +14,18 @@ public class Editore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ideditore")
-	private int id;
+	private Integer id;
 	
-	@Column
+	@Column(name = "denominazione")
 	private String denominazione;
 	
-	@Column
+	@Column(name = "descrizione")
 	private String descrizione;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getDenominazione() {

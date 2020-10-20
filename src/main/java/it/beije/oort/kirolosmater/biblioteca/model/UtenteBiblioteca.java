@@ -14,36 +14,36 @@ public class UtenteBiblioteca {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idutente")
-	private int id;	
+	private Integer id;	
 	
-	@Column
+	@Column(name = "cognome")
 	private String cognome;
 	
-	@Column
+	@Column(name = "nome")
 	private String nome;
 	
-	@Column
-	private String codice_fiscale;
+	@Column(name = "codice_fiscale")
+	private String codiceFiscale;
 	
-	@Column
+	@Column(name = "email")
 	private String email;
 	
-	@Column
+	@Column(name = "telefono")
 	private String telefono;
 	
-	@Column
+	@Column(name = "indirizzo")
 	private String indirizzo;
 	
-	@Column
+	@Column(name = "password")
 	private String password;
 	
-	@Column
+	@Column(name = "admin")
 	private boolean admin;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getCognome() {
@@ -58,11 +58,11 @@ public class UtenteBiblioteca {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getCodice_fiscale() {
-		return codice_fiscale;
+	public String getCodiceFiscale() {
+		return codiceFiscale;
 	}
-	public void setCodice_fiscale(String codice_fiscale) {
-		this.codice_fiscale = codice_fiscale;
+	public void setCodiceFiscale(String codiceFiscale) {
+		this.codiceFiscale = codiceFiscale;
 	}
 	public String getEmail() {
 		return email;

@@ -16,27 +16,27 @@ public class Prestito {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idprestito")
-	private int id;	
+	private Integer id;	
 	
-	@Column
+	@Column(name="libro")
 	private String libro;
 	
-	@Column
+	@Column(name="utente")
 	private String utente;
 	
-	@Column
-	private LocalDate data_inizio;
+	@Column(name="data_inizio")
+	private LocalDate dataInizio;
 	
-	@Column
-	private LocalDate data_fine;
+	@Column(name="data_fine")
+	private LocalDate dataFine;
 	
-	@Column
+	@Column(name="note")
 	private String note;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getLibro() {
@@ -51,17 +51,17 @@ public class Prestito {
 	public void setUtente(String utente) {
 		this.utente = utente;
 	}
-	public LocalDate getData_inizio() {
-		return data_inizio;
+	public LocalDate getDataInizio() {
+		return dataInizio;
 	}
-	public void setData_inizio(LocalDate data_inizio) {
-		this.data_inizio = data_inizio;
+	public void setDataInizio(LocalDate dataInizio) {
+		this.dataInizio = dataInizio;
 	}
-	public LocalDate getData_fine() {
-		return data_fine;
+	public LocalDate getDataFine() {
+		return dataFine;
 	}
-	public void setData_fine(LocalDate data_fine) {
-		this.data_fine = data_fine;
+	public void setDataFine(LocalDate dataFine) {
+		this.dataFine = dataFine;
 	}
 	public String getNote() {
 		return note;

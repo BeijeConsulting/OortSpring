@@ -16,27 +16,27 @@ public class Autore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idautore")
-	private int id;
+	private Integer id;
 	
-	@Column
+	@Column(name = "cognome")
 	private String cognome;
 	
-	@Column
+	@Column(name = "nome")
 	private String nome;
 	
-	@Column
-	private LocalDate data_nascita;
+	@Column(name = "data_nascita")
+	private LocalDate dataNascita;
 	
-	@Column
-	private LocalDate data_morte;
+	@Column(name = "data_morte")
+	private LocalDate dataMorte;
 	
-	@Column
+	@Column(name = "biografia")
 	private String biografia;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getCognome() {
@@ -51,17 +51,17 @@ public class Autore {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public LocalDate getData_nascita() {
-		return data_nascita;
+	public LocalDate getDataNascita() {
+		return dataNascita;
 	}
-	public void setData_nascita(LocalDate data_nascita) {
-		this.data_nascita = data_nascita;
+	public void setDataNascita(LocalDate dataNascita) {
+		this.dataNascita = dataNascita;
 	}
-	public LocalDate getData_morte() {
-		return data_morte;
+	public LocalDate getDataMorte() {
+		return dataMorte;
 	}
-	public void setData_morte(LocalDate data_morte) {
-		this.data_morte = data_morte;
+	public void setDataMorte(LocalDate dataMorte) {
+		this.dataMorte = dataMorte;
 	}
 	public String getBiografia() {
 		return biografia;

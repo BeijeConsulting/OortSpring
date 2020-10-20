@@ -9,13 +9,15 @@ import org.springframework.stereotype.Repository;
 import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
 
 @Repository
-public interface UtenteBibliotecaRepository extends JpaRepository<UtenteBiblioteca, Integer>{
-	
-	//IM : count u from User u where email = ?
+public interface UtenteBibliotecaRepository extends JpaRepository<UtenteBiblioteca, Integer> {
+
+	// IM : count u from User u where email = ?
 	Optional<UtenteBiblioteca> findByEmail(String email);
 	
+	Optional<UtenteBiblioteca> findByEmailAndPassword(String email, String password);
+
 	List<UtenteBiblioteca> findByNome(String nome);
-	
+
 //	Optional<UtenteBiblioteca> findByEmailAndPassword(String email, String password);
 
 }

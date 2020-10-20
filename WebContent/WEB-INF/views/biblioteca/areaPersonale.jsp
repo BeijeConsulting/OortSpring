@@ -24,8 +24,8 @@
 <% for(Prestito prestito : prestitiUserBean) { 
 	%> <tr>
 	<th><% out.println(prestito.getLibro());%></th>
-	<th><% out.println(prestito.getData_inizio());%></th>
-	<th><% out.println(prestito.getData_fine());%></th>
+	<th><% out.println(prestito.getDataInizio());%></th>
+	<th><% out.println(prestito.getDataFine());%></th>
 	<th><% out.println(prestito.getNote());%></th>
 	</tr>
 <% }%>

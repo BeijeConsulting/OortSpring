@@ -14,28 +14,28 @@ public class Libro {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idlibro")
-	private int id;
+	private Integer id;
 	
-	@Column
+	@Column(name = "titolo")
 	private String titolo;
 	
-	@Column
+	@Column(name = "descrizione")
 	private String descrizione;
 	
-	@Column
+	@Column(name = "autore")
 	private String autore;
 	
-	@Column
+	@Column(name = "editore")
 	private String editore;
 	
-	@Column
-	private int anno;
+	@Column(name = "anno")
+	private Integer anno;
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitolo() {
@@ -62,10 +62,10 @@ public class Libro {
 	public void setEditore(String editore) {
 		this.editore = editore;
 	}
-	public int getAnno() {
+	public Integer getAnno() {
 		return anno;
 	}
-	public void setAnno(int anno) {
+	public void setAnno(Integer anno) {
 		this.anno = anno;
 	}
 }
