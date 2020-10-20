@@ -8,14 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
+@JsonInclude(Include.NON_NULL)
 @Table(name = "libri")
 public class Libro {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "titolo")
 	private String titolo;
@@ -24,10 +28,10 @@ public class Libro {
 	private String descrizione;
 	
 	@Column(name = "idAutore")
-	private int id_autore;
+	private Integer id_autore;
 	
 	@Column(name = "idEditore")
-	private int id_editore;
+	private Integer id_editore;
 	
 	@Column(name = "anno")
 	private String anno;
@@ -35,7 +39,7 @@ public class Libro {
 	
 	public Libro() {}
 	
-	public Libro(int id, String titolo, String descrizione, int id_autore, int id_editore, String anno) {
+	public Libro(Integer id, String titolo, String descrizione, Integer id_autore, Integer id_editore, String anno) {
 		this.id = id;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
@@ -45,10 +49,10 @@ public class Libro {
 	}
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -69,18 +73,18 @@ public class Libro {
 	}
 	
 	
-	public int getId_autore() {
+	public Integer getId_autore() {
 		return id_autore;
 	}
-	public void setId_autore(int id_autore) {
+	public void setId_autore(Integer id_autore) {
 		this.id_autore = id_autore;
 	}
 	
 	
-	public int getId_editore() {
+	public Integer getId_editore() {
 		return id_editore;
 	}
-	public void setId_editore(int id_editore) {
+	public void setId_editore(Integer id_editore) {
 		this.id_editore = id_editore;
 	}
 	
@@ -92,5 +96,15 @@ public class Libro {
 		this.anno = anno;
 	}
 	
+	public String toString() {
+	StringBuilder builder = new StringBuilder("libro [");
+	builder.append("titolo : ").append(this.titolo)
+		.append(" - descrizione : ").append(this.descrizione)
+		.append(" - id autore : ").append(this.id_autore)
+		.append(" - id editore : ").append(this.id_editore)
+		.append(" - anno : ").append(this.anno).append("]");
 	
+	return builder.toString();
+}
+
 }

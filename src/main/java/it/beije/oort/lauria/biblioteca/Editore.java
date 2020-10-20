@@ -14,7 +14,7 @@ public class Editore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "denominazione")
 	private String denominazione;
@@ -24,17 +24,17 @@ public class Editore {
 
 	public Editore() {}
 
-	public Editore(int id, String denominazione, String descrizione) {
+	public Editore(Integer id, String denominazione, String descrizione) {
 		this.id = id;
 		this.denominazione = denominazione;
 		this.descrizione = descrizione;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

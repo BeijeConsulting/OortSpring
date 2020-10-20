@@ -16,7 +16,7 @@ public class Autore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -35,7 +35,7 @@ public class Autore {
 	
 	public Autore() {}
 
-	public Autore(int id, String nome, String cognome, LocalDate data_nascita, LocalDate data_morte, String biografia) {
+	public Autore(Integer id, String nome, String cognome, LocalDate data_nascita, LocalDate data_morte, String biografia) {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -44,11 +44,11 @@ public class Autore {
 		this.biografia = biografia;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
