@@ -3,7 +3,7 @@ package it.beije.oort.controller;
 import it.beije.oort.database.DatabaseController;
 import it.beije.oort.model.Autore;
 import it.beije.oort.model.Libro;
-import it.beije.oort.service.LibroService;
+import it.beije.oort.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,18 +21,18 @@ import javax.servlet.http.HttpServletRequest;
 public class ListController {
 
     @Autowired
-    private LibroService libroService;
+    private BookService bookService;
 
     // Stampa la pagina base per scegliere cosa visualizzare
     @GetMapping(value = "/visualizza")
-    public String getPage(){;
+    public String getPage(){
         return "liste/listIndex";
     }
 
     // Risponde al form di ogni pagina di listing e ritorna la corretta pagina con redirect
     @PostMapping(value = "/visualizza")
     public String viewList(HttpServletRequest request) {
-        String listType = (String) request.getParameter("type");
+        String listType = request.getParameter("type");
         if (listType != null) {
             switch (listType) {
                 case "Libri":
@@ -91,7 +91,7 @@ public class ListController {
     public String detailLibro(Model model,
                               @PathVariable Long id){
 
-        Libro libro = libroService.load(id);
+        Libro libro = bookService.load(id);
         if (libro != null){
             model.addAttribute("libro", libro);
         }

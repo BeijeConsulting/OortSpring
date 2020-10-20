@@ -20,8 +20,8 @@ public class AddController {
     // CONTROLLER PER PREPARARE E OTTENERE LA PAGINA DI AGGIUNTA
     //////////////////////////////////////////////////////////////
     @GetMapping(value = "/add")
-    public String servePage(HttpSession session, HttpServletRequest request, Model model){
-        addService.preparePage(session, request, model);
+    public String servePage(HttpSession session, HttpServletRequest request){
+        addService.preparePage(session, request);
         return "add";
     }
 

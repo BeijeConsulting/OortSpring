@@ -6,7 +6,7 @@ import java.util.List;
 
 // todo update
 public class DatabaseController {
-    private static GenericDatabaseManager dbm = new GenericDatabaseManager();
+    private static final GenericDatabaseManager dbm = new GenericDatabaseManager();
 
     // Generic
     public static void insert(IBibliotecaModel oggetto){dbm.insert(oggetto);}

@@ -36,7 +36,7 @@ public class GenericDatabaseManager {
     }
 
     public void delete(Class<? extends IBibliotecaModel> classe, Long id){
-        IBibliotecaModel deleteMe = null;
+        IBibliotecaModel deleteMe;
         try{
             deleteMe = this.get(classe, id);
             em.getTransaction().begin();

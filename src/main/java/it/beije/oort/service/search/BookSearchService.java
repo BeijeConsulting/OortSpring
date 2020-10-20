@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class BookSearchService {
 
-    Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private BookRepository bookRepository;
@@ -106,9 +106,9 @@ public class BookSearchService {
      */
     public List<Libro> searchBookByID(String idString){
         log.info("Cerco libro per ID-Stringa: " + idString);
-        Long id = 0L;
+        long id = 0L;
         try{
-            id = Long.valueOf(idString);
+            id = Long.parseLong(idString);
         } catch (NumberFormatException e){
             log.warn("NumberFormatException");
             e.printStackTrace();

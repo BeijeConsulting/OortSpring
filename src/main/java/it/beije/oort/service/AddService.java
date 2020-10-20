@@ -30,7 +30,7 @@ public class AddService {
         session.removeAttribute("addType");
     }
 
-    public void preparePage(HttpSession session, HttpServletRequest request, Model model){
+    public void preparePage(HttpSession session, HttpServletRequest request){
         request.getSession().removeAttribute("add");
         String type = request.getParameter("add");
 

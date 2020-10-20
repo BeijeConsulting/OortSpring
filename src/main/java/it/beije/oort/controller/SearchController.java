@@ -42,10 +42,10 @@ public class SearchController {
         return "search/searchBook";
     }
 
-    @GetMapping(value = "/search/autore")
-    public String getSearchAutore(){
-        return "search/searchAutore";
-    }
+//    @GetMapping(value = "/search/autore")
+//    public String getSearchAutore(){
+//        return "search/searchAutore";
+//    }
 
     // POST
     @PostMapping(value = "/search/libro")
