@@ -2,6 +2,8 @@ package it.beije.oort.brugaletta.services;
 
 import java.util.Optional;
 import javax.transaction.Transactional;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.beije.oort.brugaletta.entity.User;
@@ -23,5 +25,18 @@ public class UserService {
 			throw new IllegalArgumentException("utente non esistente");
 		}
 		userRepository.save(utente);
+	}
+	
+	@Transactional
+	public User update(int id, User userData) {
+		if (userData == null) {
+			throw new IllegalArgumentException("userData is null");
+		}
+		Optional<User> user = userRepository.findById(id);
+		if (user == null) {
+			throw new IllegalArgumentException("A user with id " + id + " doesn't exist");
+		}
+		BeanUtils.copyProperties(userData, user.get(), "id");
+		return userRepository.save(user.get());
 	}
 }
