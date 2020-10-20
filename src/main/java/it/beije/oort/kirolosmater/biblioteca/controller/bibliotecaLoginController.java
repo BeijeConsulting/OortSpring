@@ -25,12 +25,13 @@ import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
 import it.beije.oort.kirolosmater.biblioteca.service.UtenteBibliotecaService;
 
 @Controller
+@RequestMapping("/biblioteca")
 public class bibliotecaLoginController {
 	
 	@Autowired
 	private static UtenteBibliotecaService utenteBibliotecaService;
 	
-	@RequestMapping(value = "/biblioteca/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String bibliotecaLogin(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) {
 		System.out.println("login..." + request.getContextPath());
 		
@@ -43,7 +44,7 @@ public class bibliotecaLoginController {
 		return "biblioteca/bibliotecaLogin";
 	}
 
-	@RequestMapping(value = "/biblioteca/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String bibliotecaLogin(@RequestParam String email, @RequestParam String password, HttpServletRequest request, Model model) {
 		return checkUserWithQueryMethods(email, password, request, model);
 	}

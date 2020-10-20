@@ -24,6 +24,7 @@ import it.beije.oort.service.UtenteService;
 
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 	
 	@Autowired
