@@ -3,6 +3,9 @@ package it.beije.oort.bm.library.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @Entity
 @Table(name = "author")
 public class Author implements Comparable<Author>, Serializable {
@@ -52,22 +55,22 @@ public class Author implements Comparable<Author>, Serializable {
 		this.name = name;
 	}
 
-
+	@JsonGetter("date_of_birth")
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-
+	@JsonSetter("date_of_birth")
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-
+	@JsonGetter("date_of_death")
 	public String getDateOfDeath() {
 		return dateOfDeath;
 	}
 
-
+	@JsonSetter("date_of_death")
 	public void setDateOfDeath(String dateOfDeath) {
 		this.dateOfDeath = dateOfDeath;
 	}

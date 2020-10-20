@@ -5,6 +5,9 @@ import java.sql.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @Entity
 @Table(name = "loan")
 public class Loan implements Comparable<Loan>, Serializable {
@@ -57,22 +60,22 @@ public class Loan implements Comparable<Loan>, Serializable {
 		this.book = book;
 	}
 
-
+	@JsonGetter("start_date")
 	public String getStartDate() {
 		return startDate;
 	}
 
-
+	@JsonSetter("start_date")
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate.toString();
 	}
 
-
+	@JsonGetter("end_date")
 	public String getEndDate() {
 		return endDate;
 	}
 
-
+	@JsonSetter("end_date")
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate.toString();
 	}

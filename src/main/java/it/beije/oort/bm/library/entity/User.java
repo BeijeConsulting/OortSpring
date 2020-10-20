@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @Entity
 @Table(name = "user")
 public class User implements Comparable<User>, Serializable{
@@ -74,11 +77,11 @@ public class User implements Comparable<User>, Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	@JsonGetter("fiscal_code")
 	public String getFc() {
 		return fc;
 	}
-
+	@JsonSetter("fiscal_code")
 	public void setFc(String fc) {
 		this.fc = fc;
 	}
