@@ -1,3 +1,4 @@
+//
 //package it.beije.oort.service;
 //
 //import java.util.List;
@@ -59,7 +60,7 @@
 //	}
 //	
 //	@Transactional
-//	public void update(Integer id, Utente datiUtente) {
+//	public Utente update(Integer id, Utente datiUtente) {
 //		
 //		if (datiUtente == null) {
 //			throw new IllegalArgumentException("bean utente null");
@@ -76,7 +77,9 @@
 //			
 //			BeanUtils.copyProperties(datiUtente, utente, "id");
 //			
-//			utenteRepository.save(datiUtente);
+//			utenteRepository.save(utente);
+//			
+//			return utente;
 //			
 //		} else throw new IllegalArgumentException("dati utente non presenti");
 //		

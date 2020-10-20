@@ -1,4 +1,7 @@
+//
 //package it.beije.oort.entity;
+//
+//import java.time.LocalDate;
 //
 //import javax.persistence.Column;
 //import javax.persistence.Entity;
@@ -8,8 +11,16 @@
 //import javax.persistence.Table;
 //import javax.persistence.Transient;
 //
+//import com.fasterxml.jackson.annotation.JsonGetter;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonInclude;
+//import com.fasterxml.jackson.annotation.JsonInclude.Include;
+//import com.fasterxml.jackson.annotation.JsonProperty;
+//
+//
 //@Entity
 //@Table(name = "rubrica")
+//@JsonInclude(Include.NON_NULL)
 //public class Utente {
 //	
 //	@Id
@@ -29,9 +40,27 @@
 //	@Column(name="email")
 //	private String email;
 //
+//	@JsonIgnore
 //	@Transient
 //	private String password;
 //	
+//	@JsonProperty("data_nascita")
+//	@Transient
+//	private LocalDate dataNascita;
+//	
+//	public LocalDate getDataNascita() {
+//		return dataNascita;
+//	}
+//
+//	@JsonGetter("data_nascita")
+//	public String getDataNascitaFormattata() {
+//		return LocalDate.now().toString();
+//	}
+//
+//	public void setDataNascita(LocalDate dataNascita) {
+//		this.dataNascita = dataNascita;
+//	}
+//
 //	
 //	public Utente() {}
 //	
@@ -63,6 +92,11 @@
 //	
 //	public String getCognome() {
 //		return cognome;
+//	}
+//
+//	@JsonGetter("cognome")
+//	public String getCognomeMaiuscolo() {
+//		return cognome.toUpperCase();
 //	}
 //	public void setCognome(String cognome) {
 //		this.cognome = cognome;

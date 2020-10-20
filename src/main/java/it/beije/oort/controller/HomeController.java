@@ -46,7 +46,7 @@ public class HomeController {
 //		
 //		return "login";
 //	}
-
+	
 //	@RequestMapping(value = "/utente", method = RequestMethod.GET)
 //	public String utente() {
 //		System.out.println("utente...");
