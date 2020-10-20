@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
-@Table(name = "rubrica")
+@Table(name = "contatti")
 @JsonInclude(Include.NON_NULL)
 public class Utente {
 	
@@ -43,25 +43,7 @@ public class Utente {
 	@Transient
 	private String password;
 	
-	@JsonProperty("data_nascita")
-	@Transient
-	private LocalDate dataNascita;
-	
-	public LocalDate getDataNascita() {
-		return dataNascita;
-	}
-
-	@JsonGetter("data_nascita")
-	public String getDataNascitaFormattata() {
-		return LocalDate.now().toString();
-	}
-
-	public void setDataNascita(LocalDate dataNascita) {
-		this.dataNascita = dataNascita;
-	}
-
-	
-	public Utente() {}
+		public Utente() {}
 	
 	public Utente(String nome, String cognome, String telefono) {
 		this(nome, cognome, telefono, "");
@@ -93,10 +75,6 @@ public class Utente {
 		return cognome;
 	}
 
-	@JsonGetter("cognome")
-	public String getCognomeMaiuscolo() {
-		return cognome.toUpperCase();
-	}
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
@@ -126,7 +104,7 @@ public class Utente {
 	public String toString() {
 
 		StringBuilder builder = new StringBuilder("[");
-		builder.append("Nome : ").append(this.nome)
+		builder.append("ID: ").append(this.id).append("Nome : ").append(this.nome)
 			.append(" - Cognome : ").append(this.cognome)
 			.append(" - Telefono : ").append(this.telefono)
 			.append(" - Email : ").append(this.email).append("]");
