@@ -10,15 +10,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(value = {"it.beije.oort.kirolosmater.biblioteca.repository"})
+@EnableJpaRepositories(value = { "it.beije.oort.kirolosmater.biblioteca.repository" })
 public class ConfigurationClassBiblioteca {
 
 	@Primary
-	@Bean(name="transactionManagerBiblioteca")
-	public PlatformTransactionManager dbTransactionManagerBiblioteca () {
+	@Bean(name = "transactionManagerBiblioteca")
+	public PlatformTransactionManager dbTransactionManagerBiblioteca() {
 		JpaTransactionManager transactionManagerBiblioteca = new JpaTransactionManager();
-		transactionManagerBiblioteca
-		.setEntityManagerFactory(JpaEntityManagerBiblioteca.getInstanceBiblioteca());
+		transactionManagerBiblioteca.setEntityManagerFactory(JpaEntityManagerBiblioteca.getInstanceBiblioteca());
 		return transactionManagerBiblioteca;
 	}
 }

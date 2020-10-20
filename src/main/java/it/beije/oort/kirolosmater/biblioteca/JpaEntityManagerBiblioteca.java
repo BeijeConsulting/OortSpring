@@ -8,14 +8,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JpaEntityManagerBiblioteca {
+	
 	private static EntityManagerFactory emfactoryBiblioteca = null;
 
 	private JpaEntityManagerBiblioteca() {}
-	
+
 	@Bean(name = "entityManagerFactoryBiblioteca")
 	public static synchronized EntityManagerFactory getInstanceBiblioteca() {
 		try {
-			if(emfactoryBiblioteca == null) {
+			if (emfactoryBiblioteca == null) {
 				emfactoryBiblioteca = Persistence.createEntityManagerFactory("OortBiblioteca");
 			}
 			return emfactoryBiblioteca;
