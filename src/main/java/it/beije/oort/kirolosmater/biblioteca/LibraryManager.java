@@ -1,16 +1,8 @@
 package it.beije.oort.kirolosmater.biblioteca;
 
-import static it.beije.oort.kirolosmater.biblioteca.LibraryManager.libraryPersistenceUnit;
-
-import java.util.Map;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.hibernate.Session;
-
 import it.beije.oort.kirolosmater.biblioteca.model.JPAEntityManagerSingleton;
 
 

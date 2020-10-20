@@ -10,8 +10,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +22,6 @@ import it.beije.oort.kirolosmater.biblioteca.repository.UtenteBibliotecaReposito
 
 @Service
 public class UtenteBibliotecaService {
-
-//	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private UtenteBibliotecaRepository utenteBibliotecaRepository;

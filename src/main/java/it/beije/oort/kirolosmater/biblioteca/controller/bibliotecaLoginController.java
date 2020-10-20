@@ -1,11 +1,6 @@
 package it.beije.oort.kirolosmater.biblioteca.controller;
 
-import static it.beije.oort.kirolosmater.biblioteca.MetodiPrestito.visualizzaPrestitiByIdUtente;
-import static it.beije.oort.kirolosmater.biblioteca.MetodiUtente.checkEmail;
-import static it.beije.oort.kirolosmater.biblioteca.MetodiUtente.checkPassword;
-
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import it.beije.oort.entity.Utente;
-import it.beije.oort.kirolosmater.biblioteca.model.Prestito;
 import it.beije.oort.kirolosmater.biblioteca.model.UtenteBiblioteca;
 import it.beije.oort.kirolosmater.biblioteca.service.UtenteBibliotecaService;
 

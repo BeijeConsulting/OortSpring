@@ -8,13 +8,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import static it.beije.oort.kirolosmater.biblioteca.LibraryManager.libraryPersistenceUnit;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
