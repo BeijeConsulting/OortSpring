@@ -37,10 +37,11 @@ public class UtenteService {
 	}
 	
 	@Transactional
-	public void insert(Utente utente) {
+	public Utente insert(Utente utente) {
 		if(utente!=null && isValid(utente)) {
 			utenteRepository.save(utente);
 		}
+		return utente;
 	}
 
 	@Transactional
@@ -57,6 +58,31 @@ public class UtenteService {
 		} else {
 			throw new IllegalArgumentException("Non Ã¨ presente un utente con id: " + id);
 		}
+	}
+	
+	@Transactional
+	public Utente update(Utente utente, Integer id) {
+		
+		if (utente == null) {
+			throw new IllegalArgumentException("bean utente null");
+		}
+		
+		if (!"".equals(utente.getCognome()) || !"".equals(utente.getNome()) ||
+			!"".equals(utente.getEmail()) || !"".equals(utente.getTelefono())) {
+			
+			Utente old = get(id);
+			
+			if (old == null) {
+				throw new IllegalArgumentException("non è presente un utente con id " + id);
+			}
+			
+			BeanUtils.copyProperties(utente, old, "idUtente");
+			
+			utenteRepository.save(old);
+			
+			return old;
+			
+		} else throw new IllegalArgumentException("dati utente non presenti");
 	}
 	
 	public List<PrestitoTransport> getPrestiti(Integer idUtente) {
