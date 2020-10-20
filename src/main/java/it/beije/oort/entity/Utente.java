@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@Entity
+//@Entity
 @Table(name = "rubrica")
 @JsonInclude(Include.NON_NULL)
 public class Utente {

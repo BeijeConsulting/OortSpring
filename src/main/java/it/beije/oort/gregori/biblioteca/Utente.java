@@ -14,7 +14,7 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -40,11 +40,11 @@ public class Utente {
 	@Column(name = "admin")
 	private boolean admin;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
