@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +64,40 @@ public class LoanService {
 			ret = loanRepo.findByUser(u);
 		} else {
 			ret = loanRepo.findAll();
+		}
+		return ret;
+	}
+
+	public List<Loan> getAll() {
+		return loanRepo.findAll();
+	}
+
+	public Loan getLoan(int id) {
+		Optional<Loan> optLoan = loanRepo.findById(id);
+		return optLoan.isPresent() ? optLoan.get() : null;
+	}
+
+	public Loan addLoan(Loan loan) {
+		return loanRepo.save(loan);
+		
+	}
+
+	public Loan updateLoan(int id, Loan loan) {
+		Optional<Loan> optSaved = loanRepo.findById(id);
+		Loan saved = null;
+		if(optSaved.isPresent()) {
+			saved = optSaved.get();
+			BeanUtils.copyProperties(loan, saved);
+			loanRepo.save(saved);
+		}
+		return saved;
+	}
+
+	public boolean deleteLoan(int id) {
+		boolean ret = false;
+		if(loanRepo.findById(id).isPresent()) {
+			loanRepo.deleteById(id);
+			ret = true;
 		}
 		return ret;
 	}
