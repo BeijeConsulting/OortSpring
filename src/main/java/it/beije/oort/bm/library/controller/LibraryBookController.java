@@ -47,6 +47,7 @@ public class LibraryBookController {
 	@PutMapping( value = "/update/{id}")
 	public Book update(@RequestBody Book book, @PathVariable int id){
 		log.debug("/book/upgrade/{if} : get : id := " + id + " : Object := " + book);
+		book.setId(id);
 		return bookService.updateBook(id, book);
 	}
 	@DeleteMapping( value = "/delete/{id}")
