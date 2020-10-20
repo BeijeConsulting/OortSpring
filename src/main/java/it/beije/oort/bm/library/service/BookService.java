@@ -47,8 +47,7 @@ public class BookService {
 			saved = optSaved.get();
 			BeanUtils.copyProperties(book, saved);
 			bookRepo.save(saved);
-			bookRepo.
 		}
-		return null;
+		return saved;
 	}
 }
