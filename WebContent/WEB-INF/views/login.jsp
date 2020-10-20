@@ -8,7 +8,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h3>${loginError}</h3>
+		<h3>${loginInfo}</h3>
 		<%if(session.getAttribute("user") == null) {%>
 			<form action="./login" method="post">
 				<label for="email">Insert email:</label><input type="email" name="email" placeholder="${tmpEmail}"/><br>
@@ -18,7 +18,6 @@
 			<p>You don't have an account yet? <a href="./register">Register!</a> </p>
 		<%} else { 
 			User u_login_scope = (User)session.getAttribute("user");%>
-			<p>Autentication successfull!</p><br>
 			First name: <%= u_login_scope.getName() %> <br>
 			Last name: <%= u_login_scope.getSurname() %> <br>
 			Address: <%= u_login_scope.getAddress() %> <br>

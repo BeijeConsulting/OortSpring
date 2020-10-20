@@ -14,6 +14,20 @@ body {
 	text-align: center;
 	border-bottom: solid black 2px;
 }
+
+#navbar a {
+	color: black;
+	text-decoration: none;
+}
+
+#navbar a:hover {
+	color: black;
+}
+
+#navbar a:visited {
+	color: black;
+}
+
 ul {
 	display: block;
 	position: relative;
@@ -53,19 +67,47 @@ li input[type = "submit"]{
 	width: 100%;
 	font-size: 76%;
 	margin-left: 2vw;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+#content table {
+	grid-column: 1;
+	grid-row: 1 / 2;
+}
+
+#content form {
+	grid-column: 2;
 }
 
 .table {
-	float: left;
+	height: min-content;
 }
 .table th {
 	background-color: rgb(235,235,235);
 	padding: 5px;
-	margin 2px;
+	margin: 2px;
+}
+.table td {
+	padding: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 2px;
+}
+.form {
+	width: max-content;
+	display: grid;
+	grid-template-columns: auto auto;
 }
 
-.form {
-	display: block;
-	float: left;
+.form label{
+	text-align: right;
+	padding-left: 5px;
+	padding-right: 5px;
 }
+
+.form label{
+	padding-right: 5px;
+}
+
 
