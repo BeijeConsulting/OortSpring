@@ -23,4 +23,10 @@ import it.beije.oort.madonia.db.DatabaseManagerBiblioteca;
 @Controller
 public class HomeBibliotecaController {
 	
+	@RequestMapping(value = "/biblioteca/visualizzazionedati", method = RequestMethod.GET )
+	public String getVisualizzazioneDati() {
+		String page = "/biblioteca/visualizzazione_dati";
+		return page;
+	}
+	
 }
