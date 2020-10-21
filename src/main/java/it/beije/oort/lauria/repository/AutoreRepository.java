@@ -14,5 +14,5 @@ public interface AutoreRepository extends JpaRepository<Autore, Integer>{
 	List<Autore> findAll();
 	
 	List<Autore> findByIdGreaterThan(Integer id);
-	Optional<Autore> findByNomeAndCognome();
+//	Optional<Autore> findByNomeAndCognome();
 }

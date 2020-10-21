@@ -31,28 +31,28 @@ public class AutoreService {
 		return autore.isPresent() ? autore.get() : null;	
 	}
 	
-	public void insert(Autore autore) {
-		
-		if (autore == null) {
-			throw new IllegalArgumentException("it's not possible insert a null-author");
-		}
-				
-		if(autore.getNome() == null || "".equals(autore.getNome())) {
-			throw new IllegalArgumentException("there is no name: can't insert an author without his name");
-		}else {
-			if(autore.getCognome() == null || "".equals(autore.getCognome())) { // deve avere per forza un cognome??
-				throw new IllegalArgumentException("there is no surname: can't insert an author without his surname");
-			}else {
-				Optional<Autore> omonimo = autoreRepository.findByNomeAndCognome();
-				if(omonimo.isPresent()) {
-					throw new IllegalArgumentException("there is already an author with name"+ autore.getNome()+" and surname"+ autore.getCognome());
-				}else {
-					autoreRepository.saveAndFlush(autore);
-				}
-				
-			}
-		}
-	}
+//	public void insert(Autore autore) {
+//		
+//		if (autore == null) {
+//			throw new IllegalArgumentException("it's not possible insert a null-author");
+//		}
+//				
+//		if(autore.getNome() == null || "".equals(autore.getNome())) {
+//			throw new IllegalArgumentException("there is no name: can't insert an author without his name");
+//		}else {
+//			if(autore.getCognome() == null || "".equals(autore.getCognome())) { // deve avere per forza un cognome??
+//				throw new IllegalArgumentException("there is no surname: can't insert an author without his surname");
+//			}else {
+//				Optional<Autore> omonimo = autoreRepository.findByNomeAndCognome();
+//				if(omonimo.isPresent()) {
+//					throw new IllegalArgumentException("there is already an author with name"+ autore.getNome()+" and surname"+ autore.getCognome());
+//				}else {
+//					autoreRepository.saveAndFlush(autore);
+//				}
+//				
+//			}
+//		}
+//	}
 	
 	public Autore update(Integer id, Autore datiAutore) {
 		
