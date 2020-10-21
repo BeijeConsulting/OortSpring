@@ -27,11 +27,11 @@ public class BiblioController {
 		return "home_biblio";
 	}
 
-	@RequestMapping(value = "/AAA", method = RequestMethod.GET)
+	@RequestMapping(value = "/provaajaxjson", method = RequestMethod.GET)
 	public String homeAAA() {
 		System.out.println("AAA get...");
 		
-		return "AAA";
+		return "provaajaxjson";
 	}
 
 	
