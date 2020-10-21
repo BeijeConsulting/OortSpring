@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.beije.oort.sb.biblioteca.Autori;
-import it.beije.oort.service.AutoriService;
+import it.beije.oort.sb.biblioteca.Editori;
+import it.beije.oort.service.EditoriService;
 
 @RestController
 @RequestMapping("/api")
-public class AutoreControllerRest {
+public class EditoreControllerRest {
 	
 	@Autowired
-	private AutoriService autoriService;
+	private EditoriService editoriService;
 	
-	@GetMapping("/autore")
-	public List<Autori> autori() {	
-		return autoriService.loadAutori();
+	@GetMapping("/editore")
+	public List<Editori> editore() {	
+		return editoriService.loadEditori();
 	}
 	
-	@PostMapping("/autore")
-	public Autori autore(@RequestBody Autori autore) {
+	@PostMapping("/editore")
+	public Editori editore(@RequestBody Editori editore) {
 		System.out.println("ricevendo dati autore");
-		autoriService.insert(autore);
-		return autore;	
+		editoriService.insert(editore);
+		return editore;	
 	}
 	
-	@PutMapping("/autore/{id}")
-	public Autori autore(@RequestBody Autori autore, @PathVariable Integer id) {
-		System.out.println("ricevo dati autore..." + autore);
+	@PutMapping("/editore/{id}")
+	public Editori editore(@RequestBody Editori editore, @PathVariable Integer id) {
+		System.out.println("ricevo dati autore..." + editore);
 		
-		return autoriService.update(id, autore);
+		return editoriService.update(id, editore);
 	}
 	
-	@DeleteMapping("/autore/{id}")
-	public String autore(@PathVariable Integer id) {
-		return autoriService.deleteById(id);
+	@DeleteMapping("/editore/{id}")
+	public String editore(@PathVariable Integer id) {
+		return editoriService.deleteById(id);
 	}
 
 }
