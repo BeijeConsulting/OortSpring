@@ -1,4 +1,4 @@
-package it.beije.oort.sala.restcontroller;
+package it.beije.oort.sala.restapi;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import it.beije.oort.sala.controller.services.UtenteService;
 
 @RestController
 @RequestMapping(value="/api")
-public class ApiController {
+public class UtenteApiController {
 
 	@Autowired
 	private UtenteService utenteService;
@@ -36,12 +36,12 @@ public class ApiController {
 	}
 	
 	@PostMapping("/utente")
-	public Utente utente(@RequestBody Utente utente, HttpServletRequest request, Model model) {
+	public Utente utente(@RequestBody Utente utente) {
 		return utenteService.insert(utente);
 	}
 	
 	@PutMapping("/utente/{id}")
-	public Utente utente(@RequestBody Utente utente,@PathVariable Integer id, HttpServletRequest request) {
+	public Utente utente(@RequestBody Utente utente,@PathVariable Integer id) {
 		if(id==null) throw new IllegalArgumentException();
 		return utenteService.update(utente, id);
 	}

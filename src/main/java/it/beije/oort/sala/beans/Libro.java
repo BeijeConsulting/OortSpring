@@ -7,22 +7,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
 @Table(name = "libri")
+@JsonInclude(Include.NON_NULL)
 public class Libro implements Databasable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_libro")
+	@JsonProperty("id_libro")
 	private Integer idLibro;
+	
 	@Column(name="id_autore")
+	@JsonProperty("id_autore")
 	private Integer idAutore;
+	
 	@Column(name="id_editore")
+	@JsonProperty("id_editore")
 	private Integer idEditore;
+	
 	@Column
 	private String titolo;
+	
 	@Column
 	private String descrizione;
+	
 	@Column
 	private Short anno;
 	

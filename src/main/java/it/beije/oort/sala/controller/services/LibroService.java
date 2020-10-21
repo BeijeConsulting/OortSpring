@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.beije.oort.sala.beans.Libro;
+import it.beije.oort.sala.beans.Utente;
 import it.beije.oort.sala.controller.repositories.LibroRepository;
 
 @Service
@@ -27,10 +28,11 @@ public class LibroService {
 	}
 
 	@Transactional
-	public void insert(Libro l) {
+	public Libro insert(Libro l) {
 		if(l!=null && isValid(l)) {
 			libroRepository.save(l);
 		}
+		return l;
 	}
 
 	@Transactional
@@ -47,6 +49,30 @@ public class LibroService {
 		} else {
 			throw new IllegalArgumentException("Non Ã¨ presente un prestito con id: " + id);
 		}
+	}
+	
+	@Transactional
+	public Libro update(Libro libro, Integer id) {
+		
+		if (libro == null) {
+			throw new IllegalArgumentException("bean libro null");
+		}
+		
+		if (!"".equals(libro.getTitolo()) && libro.getIdAutore()!=null) {
+			
+			Libro old = get(id);
+			
+			if (old == null) {
+				throw new IllegalArgumentException("non è presente un libro con id " + id);
+			}
+			
+			BeanUtils.copyProperties(libro, old, "idLibro");
+			
+			libroRepository.save(old);
+			
+			return old;
+			
+		} else throw new IllegalArgumentException("dati libro non presenti");
 	}
 
 	private boolean isValid(Libro l) {

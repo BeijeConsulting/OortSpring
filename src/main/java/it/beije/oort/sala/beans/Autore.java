@@ -9,24 +9,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 
 @Entity
 @Table(name = "autori")
+@JsonInclude(Include.NON_NULL)
 public class Autore implements Databasable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_autore")
+	@JsonProperty("id_autore")
 	private Integer idAutore;
+	
 	@Column
 	private String nome;
+	
 	@Column
 	private String cognome;
+	
 	@Column
 	private String biografia;
+	
 	@Column(name="data_nascita")
+	@JsonProperty("data_nascita")
 	private LocalDate dataNascita;
+	
 	@Column(name="data_morte")
+	@JsonProperty("data_morte")
 	private LocalDate dataMorte;
 	
 	public Autore() {
