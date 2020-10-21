@@ -1,8 +1,5 @@
 package it.beije.oort.kirolosmater.biblioteca.service;
 
-import static it.beije.oort.kirolosmater.biblioteca.MetodiPrestito.visualizzaPrestitiByIdUtente;
-import static it.beije.oort.kirolosmater.biblioteca.MetodiUtente.checkEmail;
-import static it.beije.oort.kirolosmater.biblioteca.MetodiUtente.checkPassword;
 
 import java.util.List;
 import java.util.Optional;
@@ -110,54 +107,54 @@ public class UtenteBibliotecaService {
 	}
 	
 	
-	public String checkUserWithQueryMethods(String email, String password, HttpServletRequest request, Model model) {
-		System.out.println("ricevo dati utente...");
-		String stringaOutput = "biblioteca/areaPersonale";
-//		System.out.println(email);
-		UtenteBiblioteca utente = utenteBibliotecaRepository.findByEmail(email).get();
-		
-		boolean passwordCorretta = checkPassword(utente, password);
-		if (passwordCorretta) {
-			model.addAttribute("utente", utente);
-			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
-			model.addAttribute("prestitiUtente", prestitiUtente);
-			boolean admin = utente.isAdmin();
-			model.addAttribute("admin", admin);
-			stringaOutput = "biblioteca/areaPersonale";
-		} else {
-			model.addAttribute("errore", "CREDENZIALI ERRATE");
-			stringaOutput = "biblioteca/bibliotecaLogin";
-		}
-		
-		
-		return stringaOutput;
-	}
+//	public String checkUserWithQueryMethods(String email, String password, HttpServletRequest request, Model model) {
+//		System.out.println("ricevo dati utente...");
+//		String stringaOutput = "biblioteca/areaPersonale";
+////		System.out.println(email);
+//		UtenteBiblioteca utente = utenteBibliotecaRepository.findByEmail(email).get();
+//		
+//		boolean passwordCorretta = checkPassword(utente, password);
+//		if (passwordCorretta) {
+//			model.addAttribute("utente", utente);
+//			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
+//			model.addAttribute("prestitiUtente", prestitiUtente);
+//			boolean admin = utente.isAdmin();
+//			model.addAttribute("admin", admin);
+//			stringaOutput = "biblioteca/areaPersonale";
+//		} else {
+//			model.addAttribute("errore", "CREDENZIALI ERRATE");
+//			stringaOutput = "biblioteca/bibliotecaLogin";
+//		}
+//		
+//		
+//		return stringaOutput;
+//	}
 	
-	public String checkUserWithSession (String email, String password, HttpServletRequest request, Model model) {
-		System.out.println("ricevo dati utente...");
-		String stringaOutput = "biblioteca/areaPersonale";
-		HttpSession session = request.getSession();
-		System.out.println(email);
-		UtenteBiblioteca utente = checkEmail(email);
-		
-		boolean passwordCorretta = checkPassword(utente, password);
-		if (passwordCorretta) {
-			session.setAttribute("userBean", utente);
-			model.addAttribute("utente", utente);
-			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
-			session.setAttribute("prestitiUserBean", prestitiUtente);
-			model.addAttribute("prestitiUtente", prestitiUtente);
-			boolean admin = utente.isAdmin();
-			session.setAttribute("userIsAdmin", admin);
-			model.addAttribute("admin", admin);
-			stringaOutput = "biblioteca/areaPersonale";
-		} else {
-			session.setAttribute("errore", "CREDENZIALI ERRATE");
-			model.addAttribute("errore", "CREDENZIALI ERRATE");
-			stringaOutput = "biblioteca/bibliotecaLogin";
-		}
-		
-		
-		return stringaOutput;
-	}
+//	public String checkUserWithSession (String email, String password, HttpServletRequest request, Model model) {
+//		System.out.println("ricevo dati utente...");
+//		String stringaOutput = "biblioteca/areaPersonale";
+//		HttpSession session = request.getSession();
+//		System.out.println(email);
+//		UtenteBiblioteca utente = checkEmail(email);
+//		
+//		boolean passwordCorretta = checkPassword(utente, password);
+//		if (passwordCorretta) {
+//			session.setAttribute("userBean", utente);
+//			model.addAttribute("utente", utente);
+//			List<Prestito> prestitiUtente = visualizzaPrestitiByIdUtente(utente);
+//			session.setAttribute("prestitiUserBean", prestitiUtente);
+//			model.addAttribute("prestitiUtente", prestitiUtente);
+//			boolean admin = utente.isAdmin();
+//			session.setAttribute("userIsAdmin", admin);
+//			model.addAttribute("admin", admin);
+//			stringaOutput = "biblioteca/areaPersonale";
+//		} else {
+//			session.setAttribute("errore", "CREDENZIALI ERRATE");
+//			model.addAttribute("errore", "CREDENZIALI ERRATE");
+//			stringaOutput = "biblioteca/bibliotecaLogin";
+//		}
+//		
+//		
+//		return stringaOutput;
+//	}
 }
