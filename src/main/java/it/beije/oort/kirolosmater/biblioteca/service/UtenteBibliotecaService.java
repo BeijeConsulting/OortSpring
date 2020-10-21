@@ -54,6 +54,11 @@ public class UtenteBibliotecaService {
 		Optional<UtenteBiblioteca> utente = utenteBibliotecaRepository.findByEmail(email);
 		return utente.isPresent() ? utente.get() : null;
 	}
+	
+	public UtenteBiblioteca findByEmailAndPassword(String email, String password) {
+		Optional<UtenteBiblioteca> utente = utenteBibliotecaRepository.findByEmailAndPassword(email, password);
+		return utente.isPresent() ? utente.get() : null;
+	}
 
 	// @Transactional
 	public void insert(UtenteBiblioteca utente) {
