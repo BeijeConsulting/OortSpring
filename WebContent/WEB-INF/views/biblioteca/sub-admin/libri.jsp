@@ -11,7 +11,44 @@
         } else {
           x.style.display = "none";
         }
-      }</script>
+      }
+    
+    function myfetch(url) {
+        fetch(url).then(function(response) {
+            response.json().then(function(data) {
+               return data;
+            }).catch(function(error) {
+                return Error();
+            })
+        }).catch(function(error) {
+            //document.getElementById('error').innerHTML += 'Qualcosa è andato storto:';
+            //console.log(error);
+            //console.log('test');
+        })
+    }
+    
+    function get(){
+//    	let data = myfetch('/OortSpring/api/libri');
+		let data = fetch('/OortSpring/api/libri')
+			.then(response => response.json())
+			.then(json => {return json;});
+    	data(Array).forEach(function(item) {
+    		let node = document.createElement("LI");
+    		let text = document.createTextNode("id: " +item.id_libro +"| titolo: " +item.titolo + "| autore: " + item.id_autore)
+   			document.getElementById('dynamicList').appendChild(node.appendChild(text));
+  	    	console.log('logging::'+item);
+ 	})
+		console.log('typeof data: '+typeof data);;
+    }
+    
+    function insert(form) {
+    	//TODO async POST request to "/OortSpring/api/libro" that passes new Libro in json format.
+    }
+    
+    function update(libro) {
+    	//TODO async PUT request to "/OortSpring/api/libro/{id}" that passes updated Libro in json.
+    }
+    </script>
 </head>
 <body>
     <header style="margin-left: 2em; display: flex;">
@@ -75,6 +112,11 @@
             </form>
         </div>
         ${libri}
+    </div>
+    <div>
+    	<button name="ajax" onclick="get()">Carica libri con ajax</button>
+    	<ul id="dynamicList">
+    	</ul>
     </div>
 </body>
 </html>
