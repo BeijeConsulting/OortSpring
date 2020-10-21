@@ -1,6 +1,7 @@
 package it.beije.oort.madonia.biblioteca.ebeans;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import it.beije.oort.madonia.biblioteca.utilities.GeneralUtils;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @Entity
 @Table(name = "prestiti")
+@JsonInclude(Include.NON_NULL)
 public class Prestito implements Ebeans {
 
 	@Id
@@ -18,15 +29,19 @@ public class Prestito implements Ebeans {
 	@Column(name = "id")
 	private Integer id;
 	
+	@JsonProperty("id_libro")
 	@Column(name = "libro")
 	private Integer idLibro;
 	
+	@JsonProperty("id_utente")
 	@Column(name = "utente")
 	private Integer idUtente;
 	
+	@JsonProperty("data_inizio")
 	@Column(name = "data_inizio")
 	private Date dataInizio;
 	
+	@JsonProperty("data_fine")
 	@Column(name = "data_fine")
 	private Date dataFine;
 	
@@ -86,6 +101,15 @@ public class Prestito implements Ebeans {
 	public void setDataInizio(Date dataInizio) {
 		this.dataInizio = dataInizio;
 	}
+	
+	@JsonGetter("data_inizio")
+	public String getDataInizioFormattata() {
+		return dataInizio == null ? null : new SimpleDateFormat("yyyy-MM-dd").format(dataInizio);
+	}
+	@JsonSetter("data_nascita")
+	public void setDataInizioFormattata(String dataInizio) {
+		this.dataInizio = GeneralUtils.stringToSqlDate(dataInizio);
+	}
 
 	public Date getDataFine() {
 		return dataFine;
@@ -93,6 +117,15 @@ public class Prestito implements Ebeans {
 
 	public void setDataFine(Date dataFine) {
 		this.dataFine = dataFine;
+	}
+	
+	@JsonGetter("data_fine")
+	public String getDataFineFormattata() {
+		return dataFine == null ? null : new SimpleDateFormat("yyyy-MM-dd").format(dataFine);
+	}
+	@JsonSetter("data_fine")
+	public void setDataFineFormattata(String dataFine) {
+		this.dataFine = GeneralUtils.stringToSqlDate(dataFine);
 	}
 
 	public String getNote() {

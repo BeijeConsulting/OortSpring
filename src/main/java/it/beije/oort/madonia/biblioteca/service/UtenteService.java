@@ -1,5 +1,6 @@
 package it.beije.oort.madonia.biblioteca.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -47,8 +48,13 @@ public class UtenteService {
 		return this.trova(Integer.valueOf(id));
 	}
 	
+	public List<Utente> trovaTutti() {
+		log.debug("Chiamata db per recuperare la lista utenti");
+		return utenteRepository.findAll();
+	}
+	
 	@Transactional
-	public void inserisci(Utente utente) {
+	public Utente inserisci(Utente utente) {
 		log.debug("Inserimento utente in corso");
 		if (utente == null) {
 			log.error("Utente non inserito nel database: null");
@@ -60,12 +66,11 @@ public class UtenteService {
 			throw new IllegalArgumentException("L'utente deve avere almeno un campo con un valore non vuoto");
 		}
 		
-		utenteRepository.saveAndFlush(utente);
-		log.info("Utente inserito nel database: " + utente);
+		return utenteRepository.saveAndFlush(utente);
 	}
 	
 	@Transactional
-	public void modifica(Integer id, Utente datiUtente) {
+	public Utente modifica(Integer id, Utente datiUtente) {
 		log.debug("Modifica utente in corso");
 		if (datiUtente == null) {
 			log.error("Utente non inserito nel database: null");
@@ -83,19 +88,16 @@ public class UtenteService {
 			throw new IllegalArgumentException("Non è presente alcun utente con la id " + id);
 		}
 		
-		log.debug("Utente trovato sul database: " + utente);
 		BeanUtils.copyProperties(datiUtente, utente, "id","password","admin");
-		log.debug("Utente modificato in: " + utente);
-		utenteRepository.saveAndFlush(utente);
-		log.info(new StringBuilder().append("Utente con id ").append(id).append(" è stato modificato con successo").toString());
+		return utenteRepository.saveAndFlush(utente);
 	}
 	
-	public void modifica(String id, Utente datiUtente) {
+	public Utente modifica(String id, Utente datiUtente) {
 		if (GeneralUtils.stringIsNullOrEmpty(id)) {
 			throw new IllegalArgumentException("La id è null o vuota");
 		}
 		
-		this.modifica(Integer.valueOf(id), datiUtente);
+		return this.modifica(Integer.valueOf(id), datiUtente);
 	}
 	
 	@Transactional

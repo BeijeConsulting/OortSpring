@@ -43,8 +43,12 @@ public class LibroService {
 		return this.trova(Integer.valueOf(id));
 	}
 	
+	public List<Libro> trovaTutti() {
+		return libroRepository.findAll();
+	}
+	
 	@Transactional
-	public void inserisci(Libro libro) {
+	public Libro inserisci(Libro libro) {
 		log.debug("Inserimento libro in corso");
 		if (libro == null) {
 			log.error("Libro non inserito nel database: null");
@@ -56,12 +60,11 @@ public class LibroService {
 			throw new IllegalArgumentException("Il libro deve avere almeno un campo con un valore non vuoto");
 		}
 		
-		libroRepository.saveAndFlush(libro);
-		log.info("Libro inserito nel database: " + libro);
+		return libroRepository.saveAndFlush(libro);
 	}
 	
 	@Transactional
-	public void modifica(Integer id, Libro datiLibro) {
+	public Libro modifica(Integer id, Libro datiLibro) {
 		log.debug("Modifica libro in corso");
 		if (datiLibro == null) {
 			log.error("Libro non inserito nel database: null");
@@ -79,19 +82,16 @@ public class LibroService {
 			throw new IllegalArgumentException("Non è presente alcun libro con la id " + id);
 		}
 		
-		log.debug("Libro trovato sul database: " + libro);
 		BeanUtils.copyProperties(datiLibro, libro, "id");
-		log.debug("Libro modificato in: " + libro);
-		libroRepository.saveAndFlush(libro);
-		log.info(new StringBuilder().append("Libro con id ").append(id).append(" è stato modificato con successo").toString());
+		return libroRepository.saveAndFlush(libro);
 	}
 	
-	public void modifica(String id, Libro datiLibro) {
+	public Libro modifica(String id, Libro datiLibro) {
 		if (GeneralUtils.stringIsNullOrEmpty(id)) {
 			throw new IllegalArgumentException("La id è null o vuota");
 		}
 		
-		this.modifica(Integer.valueOf(id), datiLibro);
+		return this.modifica(Integer.valueOf(id), datiLibro);
 	}
 	
 	@Transactional

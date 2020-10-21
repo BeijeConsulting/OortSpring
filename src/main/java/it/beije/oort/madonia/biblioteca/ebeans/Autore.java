@@ -1,6 +1,7 @@
 package it.beije.oort.madonia.biblioteca.ebeans;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+import it.beije.oort.madonia.biblioteca.utilities.GeneralUtils;
+
 @Entity
 @Table(name = "autori")
+@JsonInclude(Include.NON_NULL)
 public class Autore implements Ebeans {
 	
 	@Id
@@ -24,9 +34,11 @@ public class Autore implements Ebeans {
 	@Column(name = "nome")
 	private String nome;
 	
+	@JsonProperty("data_nascita")
 	@Column(name = "data_nascita")
 	private Date dataNascita;
 	
+	@JsonProperty("data_morte")
 	@Column(name = "data_morte")
 	private Date dataMorte;
 	
@@ -61,11 +73,29 @@ public class Autore implements Ebeans {
 		this.dataNascita = dataNascita;
 	}
 	
+	@JsonGetter("data_nascita")
+	public String getDataNascitaFormattata() {
+		return dataNascita == null ? null : new SimpleDateFormat("yyyy-MM-dd").format(dataNascita);
+	}
+	@JsonSetter("data_nascita")
+	public void setDataNascitaFormattata(String dataNascita) {
+		this.dataNascita = GeneralUtils.stringToSqlDate(dataNascita);
+	}
+	
 	public Date getDataMorte() {
 		return dataMorte;
 	}
 	public void setDataMorte(Date dataMorte) {
 		this.dataMorte = dataMorte;
+	}
+	
+	@JsonGetter("data_morte")
+	public String getDataMorteFormattata() {
+		return dataMorte == null ? null : new SimpleDateFormat("yyyy-MM-dd").format(dataMorte);
+	}
+	@JsonSetter("data_morte")
+	public void setDataMorteFormattata(String dataMorte) {
+		this.dataMorte = GeneralUtils.stringToSqlDate(dataMorte);
 	}
 	
 	public String getBiografia() {

@@ -1,5 +1,6 @@
 package it.beije.oort.madonia.biblioteca.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -35,8 +36,12 @@ public class EditoreService {
 		return this.trova(Integer.valueOf(id));
 	}
 	
+	public List<Editore> trovaTutti() {
+		return editoreRepository.findAll();
+	}
+	
 	@Transactional
-	public void inserisci(Editore editore) {
+	public Editore inserisci(Editore editore) {
 		if (editore == null)
 			throw new IllegalArgumentException();
 		
@@ -44,11 +49,11 @@ public class EditoreService {
 			throw new IllegalArgumentException("L'editore deve avere almeno un campo con un valore non vuoto");
 		}
 		
-		editoreRepository.saveAndFlush(editore);
+		return editoreRepository.saveAndFlush(editore);
 	}
 	
 	@Transactional
-	public void modifica(Integer id, Editore datiEditore) {
+	public Editore modifica(Integer id, Editore datiEditore) {
 		if (datiEditore == null) {
 			throw new IllegalArgumentException("L'editore è un valore null");
 		}
@@ -64,15 +69,15 @@ public class EditoreService {
 		}
 		
 		BeanUtils.copyProperties(datiEditore, editore, "id");
-		editoreRepository.saveAndFlush(editore);
+		return editoreRepository.saveAndFlush(editore);
 	}
 	
-	public void modifica(String id, Editore datiEditore) {
+	public Editore modifica(String id, Editore datiEditore) {
 		if (GeneralUtils.stringIsNullOrEmpty(id)) {
 			throw new IllegalArgumentException("La id è null o vuota");
 		}
 		
-		this.modifica(Integer.valueOf(id), datiEditore);
+		return this.modifica(Integer.valueOf(id), datiEditore);
 	}
 	
 	@Transactional

@@ -7,8 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "libri")
+@JsonInclude(Include.NON_NULL)
 public class Libro implements Ebeans {
 	
 	@Id
@@ -22,12 +27,15 @@ public class Libro implements Ebeans {
 	@Column(name = "descrizione")
 	private String descrizione;
 	
+	@JsonProperty("id_autore")
 	@Column(name = "autore")
 	private Integer idAutore;
 	
+	@JsonProperty("id_editore")
 	@Column(name = "editore")
 	private Integer idEditore;
 	
+	@JsonProperty("anno_pubblicazione")
 	@Column(name = "anno")
 	private Integer anno;
 	

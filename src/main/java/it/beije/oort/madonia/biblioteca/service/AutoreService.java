@@ -1,5 +1,6 @@
 package it.beije.oort.madonia.biblioteca.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -35,8 +36,12 @@ public class AutoreService {
 		return this.trova(Integer.valueOf(id));
 	}
 	
+	public List<Autore> trovaTutti() {
+		return autoreRepository.findAll();
+	}
+	
 	@Transactional
-	public void inserisci(Autore autore) {
+	public Autore inserisci(Autore autore) {
 		if (autore == null)
 			throw new IllegalArgumentException();
 		
@@ -44,11 +49,11 @@ public class AutoreService {
 			throw new IllegalArgumentException("L'autore deve avere almeno un campo con un valore non vuoto");
 		}
 		
-		autoreRepository.saveAndFlush(autore);
+		return autoreRepository.saveAndFlush(autore);
 	}
 	
 	@Transactional
-	public void modifica(Integer id, Autore datiAutore) {
+	public Autore modifica(Integer id, Autore datiAutore) {
 		if (datiAutore == null) {
 			throw new IllegalArgumentException("L'autore è un valore null");
 		}
@@ -64,15 +69,15 @@ public class AutoreService {
 		}
 		
 		BeanUtils.copyProperties(datiAutore, autore, "id");
-		autoreRepository.saveAndFlush(autore);
+		return autoreRepository.saveAndFlush(autore);
 	}
 	
-	public void modifica(String id, Autore datiAutore) {
+	public Autore modifica(String id, Autore datiAutore) {
 		if (GeneralUtils.stringIsNullOrEmpty(id)) {
 			throw new IllegalArgumentException("La id è null o vuota");
 		}
 		
-		this.modifica(Integer.valueOf(id), datiAutore);
+		return this.modifica(Integer.valueOf(id), datiAutore);
 	}
 	
 	@Transactional

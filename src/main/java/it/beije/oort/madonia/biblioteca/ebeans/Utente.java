@@ -8,8 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "utenti")
+@JsonInclude(Include.NON_NULL)
 public class Utente implements Ebeans {
 
 	@Id
@@ -23,6 +29,7 @@ public class Utente implements Ebeans {
 	@Column(name = "nome")
 	private String nome;
 	
+	@JsonProperty("codice_fiscale")
 	@Column(name = "codice_fiscale")
 	private String codiceFiscale;
 	
@@ -35,6 +42,7 @@ public class Utente implements Ebeans {
 	@Column(name = "indirizzo")
 	private String indirizzo;
 	
+	@JsonIgnore
 	@Column(name = "password")
 //	@Transient
 	private String password;

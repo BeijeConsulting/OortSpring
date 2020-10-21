@@ -69,7 +69,7 @@ public class PrestitoService {
 	}
 	
 	@Transactional
-	public void inserisci(Prestito prestito) {
+	public Prestito inserisci(Prestito prestito) {
 		log.debug("Inserimento prestito in corso");
 		if (prestito == null) {
 			log.error("Prestito non inserito nel database: null");
@@ -81,12 +81,11 @@ public class PrestitoService {
 			throw new IllegalArgumentException("Il prestito deve avere almeno un campo con un valore non vuoto");
 		}
 		
-		prestitoRepository.saveAndFlush(prestito);
-		log.info("Prestito inserito nel database: " + prestito);
+		return prestitoRepository.saveAndFlush(prestito);
 	}
 	
 	@Transactional
-	public void modifica(Integer id, Prestito datiPrestito) {
+	public Prestito modifica(Integer id, Prestito datiPrestito) {
 		log.debug("Modifica prestito in corso");
 		if (datiPrestito == null) {
 			log.error("Prestito non inserito nel database: null");
@@ -103,20 +102,17 @@ public class PrestitoService {
 			log.debug("Non è presente alcun prestito con la id " + id);
 			throw new IllegalArgumentException("Non è presente alcun prestito con la id " + id);
 		}
-		
-		log.debug("Prestito trovato sul database: " + prestito);
+
 		BeanUtils.copyProperties(datiPrestito, prestito, "id");
-		log.debug("Prestito modificato in: " + prestito);
-		prestitoRepository.saveAndFlush(prestito);
-		log.info(new StringBuilder().append("Prestito con id ").append(id).append(" è stato modificato con successo").toString());
+		return prestitoRepository.saveAndFlush(prestito);
 	}
 	
-	public void modifica(String id, Prestito datiPrestito) {
+	public Prestito modifica(String id, Prestito datiPrestito) {
 		if (GeneralUtils.stringIsNullOrEmpty(id)) {
 			throw new IllegalArgumentException("La id è null o vuota");
 		}
 		
-		this.modifica(Integer.valueOf(id), datiPrestito);
+		return this.modifica(Integer.valueOf(id), datiPrestito);
 	}
 	
 	@Transactional
