@@ -8,23 +8,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 
-//@Component
-//public class JpaEntityManager {
-//	
-//	private static EntityManagerFactory emfactory = null;
-//
-//	private JpaEntityManager() {}
-//	
-//	@Bean(name = "entityManagerFactory")	
-//	public static synchronized EntityManagerFactory getInstance() {
-//		try {
-//			if (emfactory == null) {
-//				emfactory = Persistence.createEntityManagerFactory("OortRubrica");
-//			}
-//			return emfactory;
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			throw e;
-//		}
-//	}
-//}
+@Component
+public class JpaEntityManager {
+	
+	private static EntityManagerFactory emfactory = null;
+
+	private JpaEntityManager() {}
+	
+	@Bean(name = "entityManagerFactory")	
+	public static synchronized EntityManagerFactory getInstance() {
+		try {
+			if (emfactory == null) {
+				emfactory = Persistence.createEntityManagerFactory("OortBiblioteca");
+			}
+			return emfactory;
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+}

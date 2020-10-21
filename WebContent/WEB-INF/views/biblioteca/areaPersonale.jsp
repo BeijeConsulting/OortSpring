@@ -11,7 +11,7 @@
 <title>Area Personale</title>
 </head>
 <body>
-	<p>Benvenuto ${utente.nome} ${utente.cognome} </p>
+	<p>Benvenuto ${name} ${surname} </p>
 	<b>PRESTITI</b>
 <%-- <table style="width:100%">
 <tr>

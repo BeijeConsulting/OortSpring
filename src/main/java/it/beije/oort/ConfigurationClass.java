@@ -9,17 +9,17 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-//@Configuration
-//@EnableTransactionManagement
-//@EnableJpaRepositories(value = {"it.beije.oort.repository"})
-//public class ConfigurationClass {
-//	
-//  
-//    @Bean(name="transactionManager")
-//    public PlatformTransactionManager dbTransactionManager() {
-//        JpaTransactionManager transactionManager = new JpaTransactionManager();
-//        transactionManager.setEntityManagerFactory(JpaEntityManager.getInstance());
-//        return transactionManager;
-//    }
-//	
-//}
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(value = {"it.beije.oort.kirolosmater.biblioteca.repository"})
+public class ConfigurationClass {
+	
+  
+    @Bean(name="transactionManager")
+    public PlatformTransactionManager dbTransactionManager() {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(JpaEntityManager.getInstance());
+        return transactionManager;
+    }
+	
+}
