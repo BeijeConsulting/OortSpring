@@ -19,6 +19,28 @@ public class UtenteController {
 	@Autowired
 	private UtenteService utenteService;
 	
+	@RequestMapping(value = "/utente-visualizza-rest", method = RequestMethod.GET)
+	public String visualizzaUtente() {
+		System.out.println("utente-visualizza-rest...");
+		
+		return "utente-visualizza-rest";
+	}
+	
+	@RequestMapping(value = "/utente-inserisci-rest", method = RequestMethod.GET)
+	public String inserisciUtente() {
+		System.out.println("utente-inserisci-rest...");
+		
+		return "utente-inserisci-rest";
+	}
+	
+	@RequestMapping(value = "/utente-modifica-rest", method = RequestMethod.GET)
+	public String modificaUtente() {
+		System.out.println("utente-modifica-rest...");
+		
+		return "utente-modifica-rest";
+	}
+	
+	
 	@RequestMapping(value = "/utente/visualizza", method = RequestMethod.GET)
 	public String visualizza(Model model) {
 		System.out.println("visualizza...");

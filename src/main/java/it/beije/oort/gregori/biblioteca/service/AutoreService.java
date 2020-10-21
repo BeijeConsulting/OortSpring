@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.beije.oort.gregori.biblioteca.Autore;
-import it.beije.oort.gregori.biblioteca.Utente;
 import it.beije.oort.gregori.biblioteca.repository.AutoreRepository;
 
 @Service
@@ -17,24 +16,10 @@ public class AutoreService {
 	@Autowired
 	private AutoreRepository autoreRepository;
 	
-//	Optional<Autore> findById(Integer id);
-//	Optional<Autore> find(Autore autore);
-//	List<Autore> findAll(Autore autore);
-//	Optional<Autore> update(Integer id, Autore autore);
-//	Optional<Autore> insert(Autore autore);
-//	void delete(Autore autore);
-//	void delete(Integer id);
-	
 	public Autore findById(Integer id) {
 		Optional<Autore> autore = autoreRepository.findById(id);
 		
 		return autore.isPresent() ? autore.get() : null;
-	}
-	
-	public Autore find(Autore autore) {
-		Optional<Autore> a = autoreRepository.find(autore);
-		
-		return a.isPresent() ? a.get() : null;
 	}
 	
 	public List<Autore> findAll() {
@@ -47,7 +32,7 @@ public class AutoreService {
 			throw new IllegalArgumentException("Bean autore is null");
 		}
 		
-		Autore a = this.find(autore);
+		Autore a = this.findById(id);
 		
 		if(a == null) {
 			throw new IllegalArgumentException("Non è presente un autore con id " + id);

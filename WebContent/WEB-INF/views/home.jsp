@@ -68,7 +68,6 @@
 							<div class="content">
 								<header>
 									<c:set var = "finalPath" value = "${ path }/visualizza" />
-									<div>${ finalPath }</div>
 									<a href="${ finalPath }" class="icon fa-table"><span class="label">Icon</span></a>
 									<h3>Visualizza</h3>
 								</header>
