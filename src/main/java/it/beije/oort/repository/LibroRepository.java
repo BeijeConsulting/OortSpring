@@ -17,6 +17,9 @@ public interface LibroRepository extends JpaRepository<Libro, Integer> {
 	
 	List<Libro> findByIdAfter(Integer idAfter); //tutti i libri con id > idAfter
 	
+	List<Libro> findByIdAutore(Integer id_autore); //tutti i libri per autore
+
+	
 //	List<Libro> findByTitoloAndAutore(String titolo, String id_autore);
 	
 }

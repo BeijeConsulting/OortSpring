@@ -33,6 +33,11 @@ public class LibroService {
 		return libro.isPresent() ? libro.get() : null;
 	}
 	
+	public List<Libro> libroIdAutore(Integer id_autore) {
+		List<Libro> libri = libroRepository.findByIdAutore(id_autore);
+		return libri;
+	}
+	
 	public List<Libro> cercaTitolo(String titolo) {
 		titolo += "%";
 		List<Libro> libro = libroRepository.findByTitoloLike(titolo);

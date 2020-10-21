@@ -45,7 +45,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/utente/{id}", method = RequestMethod.GET)
-	public Utente utente(@PathVariable Integer id, Model model) {
+	public Utente utenteId(@PathVariable Integer id, Model model) {
 		System.out.println("utente : " + id);
 		
 		Utente utente = utenteService.load(id);
@@ -56,7 +56,7 @@ public class UserController {
 	//INSERT
 //	@RequestMapping(value = "/utente", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@PostMapping("/utente")
-	public Utente utente(@RequestBody Utente utente, HttpServletRequest request, Model model) {
+	public Utente insertUtente(@RequestBody Utente utente, HttpServletRequest request, Model model) {
 		System.out.println("ricevo dati utente..." + utente);
 		
 		utenteService.insert(utente);
@@ -66,7 +66,7 @@ public class UserController {
 
 	//UPDATE
 	@PutMapping("/utente/{id}")
-	public Utente utente(@RequestBody Utente utente, @PathVariable Integer id, HttpServletRequest request, Model model) {
+	public Utente updateUtente(@RequestBody Utente utente, @PathVariable Integer id, HttpServletRequest request, Model model) {
 		System.out.println("ricevo dati utente..." + utente);
 		
 		if (utente.getId() != null && utente.getId() != id) {
@@ -78,7 +78,7 @@ public class UserController {
 
 	//DELETE
 	@DeleteMapping("/utente/{id}")
-	public String utente(@PathVariable Integer id) {
+	public String deleteUtente(@PathVariable Integer id) {
 		System.out.println("cancello utente..." + id);
 		
 		Utente u = utenteService.load(id);

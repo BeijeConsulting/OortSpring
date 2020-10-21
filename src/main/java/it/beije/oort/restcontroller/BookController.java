@@ -29,7 +29,7 @@ public class BookController {
 	@Autowired
 	private LibroRepository libroRepository;
 
-	
+	//SELECT ALL
 	@RequestMapping(value = "/libri", method = RequestMethod.GET)
 	public List<Libro> getLibri() {
 		
@@ -40,19 +40,33 @@ public class BookController {
 		return libri;		
 	}
 	
+	//SELECT ID_AUTORE
+	@RequestMapping(value = "/libri_autore/{id_autore}", method = RequestMethod.GET)
+	public List<Libro> getLibriPerAutore(@PathVariable Integer id_autore, Model model) {
+		
+		List<Libro> libri = libroRepository.findByIdAutore(id_autore);
+		
+		System.out.println("libri per autore : " + libri);
+//		model.addAttribute("libriAutore", libri);
+		
+		return libri;		
+	}
+	
+	//SELECT ID
 	@RequestMapping(value = "/libro/{id}", method = RequestMethod.GET)
-	public Libro libro(@PathVariable Integer id, Model model) {
+	public Libro getLibro(@PathVariable Integer id, Model model) {
 		System.out.println("libro : " + id);
 		
 		Libro libro = libroService.libroId(id);
 		
 		return libro;
 	}
+	
 
 	//INSERT
 //	@RequestMapping(value = "/libro", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@PostMapping("/libro")
-	public Libro libro(@RequestBody Libro libro, HttpServletRequest request, Model model) {
+	public Libro insertLibro(@RequestBody Libro libro, HttpServletRequest request, Model model) {
 		System.out.println("ricevo dati libro..." + libro);
 		
 		libroService.insert(libro);
@@ -62,7 +76,7 @@ public class BookController {
 
 	//UPDATE
 	@PutMapping("/libro/{id}")
-	public Libro libro(@RequestBody Libro libro, @PathVariable Integer id, HttpServletRequest request, Model model) {
+	public Libro updateLibro(@RequestBody Libro libro, @PathVariable Integer id, HttpServletRequest request, Model model) {
 		System.out.println("ricevo dati utente..." + libro);
 		
 		if (libro.getId() != null && libro.getId() != id) {
@@ -74,7 +88,7 @@ public class BookController {
 	
 	//REPLACE
 	@PutMapping("/libro/replace/{id}")
-	public Libro libroReplace(@RequestBody Libro libro, @PathVariable Integer id, HttpServletRequest request, Model model) {
+	public Libro replaceLibro(@RequestBody Libro libro, @PathVariable Integer id, HttpServletRequest request, Model model) {
 		System.out.println("ricevo dati utente..." + libro);
 		
 		if (libro.getId() != null && libro.getId() != id) {
@@ -86,7 +100,7 @@ public class BookController {
 
 	//DELETE
 	@DeleteMapping("/libro/{id}")
-	public String libro(@PathVariable Integer id) {
+	public String deleteLibro(@PathVariable Integer id) {
 		System.out.println("cancello libro..." + id);
 		
 		Libro libro = libroService.libroId(id);
