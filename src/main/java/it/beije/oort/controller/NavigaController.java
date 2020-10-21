@@ -32,6 +32,12 @@ public class NavigaController {
 	//update
 //	utenteService.update(id, utente);
 	
+	@RequestMapping(value = "/biblioteca/visualizza_catalogo_autore", method = RequestMethod.GET)
+	public String catalogoLibriPerAutore() {
+		
+		return "biblioteca/visualizza_catalogo_autore";
+	}
+	
 	@RequestMapping(value = "/biblioteca/libro_titolo", method = RequestMethod.GET)
 	public String titoli(HttpServletRequest request, Model model) {
 		List<Libro> titoli = new ArrayList<>();

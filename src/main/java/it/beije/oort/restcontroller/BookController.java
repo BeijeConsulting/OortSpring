@@ -47,7 +47,7 @@ public class BookController {
 		List<Libro> libri = libroRepository.findByIdAutore(id_autore);
 		
 		System.out.println("libri per autore : " + libri);
-//		model.addAttribute("libriAutore", libri);
+		model.addAttribute("libriAutore", libri);
 		
 		return libri;		
 	}
