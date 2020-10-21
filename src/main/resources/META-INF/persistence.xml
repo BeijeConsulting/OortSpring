@@ -14,7 +14,7 @@
 				value="jdbc:mysql://localhost:3306/rubrica?serverTimezone=CET" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password"
-				value="digitale96K$" />
+				value="Beije03" />
 		</properties>
 	</persistence-unit>
 
@@ -33,7 +33,7 @@
 				value="jdbc:mysql://localhost:3306/biblioteca?serverTimezone=CET" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password"
-				value="digitale96K$" />
+				value="Beije03" />
 		</properties>
 	</persistence-unit>
 </persistence>
