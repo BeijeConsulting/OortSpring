@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="it.beije.oort.bm.library.entity.*" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
@@ -7,7 +7,9 @@
 	<head>
 		<title>Web Library</title>
 		<c:url value="/resources/library_style.css" var="libraryCss" />
+		<c:url value="/resources/navigation.js" var="navJs"/>
 		<link rel = "stylesheet" type = "text/css" href = "${libraryCss}">
+		<script type="text/javascript" src="${navJs}"></script>
 	</head>
 	<body>
 		<div id = "head">
@@ -16,56 +18,29 @@
 		<div id = "navbar">
 			<ul>
 				<li>
-					<a href="./books">Books</a>
+					<button class="navBtn" onClick='navTo("books")'>Books</button>
 				</li>
 				<li>
-					<a href="./authors">Authors</a>
+					<button class="navBtn" onClick='navTo("authors")'>Authors</button>
 				</li>
 				<li>
-					<a href="./publish">Publishers</a>
+					<button class="navBtn" onClick='navTo("publishers")'>Publishers</button>
 				</li>
 				<li>
-					<a href="./loans">Loans</a>
+					<button class="navBtn" onClick='navTo("loans")'>Loans</button>
 				</li>
 				<% User user = (User) session.getAttribute("user");
 				if(user != null && user.getAdmin()){%>
 					<li>
-						<a href="./users">Users</a>
+						<button class="navBtn" onClick='navTo("users")'>Users</button>
 					</li>
 				<%} %>
 				<li class = "rightli">
-					<a href="./log-in">Login</a>
+					<button class="navBtn" onClick='navTo("login")'>Login</button>
 				</li>
 			</ul>
 		</div>
 		<div id = "content">
-			<% String status = (String) session.getAttribute("status");
-			if(status != null){
-				switch(status){
-					case "books":%>
-						<%@ include file="books.jsp" %>
-						<% break; 
-					case "authors":%>
-						<%@ include file="authors.jsp" %>
-						<% break;
-					case "publish":%>
-						<%@ include file="publishers.jsp" %>
-						<% break;
-					case "loans":%>
-						<%@ include file="loans.jsp" %>
-						<% break;
-					case "log-in":%>
-						<%@ include file="login.jsp" %>
-						<% break;
-					case "users":%>
-						<%@ include file="users.jsp" %>
-						<% break;
-					case "register":%>
-						<%@ include file="register.jsp" %>
-						<% break;
-					default:
-				}
-			}%>
 		</div>
 	</body>
 </html>

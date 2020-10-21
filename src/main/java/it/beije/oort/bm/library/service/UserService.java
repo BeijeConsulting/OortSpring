@@ -7,8 +7,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-
 import it.beije.oort.bm.library.entity.User;
 import it.beije.oort.bm.library.repository.UserRepository;
 
@@ -18,15 +16,15 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 	
-	public User login(String email, String password, Model model) {
-		User logged = null;
-		logged = userRepo.findByEmailAndPassword(email,password);
-		if(logged == null) {
-			model.addAttribute("tmpEmail", email);
-			model.addAttribute("loginError", "Credenziali errate, riprova.");
-		}
-		return logged;
-	}
+//	public User login(String email, String password, Model model) {
+//		User logged = null;
+//		logged = userRepo.findByEmailAndPassword(email,password);
+//		if(logged == null) {
+//			model.addAttribute("tmpEmail", email);
+//			model.addAttribute("loginError", "Credenziali errate, riprova.");
+//		}
+//		return logged;
+//	}
 	
 	@Transactional
 	public boolean register(User user) {
@@ -71,5 +69,12 @@ public class UserService {
 			ret = true;
 		}
 		return ret;
+	}
+
+	public User login(String email, String password) {
+		User logged = null;
+		logged = userRepo.findByEmailAndPassword(email,password);
+		return logged;
+		
 	}
 }

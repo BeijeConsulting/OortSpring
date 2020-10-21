@@ -15,20 +15,7 @@ body {
 	border-bottom: solid black 2px;
 }
 
-#navbar a {
-	color: black;
-	text-decoration: none;
-}
-
-#navbar a:hover {
-	color: black;
-}
-
-#navbar a:visited {
-	color: black;
-}
-
-ul {
+#navbar ul {
 	display: block;
 	position: relative;
 	grid-row: 2;
@@ -38,30 +25,31 @@ ul {
 	padding: 0;
 }
 
-li {
+#navbar li {
 	float: left;
 	padding: 5px;
 	cursor: pointer;
+}
+
+#navbar li:hover{
+	background-color: rgb(235,235,235);
 }
 
 .rightli {
 	float: right !important;
 }
 
-li:hover{
-	background-color: rgb(235,235,235);
-}
-li input[type = "submit"]{
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+.navBtn {
+	border: none !important;
+	padding-left: 8px;
+	padding-right: 8px;
+	background: none !important;
+	font-family: Arial, Helvetica, sans-serif;
+	color: black;
+	font-size: 100%;
 }
 
-#content{
+.tabledContent {
 	grid-row: 3;
 	margin-top: 20px;
 	width: 100%;
@@ -71,24 +59,23 @@ li input[type = "submit"]{
 	grid-template-columns: auto auto;
 }
 
-#content table {
+.tabledContent table {
 	grid-column: 1;
 	grid-row: 1 / 2;
+	height: min-content;
 }
 
-#content form {
+.tabledContent form {
 	grid-column: 2;
 }
 
-.table {
-	height: min-content;
-}
-.table th {
+.tabledContent table th {
 	background-color: rgb(235,235,235);
 	padding: 5px;
 	margin: 2px;
 }
-.table td {
+
+.tabledContent table td {
 	padding: 0px;
 	padding-left: 5px;
 	padding-right: 5px;
