@@ -9,8 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface AutoreRepository extends JpaRepository<Autore, Long> {
-    Optional<Autore> getAutoreByNomeContainingOrCognomeContaining(String nome, String cognome);
-    Optional<Autore> getFirstByNomeContainingOrCognomeContaining(String nome, String cognome);
-
     List<Autore> getAllByNomeContainingOrCognomeContaining(String nome, String cognome);
+    List<Autore> getAllByNomeContaining(String nome);
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Contoller to map API urls to work with books (Libro object)
+ * Controller to map API urls to work with books (Libro object)
  */
 @RestController
 @RequestMapping("/api")

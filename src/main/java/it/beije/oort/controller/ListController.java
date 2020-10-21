@@ -53,11 +53,20 @@ public class ListController {
     ///////////////////////////////////////////////////
     // CONTROLLER PER PAGINE CHE LISTANO GLI ELEMENTI
     ///////////////////////////////////////////////////
+    // todo fare la pagina in ajax, usando come param 2 indici (1*i e 10*i+10)
+    // e facendo fare la fetch da JS usando un'api rest che ritorni
+    // una lista di libri usando tali indici
     @GetMapping(value = "/libri")
     public String libriList(Model model){
         System.out.println("servo pagina libri");
         model.addAttribute("libri", DatabaseController.getAllLibri());
         return "liste/listLibri";
+    }
+
+    @GetMapping(value = "/newList")
+    public String newLibriList(){
+        System.out.println("servo pagina libri con ajax");
+        return "liste/newList";
     }
 
     @GetMapping(value = "/autori")

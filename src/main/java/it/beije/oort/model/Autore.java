@@ -1,5 +1,8 @@
 package it.beije.oort.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -7,6 +10,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "autori")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Autore implements IBibliotecaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +28,12 @@ public class Autore implements IBibliotecaModel {
 
     @Column(name = "data_nascita")
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonProperty("data_nascita")
     private Date dataNascita;
 
     @Column(name = "data_morte")
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonProperty("data_morte")
     private Date dataMorte;
 
     public Long getId() {

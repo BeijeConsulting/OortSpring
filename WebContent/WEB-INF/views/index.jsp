@@ -16,5 +16,7 @@
     <a href="${pageContext.request.contextPath}/loginSkip">Skip Login</a>
     <br>
     <a href="${pageContext.request.contextPath}/register">Register</a>
+    <br>
+    <a href="${pageContext.request.contextPath}/newList">Nuova Lista AJAX</a>
 </body>
 </html>

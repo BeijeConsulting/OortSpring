@@ -1,5 +1,8 @@
 package it.beije.oort.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import it.beije.oort.database.DatabaseController;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -8,6 +11,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "prestiti")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Prestito implements IBibliotecaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +19,12 @@ public class Prestito implements IBibliotecaModel {
     private Long id;
 
     @Column(name = "data_inizio")
+    @JsonProperty("data_inizio")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataInizio;
 
     @Column(name = "data_fine")
+    @JsonProperty("data_fine")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataFine;
 
@@ -26,9 +32,11 @@ public class Prestito implements IBibliotecaModel {
     private String note;
 
     @Column(name = "cf_utente")
+    @JsonProperty("cf_utente")
     private String cfUtente;
 
     @Column(name = "id_libro")
+    @JsonProperty("id_libro")
     private Long idLibro;
 
     public Utente getUtente(){

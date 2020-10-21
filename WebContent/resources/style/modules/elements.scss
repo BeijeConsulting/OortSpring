@@ -12,9 +12,9 @@ table{
   width: 100%;
   overflow: auto;
   overflow-x: hidden;
-  display: block;
+  display: inline-table;
   height: 410px;
-  tbody{
+  tbody, thead{
     width: 100%;
     overflow: auto;
     display: table;
