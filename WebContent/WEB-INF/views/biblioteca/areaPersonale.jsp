@@ -13,7 +13,7 @@
 <body>
 	<p>Benvenuto ${utente.nome} ${utente.cognome} </p>
 	<b>PRESTITI</b>
-<table style="width:100%">
+<%-- <table style="width:100%">
 <tr>
     <th>LIBRO</th>
     <th>DATA INIZIO</th>
@@ -29,6 +29,6 @@
 	<th><% out.println(prestito.getNote());%></th>
 	</tr>
 <% }%>
-</table>
+</table> --%>
 </body>
 </html>
