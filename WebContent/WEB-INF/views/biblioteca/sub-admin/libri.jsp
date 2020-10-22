@@ -13,32 +13,15 @@
         }
       }
     
-    function myfetch(url) {
-        fetch(url).then(function(response) {
-            response.json().then(function(data) {
-               return data;
-            }).catch(function(error) {
-                return Error();
-            })
-        }).catch(function(error) {
-            //document.getElementById('error').innerHTML += 'Qualcosa è andato storto:';
-            //console.log(error);
-            //console.log('test');
-        })
-    }
-    
     function get(){
-//    	let data = myfetch('/OortSpring/api/libri');
-		let data = fetch('/OortSpring/api/libri')
+		fetch('/OortSpring/api/libri')
 			.then(response => response.json())
-			.then(json => {return json;});
-    	data(Array).forEach(function(item) {
-    		let node = document.createElement("LI");
-    		let text = document.createTextNode("id: " +item.id_libro +"| titolo: " +item.titolo + "| autore: " + item.id_autore)
-   			document.getElementById('dynamicList').appendChild(node.appendChild(text));
-  	    	console.log('logging::'+item);
- 	})
-		console.log('typeof data: '+typeof data);;
+			.then(function(data) {
+				data.forEach(function(item, index) {
+					console.log(index, item.titolo);
+					document.getElementById('dynamicList').innerHTML += '<li>'+item.titolo+'</li>'
+				})
+			});
     }
     
     function insert(form) {
