@@ -19,7 +19,7 @@
 			%><p>Non hai avuto accesso al catalogo libri corretamente</p><%
 		} else {
 			for (int i = 0; i < libri.size(); i++) {
-				out.print(libri.get(i) + "\n");
+				out.print(libri.get(i) + "\n <br><br>");
 			}
 		}
 		%>
